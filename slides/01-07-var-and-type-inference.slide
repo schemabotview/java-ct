@@ -11,7 +11,14 @@ var name  = "ganesh";                // String
 var users = new ArrayList<String>(); // ArrayList<String>
 ```
 
-## Rules & taste
+## Where it's not allowed
 
-- Local variables **with an initializer** only — no fields, no `null`, no bare `var x;`
+```java
+// var x;         // no initializer
+// var y = null;  // null has no inferable type
+// fields / method params — locals only
+```
+
+## Taste
+
 - Use it when the type is **obvious** from the right-hand side; spell it out otherwise

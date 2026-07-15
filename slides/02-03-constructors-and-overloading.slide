@@ -6,11 +6,17 @@
 - One can **delegate** to another with `this(...)`
 
 ```java
-public Rectangle(int w, int h) { ... }
-public Rectangle(int side) { this(side, side); }  // square
+public Rectangle(int w, int h) { this.width = w; this.height = h; }
+public Rectangle(int side)     { this(side, side); }   // square
+new Rectangle(3, 5).area();  // 15
+new Rectangle(4).area();     // 16
 ```
 
 ## Overloading
 
 - Same **method** name, different parameter list
 - Compiler picks at the call site — **compile-time** only
+
+## `this`
+
+- The current instance — disambiguates `this.width = width` when a param shadows a field

@@ -5,14 +5,21 @@
 ```java
 public class Box<T> {
     private T value;
-    public T get() { return value; }
+    public T get()       { return value; }
+    public void set(T v) { this.value = v; }
 }
 Box<Double> p = new Box<>(3.14);   // <> infers the type
 ```
 
+- One definition serves every element type
+
 ## Generic method — own type param before the return type
 
 ```java
-public static <T> T firstOrNull(List<T> list) { ... }
-Util.firstOrNull(List.of(1, 2, 3));   // T = Integer
+public static <T> T firstOrNull(List<T> list) {
+    return list.isEmpty() ? null : list.get(0);
+}
+firstOrNull(List.of(1, 2, 3));   // T = Integer
 ```
+
+- The `<T>` is independent of the enclosing class

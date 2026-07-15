@@ -5,15 +5,19 @@
 ```java
 return switch (shape) {
     case Circle(double r)             -> Math.PI * r * r;
+    case Square(double s)             -> s * s;
     case Triangle(double b, double h) -> 0.5 * b * h;
     // sealed Shape → no default needed
 };
 ```
 
-- **type patterns** · **record deconstruction** · **exhaustiveness**
-- Java's answer to algebraic data types (Scala/Rust)
+## Three powers stacked
 
-## Guards
+- **type patterns** — bind by runtime type
+- **record deconstruction** — pull components into locals
+- **exhaustiveness** — sealed → the compiler checks every case
+
+## Guards with `when`
 
 ```java
 case Circle c when c.radius() > 100 -> "huge circle";

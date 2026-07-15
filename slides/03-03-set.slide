@@ -1,12 +1,21 @@
 # `Set` — no duplicates
 
-## Adding a dup is a no-op
+## Adding a duplicate is a no-op
 
-- Three impls differ in **iteration order**
-- **`HashSet`** — O(1), unordered — default
-- **`LinkedHashSet`** — O(1), **insertion order**
-- **`TreeSet`** — O(log n), **sorted**
+| Impl | Iteration order | Ops |
+|---|---|---|
+| `HashSet` | unspecified | O(1) — default |
+| `LinkedHashSet` | insertion | O(1) |
+| `TreeSet` | sorted | O(log n) |
+
+## In practice
 
 ```java
-new TreeSet<>(List.of(3, 1, 4, 1, 5));  // iterates 1, 3, 4, 5
+Set<Integer> seen = new HashSet<>();
+seen.add(1); seen.add(1);   // second add ignored -> size 1
+new TreeSet<>(List.of(3, 1, 4, 1, 5));   // iterates 1, 3, 4, 5
 ```
+
+## Pick by order need
+
+- Don't care → `HashSet` · preserve insertion → `LinkedHashSet` · keep sorted → `TreeSet`

@@ -2,19 +2,25 @@
 
 ## A pure contract
 
-- No state; a class `implements` **many** interfaces (extends one class)
+- No state; a class `implements` **many** interfaces (extends only one class)
 
 ```java
-public class FriendlyGreeter implements Greeter { ... }
+public class FriendlyGreeter implements Greeter {
+    @Override public String greet(String n) { return "hello, " + n; }
+}
 ```
 
 ## Since Java 8
 
-- **default** method — body inherited by every implementer (overridable)
-- **static** method — utility on the interface itself
+- **default** — body inherited by every implementer (overridable)
+- **static** — utility on the interface itself
 
 ```java
 default String greetLoudly(String n) { return greet(n).toUpperCase(); }
+static Greeter friendly() { return n -> "hello, " + n; }
 ```
 
-- Single-abstract-method interfaces → implementable by a **lambda**
+## Why it matters
+
+- Default methods grew `Collection`/`Stream` without breaking implementers
+- A single-abstract-method interface → implementable by a **lambda**

@@ -3,7 +3,7 @@
 ## A closed set of values
 
 - Each constant is a **singleton** instance
-- `values()` and `valueOf(...)` come for free; great with `switch`
+- `values()` and `valueOf(...)` for free; pairs great with `switch`
 
 ```java
 public enum HttpMethod { GET, POST, PUT, DELETE, PATCH; }
@@ -12,8 +12,15 @@ public enum HttpMethod { GET, POST, PUT, DELETE, PATCH; }
 ## Enums are full classes
 
 ```java
-OK(200, "ok"), NOT_FOUND(404, "not found");
-// fields + constructor + methods: NOT_FOUND.code() -> 404
+public enum HttpStatus {
+    OK(200, "ok"), NOT_FOUND(404, "not found");
+    private final int code; private final String message;
+    HttpStatus(int code, String message) { ... }
+    public int code() { return code; }
+}
+HttpStatus.NOT_FOUND.code();   // 404
 ```
 
-- Stronger than the integer-flag enums of older languages
+## Why it matters
+
+- Fields + constructor + methods → stronger than integer-flag enums

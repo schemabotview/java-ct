@@ -4,7 +4,9 @@
 
 ```java
 public sealed interface Shape permits Circle, Square, Triangle {}
-public record Circle(double radius) implements Shape {}
+public record Circle(double radius)        implements Shape {}
+public record Square(double side)          implements Shape {}
+public record Triangle(double b, double h) implements Shape {}
 ```
 
 - The compiler **enforces** the permit list — no outside subtype
@@ -13,3 +15,7 @@ public record Circle(double radius) implements Shape {}
 
 - A **known, complete** set of subtypes
 - Lets `switch` be checked for **exhaustiveness** (next section)
+
+## The modern-modelling trio
+
+- **sealed + records + pattern matching** = Java's algebraic data types

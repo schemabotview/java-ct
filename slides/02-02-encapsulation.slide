@@ -2,8 +2,12 @@
 
 ## Four access levels
 
-- `public` anywhere · `protected` package + subclasses
-- *(none)* package-private · `private` same class only
+| Modifier | Visible from |
+|---|---|
+| `public` | anywhere |
+| `protected` | package + subclasses |
+| *(none)* | package only |
+| `private` | same class only |
 
 ## Private fields, public methods
 
@@ -13,5 +17,7 @@ public void deposit(long amount) { ... }  // guarded path
 // acct.balance = 99999;  // COMPILE ERROR
 ```
 
+## Why hide it
+
 - The compiler enforces it — nobody bypasses `deposit`
-- Frees you to **change the internal representation** later
+- Frees you to **change the internal representation** later without breaking callers

@@ -3,14 +3,23 @@
 ## `<E>` is a type parameter
 
 - Filled in per use site: `List<String>`, `Map<String, Integer>`
-
-## Two wins
-
-- **Compile-time type safety** — no `Integer` into a `List<String>`
-- **No casts** — `get(0)` already returns `String`
+- Two wins: **compile-time type safety** + **no casts on retrieval**
 
 ```java
-List rawList = new ArrayList();
-String s = (String) rawList.get(1);   // ClassCastException at runtime
-List<String> safe = ...; safe.get(0); // no cast
+// raw type — legacy
+List raw = new ArrayList();
+raw.add(42);
+String s = (String) raw.get(0);   // ClassCastException at runtime
 ```
+
+## The generic version
+
+```java
+List<String> safe = new ArrayList<>();
+// safe.add(42);        // COMPILE ERROR
+String t = safe.get(0); // no cast — already a String
+```
+
+## Why it matters
+
+- Turns a **runtime** ClassCastException into a **compile-time** error

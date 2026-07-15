@@ -2,15 +2,22 @@
 
 ## `List.of` / `Set.of` / `Map.of` (Java 9)
 
-- Return **structurally immutable** collections
-- Thread-safe to share; no defensive copies
-
 ```java
-List.of("admin", "editor");            // add() -> UnsupportedOperationException
-Map.ofEntries(Map.entry("a", 1), ...); // past the 10-entry limit
+List.of("admin", "editor", "viewer");   // structurally immutable
+Map.ofEntries(Map.entry("a", 1), ...);  // past the 10-entry limit
+// roles.add("guest");  // UnsupportedOperationException
 ```
+
+- Thread-safe to share; no defensive copies
 
 ## Iterating
 
-- **enhanced `for`** for any `Iterable` — preferred
-- `Iterator.remove()` to delete mid-walk; else `ConcurrentModificationException`
+```java
+for (var name : names) { ... }              // enhanced for — preferred
+var it = list.iterator();
+while (it.hasNext()) if (bad(it.next())) it.remove();  // safe removal
+```
+
+## The gotcha
+
+- Structurally modifying during an enhanced-`for` → `ConcurrentModificationException`

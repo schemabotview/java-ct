@@ -2,16 +2,23 @@
 
 ## Two flavours of type
 
-- **Primitive** — stored directly: `int` `long` `double` `boolean` `char` …
+- **Primitive** — stored directly on the stack: `int` `long` `double` `boolean` `char` …
 - **Reference** — a pointer to a **heap** object: `String`, `List<Integer>`, arrays, your classes
 
 ```java
-int count = 42;            // primitive — on the stack
+int count = 42;            // primitive — value on the stack
 String name = "ganesh";    // reference — points to the heap
 List<Integer> xs = List.of(1, 2, 3);
 ```
 
-## Boxing
+## Every primitive has a boxed partner
 
-- Every primitive has a boxed partner — `int` ↔ **`Integer`**
-- The compiler **autoboxes**, but it allocates — prefer primitives in hot loops
+| Primitive | Boxed |
+|---|---|
+| `int` | `Integer` |
+| `long` | `Long` |
+| `boolean` | `Boolean` |
+
+## Boxing costs
+
+- The compiler **autoboxes** (`Integer x = 42`), but it **allocates** — prefer primitives in hot loops

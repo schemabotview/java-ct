@@ -5,12 +5,16 @@
 ```bash
 brew install --cask temurin   # JDK 21 LTS
 brew install jbang maven gradle
+java --version    # openjdk 21.x.x
+javac --version   # the compiler
 ```
-
-- Verify in a new shell: `java --version`, `javac --version`
 
 ## Three on-ramps
 
 - **`jshell`** — "what does this expression do?" the cheapest feedback loop
 - **`jbang`** — one file you keep around; deps in a top comment
 - **Maven / Gradle** — real projects: many files, deps, tests, build — what **Spring** uses
+
+## Rule of thumb
+
+- Scratch an idea in `jshell` → keep it as a `jbang` script → ship it with **Maven**

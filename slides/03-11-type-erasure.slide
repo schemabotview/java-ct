@@ -6,11 +6,19 @@
 - The type param is **erased** → its bound (or `Object`)
 
 ```java
-ss.getClass() == ii.getClass();   // true
-obj instanceof List<?> list       // OK  (List<String> -> COMPILE ERROR)
+List<String>  ss = new ArrayList<>();
+List<Integer> ii = new ArrayList<>();
+ss.getClass() == ii.getClass();   // true — same class at runtime
+
+if (obj instanceof List<?> list) { ... }   // OK — wildcard only
+// obj instanceof List<String>             // COMPILE ERROR
 ```
 
 ## Consequences
 
-- No `new T[10]` · no `instanceof List<String>` · signatures that differ only by `<T>` clash
-- The price of backwards compatibility: **no runtime type info**
+- No `new T[10]` · no `instanceof List<String>`
+- Two methods differing only by `<T>` clash (same erased signature)
+
+## Why Java does it
+
+- Backwards compatibility — raw `List` and `List<String>` interoperate; price = no runtime type info

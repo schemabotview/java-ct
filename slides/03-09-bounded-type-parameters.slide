@@ -2,14 +2,22 @@
 
 ## Constrain with `extends`
 
-- `<T extends Number>` — T is a `Number` or subtype; unlocks `doubleValue()`
+- `<T extends Number>` — T is a `Number` or subtype; unlocks its methods (`doubleValue()`)
 
 ```java
-public static <T extends Number> double sum(List<T> list) { ... }
-Stats.sum(List.of(1, 2, 3));      // ok
-// Stats.sum(List.of("a", "b"));  // COMPILE ERROR
+public static <T extends Number> double sum(List<T> list) {
+    double total = 0;
+    for (var n : list) total += n.doubleValue();
+    return total;
+}
+sum(List.of(1, 2, 3));       // 6.0
+// sum(List.of("a", "b"));   // COMPILE ERROR — String isn't a Number
 ```
 
-## Chain bounds with `&`
+## Multiple bounds with `&`
 
 - `<T extends Number & Comparable<T>>` — both a `Number` and self-comparable
+
+## Why it matters
+
+- Without the bound, `T` is just `Object` — you couldn't call `doubleValue()`

@@ -2,12 +2,21 @@
 
 ## Two implementations
 
-- **`ArrayList`** — resizing array; **O(1)** index access, amortised O(1) append — **your default**
-- **`LinkedList`** — doubly-linked; O(1) at the ends, O(n) random — rarely worth it
+| Impl | Random access | Insert / remove |
+|---|---|---|
+| `ArrayList` | O(1) by index | O(1) at end — **default** |
+| `LinkedList` | O(n) | O(1) at the ends |
+
+## Core operations
 
 ```java
 List<String> names = new ArrayList<>();
-names.get(1);           // O(1)
+names.get(1);           // O(1) by index
 names.set(0, "alex");   // replace at index
 names.remove("alex");   // remove first occurrence
+names.contains("bob");  // membership
 ```
+
+## Rule of thumb
+
+- `ArrayList` unless you profile otherwise; for stacks/queues reach for `ArrayDeque`

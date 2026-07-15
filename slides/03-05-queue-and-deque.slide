@@ -7,10 +7,16 @@
 
 ## Use `ArrayDeque`
 
-- Faster than `LinkedList` for queue **and** stack
-- Avoid the legacy synchronised `Stack`
-
 ```java
-Deque<Integer> stack = new ArrayDeque<>();  // push / pop / peek
-Queue<String> q      = new ArrayDeque<>();  // offer / poll / peek
+Deque<Integer> stack = new ArrayDeque<>();
+stack.push(1); stack.push(2);
+stack.pop();   // 2   (LIFO)
+
+Queue<String> q = new ArrayDeque<>();
+q.offer("first"); q.offer("second");
+q.poll();      // "first"   (FIFO)
 ```
+
+## Why not the alternatives
+
+- Faster than `LinkedList` for both patterns; avoid legacy synchronised `Stack`

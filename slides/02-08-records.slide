@@ -4,16 +4,22 @@
 
 ```java
 public record User(String email, String name, int age) {}
+var u = new User("a@b.com", "ganesh", 30);
+u.email();      // accessor — not getEmail()
+u.equals(u2);   // true — derived from all components
 ```
 
-- For free: **canonical ctor**, one accessor per component (`email()`),
-  `equals`/`hashCode`/`toString`, **final** fields (immutable)
+## Free from the compiler
+
+- Canonical **ctor**, one accessor per component, `equals`/`hashCode`/`toString`
+- All fields **`final`** → instances are immutable
 
 ## Still flexible
 
-- Add methods, **validate in a compact constructor**, implement interfaces
-- Can't add **mutable state** — the whole point
-
 ```java
-public Money { if (amountCents < 0) throw ...; }
+public record Money(long cents, String ccy) {
+    public Money { if (cents < 0) throw new IllegalArgumentException(); }
+}
 ```
+
+- Add methods, **validate in a compact ctor**, implement interfaces — just no mutable state

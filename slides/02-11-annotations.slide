@@ -2,7 +2,7 @@
 
 ## Metadata on code
 
-- Read by the compiler + libraries — everywhere in **Spring** later
+- Read by the compiler + libraries — everywhere in **Spring** later (`@Component`, `@Autowired`)
 
 ## Three from the JDK
 
@@ -11,6 +11,11 @@
 - **`@SuppressWarnings`** — silence one warning category; use sparingly
 
 ```java
+@Deprecated(since = "2.0", forRemoval = true)
+public int oldAdd(int a, int b) { return a + b; }
+
 @Override public int add(int a, int b) { return super.add(a, b); }
+
 @SuppressWarnings("unchecked")
+List<String> cast(Object raw) { return (List<String>) raw; }
 ```
