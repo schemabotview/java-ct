@@ -1,0 +1,7 @@
+Installing Java, and three ways to run it.
+
+The distribution I recommend is Eclipse Temurin, a free, production-grade build of OpenJDK from the Adoptium project. On a Mac, you install it with Homebrew: one command for the java development kit, one for jbang, and one for the Maven and Gradle build tools. Then, in a fresh terminal so your path is up to date, you check the versions to confirm everything landed correctly.
+
+Once it is installed, Java gives you three on-ramps, and you pick the one that matches the size of what you are doing.
+
+The first is jshell. This is for answering the question, what does this expression actually do? It is the cheapest possible feedback loop, and it ships with the development kit. The second is jbang, for a single file you want to keep around, where you can even declare your dependencies in a comment at the top. And the third is Maven or Gradle, for anything real: many files, dependencies, tests, and a proper build. That last one is what every Spring project uses.

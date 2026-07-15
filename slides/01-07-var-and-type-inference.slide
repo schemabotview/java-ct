@@ -1,0 +1,17 @@
+# `var` and local type inference
+
+## What it is
+
+- Since **Java 10** — omit the type on a **local** variable; the compiler infers it
+- Purely syntactic — Java stays **statically typed**, type fixed at compile time
+
+```java
+var count = 42;                      // int
+var name  = "ganesh";                // String
+var users = new ArrayList<String>(); // ArrayList<String>
+```
+
+## Rules & taste
+
+- Local variables **with an initializer** only — no fields, no `null`, no bare `var x;`
+- Use it when the type is **obvious** from the right-hand side; spell it out otherwise

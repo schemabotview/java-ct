@@ -1,0 +1,17 @@
+# Modern Java, not 1998 Java
+
+## Target: Java 21 (LTS)
+
+- Old tutorials teach the 1998 dialect — we write **modern Java** throughout
+
+## Five features you'll use constantly
+
+- **`var`** — local type inference (Java 10)
+- **Text blocks** — `"""` multi-line strings (Java 15)
+- **Records** — one-line immutable data classes (Java 16)
+- **Pattern matching for `switch`** — destructuring switch expressions (Java 21)
+- **Virtual threads** — millions of cheap threads (Java 21)
+
+## The tell
+
+- A whole class for three fields with getters/setters is **old Java** — a `record` is one line

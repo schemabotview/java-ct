@@ -1,0 +1,7 @@
+Hello, Java, three ways.
+
+Start with jshell. You open it, and you get a prompt that evaluates one expression or one statement at a time. You can declare a variable with var and a name, and the compiler infers that it is a string. You can type a bare expression, like the string hello plus that name, and jshell evaluates it and binds the result to an automatic name you can reuse. Every jshell command starts with a slash, and slash exit quits.
+
+For anything longer than a couple of lines, you put it in a file and run it with jbang. A jbang file has a shebang line at the top so you can execute it directly, a directive that pins the Java version, and then a class with a main method. That main method signature, public static void main with a string array of arguments, is Java's entry point. Every standalone Java program starts in a method with exactly that shape.
+
+For a real project, Maven gives you a standard directory layout, dependency management, and a test runner. You will meet it properly in module seven. For now, a single generate command scaffolds the whole thing: a project file that holds your configuration and dependencies, a folder for your production code, and a separate folder for your tests.

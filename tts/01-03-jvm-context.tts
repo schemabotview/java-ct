@@ -1,0 +1,7 @@
+The java virtual machine context.
+
+When you write Java, the compiler turns your source file into bytecode, a portable instruction set. The java virtual machine then loads that bytecode and executes it. So a file called Main dot java compiles into a file called Main dot class, the virtual machine loads that class, it garbage-collects as it runs, and it compiles your hottest code paths down to native machine code on the fly.
+
+Two consequences are worth absorbing right now. The first is that startup is not instant. The virtual machine itself takes a moment to boot up. For a tiny script that can feel slow, but for a long-running service it disappears into the noise.
+
+The second consequence is that you inherit all of the virtual machine's strengths. You get a mature garbage collector, a compiler that actually gets faster the longer your program runs, and decades of battle-tested profiling tools.

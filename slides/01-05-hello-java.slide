@@ -1,0 +1,25 @@
+# Hello, Java — jshell, jbang, Maven
+
+## jshell — live evaluation
+
+```java
+jshell> var name = "ganesh"
+jshell> "hello, " + name   // $3 ==> "hello, ganesh"
+```
+
+## jbang — one file, run like a script
+
+```java
+//JAVA 21
+public class hello {
+    public static void main(String[] args) {
+        System.out.println("hello from jbang");
+    }
+}
+```
+
+- `public static void main(String[] args)` — Java's **entry-point signature**
+
+## Maven — real projects
+
+- `mvn archetype:generate …` → `pom.xml` · `src/main/java` · `src/test/java`

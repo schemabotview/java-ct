@@ -1,0 +1,7 @@
+Modern Java, not nineteen ninety-eight Java.
+
+This track targets Java twenty-one, the current long term support release. A lot of older tutorials still teach the nineteen ninety-eight dialect of the language. We are going to write modern Java the whole way through.
+
+There are five features you will use constantly that simply did not exist in old Java. The first is var, local variable type inference: you write var, then a name, then a value, and the compiler figures out the type for you. The second is text blocks, multi-line string literals written with three double quotes. The third is records, which give you a one-line immutable data class; you will meet those in module two. The fourth is pattern matching for switch, where switch becomes an expression that can pull a value apart. And the fifth is virtual threads, which let you run millions of cheap threads on one java virtual machine; those show up in module six.
+
+Here is a simple tell. If you find an answer online that defines a whole class just to hold three fields, with a getter and a setter for each one, that is old Java. The problem is exactly the same, but modern Java solves it in a single line with a record.

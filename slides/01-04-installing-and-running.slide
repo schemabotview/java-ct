@@ -1,0 +1,16 @@
+# Installing Java & three ways to run it
+
+## Install — Eclipse Temurin (OpenJDK)
+
+```bash
+brew install --cask temurin   # JDK 21 LTS
+brew install jbang maven gradle
+```
+
+- Verify in a new shell: `java --version`, `javac --version`
+
+## Three on-ramps
+
+- **`jshell`** — "what does this expression do?" the cheapest feedback loop
+- **`jbang`** — one file you keep around; deps in a top comment
+- **Maven / Gradle** — real projects: many files, deps, tests, build — what **Spring** uses

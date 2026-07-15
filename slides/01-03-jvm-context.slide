@@ -1,0 +1,11 @@
+# The JVM context
+
+## Source to running code
+
+- `javac` compiles **`Main.java` → `Main.class`** (portable bytecode)
+- The **JVM** loads the class, runs the **GC**, and **JIT**-compiles hot paths to native code
+
+## Two consequences
+
+1. **Startup isn't instant** — the JVM boots first; negligible for long-running services
+2. **You inherit the JVM's strengths** — mature GC, a JIT that speeds up over time, decades of profilers (`jstack`, `jmap`, `jfr`)

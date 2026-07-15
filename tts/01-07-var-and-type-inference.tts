@@ -1,0 +1,7 @@
+Var, and local type inference.
+
+Since Java ten, you can leave the type off a local variable declaration and let the compiler infer it from the right-hand side. This is purely a convenience for your eyes. Java is still statically typed, and the inferred type is locked in at compile time, exactly as if you had written it out by hand.
+
+So you can write var equals forty-two and get an int, var equals a string literal and get a string, or var equals a new array list of strings and get exactly that type. But there are limits. Var only works on a local variable that has an initializer. You cannot use it with no value, and you cannot assign it null, because null has no inferable type, and you cannot use it on a field.
+
+The guidance is really about readability. Use var when the type is obvious from the right-hand side and spelling it out would just add noise. Spell the type out when the right-hand side is a method call whose return type is not obvious. The compiler does not care either way; the future version of you reading the file does.

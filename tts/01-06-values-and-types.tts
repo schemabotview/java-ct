@@ -1,0 +1,7 @@
+Values, types, and the type system.
+
+Every value in Java has a type that the compiler knows at compile time, and those types come in two flavours. Primitive types are built into the language and store their value directly: things like int, long, double, boolean, and char. Reference types are everything else. Every class is a reference type, and a reference-typed variable holds a reference, essentially a pointer, to an object that lives on the heap. A string, a list, an array, and any class you define are all reference types.
+
+This distinction matters because of where the data lives. A primitive sits right on the stack with its value embedded. A reference value is a pointer on the stack that leads to an object allocated on the heap. We come back to this picture in module seven, when we look at java virtual machine memory.
+
+There is one more wrinkle. Every primitive has a boxed partner that is a reference type: int pairs with Integer, boolean pairs with Boolean, and so on. The compiler automatically boxes and unboxes between them whenever it needs to. That is convenient, but boxing allocates a real object, so inside a hot loop you prefer the plain primitive.
