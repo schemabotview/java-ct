@@ -13,6 +13,106 @@
           "scene": "java-jvm",
           "spine": true,
           "role": "hook"
+        },
+        {
+          "heading": "Modern Java, not 1998 Java",
+          "notebook": "notebooks/01-02-modern-java.ipynb",
+          "slide": "slides/01-02-modern-java.slide",
+          "audio": "audio/01-02-modern-java.wav",
+          "scene": "java-anatomy",
+          "spine": true,
+          "focus": ["ja-type", "ja-pattern"],
+          "highlight": ["ja-type-var", "ja-record", "ja-sealed", "ja-pattern"]
+        },
+        {
+          "heading": "The JVM context",
+          "notebook": "notebooks/01-03-jvm-context.ipynb",
+          "slide": "slides/01-03-jvm-context.slide",
+          "audio": "audio/01-03-jvm-context.wav",
+          "scene": "java-jvm",
+          "spine": true,
+          "focus": ["j-pipeline", "j-bottom"],
+          "highlight": ["j-source-code", "javac", "j-class-file", "j-classloader-subsystem", "j-exec-engine", "j-gc"]
+        },
+        {
+          "heading": "Installing Java & three ways to run it",
+          "notebook": "notebooks/01-04-installing-and-running.ipynb",
+          "slide": "slides/01-04-installing-and-running.slide",
+          "audio": "audio/01-04-installing-and-running.wav",
+          "scene": "java-jvm",
+          "spine": false,
+          "focus": ["j-pipeline"],
+          "highlight": ["j-source-code", "javac", "j-class-file"]
+        },
+        {
+          "heading": "Hello, Java — jshell, jbang, Maven",
+          "notebook": "notebooks/01-05-hello-java.ipynb",
+          "slide": "slides/01-05-hello-java.slide",
+          "audio": "audio/01-05-hello-java.wav",
+          "scene": "java-jvm",
+          "spine": false,
+          "focus": ["j-pipeline", "j-exec-engine"],
+          "highlight": ["javac", "j-class-file", "j-interpreter"]
+        },
+        {
+          "heading": "Values, types and the type system",
+          "notebook": "notebooks/01-06-values-and-types.ipynb",
+          "slide": "slides/01-06-values-and-types.slide",
+          "audio": "audio/01-06-values-and-types.wav",
+          "scene": "java-anatomy",
+          "spine": true,
+          "focus": ["ja-type", "ja-value"],
+          "highlight": ["ja-primitive", "ja-type-oop", "ja-value-primitive", "ja-value-object"]
+        },
+        {
+          "heading": "`var` and local type inference",
+          "notebook": "notebooks/01-07-var-and-type-inference.ipynb",
+          "slide": "slides/01-07-var-and-type-inference.slide",
+          "audio": "audio/01-07-var-and-type-inference.wav",
+          "scene": "java-anatomy",
+          "spine": true,
+          "focus": ["ja-type"],
+          "highlight": ["ja-type-var"]
+        },
+        {
+          "heading": "Expressions, statements and operators",
+          "notebook": "notebooks/01-08-expressions-and-operators.ipynb",
+          "slide": "slides/01-08-expressions-and-operators.slide",
+          "audio": "audio/01-08-expressions-and-operators.wav",
+          "scene": "java-anatomy",
+          "spine": true,
+          "focus": ["ja-init-row", "ja-control"],
+          "highlight": ["ja-value", "ja-ctrl-if", "ja-ctrl-tern", "ja-ctrl-switch"]
+        },
+        {
+          "heading": "Control flow statements",
+          "notebook": "notebooks/01-09-control-flow.ipynb",
+          "slide": "slides/01-09-control-flow.slide",
+          "audio": "audio/01-09-control-flow.wav",
+          "scene": "java-anatomy",
+          "spine": true,
+          "focus": ["ja-verbs"],
+          "highlight": ["ja-control", "ja-loops"]
+        },
+        {
+          "heading": "Methods",
+          "notebook": "notebooks/01-10-methods.ipynb",
+          "slide": "slides/01-10-methods.slide",
+          "audio": "audio/01-10-methods.wav",
+          "scene": "java-anatomy",
+          "spine": true,
+          "focus": ["ja-verbs"],
+          "highlight": ["ja-methods"]
+        },
+        {
+          "heading": "Strings, text blocks and comments",
+          "notebook": "notebooks/01-11-strings-and-text-blocks.ipynb",
+          "slide": "slides/01-11-strings-and-text-blocks.slide",
+          "audio": "audio/01-11-strings-and-text-blocks.wav",
+          "scene": "java-anatomy",
+          "spine": false,
+          "focus": ["ja-value", "ja-memory"],
+          "highlight": ["ja-value-object", "ja-immutable"]
         }
       ]
     },

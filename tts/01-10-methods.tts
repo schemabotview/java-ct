@@ -1,0 +1,7 @@
+Methods.
+
+A method is a named, reusable block of code that lives inside a class. Every method declares three things: its return type, its name, and its parameter list, followed by a body in braces. A method that hands something back names the type it returns; a method that just performs an action uses void.
+
+You call a static method through its class. Square of five gives twenty-five; square of two point five gives six point two five.
+
+Two features are worth flagging here. The first is overloading: several methods can share the same name, as long as their parameter lists differ, and the compiler picks the right one based on the argument types at the call site. The second is void, Java's marker for no return value. Unlike Scala's Unit, void is not a real type, it is just a syntactic marker, which is why you can never declare a variable of type void.

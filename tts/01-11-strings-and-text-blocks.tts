@@ -1,0 +1,7 @@
+Strings, text blocks, and comments.
+
+String is the most-used class in all of Java, and the key fact about strings is that they are immutable. Every operation that looks like it changes a string actually leaves the original alone and returns a brand-new string. So if you uppercase a greeting, the greeting variable is unchanged and you get a new string back. To build strings, you can concatenate with plus, though each plus allocates, or you can use the formatted method for a printf-style template.
+
+For multi-line strings, Java fifteen added text blocks, written with three double quotes on their own lines. They are the cleanest way to embed things like jason, sequel, or H-T-M-L directly in your code. The compiler strips the common leading whitespace from every line, so you can indent the literal to line up with the surrounding code, without that indentation ending up inside the actual string.
+
+Finally, comments. Java uses the same two forms as the C family, a double-slash for a single line and slash-star for a block, plus a third one: Javadoc. A Javadoc comment starts with slash-star-star and documents a public method, with tags for each parameter and for the return value. The javadoc tool turns those comments into H-T-M-L reference documentation.

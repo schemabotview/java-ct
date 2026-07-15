@@ -1,0 +1,16 @@
+# Methods
+
+## Anatomy
+
+- `modifiers return-type name(parameters) { body }`
+- Lives inside a **class**; `void` means **no return value**
+
+```java
+public static int square(int x)       { return x * x; }
+public static double square(double x) { return x * x; }  // overload
+```
+
+## Two features
+
+- **Overloading** — same name, different parameter lists; compiler picks by argument types
+- **`void`** — a syntactic marker, not a real type — you can't declare a `void` variable

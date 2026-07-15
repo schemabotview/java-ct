@@ -1,0 +1,23 @@
+# Strings, text blocks and comments
+
+## Strings are immutable
+
+- Every "mutating" call returns a **new** `String`
+
+```java
+String hi = "hello, %s".formatted(name);  // Java 15+
+```
+
+## Text blocks (Java 15)
+
+```java
+String json = """
+    { "name": "ganesh" }
+    """;
+```
+
+- Compiler strips the **common leading whitespace**
+
+## Comments
+
+- `//` line · `/* … */` block · **Javadoc** `/** … */` → HTML docs via `javadoc`

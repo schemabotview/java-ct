@@ -1,0 +1,7 @@
+Control flow statements.
+
+Java's control flow is the C family with a few modern additions. You have if, else if, and else. You have the while loop and the do-while loop. You have the classic three-clause for loop, and the enhanced for loop that iterates over any collection or array. You have switch, in both a statement form and an expression form. And you have break and continue to steer a loop.
+
+The enhanced for loop is the one you will reach for most: you write for, then var and a name, then a colon and the collection, and it hands you each element in turn.
+
+The switch expression is the modern highlight. You switch on a value, and each arrow case maps to a result. Two things make it pleasant. The arrow cases do not fall through, so you never forget a break statement, and the whole switch yields a single value that you can assign straight to a variable.

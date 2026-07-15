@@ -1,0 +1,17 @@
+# Expressions, statements and operators
+
+## Expression vs statement
+
+- **Expression** — produces a value: `1 + 2`, `name.length()`, `cond ? a : b`
+- **Statement** — performs an action: `int x = 5;`, `if`, `while`
+- `switch` expression (Java 14+) is Java's one **expression** form of control flow
+
+## Operators — the gotchas
+
+- Integer division **truncates**: `7 / 2` is `3`
+- `==` compares **identity**, `.equals()` compares **content**
+
+```java
+s1 == s3;       // false — different objects
+s1.equals(s3);  // true  — same content
+```

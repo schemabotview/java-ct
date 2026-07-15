@@ -1,0 +1,17 @@
+# Control flow statements
+
+## The C family, plus modern switch
+
+- `if` / `else if` / `else` · `while` / `do-while`
+- classic `for` + enhanced **`for (var x : xs)`**
+- `switch` — statement **and** expression form · `break` / `continue`
+
+```java
+String label = switch (score / 10) {
+    case 10, 9 -> "A";
+    case 8     -> "B";
+    default    -> "F";
+};
+```
+
+- **Arrow cases don't fall through**, and the `switch` **yields a value**
