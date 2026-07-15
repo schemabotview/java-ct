@@ -1,0 +1,17 @@
+{
+  "concept": "Java",
+  "modules": [
+    { "id": "01-java-essentials", "title": "Java Essentials", "sections": [] },
+    { "id": "02-oop-and-modern-types", "title": "OOP & Modern Types", "sections": [] },
+    { "id": "03-collections-and-generics", "title": "Collections & Generics", "sections": [] },
+    { "id": "04-functional-java-and-streams", "title": "Functional Java & Streams", "sections": [] },
+    { "id": "05-errors-files-and-io", "title": "Errors, Files & I/O", "sections": [] },
+    { "id": "06-concurrency-and-virtual-threads", "title": "Concurrency & Virtual Threads", "sections": [] },
+    { "id": "07-jvm-reflection-build-and-testing", "title": "JVM, Reflection, Build & Testing", "sections": [] },
+    { "id": "08-spring-core", "title": "Spring Core", "sections": [] },
+    { "id": "09-spring-web", "title": "Spring Web", "sections": [] },
+    { "id": "10-spring-data", "title": "Spring Data", "sections": [] },
+    { "id": "11-spring-boot-in-production", "title": "Spring Boot in Production", "sections": [] },
+    { "id": "12-spring-cloud", "title": "Spring Cloud", "sections": [] }
+  ]
+}
