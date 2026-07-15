@@ -116,7 +116,121 @@
         }
       ]
     },
-    { "id": "02-oop-and-modern-types", "title": "OOP & Modern Types", "sections": [] },
+    {
+      "id": "02-oop-and-modern-types",
+      "title": "OOP & Modern Types",
+      "sections": [
+        {
+          "heading": "Classes — the unit of code",
+          "notebook": "notebooks/02-01-classes.ipynb",
+          "slide": "slides/02-01-classes.slide",
+          "audio": "audio/02-01-classes.wav",
+          "scene": "java-anatomy",
+          "spine": true,
+          "role": "hook"
+        },
+        {
+          "heading": "Encapsulation and visibility",
+          "notebook": "notebooks/02-02-encapsulation.ipynb",
+          "slide": "slides/02-02-encapsulation.slide",
+          "audio": "audio/02-02-encapsulation.wav",
+          "scene": "java-anatomy",
+          "spine": true,
+          "focus": ["ja-init-row"],
+          "highlight": ["ja-kind", "ja-bind-private"]
+        },
+        {
+          "heading": "Constructors, `this`, and overloading",
+          "notebook": "notebooks/02-03-constructors-and-overloading.ipynb",
+          "slide": "slides/02-03-constructors-and-overloading.slide",
+          "audio": "audio/02-03-constructors-and-overloading.wav",
+          "scene": "java-anatomy",
+          "spine": true,
+          "focus": ["ja-model", "ja-methods"],
+          "highlight": ["ja-value-object", "ja-method-def"]
+        },
+        {
+          "heading": "Inheritance and polymorphism",
+          "notebook": "notebooks/02-04-inheritance-and-polymorphism.ipynb",
+          "slide": "slides/02-04-inheritance-and-polymorphism.slide",
+          "audio": "audio/02-04-inheritance-and-polymorphism.wav",
+          "scene": "java-anatomy",
+          "spine": true,
+          "focus": ["ja-model"],
+          "highlight": ["ja-oop-animal", "ja-oop-mammal", "ja-oop-dog"]
+        },
+        {
+          "heading": "Abstract classes",
+          "notebook": "notebooks/02-05-abstract-classes.ipynb",
+          "slide": "slides/02-05-abstract-classes.slide",
+          "audio": "audio/02-05-abstract-classes.wav",
+          "scene": "java-anatomy",
+          "spine": true,
+          "focus": ["ja-type-oop"],
+          "highlight": ["ja-abstract", "ja-oop-animal"]
+        },
+        {
+          "heading": "Interfaces — with default and static methods",
+          "notebook": "notebooks/02-06-interfaces.ipynb",
+          "slide": "slides/02-06-interfaces.slide",
+          "audio": "audio/02-06-interfaces.wav",
+          "scene": "java-anatomy",
+          "spine": true,
+          "focus": ["ja-type-oop"],
+          "highlight": ["ja-interface", "ja-oop-walker"]
+        },
+        {
+          "heading": "Enums — a fixed set of constants",
+          "notebook": "notebooks/02-07-enums.ipynb",
+          "slide": "slides/02-07-enums.slide",
+          "audio": "audio/02-07-enums.wav",
+          "scene": "java-anatomy",
+          "spine": true,
+          "focus": ["ja-type-oop"],
+          "highlight": ["ja-enum"]
+        },
+        {
+          "heading": "Records — one-line immutable data classes",
+          "notebook": "notebooks/02-08-records.ipynb",
+          "slide": "slides/02-08-records.slide",
+          "audio": "audio/02-08-records.wav",
+          "scene": "java-anatomy",
+          "spine": true,
+          "focus": ["ja-type-oop", "ja-memory"],
+          "highlight": ["ja-record", "ja-immutable"]
+        },
+        {
+          "heading": "Sealed types — a closed family of subtypes",
+          "notebook": "notebooks/02-09-sealed-types.ipynb",
+          "slide": "slides/02-09-sealed-types.slide",
+          "audio": "audio/02-09-sealed-types.wav",
+          "scene": "java-anatomy",
+          "spine": true,
+          "focus": ["ja-type-meta"],
+          "highlight": ["ja-sealed"]
+        },
+        {
+          "heading": "Pattern matching for `switch` — with guards",
+          "notebook": "notebooks/02-10-pattern-matching.ipynb",
+          "slide": "slides/02-10-pattern-matching.slide",
+          "audio": "audio/02-10-pattern-matching.wav",
+          "scene": "java-anatomy",
+          "spine": true,
+          "focus": ["ja-control", "ja-pattern"],
+          "highlight": ["ja-ctrl-switch", "ja-pat-match", "ja-pat-record", "ja-ctrl-guard"]
+        },
+        {
+          "heading": "Built-in annotations",
+          "notebook": "notebooks/02-11-annotations.ipynb",
+          "slide": "slides/02-11-annotations.slide",
+          "audio": "audio/02-11-annotations.wav",
+          "scene": "java-anatomy",
+          "spine": false,
+          "focus": ["ja-methods"],
+          "highlight": ["ja-method-def"]
+        }
+      ]
+    },
     { "id": "03-collections-and-generics", "title": "Collections & Generics", "sections": [] },
     { "id": "04-functional-java-and-streams", "title": "Functional Java & Streams", "sections": [] },
     { "id": "05-errors-files-and-io", "title": "Errors, Files & I/O", "sections": [] },
