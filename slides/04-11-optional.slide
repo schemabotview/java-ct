@@ -1,0 +1,27 @@
+# `Optional<T>` — and streams together
+
+## A wrapper: present or empty
+
+- The type-safe alternative to `null` for **return values** that may be absent
+- Forces you to handle the empty case before reaching the value
+
+```java
+Optional.of("hello");             // throws on null
+Optional.ofNullable(maybeNull);   // null -> empty
+```
+
+## Read it safely
+
+```java
+a.ifPresent(System.out::println);
+a.orElse("default");           // fallback  (orElseGet -> lazy)
+a.map(String::length);         // transform through the wrapper
+```
+
+## Composes with streams
+
+```java
+users.stream().filter(u -> u.age() > 100)
+     .findFirst().map(User::name)
+     .orElse("nobody over 100");
+```

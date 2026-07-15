@@ -1,0 +1,7 @@
+The Files class, for reading and writing.
+
+Where a path is just a name, the files class is where the actual input and output happens. It is a utility class full of static methods that all operate on a path, and it is your one-stop shop for filesystem work. The high-level methods cover the vast majority of what you will ever need.
+
+For metadata, files dot exists tells you whether something is there, files dot size gives you the byte count, and files dot is-directory checks the kind. For reading text, you have two whole-file methods: read-string pulls the entire file into a single string, and read-all-lines pulls it into a list of strings. For writing, write-string and write take your content and create the file, or truncate and overwrite it if it already exists. And there is read-all-bytes for binary data.
+
+Now, the one distinction that really matters here is whole-file versus lazy. Read-string and read-all-lines are simple, but they load the entire file into memory at once, so they are only appropriate for files you know are small. For a potentially huge file, you use files dot lines, which returns a lazy stream of strings that reads from disk on demand, one line at a time, so your memory stays flat no matter how big the file is. The catch is that this stream holds an open file handle, so you must wrap it in try-with-resources to guarantee the handle is released.

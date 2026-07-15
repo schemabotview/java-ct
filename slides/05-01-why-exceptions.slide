@@ -1,0 +1,16 @@
+# Why exceptions
+
+## When the normal path can't continue
+
+- A file's missing, the network drops, input is malformed
+- An **exception** abandons the return path and **propagates up the call stack**
+
+## Better than sentinels
+
+- Returning `-1` / `null` forces **every** caller to remember to check
+- Exceptions invert the default: **opt out** by propagating, **opt in** by catching
+
+## The flow
+
+- `methodC` throws → unwinds through `methodB`, `methodA` → the first matching `catch` handles it
+- Nobody catches it? The program stops with a stack trace — better than wrong data

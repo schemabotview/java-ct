@@ -1,0 +1,24 @@
+# Intermediate operations
+
+## Each returns a new (lazy) stream
+
+| Op | Does |
+|---|---|
+| `filter` | keep matches |
+| `map` | transform each |
+| `flatMap` | flatten nested streams |
+| `distinct` / `sorted` | dedup / sort |
+| `limit` / `skip` | take / drop a prefix |
+
+## The canonical pipeline
+
+```java
+nums.stream()
+    .filter(n -> n % 2 == 0)
+    .map(n -> n * n)
+    .toList();            // [4, 16, 36, 64, 100]
+```
+
+## `map` vs `flatMap`
+
+- `map` is 1→1; `flatMap` flattens `Stream<Stream<T>>` into `Stream<T>`

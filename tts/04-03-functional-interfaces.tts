@@ -1,0 +1,7 @@
+The four core functional interfaces, and writing your own.
+
+The java-util-function package ships around forty functional interfaces, but four of them cover the vast majority of real code, and they show up in every single stream operation, so memorise the shape of each. Function takes a T and returns an R; it transforms. Predicate takes a T and returns a boolean; it filters. Consumer takes a T and returns nothing; it performs a side effect. And Supplier takes nothing and returns a T; it produces a value on demand.
+
+There are two-argument variants when you need them, like bi-function, bi-predicate, and bi-consumer. And there are primitive-specialised forms, like int-function and to-int-function, that avoid the cost of boxing when you are working with plain ints, longs, or doubles.
+
+Now, you are not limited to the built-in ones. Any interface with exactly one abstract method can be a lambda target. When you write such an interface, put the at-functional-interface annotation on it. That annotation documents your intent, and it makes the compiler enforce the single-abstract-method rule, so if someone later adds a second abstract method, the code stops compiling. Note that default methods do not count against that rule, so your functional interface can still carry helper defaults.

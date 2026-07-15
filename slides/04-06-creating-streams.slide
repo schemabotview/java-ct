@@ -1,0 +1,19 @@
+# Creating streams
+
+## Four sources cover almost everything
+
+```java
+List.of("a", "b").stream();               // from a collection — most common
+Stream.of(1, 2, 3);                       // a literal sequence
+IntStream.range(0, 5);                    // 0..4  (rangeClosed -> 1..5)
+Stream.iterate(1, n -> n * 2).limit(10);  // infinite -> bounded
+Stream.generate(Math::random).limit(5);
+```
+
+## Mind the infinite ones
+
+- `iterate` / `generate` are **endless** — cap with `limit(n)` or the pipeline never ends
+
+## Primitive streams
+
+- `IntStream` / `LongStream` / `DoubleStream` avoid boxing and add `sum`, `average`

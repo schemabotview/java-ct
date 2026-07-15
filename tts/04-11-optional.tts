@@ -1,0 +1,7 @@
+Optional, and streams together.
+
+Null is famously called the billion-dollar mistake. It is a value that type-checks as any reference type, but crashes your program the instant you dereference it. Java still has null, but for a return value that might legitimately be absent, the modern signature is optional of T. An optional is a small wrapper that either holds a value or is empty, and it forces you to acknowledge the empty case before you can reach the value inside.
+
+You create one with optional dot of, which throws if you hand it null, or optional dot of-nullable, which quietly turns a null into an empty optional. Then you read it safely. If-present runs an action only when a value is there. Or-else gives you a fallback value. Or-else-get takes a supplier and computes the fallback lazily, only if needed. Or-else-throw raises an exception you choose when it is empty. And map lets you transform the value while it stays inside the wrapper. The one method to avoid is a bare get with no check, which just reintroduces the null-pointer problem under a new name.
+
+There is one firm convention: use optional as a return type only. Do not use it for fields, for method parameters, or for elements of a collection; there, a sensible default or an empty collection is better. Finally, optional and streams were designed to compose. The stream operations that might find nothing, like find-first, min, and max, all return an optional, so you can filter a stream, find the first match, map it to something, and fall back with or-else, all in one clean chain.

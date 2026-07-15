@@ -1,0 +1,7 @@
+Try, catch, and finally.
+
+The try block wraps the code that might throw an exception. After it, each catch block handles one specific exception type. And the optional finally block runs no matter what happens: whether an exception was thrown or not, whether the method returned early or not. That makes finally the classic place to release a resource.
+
+You can have several catch blocks after one try, each for a different exception type. And when two different exceptions should be handled in the exact same way, you can combine them into a single multi-catch, writing the two types separated by a vertical bar.
+
+Two rules matter here. First, order matters. The virtual machine picks the first catch block whose type matches, so a broad catch of Exception has to come after the specific ones; if you put it first, the specific blocks could never run, and the compiler rejects it. Second, and this is a discipline thing: do not catch Exception, the broad parent, just to make your code compile. That swallows real bugs right alongside the failure you meant to handle. Catch the specific type you are actually prepared to recover from, and let everything else propagate.

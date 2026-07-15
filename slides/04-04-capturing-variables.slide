@@ -1,0 +1,23 @@
+# Capturing variables — *effectively final*
+
+## The rule
+
+- A lambda may read a local only if it's **effectively final** — assigned exactly once
+- No reassigning it later; no assigning to it inside the lambda
+
+## Why
+
+- Lambdas can **outlive** their method (e.g. run on another thread)
+- A capture is a **snapshot** — reassignment would be inconsistent
+
+## The workaround
+
+```java
+// var counter = 0;
+// () -> counter++    // COMPILE ERROR
+
+var counter = new int[]{0};          // reference is effectively final
+Runnable bump = () -> counter[0]++;  // mutating contents is fine
+```
+
+- Cleaner in practice: an `AtomicInteger` (module 06)

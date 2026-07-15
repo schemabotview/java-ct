@@ -1,0 +1,7 @@
+Collectors.
+
+The collectors utility class gives you ready-made recipes for the most common ways of gathering a stream, and you pass them into the collect terminal operation. To-list and to-set gather into a collection. To-map takes a key extractor and a value extractor and builds a map. Joining concatenates the elements into a single string, and it can take a separator, a prefix, and a suffix, which is perfect for building a bracketed, comma-separated list.
+
+The two that unlock real data work are grouping-by and partitioning-by. Grouping-by takes a classifier function and buckets the elements by it, so grouping words by their length gives you a map from each length to the list of words with that length. Partitioning-by is the special two-bucket case: you give it a predicate, and it splits the stream into the trues and the falses.
+
+Grouping-by is the workhorse, and its real power is the optional second argument, called a downstream collector. Instead of collecting each bucket into a plain list, you can aggregate within each bucket. Group by length, and pass counting as the downstream collector, and instead of the words themselves you get the count per length. You can also map, sum, or average within each group. That is how a single collect call expresses what would otherwise be a nested loop.

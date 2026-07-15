@@ -1,0 +1,7 @@
+Capturing variables, and the effectively-final rule.
+
+A lambda can reference local variables from the scope around it, but only under one condition: those variables must be effectively final, meaning they are assigned exactly once. The compiler will reject a lambda that reads a variable you reassign somewhere later, and it will reject a lambda that tries to assign to such a variable inside its own body.
+
+Why the restriction? Because a lambda can outlive the method that created it. Picture handing a lambda to an executor that runs it later, on another thread entirely. A capturing lambda holds a snapshot of the value at the moment of capture. If the language let you reassign that variable afterwards, you would get confusing inconsistencies about which value the lambda actually sees.
+
+There is a standard workaround when you genuinely need to mutate something a lambda touches. You wrap the value in a single-element array. The array reference itself never changes, so it stays effectively final, but you are free to mutate the contents of the array from inside the lambda. It is a little bit of a trick, and in real code you would usually reach for something cleaner, like an atomic integer, which we meet in the concurrency module.

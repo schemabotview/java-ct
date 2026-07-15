@@ -1,0 +1,7 @@
+Intermediate operations.
+
+Intermediate operations are the ones that transform one stream into another, and they are all lazy. Calling one simply records that the operation should happen; nothing actually runs until a terminal operation starts pulling elements through the pipeline.
+
+The ones you will use constantly are these. Filter keeps only the elements that match a predicate. Map transforms each element into something else. Flat-map flattens nested streams, which we will come back to. Distinct removes duplicates. Sorted sorts, either naturally or by a comparator you supply. Limit and skip take or drop a prefix of the stream. And peek lets you inspect elements as they flow past, which is strictly for debugging, not for real logic.
+
+The canonical pipeline is filter, then map, then collect: start from a collection, keep the even numbers, square each one, and gather the results into a list. The one that trips people up is the difference between map and flat-map. Map is one-to-one: each input element becomes exactly one output element. Flat-map is for when each element expands into a whole stream of its own, and you want all of those flattened together into a single stream. Splitting each line of text into its words, and getting back one flat stream of all the words, is the classic example.

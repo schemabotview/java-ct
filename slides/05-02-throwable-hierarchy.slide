@@ -1,0 +1,20 @@
+# The `Throwable` hierarchy — checked vs unchecked
+
+## Two branches under `Throwable`
+
+- **`Error`** — fatal JVM problems (`OutOfMemoryError`) — don't catch
+- **`Exception`** (not runtime) — **checked**
+- **`RuntimeException`** — **unchecked**, mostly bugs
+
+## The compile-time contract
+
+| Kind | Base | Enforced? | Example |
+|---|---|---|---|
+| Checked | `Exception` | catch or `throws` | `IOException` |
+| Unchecked | `RuntimeException` | no | `NullPointerException` |
+| Error | `Error` | no | `OutOfMemoryError` |
+
+## Which to use
+
+- **Checked** — recoverable (file missing) · **unchecked** — bugs (null, bad arg)
+- Modern Java **leans unchecked** — checked don't compose with streams/lambdas

@@ -1,0 +1,7 @@
+Exception chaining, and the cause.
+
+Here is a common situation. You catch a low-level exception, but you want to throw a different, more meaningful one up to your caller. When you do that, always pass the original exception along as what Java calls the cause. This preserves the full chain of what happened, all the way down, in the stack trace, and that is invaluable when you are debugging later.
+
+Picture a load-config method that reads a file and parses it. If the file read fails with an input-output exception, you do not want to leak that low-level detail to your caller. Instead you catch it and throw your own config-load exception, with a friendly message. But, crucially, you pass the original input-output exception in as the second constructor argument, the cause. Throwable has a constructor that takes both a message and a cause, and your custom exception simply forwards both to super.
+
+The payoff shows up in the logs. When a chained exception is printed, you see both layers stacked. First your application-level message: config-load exception, failed to read the config file. And then, underneath, a line that begins with caused by, showing the original no-such-file exception and its stack trace. You get the high-level meaning and the low-level root cause together, in a single trace.

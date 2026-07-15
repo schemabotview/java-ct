@@ -1,0 +1,7 @@
+Terminal operations.
+
+Terminal operations are what actually trigger the pipeline and hand you a result. There are a handful worth knowing by shape. To-list and the more general collect give you back a collection. Count gives you a long. For-each gives you nothing; it just runs a side effect on each element. Reduce folds the whole stream down to a single aggregated value. The matching operations, any-match, all-match, and none-match, give you a boolean. And find-first, find-any, min, and max give you back an optional.
+
+Reduce deserves a closer look, because it is the general fold. You give it a starting value and a combining function, and it walks the stream accumulating. Reduce from zero with integer sum adds everything up. Reduce from one, multiplying, gives you the product. Almost every aggregate you can think of is a reduce underneath.
+
+Notice which operations return an optional. Find-first, min, max, and a reduce with no identity value all return an optional rather than a plain value. That is deliberate: the stream might be empty, and there would be no answer to give you. Rather than returning null and hoping you check it, the type system hands you an optional and forces you to deal with the empty case. That is the bridge into the last section.

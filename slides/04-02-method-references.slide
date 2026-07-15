@@ -1,0 +1,24 @@
+# Method references
+
+## `Class::method` — shorthand for a forwarding lambda
+
+- When a lambda only calls one existing method, name it directly
+- `Integer::parseInt` **is** `s -> Integer.parseInt(s)`
+
+## Four flavours
+
+| Form | Meaning |
+|---|---|
+| `Class::staticMethod` | static method |
+| `instance::method` | method on a specific instance |
+| `Class::instanceMethod` | receiver becomes the first arg |
+| `Class::new` | constructor reference |
+
+```java
+Function<String, Integer>   len  = String::length;
+Supplier<ArrayList<String>> make = ArrayList::new;
+```
+
+## When to prefer it
+
+- Reads cleaner than a forwarding lambda; keep a real lambda when the logic is more

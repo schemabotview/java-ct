@@ -1,0 +1,23 @@
+# `try-with-resources` — safe cleanup
+
+## One line instead of `try` / `finally`
+
+- Any **`AutoCloseable`** goes in the `try(...)` parentheses
+- The JVM calls `.close()` on exit — exception or not
+- Multiple resources close in **reverse** declaration order
+
+```java
+try (var lines = Files.lines(Path.of("data.txt"))) {
+    lines.forEach(System.out::println);
+}   // lines.close() runs automatically
+```
+
+## Make your own closeable
+
+```java
+class ManagedResource implements AutoCloseable {
+    public void close() { /* release */ }
+}
+```
+
+- Override the single `close()` — DB connections, file handles, sockets

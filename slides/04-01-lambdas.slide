@@ -1,0 +1,23 @@
+# Lambdas — functions as values
+
+## An inline function you pass around
+
+- Syntax `parameters -> body` — a value of a **functional interface** (one abstract method)
+- Replaces the pre-Java-8 **anonymous inner class** ceremony
+
+## The forms
+
+```java
+()      -> 42          // no params
+x       -> x * x       // one param, no parens
+(x, y)  -> x + y       // multiple params
+x -> { return x * 2; } // block body
+```
+
+## Same behaviour, one line
+
+```java
+Comparator<String> byLength =
+    (a, b) -> Integer.compare(a.length(), b.length());
+words.sort(byLength);   // [fig, kiwi, apple, blueberry]
+```

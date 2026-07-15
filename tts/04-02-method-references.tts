@@ -1,0 +1,7 @@
+Method references.
+
+Sometimes a lambda does nothing but call one existing method and pass the arguments straight through. In that case you can replace it with a method reference, using the double-colon form: a class or an instance, two colons, then the method name. It is a one-to-one shorthand, and it reads more cleanly than a forwarding lambda.
+
+There are four flavours. Class colon-colon static-method references a static method. Instance colon-colon method references a method on one specific object. Class colon-colon instance-method references an instance method, where the receiver becomes the first argument. And Class colon-colon new is a constructor reference.
+
+The important thing to hold onto is that each one is exactly equivalent to the lambda it replaces. Integer colon-colon parse-int is the same as the lambda: s, arrow, Integer dot parse-int of s. So reach for a method reference when it reads cleaner, and stick with a full lambda when the logic is anything more than a single forwarding call.

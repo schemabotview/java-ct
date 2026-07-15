@@ -1,0 +1,23 @@
+# Terminal operations
+
+## They trigger the pipeline
+
+| Op | Returns |
+|---|---|
+| `toList` / `collect` | a collection |
+| `count` | `long` |
+| `forEach` | nothing (side effect) |
+| `reduce` | aggregated value |
+| `anyMatch` / `allMatch` | `boolean` |
+| `findFirst` / `min` / `max` | `Optional<T>` |
+
+## reduce — fold to one value
+
+```java
+nums.stream().reduce(0, Integer::sum);      // 15
+nums.stream().reduce(1, (a, b) -> a * b);   // 120
+```
+
+## Might-be-empty → `Optional`
+
+- `findFirst`, `min`, `max`, identity-less `reduce` return `Optional<T>`

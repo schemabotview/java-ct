@@ -1,0 +1,24 @@
+# The NIO `Path` — modern filesystem paths
+
+## `Path` replaces the old `java.io.File`
+
+- Immutable, abstract path — does **not** imply it exists on disk
+
+```java
+Path.of("data.txt");                  // relative
+Path.of("/Users/ganesh/Projects");    // absolute
+Path.of("/Users", "ganesh", "docs");  // joined from segments
+```
+
+## Pure path queries — no disk access
+
+```java
+p.getFileName();          // last segment
+p.getParent();            // containing dir
+p.resolve("config.yml");  // append a segment
+p.relativize(other);      // path between two
+```
+
+## Path ≠ Files
+
+- `resolve` / `getParent` never touch disk — reading/writing is `Files` (next)

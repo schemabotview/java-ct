@@ -1,0 +1,23 @@
+# Throwing exceptions & custom types
+
+## `throw` a `Throwable`
+
+- The standard unchecked ones cover most cases:
+- `IllegalArgumentException` · `IllegalStateException` · `NullPointerException` · `UnsupportedOperationException`
+
+```java
+if (input == null) throw new NullPointerException("input was null");
+if (age < 0) throw new IllegalArgumentException("negative age: " + age);
+```
+
+## Write your own
+
+```java
+public class InsufficientFundsException extends RuntimeException {
+    public InsufficientFundsException(long req, long avail) {
+        super("requested " + req + " but only " + avail);
+    }
+}
+```
+
+- Extend `RuntimeException` (unchecked) or `Exception` (checked); carry a message + cause

@@ -1,0 +1,7 @@
+Streams, pipelines over collections.
+
+A stream is a one-time-use pipeline that pulls elements through a chain of operations. The first thing to understand is what a stream is not: it is not a collection. It does not store any elements. It is a description of work to be done, and that work is applied lazily, only when a terminal operation kicks the pipeline off.
+
+There are three stages to every stream. The first is the source, where the elements come from, and that is usually just calling stream on a collection. The second stage is the intermediate operations, things like filter and map. Each one returns a brand-new stream, and crucially, each one does nothing at all until a terminal operation runs. They are lazy. The third stage is the terminal operation, like collect, count, or for-each. That is what actually triggers the whole pipeline and produces either a result or a side effect. It is eager.
+
+One rule to burn in: a stream can be traversed exactly once. The moment a terminal operation runs, the stream is spent, and any further operation on it throws an exception. If you need to run two different pipelines over the same data, you start each one fresh from the collection.

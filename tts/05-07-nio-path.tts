@@ -1,0 +1,7 @@
+The N-I-O path, for modern filesystem paths.
+
+Path, from the java-nio-file package, is the modern replacement for the old java-io-file class. The single most important thing to understand about a path is that it is an immutable, abstract representation of a location in the filesystem. It does not mean that location actually exists on disk. A path is just a well-structured name.
+
+You construct one with path dot of. Give it a single string for a relative or absolute path, or give it several segments and it joins them with the correct separator for your operating system, which is how you write portable code instead of hard-coding slashes.
+
+Once you have a path, you can ask it questions, and all of these are pure, in-memory operations that never touch the disk. Get-file-name gives you the last segment. Get-parent gives you the containing directory. Resolve appends a child segment to build a longer path. And relativize computes the relative path between two paths. Keep that mental line clear: the path object is about manipulating names and structure. Actually reading and writing bytes is a different class's job, the files class, which is exactly where we go next.

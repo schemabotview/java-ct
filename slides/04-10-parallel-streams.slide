@@ -1,0 +1,20 @@
+# Parallel streams
+
+## `.parallel()` splits across the ForkJoinPool
+
+- Elements processed independently; partial results merged at the end
+- Same answer as sequential — potentially faster on large inputs
+
+```java
+LongStream.rangeClosed(1, 1_000_000).sum();             // sequential
+LongStream.rangeClosed(1, 1_000_000).parallel().sum();  // parallel
+```
+
+## Pays off when
+
+- Large dataset (>~10k) · non-trivial per-element work · stateless, side-effect-free
+
+## Hurts when
+
+- Small streams (overhead wins) · poor split (`LinkedList`) · shared mutable state (races)
+- **When in doubt, measure** — don't default to `.parallel()`

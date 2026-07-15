@@ -1,0 +1,25 @@
+# `try` / `catch` / `finally`
+
+## The three blocks
+
+- `try` wraps risky code · each `catch` handles one type
+- `finally` **always runs** — the place to release a resource
+
+```java
+try {
+    var n = Integer.parseInt(s);
+} catch (NumberFormatException e) {
+    log(e.getMessage());
+} finally { cleanup(); }   // always runs
+```
+
+## Multi-catch
+
+```java
+catch (IOException | SQLException e) { ... }
+```
+
+## Two rules
+
+- **Order matters** — specific `catch` before broad; `Exception` last
+- Don't catch `Exception` to silence the compiler — it **swallows bugs**

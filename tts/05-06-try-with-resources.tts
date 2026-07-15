@@ -1,0 +1,7 @@
+Try-with-resources, for safe cleanup.
+
+Before Java seven, releasing a resource, like a file, a stream, or a database connection, meant an awkward try-finally dance, usually with a null check inside the finally block to guard against the resource never having opened. Try-with-resources collapses all of that into a single line.
+
+The rule is simple. Any class that implements the auto-closeable interface can be declared inside the parentheses of the try. Once you do that, the virtual machine guarantees that the resource's close method is called when the block exits, whether it exits normally or because an exception was thrown. You never write the close call yourself. And if you declare several resources in one try, they are closed in reverse order, so the last one opened is the first one closed, which is exactly what you want when later resources depend on earlier ones.
+
+You can also make your own classes work this way. Any time a class holds something that needs cleanup, a database connection, a file handle, a network socket, have it implement auto-closeable and override the single close method. From then on, callers can manage it with try-with-resources and never leak it.

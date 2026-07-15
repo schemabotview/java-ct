@@ -1,0 +1,7 @@
+The Throwable hierarchy, and checked versus unchecked.
+
+Every exception in Java extends a common root class called Throwable, and Throwable splits into two big branches: Error and Exception. Error covers fatal, java-virtual-machine-level problems, like out-of-memory error and stack-overflow error. You should not catch these, because you cannot meaningfully recover from them. Exception is the branch you actually work with, and it further splits. Everything under Exception, except runtime exception, is a checked exception. And runtime exception and its subclasses are unchecked, covering mostly bugs, like null-pointer exception, illegal-argument exception, and index-out-of-bounds exception.
+
+That checked-versus-unchecked distinction is a compile-time contract that is fairly unique to Java. For a checked exception, the compiler forces you to either catch it or declare that your method throws it. For an unchecked exception, the compiler asks nothing of you.
+
+The design intent was this: use checked exceptions for recoverable conditions that a caller might reasonably handle, like a file that might not exist. Use unchecked exceptions for programmer mistakes, like passing a negative size or dereferencing a null. In practice, though, modern Java leans heavily unchecked, and the main reason is that checked exceptions do not compose well with the lambdas and streams we lived in during the last module.

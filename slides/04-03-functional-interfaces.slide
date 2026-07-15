@@ -1,0 +1,23 @@
+# Functional interfaces — and your own
+
+## The four you'll use everywhere
+
+| Interface | Method | Shape | Use |
+|---|---|---|---|
+| `Function<T,R>` | `apply` | T → R | transform |
+| `Predicate<T>` | `test` | T → boolean | filter |
+| `Consumer<T>` | `accept` | T → () | side effect |
+| `Supplier<T>` | `get` | () → T | produce |
+
+- Two-arg (`BiFunction`…) + primitive forms (`IntFunction`) avoid boxing
+
+## Write your own
+
+```java
+@FunctionalInterface
+interface ScoreFn {
+    int score(String input);              // the single abstract method
+    default int doubled(String s) { return score(s) * 2; }
+}
+ScoreFn f = s -> s.length();   // f.doubled("hello") -> 10
+```

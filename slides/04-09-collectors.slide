@@ -1,0 +1,22 @@
+# Collectors
+
+## Ready-made recipes for `.collect(...)`
+
+| Collector | Result |
+|---|---|
+| `toList` / `toSet` | a collection |
+| `toMap(k, v)` | a `Map` |
+| `groupingBy(fn)` | `Map<K, List<T>>` |
+| `partitioningBy(pred)` | `Map<Boolean, List<T>>` |
+| `joining(", ", "[", "]")` | a `String` |
+
+## groupingBy is the workhorse
+
+```java
+words.stream().collect(groupingBy(String::length));
+// {3=[bob, eve], 4=[dave], 5=[alice, carol]}
+```
+
+## Downstream collectors
+
+- 2nd arg aggregates within each bucket: `groupingBy(len, counting())` → `{3=2, 4=1, 5=2}`

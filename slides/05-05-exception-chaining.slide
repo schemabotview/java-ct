@@ -1,0 +1,25 @@
+# Exception chaining — the `cause`
+
+## Wrap, but keep the original
+
+- Catching one exception and throwing another? Pass the first as the **cause**
+- Preserves the full chain in the stack trace
+
+```java
+} catch (IOException e) {
+    throw new ConfigLoadException("failed to read " + path, e);
+}                                                          //  ^ cause
+```
+
+## The constructor
+
+```java
+public ConfigLoadException(String message, Throwable cause) {
+    super(message, cause);   // Throwable(message, cause)
+}
+```
+
+## What you see in the log
+
+- `ConfigLoadException: failed to read …`
+- `Caused by: java.nio.file.NoSuchFileException` — the root cause

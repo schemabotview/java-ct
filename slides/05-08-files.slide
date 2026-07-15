@@ -1,0 +1,26 @@
+# `Files` — reading and writing
+
+## One-stop shop, operates on `Path`
+
+```java
+Files.exists(p);   Files.size(p);   // metadata
+Files.readString(p);                // whole file -> String
+Files.readAllLines(p);              // -> List<String>
+Files.writeString(p, "hello\n");    // create or truncate
+Files.readAllBytes(p);              // binary
+```
+
+## Whole-file vs lazy
+
+- `readString` / `readAllLines` — pull it all into memory (small files)
+- `Files.lines(p)` — lazy `Stream<String>`, safe for **huge** files
+
+```java
+try (var s = Files.lines(p)) {
+    s.filter(x -> !x.isBlank()).count();
+}
+```
+
+## Watch the handle
+
+- `Files.lines` holds an open file handle → **close it** with try-with-resources

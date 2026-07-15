@@ -1,0 +1,7 @@
+Throwing exceptions, and writing your own.
+
+To raise an exception explicitly, you use the throw keyword. Whatever follows throw has to be a throwable, and in practice that is almost always an object you build right there with new. Most of the time you do not need a custom type at all, because the standard unchecked exceptions already cover the common cases. Illegal-argument exception is for when a caller passes a value outside what the method accepts. Illegal-state exception is for when a method is called while the object is not in a fit state to handle it. Null-pointer exception is for a required reference that turned out to be null, and there is a neat helper, objects dot require-non-null, that throws it with a clean message. And unsupported-operation exception is for an operation this particular implementation does not support.
+
+So a parse-age method can throw an illegal-argument exception when the age comes out negative, with a message that says exactly what went wrong.
+
+When the standard exceptions do not communicate enough, you write your own. The convention is to extend runtime exception for an unchecked type, or plain exception for a checked one, and to provide constructors that take a message, and optionally a cause. A nice touch is to carry structured data on the exception. An insufficient-funds exception, for instance, can hold the requested amount and the available amount as fields, so the code that catches it can react precisely, not just print a string.

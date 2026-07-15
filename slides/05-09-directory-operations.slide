@@ -1,0 +1,23 @@
+# Directory operations
+
+## Create, list, walk
+
+```java
+Files.createDirectories(dir);      // mkdir -p
+try (var entries = Files.list(dir)) { ... }        // one level
+try (var all = Files.walk(dir)) {                  // recursive
+    all.filter(Files::isRegularFile).forEach(...);
+}
+```
+
+## Find, copy, move, delete
+
+```java
+Files.find(dir, 5, (p, a) -> p.toString().endsWith(".java"));
+Files.copy(a, b, REPLACE_EXISTING);
+Files.deleteIfExists(c);   // safe — no throw if missing
+```
+
+## Always close the stream
+
+- `list` / `walk` / `find` each hold a file handle → try-with-resources

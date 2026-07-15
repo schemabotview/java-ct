@@ -1,0 +1,7 @@
+Creating streams.
+
+Streams can come from many sources, but four of them cover almost everything you will do. The first, and by far the most common, is calling stream on a collection you already have. The second is stream dot of, which builds a stream from a literal sequence of values you list out. The third is a numeric range: int-stream dot range gives you a run of integers with the end excluded, and range-closed includes the end.
+
+The fourth source is the infinite stream, and it comes in two forms. Stream dot iterate starts from a seed and applies a function repeatedly, so iterate from one, doubling each time, gives you one, two, four, eight, and so on. Stream dot generate calls a supplier over and over, which is handy for things like random numbers.
+
+Here is the catch with those last two. They are infinite. They will happily produce values forever. So you must cap them with limit, giving a count, before you attach a terminal operation. If you forget the limit, the pipeline simply never ends. One more thing worth knowing: the primitive streams, int-stream, long-stream, and double-stream, both avoid boxing and hand you numeric helpers like sum and average directly.

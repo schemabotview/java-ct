@@ -1,0 +1,7 @@
+Parallel streams.
+
+Adding a call to parallel, or starting from parallel-stream on a collection, splits the work across the java virtual machine's shared fork-join pool. Each element is processed independently on some worker thread, and the framework merges the partial results back together at the end. The beautiful part is that the answer is identical to the sequential version; you are only changing how the work is scheduled, not what it computes.
+
+But parallel is not free, and it is not always faster. It pays off in a specific situation: when the dataset is large, typically more than ten thousand elements; when the work done per element is non-trivial; and when your operations are stateless and free of side effects. It actively hurts in the opposite cases. On a small stream, the overhead of splitting and merging dominates and you lose. On a source that splits poorly, like a linked list, you lose. And if your lambdas mutate shared state, you do not just lose performance, you get race conditions and wrong answers.
+
+So the guidance is simple. When in doubt, measure. Do not sprinkle parallel onto your streams by default. For the vast majority of everyday streams, it is slower, not faster, and the plain sequential version is the right choice.

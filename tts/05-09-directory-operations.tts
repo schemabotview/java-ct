@@ -1,0 +1,7 @@
+Directory operations.
+
+The files class also handles everything to do with directories, not just single files. To create directories, you have two methods. Create-directories, plural, makes the whole chain of parent directories if they are missing, just like mkdir dash p on the command line. Create-directory, singular, makes exactly one and fails if it already exists.
+
+To see what is inside a directory, you have three tools, and they form a nice progression. Files dot list gives you just the immediate entries, one level deep. Files dot walk descends recursively through the entire tree, so you can filter it down to just the regular files, for example. And files dot find combines walking and filtering in a single call: you give it a starting directory, a maximum depth, and a predicate over each path and its attributes, and it hands you back only the matches, like every file ending in dot-java.
+
+Rounding it out, files dot copy and files dot move do what they say, with options like replace-existing to control overwriting, and files dot delete-if-exists removes a file safely, without throwing if it was already gone. One warning ties this whole section together: every stream returned by list, walk, and find holds an open file handle, exactly like files dot lines did, so you must always wrap them in try-with-resources.

@@ -1,0 +1,19 @@
+# Streams — pipelines over collections
+
+## Not a collection — a description of work
+
+- A `Stream<T>` pulls elements through a chain of ops, **lazily**
+- **Single-use**: after a terminal op it's spent; reuse throws
+
+## Three stages
+
+1. **Source** — `collection.stream()`
+2. **Intermediate** — `filter`, `map`, … return a `Stream`, do nothing yet (lazy)
+3. **Terminal** — `collect`, `count`, `forEach` — triggers it, yields a result (eager)
+
+```java
+nums.stream()                 // source
+    .filter(n -> n % 2 == 0)  // lazy
+    .map(n -> n * n)          // lazy
+    .toList();                // terminal — runs the pipeline
+```

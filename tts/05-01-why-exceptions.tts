@@ -1,0 +1,7 @@
+Why exceptions.
+
+Things go wrong in real programs, all the time. A file that should be there is missing. The network drops in the middle of a call. A user types a word where your code expected a number. Java's answer to all of this is exceptions. An exception is a value that propagates up the call stack until something catches it, abandoning the normal return path along the way.
+
+Think about the alternative. Without exceptions, a method that fails has to return some special sentinel value, like minus one, or null, to signal that something went wrong. The problem is that this quietly forces every single caller to remember to check for that sentinel, and the moment one caller forgets, the bug slips through silently.
+
+Exceptions invert that default. You opt out of failure handling simply by letting an exception propagate, and you opt in by catching it. So if a deep method throws an input-output exception, that exception unwinds outward through each caller until some enclosing catch block is ready to handle it. If nobody handles it, the program stops, loudly, with a stack trace, which is far better than continuing with wrong data.

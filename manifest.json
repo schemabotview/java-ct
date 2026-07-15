@@ -346,7 +346,121 @@
         }
       ]
     },
-    { "id": "04-functional-java-and-streams", "title": "Functional Java & Streams", "sections": [] },
+    {
+      "id": "04-functional-java-and-streams",
+      "title": "Functional Java & Streams",
+      "sections": [
+        {
+          "heading": "Lambdas — functions as values",
+          "notebook": "notebooks/04-01-lambdas.ipynb",
+          "slide": "slides/04-01-lambdas.slide",
+          "audio": "audio/04-01-lambdas.wav",
+          "scene": "java-anatomy",
+          "spine": true,
+          "role": "hook"
+        },
+        {
+          "heading": "Method references",
+          "notebook": "notebooks/04-02-method-references.ipynb",
+          "slide": "slides/04-02-method-references.slide",
+          "audio": "audio/04-02-method-references.wav",
+          "scene": "java-anatomy",
+          "spine": true,
+          "focus": ["ja-functions"],
+          "highlight": ["ja-fn-methodref"]
+        },
+        {
+          "heading": "The four core functional interfaces — and writing your own",
+          "notebook": "notebooks/04-03-functional-interfaces.ipynb",
+          "slide": "slides/04-03-functional-interfaces.slide",
+          "audio": "audio/04-03-functional-interfaces.wav",
+          "scene": "java-anatomy",
+          "spine": true,
+          "focus": ["ja-functions"],
+          "highlight": ["ja-fn-iface", "ja-fn-lambda"]
+        },
+        {
+          "heading": "Capturing variables — effectively final",
+          "notebook": "notebooks/04-04-capturing-variables.ipynb",
+          "slide": "slides/04-04-capturing-variables.slide",
+          "audio": "audio/04-04-capturing-variables.wav",
+          "scene": "java-anatomy",
+          "spine": false,
+          "focus": ["ja-functions", "ja-memory"],
+          "highlight": ["ja-fn-lambda", "ja-stack"]
+        },
+        {
+          "heading": "Streams — pipelines over collections",
+          "notebook": "notebooks/04-05-streams.ipynb",
+          "slide": "slides/04-05-streams.slide",
+          "audio": "audio/04-05-streams.wav",
+          "scene": "java-anatomy",
+          "spine": true,
+          "focus": ["ja-coll-ops"],
+          "highlight": ["ja-coll-ops"]
+        },
+        {
+          "heading": "Creating streams",
+          "notebook": "notebooks/04-06-creating-streams.ipynb",
+          "slide": "slides/04-06-creating-streams.slide",
+          "audio": "audio/04-06-creating-streams.wav",
+          "scene": "java-anatomy",
+          "spine": false,
+          "focus": ["ja-value", "ja-coll-ops"],
+          "highlight": ["ja-value-collection"]
+        },
+        {
+          "heading": "Intermediate operations",
+          "notebook": "notebooks/04-07-intermediate-operations.ipynb",
+          "slide": "slides/04-07-intermediate-operations.slide",
+          "audio": "audio/04-07-intermediate-operations.wav",
+          "scene": "java-anatomy",
+          "spine": true,
+          "focus": ["ja-coll-ops"],
+          "highlight": ["ja-op-map", "ja-op-filter", "ja-op-flatmap"]
+        },
+        {
+          "heading": "Terminal operations",
+          "notebook": "notebooks/04-08-terminal-operations.ipynb",
+          "slide": "slides/04-08-terminal-operations.slide",
+          "audio": "audio/04-08-terminal-operations.wav",
+          "scene": "java-anatomy",
+          "spine": true,
+          "focus": ["ja-coll-ops", "ja-results"],
+          "highlight": ["ja-op-reduce", "ja-op-collect", "ja-results"]
+        },
+        {
+          "heading": "Collectors",
+          "notebook": "notebooks/04-09-collectors.ipynb",
+          "slide": "slides/04-09-collectors.slide",
+          "audio": "audio/04-09-collectors.wav",
+          "scene": "java-anatomy",
+          "spine": true,
+          "focus": ["ja-coll-ops", "ja-results"],
+          "highlight": ["ja-op-collect", "ja-op-groupby", "ja-new-coll"]
+        },
+        {
+          "heading": "Parallel streams",
+          "notebook": "notebooks/04-10-parallel-streams.ipynb",
+          "slide": "slides/04-10-parallel-streams.slide",
+          "audio": "audio/04-10-parallel-streams.wav",
+          "scene": "java-anatomy",
+          "spine": false,
+          "focus": ["ja-coll-ops"],
+          "highlight": ["ja-op-reduce", "ja-op-collect"]
+        },
+        {
+          "heading": "`Optional<T>` — and streams together",
+          "notebook": "notebooks/04-11-optional.ipynb",
+          "slide": "slides/04-11-optional.slide",
+          "audio": "audio/04-11-optional.wav",
+          "scene": "java-anatomy",
+          "spine": true,
+          "focus": ["ja-type-meta", "ja-results"],
+          "highlight": ["ja-optional", "ja-typed-failure"]
+        }
+      ]
+    },
     { "id": "05-errors-files-and-io", "title": "Errors, Files & I/O", "sections": [] },
     { "id": "06-concurrency-and-virtual-threads", "title": "Concurrency & Virtual Threads", "sections": [] },
     { "id": "07-jvm-reflection-build-and-testing", "title": "JVM, Reflection, Build & Testing", "sections": [] },

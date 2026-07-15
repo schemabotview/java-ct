@@ -1,0 +1,23 @@
+# Serialization — a brief note
+
+## `Serializable` — object graph ↔ bytes
+
+- Opt-in marker interface; `transient` fields are skipped
+
+```java
+class Snapshot implements Serializable {
+    private static final long serialVersionUID = 1L;
+    private transient String password;   // not serialized
+}
+new ObjectOutputStream(out).writeObject(snap);
+```
+
+## A warning, not a recommendation
+
+- Recurring **security holes** (untrusted deserialization → code execution)
+- Couples class structure to the wire format; the JDK is replacing it
+
+## Use instead
+
+- **JSON** (Jackson/Gson), YAML, Protobuf, Avro — Jackson once we reach Spring
+- Treat `Serializable` as **legacy**: recognise it, rarely add it

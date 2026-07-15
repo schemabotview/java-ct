@@ -1,0 +1,7 @@
+Serialization, a brief note.
+
+Java has a built-in serialization mechanism that turns an object graph into a stream of bytes, which you can write to a file or send over a socket, and then reconstruct the objects on the other side. It is opt-in: a class participates only if it implements the serializable marker interface, which has no methods; it just flags the class as eligible. Fields you do not want written, like a password, you mark transient, and they are skipped. You write objects through an object-output-stream and read them back through an object-input-stream.
+
+Now, I am showing you this as a warning, not as a recommendation. Java's built-in serialization is convenient, but it has serious, well-known problems. It has been a recurring source of security vulnerabilities, because deserializing data from an untrusted source can be tricked into executing arbitrary code. It tightly couples your class's internal structure to the on-disk wire format, so changing the class can break old data. And the java development kit team is actively working to replace the whole mechanism.
+
+So for real persistence, reach for a structured format instead: jason, through libraries like Jackson or Gson, or yaml, or protocol buffers, or avro. We will use Jackson heavily once we get to Spring. Treat the serializable interface as legacy knowledge: you need to recognise it when you meet it in old code, but you should rarely add it to anything new.
