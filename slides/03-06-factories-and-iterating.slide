@@ -1,0 +1,16 @@
+# Immutable factories & iterating
+
+## `List.of` / `Set.of` / `Map.of` (Java 9)
+
+- Return **structurally immutable** collections
+- Thread-safe to share; no defensive copies
+
+```java
+List.of("admin", "editor");            // add() -> UnsupportedOperationException
+Map.ofEntries(Map.entry("a", 1), ...); // past the 10-entry limit
+```
+
+## Iterating
+
+- **enhanced `for`** for any `Iterable` — preferred
+- `Iterator.remove()` to delete mid-walk; else `ConcurrentModificationException`

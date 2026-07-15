@@ -231,7 +231,121 @@
         }
       ]
     },
-    { "id": "03-collections-and-generics", "title": "Collections & Generics", "sections": [] },
+    {
+      "id": "03-collections-and-generics",
+      "title": "Collections & Generics",
+      "sections": [
+        {
+          "heading": "The Collection hierarchy",
+          "notebook": "notebooks/03-01-collection-hierarchy.ipynb",
+          "slide": "slides/03-01-collection-hierarchy.slide",
+          "audio": "audio/03-01-collection-hierarchy.wav",
+          "scene": "java-anatomy",
+          "spine": true,
+          "role": "hook"
+        },
+        {
+          "heading": "`List` — ordered, indexed, allows duplicates",
+          "notebook": "notebooks/03-02-list.ipynb",
+          "slide": "slides/03-02-list.slide",
+          "audio": "audio/03-02-list.wav",
+          "scene": "java-anatomy",
+          "spine": true,
+          "focus": ["ja-type-coll"],
+          "highlight": ["ja-coll-list"]
+        },
+        {
+          "heading": "`Set` — no duplicates",
+          "notebook": "notebooks/03-03-set.ipynb",
+          "slide": "slides/03-03-set.slide",
+          "audio": "audio/03-03-set.wav",
+          "scene": "java-anatomy",
+          "spine": true,
+          "focus": ["ja-type-coll"],
+          "highlight": ["ja-coll-set"]
+        },
+        {
+          "heading": "`Map` — key-to-value lookup",
+          "notebook": "notebooks/03-04-map.ipynb",
+          "slide": "slides/03-04-map.slide",
+          "audio": "audio/03-04-map.wav",
+          "scene": "java-anatomy",
+          "spine": true,
+          "focus": ["ja-type-coll"],
+          "highlight": ["ja-coll-map"]
+        },
+        {
+          "heading": "`Queue` and `Deque`",
+          "notebook": "notebooks/03-05-queue-and-deque.ipynb",
+          "slide": "slides/03-05-queue-and-deque.slide",
+          "audio": "audio/03-05-queue-and-deque.wav",
+          "scene": "java-anatomy",
+          "spine": true,
+          "focus": ["ja-type-coll"],
+          "highlight": ["ja-coll-deque"]
+        },
+        {
+          "heading": "Immutable factories & iterating",
+          "notebook": "notebooks/03-06-factories-and-iterating.ipynb",
+          "slide": "slides/03-06-factories-and-iterating.slide",
+          "audio": "audio/03-06-factories-and-iterating.wav",
+          "scene": "java-anatomy",
+          "spine": false,
+          "focus": ["ja-value", "ja-loops"],
+          "highlight": ["ja-value-collection", "ja-immutable", "ja-loop-foreach"]
+        },
+        {
+          "heading": "Generics — what and why",
+          "notebook": "notebooks/03-07-generics-what-and-why.ipynb",
+          "slide": "slides/03-07-generics-what-and-why.slide",
+          "audio": "audio/03-07-generics-what-and-why.wav",
+          "scene": "java-anatomy",
+          "spine": true,
+          "focus": ["ja-type-meta"],
+          "highlight": ["ja-generic"]
+        },
+        {
+          "heading": "Writing generic classes and methods",
+          "notebook": "notebooks/03-08-generic-classes-and-methods.ipynb",
+          "slide": "slides/03-08-generic-classes-and-methods.slide",
+          "audio": "audio/03-08-generic-classes-and-methods.wav",
+          "scene": "java-anatomy",
+          "spine": true,
+          "focus": ["ja-type-meta", "ja-methods"],
+          "highlight": ["ja-generic", "ja-method-def"]
+        },
+        {
+          "heading": "Bounded type parameters",
+          "notebook": "notebooks/03-09-bounded-type-parameters.ipynb",
+          "slide": "slides/03-09-bounded-type-parameters.slide",
+          "audio": "audio/03-09-bounded-type-parameters.wav",
+          "scene": "java-anatomy",
+          "spine": true,
+          "focus": ["ja-type-meta", "ja-type"],
+          "highlight": ["ja-generic", "ja-primitive"]
+        },
+        {
+          "heading": "Wildcards & PECS: `? extends T` and `? super T`",
+          "notebook": "notebooks/03-10-wildcards-and-pecs.ipynb",
+          "slide": "slides/03-10-wildcards-and-pecs.slide",
+          "audio": "audio/03-10-wildcards-and-pecs.wav",
+          "scene": "java-anatomy",
+          "spine": true,
+          "focus": ["ja-type-meta", "ja-type-coll"],
+          "highlight": ["ja-generic", "ja-coll-list"]
+        },
+        {
+          "heading": "Type erasure — what the JVM actually sees",
+          "notebook": "notebooks/03-11-type-erasure.ipynb",
+          "slide": "slides/03-11-type-erasure.slide",
+          "audio": "audio/03-11-type-erasure.wav",
+          "scene": "java-anatomy",
+          "spine": true,
+          "focus": ["ja-type-meta", "ja-memory"],
+          "highlight": ["ja-generic", "ja-method-area"]
+        }
+      ]
+    },
     { "id": "04-functional-java-and-streams", "title": "Functional Java & Streams", "sections": [] },
     { "id": "05-errors-files-and-io", "title": "Errors, Files & I/O", "sections": [] },
     { "id": "06-concurrency-and-virtual-threads", "title": "Concurrency & Virtual Threads", "sections": [] },

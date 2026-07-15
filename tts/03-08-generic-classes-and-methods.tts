@@ -1,0 +1,5 @@
+Writing generic classes and methods.
+
+You can declare your own generic types by listing type parameters in angle brackets right after the class name. Picture a Box of T, holding a single value of type T, with a get and a set. One class definition then serves any element type: a box of integer, a box of string, a box of double. The compiler enforces the correct type for each instantiation. And the diamond operator, an empty pair of angle brackets, lets the compiler infer the type parameter from the context, so you do not have to repeat it.
+
+A method can also declare its own type parameter, independent of its enclosing class. The type parameter goes in angle brackets before the return type. For example, a first-or-null method takes a list of T and returns a T, either the first element or null. Call it with a list of strings and T is string; call it with a list of integers and T is integer. A more interesting one is an invert method that takes a map from K to V and returns a map from V to K, flipping keys and values. The two type parameters flow through the whole signature.

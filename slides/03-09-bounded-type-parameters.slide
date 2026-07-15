@@ -1,0 +1,15 @@
+# Bounded type parameters
+
+## Constrain with `extends`
+
+- `<T extends Number>` — T is a `Number` or subtype; unlocks `doubleValue()`
+
+```java
+public static <T extends Number> double sum(List<T> list) { ... }
+Stats.sum(List.of(1, 2, 3));      // ok
+// Stats.sum(List.of("a", "b"));  // COMPILE ERROR
+```
+
+## Chain bounds with `&`
+
+- `<T extends Number & Comparable<T>>` — both a `Number` and self-comparable

@@ -1,0 +1,7 @@
+Map, key-to-value lookup.
+
+A map stores key-value pairs, and it comes in the same three flavours as a set. Hash map gives you average constant-time lookup with unspecified order, and it is the default. Linked hash map preserves insertion order. And tree map keeps its keys sorted, with logarithmic-time operations.
+
+You put a value under a key, and you get it back by key. Two convenient reads are get-or-default, which hands you a fallback when the key is absent, and contains-key. To walk a map you have three views: the key set, the values, and the entry set, where each entry gives you a key and a value together.
+
+Modern maps also have some sharp helpers worth knowing. Put-if-absent only inserts when the key is missing. Merge combines a new value with any existing one using a function, which is perfect for counting. And compute-if-absent lazily inserts a default the first time you touch a key. These three replace a lot of clumsy check-then-put code.

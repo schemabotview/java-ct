@@ -1,0 +1,7 @@
+Bounded type parameters.
+
+Sometimes an unconstrained type parameter is too loose. You need a guarantee that the type is a subtype of something specific, so you can call that type's methods. You express that with extends. Writing T extends Number means T must be Number, or a subtype of it, and in return you get access to Number's methods, like double-value.
+
+So a sum method declared with T extends Number can take a list of T, walk it, and add up each element's double-value. Pass it a list of integers and it works; pass it a list of doubles and it works. But pass it a list of strings and you get a compile error, because string is not a Number. The constraint is checked at compile time.
+
+You can also chain bounds with an ampersand. T extends Number and Comparable of T means T has to be both a Number and comparable to itself. That is occasionally exactly what you need when you want to both do arithmetic and sort.

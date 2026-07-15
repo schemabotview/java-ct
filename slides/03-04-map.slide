@@ -1,0 +1,13 @@
+# `Map` — key-to-value lookup
+
+## Same three flavours as `Set`
+
+- **`HashMap`** unordered · **`LinkedHashMap`** insertion order · **`TreeMap`** sorted keys
+
+```java
+ages.getOrDefault("dan", 0);          // fallback
+ages.merge("alice", 1, Integer::sum); // += 1
+ages.computeIfAbsent("eve", k -> 0);
+```
+
+- Iterate `keySet()` · `values()` · `entrySet()`

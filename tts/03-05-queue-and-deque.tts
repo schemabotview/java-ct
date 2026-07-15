@@ -1,0 +1,7 @@
+Queue and Deque.
+
+A queue is first-in, first-out: elements leave in the order they arrived. A deque, spelled d-e-q-u-e and short for double-ended queue, lets you add or remove from either end, which means it also works perfectly well as a stack.
+
+In almost every case, the right implementation is array deque. It is faster than linked list for both queue and stack workloads, and it lets you avoid the old Stack class, which is a legacy synchronised type you should not use in new code.
+
+As a stack, you push values on, pop them off the top, and peek at the top without removing it. As a queue, you offer values in, poll them off the front, and peek at the front. Same class, two access patterns.

@@ -1,0 +1,7 @@
+Set, no duplicates.
+
+A set holds no duplicates. Adding a value that is already present is simply a no-op; the set stays the same size. The three implementations you care about all enforce that uniqueness, but they differ in one thing: iteration order.
+
+Hash set gives you average constant-time add, remove, and contains, but its iteration order is unspecified. It is the default. Linked hash set has the same performance, but it iterates in insertion order, so reach for it when you want duplicate removal that preserves the order in which elements first appeared. Tree set has logarithmic-time operations and iterates in sorted order, so use it when you need the set kept sorted at all times.
+
+For example, if you build a tree set from the numbers three, one, four, one, five, it drops the duplicate one and then iterates them in sorted order. A linked hash set built by adding c, then a, then b, iterates them back in exactly that order, c, a, b.

@@ -1,0 +1,18 @@
+# Writing generic classes and methods
+
+## Generic class — one def, any type
+
+```java
+public class Box<T> {
+    private T value;
+    public T get() { return value; }
+}
+Box<Double> p = new Box<>(3.14);   // <> infers the type
+```
+
+## Generic method — own type param before the return type
+
+```java
+public static <T> T firstOrNull(List<T> list) { ... }
+Util.firstOrNull(List.of(1, 2, 3));   // T = Integer
+```

@@ -1,0 +1,7 @@
+Type erasure, what the java virtual machine actually sees.
+
+Java generics are a compile-time feature, and this is the fact that explains their sharp edges. At runtime, a list of string and a list of integer are both just a plain list. The type parameter is erased during compilation, replaced by its bound, or by object if it has no bound. So if you compare the runtime classes of a list of string and a list of integer, they come out equal, because both are simply array list at the java virtual machine level.
+
+That erasure has three practical consequences. You cannot write new T array, because the virtual machine does not know what T is at runtime. You cannot ask whether something is an instance-of a list of string; you have to use the wildcard form, instance-of a list of anything. And two methods that differ only in their type parameters compile down to the same signature, so they clash.
+
+Why does Java do this? Backwards compatibility. Old code using a raw list and new code using a list of string are the very same list at the virtual machine level, so they interoperate cleanly. The price you pay is that generics carry no runtime type information at all.

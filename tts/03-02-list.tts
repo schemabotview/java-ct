@@ -1,0 +1,7 @@
+List, ordered, indexed, and allowing duplicates.
+
+The two list implementations you will meet almost all of the time are array list and linked list. Array list is backed by a resizing array. It gives you constant-time random access by index, amortised constant-time append at the end, and linear-time insert or remove in the middle. This is your default; reach for it unless you have a specific reason not to.
+
+Linked list is a doubly-linked list. It gives you constant-time insert and remove at either end, but only linear-time random access, because it has to walk the chain. In practice it is rarely the right choice. When you need queue or stack behaviour, an array deque beats it, as we will see shortly.
+
+Working with a list is straightforward. You add elements, you get one by index in constant time, and you can ask for its size, whether it contains a value, or the index of a value. You can replace an element at an index with set, remove one by its index, or remove the first occurrence of a value. And the cleanest way to walk it is the enhanced for loop.

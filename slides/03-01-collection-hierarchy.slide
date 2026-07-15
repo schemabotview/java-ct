@@ -1,0 +1,14 @@
+# The Collection hierarchy
+
+## `java.util`, one family tree
+
+- `Iterable` → `Collection` → **`List`** · **`Set`** · **`Queue`/`Deque`**
+- **`Map<K,V>`** sits alongside — key→value, not a plain element holder
+
+## The four shapes
+
+- **`List`** — ordered, indexed, **duplicates** ok
+- **`Set`** — **no duplicates**
+- **`Queue`/`Deque`** — FIFO / double-ended
+- **`Map`** — key-to-value lookup
+- Each has several implementations — the next sections are that choice

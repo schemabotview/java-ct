@@ -1,0 +1,7 @@
+Wildcards, and the PECS rule.
+
+Here is where generics get subtle. Even though integer is a subtype of Number, a list of integer is not a subtype of a list of Number. Java generics are invariant by default. And that is actually correct. If a list of integer were assignable to a list of Number, then a method taking a list of Number could add a three-point-one-four to it, and your list of integer would suddenly contain a double.
+
+Wildcards let you opt into more flexibility, at the use site. A wildcard extends T, written question-mark extends T, means a list of T or any subtype. It is covariant, and it is read-only: you can read T values out, but you cannot add anything, because the compiler does not know the exact element type. A wildcard super T, written question-mark super T, means a list of T or any supertype. It is contravariant, and it is write-friendly: you can add T values, but reading gives you back only object.
+
+Which one should you use? The mnemonic from Effective Java is PECS: Producer Extends, Consumer Super. If a parameter produces values for you to consume, declare it with extends. If it consumes values you provide, declare it with super. If it does both, leave it as a plain T. This is exactly the rule the standard library uses. Look at Collections dot copy: the destination, which consumes, is a wildcard super T, and the source, which produces, is a wildcard extends T.

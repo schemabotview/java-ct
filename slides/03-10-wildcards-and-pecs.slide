@@ -1,0 +1,19 @@
+# Wildcards & PECS
+
+## Generics are invariant
+
+- `List<Integer>` is **not** a `List<Number>` — and that's correct
+
+## Opt in at the use site
+
+- `? extends T` — **covariant**, read-only (producer)
+- `? super T` — **contravariant**, write-friendly (consumer)
+
+```java
+sumAll(List<? extends Number> list)      // read T
+fillWithIntegers(List<? super Integer>)  // add T
+```
+
+## PECS
+
+- **Producer Extends, Consumer Super** — `copy(List<? super T> dest, List<? extends T> src)`

@@ -1,0 +1,16 @@
+# Type erasure — what the JVM sees
+
+## Generics are compile-time only
+
+- At runtime `List<String>` and `List<Integer>` are both just `List`
+- The type param is **erased** → its bound (or `Object`)
+
+```java
+ss.getClass() == ii.getClass();   // true
+obj instanceof List<?> list       // OK  (List<String> -> COMPILE ERROR)
+```
+
+## Consequences
+
+- No `new T[10]` · no `instanceof List<String>` · signatures that differ only by `<T>` clash
+- The price of backwards compatibility: **no runtime type info**

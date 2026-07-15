@@ -1,0 +1,7 @@
+Immutable factories, and iterating.
+
+Since Java nine, every collection interface has static of methods that hand you an immutable instance. List dot of, set dot of, and map dot of are the ones you will use constantly, for constants, for configuration, and for any collection you do not intend to change. If you try to add to one, you get an unsupported operation exception. And when you outgrow the ten-entry limit of map dot of, map dot of-entries takes as many as you like.
+
+These collections are structurally immutable: you cannot add, remove, or replace elements. That buys you two things. They are safe to share across threads, and they remove the need for defensive copies.
+
+Now, iterating. The enhanced for loop, also called for-each, is the idiomatic way to walk any iterable. When you need to remove elements while you walk, reach for an explicit iterator and its remove method. And when you genuinely need the index, use a classic indexed loop. One subtle rule ties this together: you cannot structurally modify a collection during an enhanced for over it, or you get a concurrent modification exception. Use the iterator's remove method instead, or iterate over a copy.

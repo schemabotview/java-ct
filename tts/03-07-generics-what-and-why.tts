@@ -1,0 +1,7 @@
+Generics, what and why.
+
+Notice that every collection so far was declared with an angle-bracket type, like a list of string, or a map from string to integer. That thing in the angle brackets is a type parameter: a placeholder that gets filled in at each place you use the type.
+
+Generics give you two things at once. First, compile-time type safety: the compiler stops you from adding an integer to a list of string. Second, no casting when you retrieve: calling get on a list of string already returns a string, not some object you have to cast back.
+
+To see why that matters, look at the old way. Before generics, collections held raw object references. Every time you pulled a value out, you had to cast it, and that cast could blow up at runtime with a class cast exception. If you put a string and an integer into a raw list, and then cast the wrong one to string, the failure only shows up when the program runs. Generics turn that runtime error into a compile-time error, which is exactly where you want it.

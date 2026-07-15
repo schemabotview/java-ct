@@ -1,0 +1,16 @@
+# `Queue` and `Deque`
+
+## FIFO and double-ended
+
+- **`Queue`** — first in, first out
+- **`Deque`** — add/remove either end → also a **stack**
+
+## Use `ArrayDeque`
+
+- Faster than `LinkedList` for queue **and** stack
+- Avoid the legacy synchronised `Stack`
+
+```java
+Deque<Integer> stack = new ArrayDeque<>();  // push / pop / peek
+Queue<String> q      = new ArrayDeque<>();  // offer / poll / peek
+```

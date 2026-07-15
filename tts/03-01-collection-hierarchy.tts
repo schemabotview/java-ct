@@ -1,0 +1,7 @@
+The Collection hierarchy.
+
+Java's collection framework lives in the java-util package, and it forms a single family tree. At the very top is Iterable, then Collection, which is anything that holds a group of elements. Collection branches into three big families: List, Set, and Queue, with its double-ended cousin Deque. And sitting alongside all of them is Map, which associates keys with values rather than just holding elements.
+
+So there are four shapes to keep in mind. A list is ordered and indexable and allows duplicates. A set holds no duplicates, and may or may not be ordered. A queue, or a deque, gives you first-in-first-out or double-ended access. And a map is a key-to-value lookup.
+
+The important thing is that each of these interfaces has several implementations, and each implementation is tuned for a different performance trade-off. Choosing the right implementation is most of what the next few sections are about.

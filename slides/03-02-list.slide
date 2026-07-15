@@ -1,0 +1,13 @@
+# `List` — ordered, indexed, allows duplicates
+
+## Two implementations
+
+- **`ArrayList`** — resizing array; **O(1)** index access, amortised O(1) append — **your default**
+- **`LinkedList`** — doubly-linked; O(1) at the ends, O(n) random — rarely worth it
+
+```java
+List<String> names = new ArrayList<>();
+names.get(1);           // O(1)
+names.set(0, "alex");   // replace at index
+names.remove("alex");   // remove first occurrence
+```

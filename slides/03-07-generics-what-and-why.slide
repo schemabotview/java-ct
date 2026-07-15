@@ -1,0 +1,16 @@
+# Generics — what and why
+
+## `<E>` is a type parameter
+
+- Filled in per use site: `List<String>`, `Map<String, Integer>`
+
+## Two wins
+
+- **Compile-time type safety** — no `Integer` into a `List<String>`
+- **No casts** — `get(0)` already returns `String`
+
+```java
+List rawList = new ArrayList();
+String s = (String) rawList.get(1);   // ClassCastException at runtime
+List<String> safe = ...; safe.get(0); // no cast
+```
