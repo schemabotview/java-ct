@@ -1,0 +1,7 @@
+Inheritance and polymorphism.
+
+A class can extend another class to reuse its fields and methods and to specialise its behaviour. The class you extend is the superclass, and your class is the subclass. A subclass inherits every non-private member, it can add new ones, and it can override the ones it inherited.
+
+Three things to internalise. The keyword extends establishes the parent-child relationship, and a class can extend exactly one other class; Java gives classes single inheritance. The call super, in parentheses, invokes the superclass constructor, and it has to be the very first statement in the subclass constructor. And at-override is an annotation that tells the compiler this method is meant to replace one further up the hierarchy; if the signature does not actually match, you get an error instead of accidentally creating a brand-new method. Always use it.
+
+Now the payoff. Because a dog is an animal, a variable of type animal can hold a dog. When you call speak on that variable, the java virtual machine dispatches to the actual runtime type's version, so the dog's speak runs, not the animal's. That is polymorphism. You can write a loop over a list of animals, calling speak on each, and the right version is chosen object by object at runtime. This is exactly how a framework like Spring lets you swap one implementation for another without touching the calling code.

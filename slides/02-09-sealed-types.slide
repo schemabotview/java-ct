@@ -1,0 +1,15 @@
+# Sealed types — a closed family of subtypes
+
+## "Only these may extend me"
+
+```java
+public sealed interface Shape permits Circle, Square, Triangle {}
+public record Circle(double radius) implements Shape {}
+```
+
+- The compiler **enforces** the permit list — no outside subtype
+
+## Why it matters
+
+- A **known, complete** set of subtypes
+- Lets `switch` be checked for **exhaustiveness** (next section)

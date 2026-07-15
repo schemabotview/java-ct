@@ -1,0 +1,7 @@
+Constructors, this, and overloading.
+
+A class can have more than one constructor. They share the class's name but take different parameter lists. And one constructor can delegate to another by calling this, in parentheses, with arguments. That lets you offer convenient defaults without duplicating any logic.
+
+Picture a Rectangle with a primary constructor that takes a width and a height. Then add a second, convenience constructor that takes just one side and calls this of side, side. Now you can build a three-by-five rectangle, or build a square from a single number, and the square constructor simply forwards to the primary one.
+
+Method overloading works exactly the same way: the same method name with different parameter lists. The compiler chooses the right one at the call site, based on the types of the arguments you pass. Like constructor overloading, this is purely a compile-time mechanism.

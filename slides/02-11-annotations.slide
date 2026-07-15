@@ -1,0 +1,16 @@
+# Built-in annotations
+
+## Metadata on code
+
+- Read by the compiler + libraries — everywhere in **Spring** later
+
+## Three from the JDK
+
+- **`@Override`** — verified override; signature drift → error
+- **`@Deprecated`** — obsolete; callers warned (`since`, `forRemoval`)
+- **`@SuppressWarnings`** — silence one warning category; use sparingly
+
+```java
+@Override public int add(int a, int b) { return super.add(a, b); }
+@SuppressWarnings("unchecked")
+```

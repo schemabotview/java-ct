@@ -1,0 +1,16 @@
+# Constructors, `this`, and overloading
+
+## Multiple constructors
+
+- Same name, different parameter lists
+- One can **delegate** to another with `this(...)`
+
+```java
+public Rectangle(int w, int h) { ... }
+public Rectangle(int side) { this(side, side); }  // square
+```
+
+## Overloading
+
+- Same **method** name, different parameter list
+- Compiler picks at the call site — **compile-time** only

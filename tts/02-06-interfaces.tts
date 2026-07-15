@@ -1,0 +1,7 @@
+Interfaces, with default and static methods.
+
+An interface is a pure contract: a set of method signatures with no state behind them. Any class can implement any number of interfaces, and the compiler enforces that the class actually provides every method the interface declares.
+
+There are two key contrasts with abstract classes. A class can implement many interfaces, but it can extend only one class. And an interface holds no instance state: no fields beyond constants, and no constructor. It is a behavioural contract, not a partial implementation.
+
+Since Java eight, interfaces can also carry concrete methods. A default method has a body, and every implementing class inherits it for free, though it can override it if it wants. A static method belongs to the interface itself, and you call it right off the interface name. For example, a greeter interface can declare greet as its one abstract method, add a default method that greets loudly by upper-casing the result, and offer a static factory that returns a greeter. Those default methods are how the Collection and Stream libraries grew in Java eight without breaking every existing implementation. They are also why an interface with a single abstract method can be implemented by a lambda, something you will see a lot of in module four.

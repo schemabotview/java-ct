@@ -1,0 +1,5 @@
+Built-in annotations.
+
+An annotation is metadata that you attach to a class, a method, a field, or a parameter. The compiler and various libraries read those annotations to change behaviour or to generate code. You will be using them constantly once we reach Spring, where at-component, at-autowired, and at-rest-controller are all annotations.
+
+Three annotations ship with the java development kit, and you should know them now. At-override declares that a method is meant to override one from a superclass or interface; the compiler verifies it, so if the signature ever drifts you get an error instead of a silent bug. At-deprecated marks a class, method, or field as obsolete, and callers see a warning; you can even record the version it was deprecated since and whether it is marked for removal. And at-suppress-warnings tells the compiler to silence one specific category of warning on the annotated element; reach for it sparingly, only when you are sure the warning is a false alarm.

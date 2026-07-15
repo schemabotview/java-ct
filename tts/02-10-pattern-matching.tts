@@ -1,0 +1,7 @@
+Pattern matching for switch, with guards.
+
+A modern switch can do far more than match constant values. It can match on types, and it can destructure records, all in a single expression. And when you combine it with sealed types, the compiler will refuse to compile a switch that misses a case.
+
+Imagine an area method that switches on a shape. One case matches a Circle and pulls out its radius, another matches a Square and pulls out its side, and a third matches a Triangle and pulls out its base and height. There are three powers stacked there. Type patterns match on the runtime type and bind a variable of that type. Record deconstruction pulls the components straight out of the record into local names. And exhaustiveness checking means that, because Shape is sealed, the compiler knows the three cases are complete; add a fourth subtype later, and this switch stops compiling until you handle it. This trio of sealed types, records, and pattern matching is Java's answer to the algebraic data types you find in Scala or Rust.
+
+A pattern can also carry a guard, an extra boolean condition that must hold for the case to match, introduced with the keyword when. So you can say: case Circle c, when its radius is greater than one hundred, classify it as a huge circle; otherwise, a plain circle. The guarded case is tried first, and only matches if its condition holds.

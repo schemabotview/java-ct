@@ -1,0 +1,17 @@
+# Encapsulation and visibility
+
+## Four access levels
+
+- `public` anywhere · `protected` package + subclasses
+- *(none)* package-private · `private` same class only
+
+## Private fields, public methods
+
+```java
+private long balance;                     // hidden
+public void deposit(long amount) { ... }  // guarded path
+// acct.balance = 99999;  // COMPILE ERROR
+```
+
+- The compiler enforces it — nobody bypasses `deposit`
+- Frees you to **change the internal representation** later

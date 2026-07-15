@@ -1,0 +1,17 @@
+# Inheritance and polymorphism
+
+## extends
+
+- `class Dog extends Animal` — inherit + specialise
+- **single inheritance** for classes; `super(...)` calls the parent ctor first
+- `@Override` — compiler checks the signature actually matches
+
+## Polymorphism
+
+```java
+Animal a = new Dog("rex");
+a.speak();   // "rex barks" — runtime type's override
+```
+
+- Call against the base type; the **runtime type** is dispatched
+- How Spring swaps implementations without touching callers

@@ -1,0 +1,7 @@
+Sealed types, a closed family of subtypes.
+
+A normal class or interface is open. Anyone, anywhere, at any time, can extend it. A sealed type, from Java seventeen, lets you say the opposite: these, and only these, are the types allowed to extend me. And the compiler enforces that list.
+
+You declare a sealed interface Shape that permits exactly Circle, Square, and Triangle, and you make each of those a record that implements Shape. From that point on, no other class anywhere in the world is allowed to implement Shape.
+
+Why does that matter? Because now the compiler knows the complete set of subtypes. That is what lets it check a switch over a shape for exhaustiveness, verifying that you have handled every possible case, which is exactly what we do in the next section.

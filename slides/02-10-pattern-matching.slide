@@ -1,0 +1,20 @@
+# Pattern matching for `switch` — with guards
+
+## Match types, destructure records
+
+```java
+return switch (shape) {
+    case Circle(double r)             -> Math.PI * r * r;
+    case Triangle(double b, double h) -> 0.5 * b * h;
+    // sealed Shape → no default needed
+};
+```
+
+- **type patterns** · **record deconstruction** · **exhaustiveness**
+- Java's answer to algebraic data types (Scala/Rust)
+
+## Guards
+
+```java
+case Circle c when c.radius() > 100 -> "huge circle";
+```

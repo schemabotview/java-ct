@@ -1,0 +1,17 @@
+# Classes — the unit of code
+
+## Blueprint → instances
+
+- A **class** declares **fields** (data) + **methods** (behaviour)
+- `new` creates **instances** — same shape, own data
+
+```java
+Point(int x, int y) { this.x = x; this.y = y; }
+var a = new Point(3, 4);   // a.distanceFromOrigin() -> 5.0
+```
+
+## Three shapes
+
+- **Fields** live in the class body, one copy per instance
+- **Constructor** — class's name, no return type, runs on `new`
+- **`this`** — the current instance; disambiguates `this.x = x`

@@ -1,0 +1,18 @@
+# Abstract classes
+
+## A base with gaps
+
+- `abstract` methods have **no body** — subclasses must implement
+- Concrete methods can be **shared**; can't `new` an abstract class
+
+```java
+public abstract class Shape {
+    public abstract double area();
+    public String describe() { return "... " + area(); }
+}
+```
+
+## When to reach for it
+
+- Shared **state** or **partial implementation** → abstract class
+- Only a **behaviour contract** → interface

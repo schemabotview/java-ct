@@ -1,0 +1,7 @@
+Records, one-line immutable data classes.
+
+A huge fraction of the classes in a real codebase are just data carriers. They hold a fixed set of fields, with a constructor that assigns them, accessors that read them, and the usual equals, hash code, and to-string methods. That is dozens of lines of boilerplate for a class that carries three values. Records, from Java sixteen, compress all of that into a single line.
+
+You write public record User of email, name, and age, and you are done. For free you get a canonical constructor with the components in declaration order; one accessor per component, named email rather than get-email; an equals and a hash code derived from all the components, so two users with equal fields are equal; a to-string that lists every component; and final fields, which means every instance is immutable.
+
+You still have room to work. You can add methods, you can validate inside a compact constructor, and you can implement interfaces. A Money record, for instance, can use a compact constructor to reject a negative amount or a currency that is not three letters. The one thing you cannot do is add mutable state, and that is the whole point of a record.

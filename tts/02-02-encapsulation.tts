@@ -1,0 +1,7 @@
+Encapsulation and visibility.
+
+Java has four access levels, and they let you control who can see each field and method. Public means visible from anywhere. Protected means the same package plus any subclasses. If you write no modifier at all, it is package-private, visible only within the same package. And private means visible only inside the same class.
+
+The standard practice is simple to state: private fields, public methods. The class owns its data, and the outside world only interacts through methods. That is the original meaning of the word encapsulation.
+
+Take a bank account whose balance field is private. Outside code cannot touch that balance directly. It has to go through the deposit method, which rejects any non-positive amount. If the balance field were public, someone could write account dot balance equals ninety-nine thousand and skip that check entirely; because it is private, the compiler makes that line impossible. And hiding the data behind methods buys you something else: you can change the internal representation later, say from a plain count of cents to a big decimal, without breaking a single caller.

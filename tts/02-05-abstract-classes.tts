@@ -1,0 +1,7 @@
+Abstract classes.
+
+Sometimes a base class can describe part of a shape but cannot sensibly implement every method, because only its subclasses know how. In that case you mark the class abstract, and you mark those unfinished methods abstract too, leaving them with no body. You cannot create an instance of an abstract class directly.
+
+Take a Shape class with an abstract area method that has no body, alongside a concrete describe method that every subclass shares. A Circle extends Shape and fills in area as pi times radius squared. Trying to write new Shape is a compile error, because Shape is abstract, but new Circle of two, then describe, works fine and reports its area.
+
+So when do you choose an abstract class? Reach for one when you have shared state, or a shared partial implementation, across a family of types. When all you really have is a shared behaviour contract, with no state, an interface is usually the better fit, which is exactly where we go next.

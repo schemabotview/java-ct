@@ -1,0 +1,19 @@
+# Records — one-line immutable data classes
+
+## Kill the data-class boilerplate
+
+```java
+public record User(String email, String name, int age) {}
+```
+
+- For free: **canonical ctor**, one accessor per component (`email()`),
+  `equals`/`hashCode`/`toString`, **final** fields (immutable)
+
+## Still flexible
+
+- Add methods, **validate in a compact constructor**, implement interfaces
+- Can't add **mutable state** — the whole point
+
+```java
+public Money { if (amountCents < 0) throw ...; }
+```
