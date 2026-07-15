@@ -4,7 +4,7 @@ Video-first content for the **Java** concept (core language + Spring), consumed 
 
 This file is the **course outline** — the human-facing map of modules and sections. It is the plan we author against; the machine source of truth for structure is `manifest.json` (once authored).
 
-**Status:** scaffolded + section spine drafted (**12 modules × ~10 sections = 127 sections**, below). Nothing authored yet (`notebooks/`, `tts/`, `slides/` empty); `audio/` empty pending the owner's Colab run; nothing pushed. Scenes `java-jvm` + `java-anatomy` are ported/registered app-side in graphl-movie; Spring modules (08–12) have **no scene yet**.
+**Status:** scaffolded + section spine drafted (**12 modules × ~10 sections = 127 sections**, below). **Module 01 authored end-to-end** — all 11 sections have `.ipynb` + `.slide` + `.tts`, and `manifest.json` wires them onto `java-jvm` / `java-anatomy` (per-section `scene`/`spine`/`focus`/`highlight`, §01 the hook). `audio/` is empty by design: the owner generates the `.wav`s from `tts/` via Colab, then the manifest `audio` fields resolve. Modules 02–12 not authored yet. Scenes `java-jvm` + `java-anatomy` are ported/registered app-side in graphl-movie; Spring modules (08–12) have **no scene yet**.
 
 ## Module spine (from `../java-content`)
 
