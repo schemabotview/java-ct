@@ -1,0 +1,17 @@
+# What is Java, and why in 2026?
+
+## The language in one line
+
+- **Statically typed, class-based, OOP** — compiles to **bytecode**, runs on the **JVM**
+- *Write once, run anywhere* — `javac` emits portable bytecode, not CPU machine code
+
+## Four traits
+
+- **Static types** — mismatches caught before the program runs
+- **Memory-managed** — the GC reclaims objects; you never call `free`
+- **Backwards compatible** — 1998 code still runs on Java 21
+
+## Why now
+
+- **Enterprise ubiquity** · **the Spring ecosystem** · **JVM performance + tooling**
+- This track: **01–07 build Java**, **08–12 turn it into Spring services**

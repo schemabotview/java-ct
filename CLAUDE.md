@@ -45,6 +45,28 @@ java-ct/
 
 Naming: every artifact for a section shares the stem `<NN>-<SS>-<slug>` (`NN` = module number, `SS` = section position, so a sorted glob stays in reading order).
 
+## Narration (per-section TTS)
+
+One `.tts` script **per section**, plain spoken prose — what a teacher would say at a whiteboard. Anchor narration to what's on screen (the notebook `## ` section + its scene focus). Drop the notebook's "what you'll learn" overview and any "What's next" outro — those are reading-only.
+
+### TTS guidelines
+
+`.tts` files are read aloud by ChatterboxTTS (typically on a T4 GPU via `scripts/colab_generate_audio.ipynb`). They must be **plain spoken prose**.
+
+- **Plain prose only** — no markdown, no `#` headings, no bullets, no backticks, no asterisks. Write the section title as a plain sentence ending with a full stop (e.g. `Modern Java, not nineteen ninety-eight Java.`).
+- **No raw code** — describe what code does conceptually. Never paste code blocks. Method chains like `stream.filter(...).map(...)` become "filter, then map."
+- **Spell out symbols and shorthand:**
+  - Operators: `/` (integer) → "division" / "slash", `%` → "modulo", `->` → "arrow" (or "maps to"), `==` → "double equals", `.equals()` → "dot equals", `>>>` → "unsigned right shift", `+` (concat) → "plus", `.` (in `spark.version`) → "dot"
+  - Acronyms: JVM → "java virtual machine", JDK → "java development kit", JIT → "just-in-time compiler", GC → "garbage collector", OOP → "object-oriented", API → "ay-pee-eye", REPL → "repl", LTS → "long term support", HTML/JSON/SQL → spoken as-is ("H-T-M-L", "jason", "sequel"/"S-Q-L"), IO → "input-output"
+  - Keywords stay as spoken words: `var` → "var", `void` → "void", `record` → "record", `switch` → "switch"
+  - Versions & years: `21` → "twenty-one", `3.14` → "three point one four", `1995` → "nineteen ninety-five", `2026` → "twenty twenty-six"
+  - Variable names: underscores become spaces, common abbreviations expand — `left_ptr` → "left pointer", `idx` → "index"
+- **Natural spoken flow** — write as a teacher explains at a whiteboard. Use transitions: "notice that", "the key insight here", "to put it another way", "picture this".
+- **Skip visual-only content** — never narrate diagrams, tables, or console output. Describe what the listener should picture instead.
+- **Pace with paragraph breaks** — each paragraph = one idea; a blank line between paragraphs gives the TTS engine a natural pause. Aim for 2–4 sentences per paragraph.
+
+**Naming & generation:** `tts/<NN>-<SS>-<slug>.tts` → `audio/<NN>-<SS>-<slug>.wav`; the stem is shared by the `.tts`, the `.wav`, and the manifest `audio` field. Generate with `scripts/colab_generate_audio.ipynb` (owner runs it on Colab), then the manifest `audio` fields resolve as the `.wav`s land.
+
 ## Status
 
 Scaffolded (this slice): folder skeleton + `manifest.json` with the **12-module spine** (empty sections), README, this file, Colab script copied from `apache-spark-ct`. Concept wired into the app (`graphl-movie/src/content/catalog.ts` → `java`) and both scenes ported + registered. **Next:** author module 01 end-to-end (split `../java-content/notebooks/01-java-essentials.ipynb` into per-section notebooks → `.slide` + `.tts` → manifest wiring → Colab audio), then repeat per module.

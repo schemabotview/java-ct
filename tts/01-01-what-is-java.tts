@@ -1,0 +1,9 @@
+What is Java, and why in twenty twenty-six?
+
+Java is a statically typed, class-based, object-oriented language. You write source code, a compiler turns it into bytecode, and that bytecode runs on the java virtual machine. James Gosling's team at Sun Microsystems shipped Java in nineteen ninety-five with one famous promise: write once, run anywhere. The compiler does not produce machine code for your specific processor. It produces portable bytecode, and any java virtual machine, on any operating system, can load and run it.
+
+Four traits define modern Java. It is statically typed, so every variable has a type the compiler knows ahead of time, and mismatches are caught before the program ever runs. It is class-based and object-oriented, so code lives inside classes. It is memory-managed, so a garbage collector reclaims the objects you are done with, and you never free memory by hand. And it is backwards compatible to a fault: code written in nineteen ninety-eight still compiles and runs on Java twenty-one.
+
+So why pick Java in twenty twenty-six? Three reasons. First, enterprise ubiquity: banks, telecoms, governments, and the largest backends in the world run on Java, and the hiring market is enormous. Second, the Spring ecosystem, which is the dominant backend framework on the java virtual machine, behind most of the production microservices you will ever meet. And third, performance and tooling: a mature garbage collector, a compiler that optimises your hot code paths while the program runs, and the best profilers on any platform.
+
+For this track, the Spring connection is the centre of gravity. The first seven modules build your Java foundation, and modules eight through twelve turn that foundation into real Spring services.

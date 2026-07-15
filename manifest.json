@@ -1,7 +1,21 @@
 {
   "concept": "Java",
   "modules": [
-    { "id": "01-java-essentials", "title": "Java Essentials", "sections": [] },
+    {
+      "id": "01-java-essentials",
+      "title": "Java Essentials",
+      "sections": [
+        {
+          "heading": "What is Java, and why in 2026?",
+          "notebook": "notebooks/01-01-what-is-java.ipynb",
+          "slide": "slides/01-01-what-is-java.slide",
+          "audio": "audio/01-01-what-is-java.wav",
+          "scene": "java-jvm",
+          "spine": true,
+          "role": "hook"
+        }
+      ]
+    },
     { "id": "02-oop-and-modern-types", "title": "OOP & Modern Types", "sections": [] },
     { "id": "03-collections-and-generics", "title": "Collections & Generics", "sections": [] },
     { "id": "04-functional-java-and-streams", "title": "Functional Java & Streams", "sections": [] },
