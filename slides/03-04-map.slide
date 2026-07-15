@@ -1,13 +1,22 @@
 # `Map` — key-to-value lookup
 
-## Same three flavours as `Set`
+## Three implementations
 
-- **`HashMap`** unordered · **`LinkedHashMap`** insertion order · **`TreeMap`** sorted keys
+| Impl | Iteration order | Lookup |
+|---|---|---|
+| `HashMap` | unspecified | O(1) avg — default |
+| `LinkedHashMap` | insertion | O(1) avg |
+| `TreeMap` | sorted keys | O(log n) |
+
+## Reading & updating
 
 ```java
-ages.getOrDefault("dan", 0);          // fallback
-ages.merge("alice", 1, Integer::sum); // += 1
-ages.computeIfAbsent("eve", k -> 0);
+ages.get("alice");                    // 30
+ages.getOrDefault("dan", 0);          // fallback if absent
+ages.merge("alice", 1, Integer::sum); // count: += 1
+ages.computeIfAbsent("eve", k -> 0);  // lazy default
 ```
 
-- Iterate `keySet()` · `values()` · `entrySet()`
+## Iterate three views
+
+- `keySet()` · `values()` · `entrySet()` — key + value together

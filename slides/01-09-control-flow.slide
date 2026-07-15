@@ -3,15 +3,22 @@
 ## The C family, plus modern switch
 
 - `if` / `else if` / `else` · `while` / `do-while`
-- classic `for` + enhanced **`for (var x : xs)`**
-- `switch` — statement **and** expression form · `break` / `continue`
+- classic `for` + enhanced **`for (var x : xs)`** · `break` / `continue`
+
+## `switch` — statement and expression
 
 ```java
-String label = switch (score / 10) {
+for (var name : names)                  // enhanced for
+    System.out.println(name);
+
+String label = switch (score / 10) {    // expression — yields a value
     case 10, 9 -> "A";
     case 8     -> "B";
     default    -> "F";
 };
 ```
 
-- **Arrow cases don't fall through**, and the `switch` **yields a value**
+## Why the expression form wins
+
+- **Arrow cases don't fall through** — no forgotten `break`
+- The whole `switch` **yields a value** you can assign
