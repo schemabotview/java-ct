@@ -461,7 +461,111 @@
         }
       ]
     },
-    { "id": "05-errors-files-and-io", "title": "Errors, Files & I/O", "sections": [] },
+    {
+      "id": "05-errors-files-and-io",
+      "title": "Errors, Files & I/O",
+      "sections": [
+        {
+          "heading": "Why exceptions",
+          "notebook": "notebooks/05-01-why-exceptions.ipynb",
+          "slide": "slides/05-01-why-exceptions.slide",
+          "audio": "audio/05-01-why-exceptions.wav",
+          "scene": "java-anatomy",
+          "spine": true,
+          "role": "hook"
+        },
+        {
+          "heading": "The `Throwable` hierarchy — checked vs unchecked",
+          "notebook": "notebooks/05-02-throwable-hierarchy.ipynb",
+          "slide": "slides/05-02-throwable-hierarchy.slide",
+          "audio": "audio/05-02-throwable-hierarchy.wav",
+          "scene": "java-anatomy",
+          "spine": true,
+          "focus": ["ja-results"],
+          "highlight": ["ja-typed-failure"]
+        },
+        {
+          "heading": "`try` / `catch` / `finally`",
+          "notebook": "notebooks/05-03-try-catch-finally.ipynb",
+          "slide": "slides/05-03-try-catch-finally.slide",
+          "audio": "audio/05-03-try-catch-finally.wav",
+          "scene": "java-anatomy",
+          "spine": true,
+          "focus": ["ja-control", "ja-results"],
+          "highlight": ["ja-typed-failure"]
+        },
+        {
+          "heading": "Throwing exceptions & custom types",
+          "notebook": "notebooks/05-04-throwing-and-custom.ipynb",
+          "slide": "slides/05-04-throwing-and-custom.slide",
+          "audio": "audio/05-04-throwing-and-custom.wav",
+          "scene": "java-anatomy",
+          "spine": true,
+          "focus": ["ja-results"],
+          "highlight": ["ja-typed-failure"]
+        },
+        {
+          "heading": "Exception chaining — the `cause`",
+          "notebook": "notebooks/05-05-exception-chaining.ipynb",
+          "slide": "slides/05-05-exception-chaining.slide",
+          "audio": "audio/05-05-exception-chaining.wav",
+          "scene": "java-anatomy",
+          "spine": true,
+          "focus": ["ja-results"],
+          "highlight": ["ja-typed-failure"]
+        },
+        {
+          "heading": "`try-with-resources` — safe cleanup",
+          "notebook": "notebooks/05-06-try-with-resources.ipynb",
+          "slide": "slides/05-06-try-with-resources.slide",
+          "audio": "audio/05-06-try-with-resources.wav",
+          "scene": "java-anatomy",
+          "spine": true,
+          "focus": ["ja-results", "ja-effects"],
+          "highlight": ["ja-effects", "ja-typed-failure"]
+        },
+        {
+          "heading": "The NIO `Path` — modern filesystem paths",
+          "notebook": "notebooks/05-07-nio-path.ipynb",
+          "slide": "slides/05-07-nio-path.slide",
+          "audio": "audio/05-07-nio-path.wav",
+          "scene": "java-anatomy",
+          "spine": true,
+          "focus": ["ja-results"],
+          "highlight": ["ja-effects"]
+        },
+        {
+          "heading": "`Files` — reading and writing",
+          "notebook": "notebooks/05-08-files.ipynb",
+          "slide": "slides/05-08-files.slide",
+          "audio": "audio/05-08-files.wav",
+          "scene": "java-anatomy",
+          "spine": true,
+          "focus": ["ja-results"],
+          "highlight": ["ja-effects"]
+        },
+        {
+          "heading": "Directory operations",
+          "notebook": "notebooks/05-09-directory-operations.ipynb",
+          "slide": "slides/05-09-directory-operations.slide",
+          "audio": "audio/05-09-directory-operations.wav",
+          "scene": "java-anatomy",
+          "spine": false,
+          "focus": ["ja-results"],
+          "highlight": ["ja-effects"]
+        },
+        {
+          "heading": "Serialization — a brief note",
+          "notebook": "notebooks/05-10-serialization.ipynb",
+          "slide": "slides/05-10-serialization.slide",
+          "audio": "audio/05-10-serialization.wav",
+          "scene": "java-anatomy",
+          "spine": false,
+          "focus": ["ja-results", "ja-memory"],
+          "highlight": ["ja-effects", "ja-heap"]
+        }
+      ]
+    },
     { "id": "06-concurrency-and-virtual-threads", "title": "Concurrency & Virtual Threads", "sections": [] },
     { "id": "07-jvm-reflection-build-and-testing", "title": "JVM, Reflection, Build & Testing", "sections": [] },
     { "id": "08-spring-core", "title": "Spring Core", "sections": [] },
