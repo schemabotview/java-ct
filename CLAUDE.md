@@ -28,7 +28,7 @@ Two scenes cover the language + runtime; wire modules to them via the manifest:
 - **`java-jvm`** — the Java-on-the-JVM runtime map (source pipeline → class loader → memory areas → execution engine → CPU). For the runtime/JVM modules.
 - **`java-anatomy`** — the language "grammar of a program" (Model ▸ Initialize ▸ Transform ▸ Return + Memory column). For the core-language modules. *(Ported from the code-free `java-anatomy`, not the later `java-model` code-card variant — the owner does not want code nodes in scenes.)*
 
-Spring modules (08–12) have **no scene yet** — to be authored later (they may ride a related scene as a full-strength backdrop in the interim).
+- **`spring`** — one dense whole-platform map for **all** Spring modules (08–12), authored + registered app-side in `graphl-movie/src/scenes/spring.ts`. Five stacked bands, one per module: **`sp-cloud`** (12) ▸ **`sp-web`** (09) ▸ **`sp-core`** = the IoC container (08) ▸ **`sp-data`** (10) ▸ **`sp-boot`** (11). A request flows top-to-bottom (edge → web → core beans → data → DB); Boot underneath auto-wires the container. Each module frames its own band via `highlight`/`focus`. Node-id map for wiring is in `spring.ts`.
 
 ## Folder layout
 
