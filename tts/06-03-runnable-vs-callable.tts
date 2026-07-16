@@ -1,0 +1,7 @@
+Runnable versus callable.
+
+Both runnable and callable represent the same basic idea: a task to run on some thread. The difference between them is entirely about what comes back out. A runnable has a single method, run, that returns nothing and cannot throw a checked exception. A callable of V has a single method, call, that returns a value of type V, and it is allowed to throw a checked exception.
+
+So the choice is simple. Runnable is the fire-and-forget shape: do something, hand nothing back. Callable is for a task that computes a result you actually want, and, as a bonus, it is allowed to throw a checked exception without you having to wrap it, which matters because so much concurrent code deals with things like interrupted exception.
+
+Both of them are functional interfaces with exactly one abstract method, which means, from the last module, that a lambda is the natural way to write either one. When you hand your task to an executor in the next section, the shape you chose is what tells the executor whether to give you a result handle back or not.

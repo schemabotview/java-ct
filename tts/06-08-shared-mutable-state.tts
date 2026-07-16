@@ -1,0 +1,7 @@
+The shared-mutable-state problem.
+
+Here is where concurrency gets genuinely hard. When two threads touch the same field without any coordination, you get what is called a data race: an interleaving of their operations that produces a wrong result. And the cruel part is the timing. Sometimes the bug shows up deterministically, every run, and sometimes it hides, appearing only once in a million runs, on a busy production server, at three in the morning.
+
+The canonical example is a simple counter with an increment method that just does value plus plus. If you fire ten thousand increments across a pool of eight threads, and then print the counter, you will almost never see ten thousand. You will see something less, and a different something less each time.
+
+The reason is that value plus plus looks like a single, indivisible operation, but it is not. It compiles into three separate steps: read the current value, add one to it, and write the new value back. Now picture two threads doing this at the same time. They both read the same starting value, say five. They both add one and get six. And they both write six back. Two increments happened, but the counter only went up by one. One update was silently lost. That is the essence of a race condition. There are three ways to fix it, in increasing order of sophistication: synchronization, explicit locks, and atomic variables, and those are the next two sections.

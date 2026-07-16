@@ -1,0 +1,16 @@
+# The JVM — what's actually running
+
+## Three runtime memory regions
+
+- **Heap** — every object; shared across threads; managed by the **GC**
+- **Stack** — one per thread; locals, params, the call chain (a **frame** per call)
+- **Metaspace** — class metadata: bytecode, method tables, `Class<?>` (was PermGen)
+
+## Where things live
+
+- Primitive local → **stack** · object → **heap** (the stack holds a reference)
+
+## Why this module matters
+
+- The bridge to Spring: it reads annotations at runtime via **reflection**, then acts
+- Understand the mechanics → Spring stops being magic

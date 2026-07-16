@@ -1,0 +1,20 @@
+# `ExecutorService` and `Future<V>`
+
+## A managed pool you submit tasks to
+
+```java
+try (var pool = Executors.newFixedThreadPool(4)) {
+    Future<Integer> f = pool.submit(() -> compute());
+    Integer result = f.get();   // blocks until done
+}   // close() drains in-flight tasks, then shuts down
+```
+
+- Factory shapes: `newFixedThreadPool(n)` · `newCachedThreadPool()` · `newVirtualThreadPerTaskExecutor()`
+
+## `Future<V>` — a result, maybe not ready yet
+
+- `get()` blocks (optional timeout) · `cancel(...)` · `isDone()`
+
+## Limitation
+
+- `Future` waits but doesn't **compose** — for chaining, `CompletableFuture` (next)

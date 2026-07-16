@@ -1,0 +1,26 @@
+# Maven — the dominant build tool
+
+## Declarative: describe *what*, in `pom.xml`
+
+```xml
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-web</artifactId>
+  <version>3.3.0</version>
+</dependency>
+```
+
+- `groupId` · `artifactId` · `version` identify every artifact
+
+## The lifecycle commands
+
+| Command | Does |
+|---|---|
+| `mvn compile` | compile |
+| `mvn test` | compile + test |
+| `mvn package` | + build the JAR |
+| `mvn dependency:tree` | transitive graph |
+
+## Dependencies
+
+- Resolved **transitively** from Maven Central — declare direct, get the rest

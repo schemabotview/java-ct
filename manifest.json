@@ -566,8 +566,236 @@
         }
       ]
     },
-    { "id": "06-concurrency-and-virtual-threads", "title": "Concurrency & Virtual Threads", "sections": [] },
-    { "id": "07-jvm-reflection-build-and-testing", "title": "JVM, Reflection, Build & Testing", "sections": [] },
+    {
+      "id": "06-concurrency-and-virtual-threads",
+      "title": "Concurrency & Virtual Threads",
+      "sections": [
+        {
+          "heading": "What is a thread?",
+          "notebook": "notebooks/06-01-what-is-a-thread.ipynb",
+          "slide": "slides/06-01-what-is-a-thread.slide",
+          "audio": "audio/06-01-what-is-a-thread.wav",
+          "scene": "java-jvm",
+          "spine": true,
+          "role": "hook"
+        },
+        {
+          "heading": "Raw threads with the `Thread` class",
+          "notebook": "notebooks/06-02-raw-threads.ipynb",
+          "slide": "slides/06-02-raw-threads.slide",
+          "audio": "audio/06-02-raw-threads.wav",
+          "scene": "java-jvm",
+          "spine": true,
+          "focus": ["j-jvm-stack-area"],
+          "highlight": ["j-thread-1-stack", "j-thread-n-stack"]
+        },
+        {
+          "heading": "`Runnable` vs `Callable<V>`",
+          "notebook": "notebooks/06-03-runnable-vs-callable.ipynb",
+          "slide": "slides/06-03-runnable-vs-callable.slide",
+          "audio": "audio/06-03-runnable-vs-callable.wav",
+          "scene": "java-jvm",
+          "spine": true,
+          "focus": ["j-jvm-stack-area"],
+          "highlight": ["j-thread-1-stack"]
+        },
+        {
+          "heading": "`ExecutorService` and `Future<V>`",
+          "notebook": "notebooks/06-04-executor-and-future.ipynb",
+          "slide": "slides/06-04-executor-and-future.slide",
+          "audio": "audio/06-04-executor-and-future.wav",
+          "scene": "java-jvm",
+          "spine": true,
+          "focus": ["j-memory-area", "j-jvm-stack-area"],
+          "highlight": ["j-thread-1-stack", "j-thread-n-stack"]
+        },
+        {
+          "heading": "Virtual threads — Java 21's big shift",
+          "notebook": "notebooks/06-05-virtual-threads.ipynb",
+          "slide": "slides/06-05-virtual-threads.slide",
+          "audio": "audio/06-05-virtual-threads.wav",
+          "scene": "java-jvm",
+          "spine": true,
+          "focus": ["j-jvm-stack-area", "j-heap-area"],
+          "highlight": ["j-thread-n-stack", "j-heap-area"]
+        },
+        {
+          "heading": "`CompletableFuture` — composable async",
+          "notebook": "notebooks/06-06-completablefuture.ipynb",
+          "slide": "slides/06-06-completablefuture.slide",
+          "audio": "audio/06-06-completablefuture.wav",
+          "scene": "java-jvm",
+          "spine": true,
+          "focus": ["j-jvm-stack-area"],
+          "highlight": ["j-thread-1-stack", "j-thread-n-stack"]
+        },
+        {
+          "heading": "Structured concurrency",
+          "notebook": "notebooks/06-07-structured-concurrency.ipynb",
+          "slide": "slides/06-07-structured-concurrency.slide",
+          "audio": "audio/06-07-structured-concurrency.wav",
+          "scene": "java-jvm",
+          "spine": false,
+          "focus": ["j-jvm-stack-area"],
+          "highlight": ["j-thread-1-stack", "j-thread-n-stack"]
+        },
+        {
+          "heading": "The shared-mutable-state problem",
+          "notebook": "notebooks/06-08-shared-mutable-state.ipynb",
+          "slide": "slides/06-08-shared-mutable-state.slide",
+          "audio": "audio/06-08-shared-mutable-state.wav",
+          "scene": "java-jvm",
+          "spine": true,
+          "focus": ["j-heap-area", "j-jvm-stack-area"],
+          "highlight": ["j-object-data", "j-thread-1-stack", "j-thread-n-stack"]
+        },
+        {
+          "heading": "Locks — `synchronized` and `ReentrantLock`",
+          "notebook": "notebooks/06-09-locks.ipynb",
+          "slide": "slides/06-09-locks.slide",
+          "audio": "audio/06-09-locks.wav",
+          "scene": "java-jvm",
+          "spine": true,
+          "focus": ["j-heap-area"],
+          "highlight": ["j-object-data"]
+        },
+        {
+          "heading": "Atomic variables & concurrent collections",
+          "notebook": "notebooks/06-10-atomics-and-concurrent-collections.ipynb",
+          "slide": "slides/06-10-atomics-and-concurrent-collections.slide",
+          "audio": "audio/06-10-atomics-and-concurrent-collections.wav",
+          "scene": "java-jvm",
+          "spine": true,
+          "focus": ["j-heap-area"],
+          "highlight": ["j-object-data"]
+        },
+        {
+          "heading": "`volatile` and the JVM memory model — in one paragraph",
+          "notebook": "notebooks/06-11-volatile-memory-model.ipynb",
+          "slide": "slides/06-11-volatile-memory-model.slide",
+          "audio": "audio/06-11-volatile-memory-model.wav",
+          "scene": "java-jvm",
+          "spine": false,
+          "focus": ["j-memory-area"],
+          "highlight": ["j-heap-area", "j-jvm-stack-area"]
+        }
+      ]
+    },
+    {
+      "id": "07-jvm-reflection-build-and-testing",
+      "title": "JVM, Reflection, Build & Testing",
+      "sections": [
+        {
+          "heading": "The JVM — what's actually running",
+          "notebook": "notebooks/07-01-the-jvm.ipynb",
+          "slide": "slides/07-01-the-jvm.slide",
+          "audio": "audio/07-01-the-jvm.wav",
+          "scene": "java-jvm",
+          "spine": true,
+          "role": "hook"
+        },
+        {
+          "heading": "Garbage collection in one breath",
+          "notebook": "notebooks/07-02-garbage-collection.ipynb",
+          "slide": "slides/07-02-garbage-collection.slide",
+          "audio": "audio/07-02-garbage-collection.wav",
+          "scene": "java-jvm",
+          "spine": true,
+          "focus": ["j-exec-engine", "j-heap-area"],
+          "highlight": ["j-gc", "j-object-data"]
+        },
+        {
+          "heading": "Class loading",
+          "notebook": "notebooks/07-03-class-loading.ipynb",
+          "slide": "slides/07-03-class-loading.slide",
+          "audio": "audio/07-03-class-loading.wav",
+          "scene": "java-jvm",
+          "spine": true,
+          "focus": ["j-classloader-subsystem"],
+          "highlight": ["j-loading", "j-linking", "j-initialization"]
+        },
+        {
+          "heading": "Java modules — the 60-second tour",
+          "notebook": "notebooks/07-04-java-modules.ipynb",
+          "slide": "slides/07-04-java-modules.slide",
+          "audio": "audio/07-04-java-modules.wav",
+          "scene": "java-jvm",
+          "spine": false,
+          "focus": ["j-top", "j-classloader-subsystem"],
+          "highlight": ["j-application-cl", "j-class-file"]
+        },
+        {
+          "heading": "Annotations — revisited and extended",
+          "notebook": "notebooks/07-05-annotations.ipynb",
+          "slide": "slides/07-05-annotations.slide",
+          "audio": "audio/07-05-annotations.wav",
+          "scene": "java-jvm",
+          "spine": true,
+          "focus": ["j-method-area"],
+          "highlight": ["j-class-data"]
+        },
+        {
+          "heading": "Reflection — looking at code as data",
+          "notebook": "notebooks/07-06-reflection.ipynb",
+          "slide": "slides/07-06-reflection.slide",
+          "audio": "audio/07-06-reflection.wav",
+          "scene": "java-jvm",
+          "spine": true,
+          "focus": ["j-method-area"],
+          "highlight": ["j-class-data", "j-method-area"]
+        },
+        {
+          "heading": "Reading annotations via reflection — the Spring bridge",
+          "notebook": "notebooks/07-07-annotations-via-reflection.ipynb",
+          "slide": "slides/07-07-annotations-via-reflection.slide",
+          "audio": "audio/07-07-annotations-via-reflection.wav",
+          "scene": "java-jvm",
+          "spine": true,
+          "focus": ["j-method-area", "j-classloader-subsystem"],
+          "highlight": ["j-class-data"]
+        },
+        {
+          "heading": "Maven — the dominant build tool",
+          "notebook": "notebooks/07-08-maven.ipynb",
+          "slide": "slides/07-08-maven.slide",
+          "audio": "audio/07-08-maven.wav",
+          "scene": "java-jvm",
+          "spine": true,
+          "focus": ["j-pipeline"],
+          "highlight": ["j-source-code", "javac", "j-class-file"]
+        },
+        {
+          "heading": "Gradle — the script-based alternative",
+          "notebook": "notebooks/07-09-gradle.ipynb",
+          "slide": "slides/07-09-gradle.slide",
+          "audio": "audio/07-09-gradle.wav",
+          "scene": "java-jvm",
+          "spine": false,
+          "focus": ["j-pipeline"],
+          "highlight": ["j-source-code", "javac", "j-class-file"]
+        },
+        {
+          "heading": "JUnit 5 & parameterised tests",
+          "notebook": "notebooks/07-10-junit.ipynb",
+          "slide": "slides/07-10-junit.slide",
+          "audio": "audio/07-10-junit.wav",
+          "scene": "java-jvm",
+          "spine": true,
+          "focus": ["j-exec-engine"],
+          "highlight": ["j-interpreter"]
+        },
+        {
+          "heading": "Mockito — testing in isolation",
+          "notebook": "notebooks/07-11-mockito.ipynb",
+          "slide": "slides/07-11-mockito.slide",
+          "audio": "audio/07-11-mockito.wav",
+          "scene": "java-jvm",
+          "spine": true,
+          "focus": ["j-method-area", "j-exec-engine"],
+          "highlight": ["j-class-data", "j-interpreter"]
+        }
+      ]
+    },
     { "id": "08-spring-core", "title": "Spring Core", "sections": [] },
     { "id": "09-spring-web", "title": "Spring Web", "sections": [] },
     { "id": "10-spring-data", "title": "Spring Data", "sections": [] },

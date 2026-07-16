@@ -1,0 +1,18 @@
+# The shared-mutable-state problem
+
+## Two threads, one field, no coordination
+
+```java
+class Counter { int value = 0; void increment() { value++; } }
+// 10,000 increments across 8 threads...
+System.out.println(c.value);   // usually NOT 10000 — lost updates
+```
+
+## Why `value++` races
+
+- It's **three** steps: read → add 1 → write back
+- Two threads read the same value, both write it back — one update **lost**
+
+## Three fixes, increasing sophistication
+
+- **`synchronized`** · **explicit locks** · **atomic variables** (next two sections)

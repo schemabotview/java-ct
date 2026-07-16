@@ -1,0 +1,23 @@
+# Mockito — testing in isolation
+
+## Fake the heavy dependencies
+
+```java
+UserRepository repo = mock(UserRepository.class);
+when(repo.findById(1L)).thenReturn(new User(1L, "alice"));
+
+var service = new UserService(repo);
+assertEquals("alice", service.displayName(1L));
+verify(repo).findById(1L);          // the call happened
+verify(repo, never()).save(any());  // save did NOT
+```
+
+## The vocabulary
+
+- `mock(Class)` — a fake · `when(...).thenReturn/.thenThrow` — stub behaviour
+- `verify(mock, times(n)/never())` — call-count · `any()`/`eq(...)` — matchers
+
+## The stack
+
+- Mockito generates a subclass at runtime (reflection again)
+- **JUnit 5 + Mockito + AssertJ** = the modern Spring test stack

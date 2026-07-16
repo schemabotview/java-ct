@@ -1,0 +1,9 @@
+Virtual threads, Java twenty-one's big shift.
+
+Until Java twenty-one, every thread in Java was what we now call a platform thread, which is just a thin wrapper around an operating-system thread. And operating-system threads are expensive. Each one costs around a megabyte of stack memory, carries kernel scheduling overhead, and in practice you can only have on the order of ten thousand of them in flight before a real machine starts to struggle. That ceiling shaped a decade of Java concurrency.
+
+Virtual threads are a completely different, virtual-machine-managed alternative. They are lightweight, measured in kilobytes rather than megabytes, and the virtual machine multiplexes many of them onto a small pool of real platform threads, which it calls carriers. The magic is in blocking. When a virtual thread blocks on input or output, the virtual machine simply parks it and lets its carrier pick up a different virtual thread. The expensive operating-system thread is never actually sitting idle.
+
+The practical effect is enormous. You can have millions of concurrent virtual threads all waiting on the network at once. Code that used to require a complex non-blocking framework, with async callbacks and reactive plumbing, can now be written as plain, blocking, one-thread-per-request code, and it still scales. The modern shape is one virtual thread per task, using the virtual-thread-per-task executor, with no pool sizing to tune.
+
+Two pieces of guidance. Use virtual threads for input-output-bound work, like an HTTP server or database calls; that is the entire reason they exist. Use platform threads for see-pee-you-bound work, because a virtual thread that never blocks just pins its carrier and gains you nothing. And one sharp warning: do not use synchronized on the hot path of virtual-thread code, because synchronized pins the virtual thread to its carrier and defeats the whole model. Reach for reentrant lock instead, which we will meet shortly.

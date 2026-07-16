@@ -1,0 +1,9 @@
+Locks: synchronized, and reentrant lock.
+
+The first real fix for a data race is mutual exclusion, making sure only one thread touches the shared state at a time. Java's built-in tool for this is the synchronized keyword. Every single Java object carries a hidden, intrinsic lock, and synchronized takes that lock for the duration of a block or a method. Only one thread can hold a given lock at once; any other thread that arrives blocks and waits until the lock is released. So a counter whose increment and get methods are both synchronized is safe, because the two methods take the same lock on the same object, and cannot interleave.
+
+You can also synchronize on a block rather than a whole method, passing a specific object to lock on, which gives you finer control over exactly what is protected.
+
+Synchronized is simple and it is built into the language, but it is limited. There is no timeout, no way to try for the lock and give up if it is busy, and no control over fairness. And, critically for the virtual threads we just met, synchronized pins the virtual thread to its carrier, defeating the lightweight model.
+
+For everything synchronized cannot do, you reach for reentrant lock, from the java-util-concurrent-locks package. It has the same one-holder-at-a-time semantics, but it adds try-lock, timeouts, and interruptible acquisition, and, importantly, it does not pin virtual threads. The one discipline it demands is that you always release it in a finally block, so the lock is freed even if the protected code throws. There is also a read-write lock, which separates reading from writing and allows many concurrent readers but only a single writer, and it shines for data that is read far more often than it is written.

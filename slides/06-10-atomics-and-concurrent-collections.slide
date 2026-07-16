@@ -1,0 +1,22 @@
+# Atomic variables & concurrent collections
+
+## Atomics — lock-free single values
+
+```java
+var counter = new AtomicInteger(0);
+counter.incrementAndGet();        // atomic ++
+counter.compareAndSet(6, 100);    // CAS: set only if currently 6
+counter.updateAndGet(n -> n + 1); // apply a function atomically
+```
+
+- CPU compare-and-swap, never blocks — faster than a lock for one value
+
+## Concurrent collections
+
+| Class | Replaces | Notes |
+|---|---|---|
+| `ConcurrentHashMap` | `HashMap` | fine-grained locking |
+| `CopyOnWriteArrayList` | `ArrayList` | read-heavy; write copies |
+| `BlockingQueue` | — | producer/consumer (`put`/`take` block) |
+
+- Plain `HashMap` / `ArrayList` are **not** thread-safe — reach for these under contention

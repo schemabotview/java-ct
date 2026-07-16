@@ -1,0 +1,21 @@
+# `CompletableFuture` — composable async
+
+## Chain, don't block
+
+- `Future` lets you **wait**; `CompletableFuture<T>` lets you **chain**
+- Same shape as JS Promises / Scala `Future`
+
+```java
+CompletableFuture.supplyAsync(() -> 21)
+    .thenApply(n -> n * 2)          // transform (like map)
+    .thenAccept(n -> print(n));     // continuation, no blocking
+```
+
+## Three combinators
+
+- `thenApply` — transform (map) · `thenCompose` — chain a future (flatMap)
+- `thenCombine(other, fn)` — merge two futures
+
+## Errors
+
+- `.exceptionally(...)` to recover · `.handle(...)` for both outcomes

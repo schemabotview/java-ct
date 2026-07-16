@@ -1,0 +1,7 @@
+Annotations, revisited and extended.
+
+Back in module two, we met the three built-in annotations: at-override, at-deprecated, and at-suppress-warnings. Now we go a level deeper, and learn to write our own annotation type, along with the meta-annotations that control where and when it can be seen.
+
+You declare an annotation with the at-interface keyword. Inside, you list elements that look like methods, each of which can have a default value, so an audited annotation might have a value element and a tags element. You then put two meta-annotations on your annotation to configure it. At-target says which kinds of program element it may be applied to, like types, methods, or fields. And at-retention says how long the annotation is kept around.
+
+That retention setting is the one people get wrong, so let me be precise about the three options. Source retention means the annotation is discarded at compile time; it is only for tools like linters. Class retention means it is written into the dot-class file but not loaded at runtime, and this is the default. And runtime retention means the annotation is present at runtime and can be read through reflection. That last one, runtime, is exactly what Spring needs. So the classic first-timer bug is this: you write a lovely framework-style annotation, you forget to mark it retention runtime, and then reflection simply cannot see it, and nothing works, with no obvious error. Always mark framework annotations retention runtime.

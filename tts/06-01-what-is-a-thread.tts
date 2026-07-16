@@ -1,0 +1,7 @@
+What is a thread?
+
+A thread is an independent path of execution. A single java-virtual-machine process can hold many threads at once, each running its own sequence of instructions, and the operating system multiplexes all of them across the available see-pee-you cores. So on a four-core machine, four threads can genuinely run at the same instant, and many more can take turns.
+
+Why do we bother with threads at all? Two reasons. The first is latency. While one thread is stuck waiting on the network or the disk, other threads can keep doing useful work, so the program stays responsive. The second is throughput. For heavy computation, the virtual machine can spread the work across multiple cores and finish sooner.
+
+Here is the tension that runs through this whole module. Threads are essential, but they are also the single most common source of subtle bugs, because two threads touching the same piece of memory can interleave in surprising ways. So we are going to climb a ladder, from the easy cases to the hard ones. We start by simply launching threads, then we meet the modern virtual-thread model that changes how you should think about concurrency, and finally we confront the shared-mutable-state problems that make concurrency genuinely difficult.

@@ -1,0 +1,20 @@
+# Annotations — revisited and extended
+
+## Write your own with `@interface`
+
+```java
+@Target({ElementType.METHOD, ElementType.TYPE})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface Audited {
+    String value() default "";
+}
+```
+
+## The two meta-annotations
+
+- `@Target` — which elements: `TYPE`, `METHOD`, `FIELD`, …
+- `@Retention` — how long kept: `SOURCE` (compile-time) · `CLASS` (default) · **`RUNTIME`** (reflection sees it)
+
+## The classic bug
+
+- Forget `@Retention(RUNTIME)` → reflection **can't see** your annotation

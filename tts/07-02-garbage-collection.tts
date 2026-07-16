@@ -1,0 +1,7 @@
+Garbage collection, in one breath.
+
+The virtual machine keeps track of which objects on the heap are still reachable from your live code, things reachable from local variables, from static fields, and so on, and it automatically reclaims everything that is no longer reachable. You never call free, and you never manually delete an object. That single design choice removes an entire category of bugs, like use-after-free and memory leaks from forgotten deletes.
+
+Every modern garbage collector is built on one assumption, called the generational hypothesis: most objects die young. To exploit that, the heap is split into a young generation and an old generation. Brand-new objects are born in the young generation, and collecting there is cheap, precisely because by the time a collection runs, most of those young objects are already dead. The few objects that survive several young collections get promoted into the old generation, which is collected far less often.
+
+In practice, you do not tune the garbage collector unless something specifically forces you to; the defaults are genuinely good. But when you do need to choose, there are three modern collectors to know. G-one is the default, a balanced, general-purpose collector with mostly short pauses. Z-G-C targets sub-millisecond pauses and shines on very large heaps and latency-sensitive services. And Shenandoah is similar to Z-G-C, and is favoured in some OpenJDK distributions. You select one with a virtual-machine flag, like use-Z-G-C, and since Java nine the default has been G-one.

@@ -1,0 +1,19 @@
+# Garbage collection in one breath
+
+## Reachable stays, the rest is reclaimed
+
+- The GC tracks objects reachable from live code (locals, static fields) — you never `free`
+- **Generational hypothesis**: most objects die young
+- Heap split **young** ↔ **old**; survivors get **promoted** to old
+
+## The three modern collectors
+
+| Collector | Pause | Use case |
+|---|---|---|
+| `G1` | mostly short | default, general-purpose |
+| `ZGC` | sub-ms | large heaps, low latency |
+| `Shenandoah` | sub-ms | like ZGC, OpenJDK builds |
+
+## Tuning
+
+- Don't, unless forced — defaults are good; pick with `-XX:+UseZGC` etc. (G1 is default)

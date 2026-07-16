@@ -1,0 +1,22 @@
+# Locks — `synchronized` and `ReentrantLock`
+
+## `synchronized` — every object's intrinsic lock
+
+```java
+public synchronized void increment() { value++; }  // locks `this`
+synchronized (lock) { value++; }                   // or a specific object
+```
+
+- One holder at a time; simple, built in
+- No timeout / try-lock / fairness — and it **pins** virtual threads
+
+## `ReentrantLock` — explicit, more control
+
+```java
+lock.lock();
+try { value++; }
+finally { lock.unlock(); }   // ALWAYS in finally
+```
+
+- Adds `tryLock`, timeouts, interruptible acquire; **no** virtual-thread pinning
+- `ReadWriteLock` — many readers, one writer, for read-heavy data

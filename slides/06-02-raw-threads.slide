@@ -1,0 +1,20 @@
+# Raw threads with the `Thread` class
+
+## Construct with a `Runnable`, then `.start()`
+
+```java
+Thread t = new Thread(() -> doWork());
+t.start();   // launches a new OS thread
+t.join();    // wait for it (throws InterruptedException)
+```
+
+- `.start()` launches a new thread; `.run()` just runs the body **here** — rarely wanted
+
+## Why you almost never do this
+
+- An OS thread costs **~1 MB** of stack + kernel resources
+- No concurrency cap · no result back · no lifecycle management
+
+## Instead
+
+- Hand tasks to an **`ExecutorService`** (next) — it owns the threads

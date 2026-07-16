@@ -1,0 +1,7 @@
+Reading annotations via reflection: the Spring bridge.
+
+Here is the punchline of this entire module. Spring's whole programming model rests on a single pattern: scan your classes, find the annotations on them, and then do something in response. And the mechanism behind it is just two reflection calls that you already have the pieces for.
+
+Suppose you have a payment-service class annotated with your audited annotation, and a transfer method inside it also annotated. To read the class-level annotation, you take the class object and call get-annotation, passing the annotation type, and you get back the annotation instance, whose value you can read. To read the method-level annotations, you loop over the declared methods, and on each one call get-annotation for your type. If it comes back non-null, that method was annotated, and you can act on it, using the method's name and the annotation's value.
+
+That small loop is the seed of Spring. Spring's component scanner does exactly this, but it looks for at-component, at-service, at-repository, at-controller, and at-configuration. When it finds one of those on a class, it instantiates the class, it looks at the types of the fields marked at-autowired and wires in the right dependencies, again via reflection, and it registers the finished object in its application context. So when Spring starts to feel like magic, remember this section. Spring is class-for-name, get-annotation, and new-instance, organised at enormous scale.

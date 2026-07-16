@@ -1,0 +1,22 @@
+# Gradle — the script-based alternative
+
+## Kotlin/Groovy DSL, not XML
+
+```kotlin
+plugins { id("org.springframework.boot") version "3.3.0" }
+java { toolchain { languageVersion = JavaLanguageVersion.of(21) } }
+dependencies {
+    implementation("org.springframework.boot:spring-boot-starter-web")
+}
+```
+
+- Faster incremental builds; full programmatic control; Boot initializr's default
+
+## Commands & the wrapper
+
+- `./gradlew build` · `test` · `bootRun` · `dependencies`
+- `./gradlew` = the **wrapper** — pins the exact Gradle version (Maven: `./mvnw`). Always commit it
+
+## Maven vs Gradle
+
+- Maven: **simpler, standard** · Gradle: **faster, flexible** — new projects lean Gradle

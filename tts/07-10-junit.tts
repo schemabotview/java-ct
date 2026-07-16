@@ -1,0 +1,7 @@
+JUnit five, and parameterised tests.
+
+JUnit five is the standard test runner for Java. A test class is just a plain class, and a test is simply a method annotated with at-test. The runner finds those methods by scanning the class with reflection, which is the exact mechanism we studied two sections ago; testing frameworks are one of the biggest consumers of reflection.
+
+A typical test class uses a few lifecycle hooks. At-before-each runs before every single test method, which is the natural place to build a fresh object under test, so each test starts clean. There is also at-after-each for cleanup after each test, and at-before-all and at-after-all, which run once for the whole class and must be static. Inside a test, you make assertions. Assert-equals checks a value against an expected one. Assert-throws checks that a piece of code throws the exception you expect, and hands you the exception so you can check its message. And there are assert-true, assert-false, and assert-all for grouping several checks together.
+
+When you want to run the same test logic across many different inputs, you parameterise it, rather than copy-pasting the test. You mark the method at-parameterized-test and supply a source of inputs. Value-source feeds a list of single values. C-s-v-source feeds rows of comma-separated values, so a single addition test can be driven by several rows, each giving two inputs and the expected result. This turns what would be five near-identical tests into one clear, table-driven test.

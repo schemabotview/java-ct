@@ -1,0 +1,22 @@
+# `Runnable` vs `Callable<V>`
+
+## Two task shapes
+
+| Interface | Method | Returns | Checked throws? |
+|---|---|---|---|
+| `Runnable` | `run()` | nothing | no |
+| `Callable<V>` | `call()` | a value | yes |
+
+## In code
+
+```java
+Runnable greet = () -> System.out.println("hello");
+Callable<Integer> compute = () -> {
+    Thread.sleep(100);   // checked InterruptedException
+    return 42;
+};
+```
+
+## Which to reach for
+
+- Fire-and-forget → `Runnable` · want a result (or a checked throw) → `Callable<V>`

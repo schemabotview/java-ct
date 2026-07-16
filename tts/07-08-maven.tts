@@ -1,0 +1,7 @@
+Maven, the dominant build tool.
+
+Almost every Spring project you ever open uses one of two build tools: Maven or Gradle. Maven is the older of the two, and it is deliberately declarative. You describe what your project is, rather than scripting how to build it, step by step. That description lives in a file called p-o-m-dot-x-m-l, the project object model.
+
+Inside the p-o-m, three coordinates identify your project, and indeed every library in the java world: a group id, an artifact id, and a version. You then list your dependencies, each with those same three coordinates, and, for a Spring web application, that is often just a single starter dependency, spring-boot-starter-web. You also set properties, like telling the compiler to target Java twenty-one.
+
+Maven runs a fixed sequence of build phases called the lifecycle, and a handful of commands cover almost all daily work. M-v-n compile compiles your sources. M-v-n test compiles and then runs your unit tests. M-v-n package goes further and builds the jar. M-v-n install puts that jar into your local repository so other local projects can use it. And m-v-n dependency-tree prints the full transitive dependency graph, which is invaluable when two libraries disagree about a version. That word transitive is the key to Maven's power: you declare only the libraries you directly depend on, and Maven automatically pulls in everything those libraries need, resolving it all from Maven Central.

@@ -1,0 +1,20 @@
+# `volatile` and the JVM memory model
+
+## Visibility, not atomicity
+
+- Without `volatile`, a thread can cache a field and **never see** another's write
+- `volatile` forces every read from / write to **main memory**
+
+```java
+private volatile boolean running = true;  // seen across threads
+public void stop() { running = false; }
+public void run()  { while (running) doWork(); }
+```
+
+## The trap
+
+- It does **not** make compound ops atomic — `volatile int x; x++;` still races
+
+## The rule
+
+- `volatile` for simple **flags** (`shutdown`); `AtomicInteger` for anything you **update**

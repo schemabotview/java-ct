@@ -1,0 +1,7 @@
+The java virtual machine: what is actually running.
+
+When you launch a program with the java command, the virtual machine starts up and carves out a fixed set of runtime memory regions. There are three you really need to know. The first is the heap. This is where every object lives, it is shared across all of your threads, and it is managed for you by the garbage collector. The second is the stack, and there is one stack per thread. It holds local variables, method parameters, and the call chain; every method call pushes a new frame onto its thread's stack, and returning pops it off. The third is metaspace, which holds class metadata: the bytecode, the method tables, and the class objects themselves. Metaspace replaced the older permanent generation back in Java eight.
+
+The dividing line between stack and heap is worth fixing in your mind. A primitive declared as a local variable lives directly on the stack. An object always lives on the heap, and the local variable on the stack merely holds a reference that points to it.
+
+One more thing about why this particular module matters. It is the bridge to Spring. Almost every Spring feature you are about to meet works by reading annotations off your classes at runtime, using reflection, and then doing something in response. Once you understand these virtual-machine mechanics, Spring stops feeling like magic and starts feeling inevitable.

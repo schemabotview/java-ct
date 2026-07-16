@@ -1,0 +1,27 @@
+# JUnit 5 & parameterised tests
+
+## `@Test` methods, discovered via reflection
+
+```java
+@BeforeEach void setUp() { calc = new Calculator(); }
+
+@Test void addsTwoNumbers() { assertEquals(5, calc.add(2, 3)); }
+
+@Test void rejectsOverflow() {
+    assertThrows(ArithmeticException.class, () -> calc.add(MAX, 1));
+}
+```
+
+- Lifecycle: `@BeforeEach`/`@AfterEach` · `@BeforeAll`/`@AfterAll` (static)
+
+## Parameterise across inputs
+
+```java
+@ParameterizedTest
+@CsvSource({ "2,3,5", "0,0,0", "-1,1,0" })
+void adds(int a, int b, int expected) { assertEquals(expected, a + b); }
+```
+
+## Everyday assertions
+
+- `assertEquals` · `assertTrue`/`False` · `assertThrows` · `assertAll`

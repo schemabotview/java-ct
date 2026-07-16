@@ -1,0 +1,7 @@
+Volatile, and the java-virtual-machine memory model, in one paragraph.
+
+This is the low-level foundation under everything we have discussed, and the key word is visibility. Without any special marking, the compiler and the see-pee-you are free to cache a field's value in a register or a per-core cache, indefinitely. The practical consequence is startling: two threads can disagree about the value of a plain field forever, with one thread never seeing an update the other made.
+
+The volatile keyword, placed on a field, fixes exactly that. It forces every read of the field to come from main memory, and every write to flush straight back to main memory, so all threads see a consistent, up-to-date value. The classic use is a simple stop flag: a volatile boolean that one thread sets to false and a worker loop reads on every iteration, so the worker actually notices and stops.
+
+But there is one trap you must not fall into. Volatile guarantees visibility, not atomicity. It does not make a compound operation safe. A volatile int with a plus plus on it is still racy, because the increment is still three steps, read, modify, write, and volatile does nothing to make those three indivisible. So the rule is clean. Use volatile for a simple flag that one thread writes and others read, like a shutdown signal. And for anything you actually need to update concurrently, reach for an atomic integer or an atomic reference instead.

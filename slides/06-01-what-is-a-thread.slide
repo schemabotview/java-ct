@@ -1,0 +1,16 @@
+# What is a thread?
+
+## An independent path of execution
+
+- One JVM process → **many threads**, each its own instruction sequence
+- The OS scheduler multiplexes them across **CPU cores**
+
+## Why bother
+
+- **Latency** — one thread waits on I/O while others keep working
+- **Throughput** — spread CPU-bound work across cores
+
+## The catch
+
+- Two threads touching the same memory can **interleave** — the source of most production bugs
+- This module: start simple → virtual threads → the hard shared-state cases

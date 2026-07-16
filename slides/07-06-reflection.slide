@@ -1,0 +1,23 @@
+# Reflection — looking at code as data
+
+## Everything starts from a `Class<?>`
+
+```java
+"hello".getClass();                 // from an instance
+String.class;                       // from a class literal
+Class.forName("java.lang.String");  // from a name
+```
+
+## Inspect and invoke — even private
+
+```java
+Method greet = klass.getDeclaredMethod("greet", String.class);
+Object r = greet.invoke(instance, "ganesh");
+Field f = klass.getDeclaredField("prefix");
+f.setAccessible(true);   // bypass private
+```
+
+## Use it sparingly
+
+- Slower than a direct call; bypasses compile-time checks
+- Only for code unknown until runtime — frameworks, serialisers, test runners

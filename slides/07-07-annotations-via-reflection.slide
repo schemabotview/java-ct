@@ -1,0 +1,22 @@
+# Reading annotations via reflection — the Spring bridge
+
+## The whole pattern: scan → find annotation → act
+
+```java
+Audited a = PaymentService.class.getAnnotation(Audited.class);
+a.value();   // "payment"
+
+for (Method m : klass.getDeclaredMethods()) {
+    Audited x = m.getAnnotation(Audited.class);
+    if (x != null) act(m, x.value());
+}
+```
+
+## This is the seed of Spring
+
+- Its scanner does exactly this — for `@Component`, `@Service`, `@Controller`, `@Configuration`
+- Finds one → instantiates → wires `@Autowired` by type → registers in the `ApplicationContext`
+
+## The demystification
+
+- Spring is `Class.forName` + `getAnnotation` + `newInstance`, **organised at scale**

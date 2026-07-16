@@ -1,0 +1,19 @@
+# Java modules — the 60-second tour
+
+## JPMS (Java 9): named, encapsulated bundles
+
+- A module declares what it **exports** and what it **requires**
+- Described by `module-info.java` at the source root
+
+```java
+module com.example.app {
+    requires java.net.http;
+    requires spring.context;
+    exports com.example.app.api;   // unlisted packages stay module-private
+}
+```
+
+## When it matters
+
+- Libraries wanting **strong encapsulation** · `jlink` slim runtimes · the JDK itself
+- Day-to-day Spring Boot ships as classpath JARs — treat JPMS as **background**

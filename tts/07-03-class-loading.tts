@@ -1,0 +1,7 @@
+Class loading.
+
+A dot-class file sitting on disk is useless to the virtual machine until a class loader reads it and turns it into a live class object. This happens through a chain of three loaders that work by delegation. At the top is the bootstrap loader, which loads the core java-development-kit classes, the things in java-lang and friends. Below it is the platform loader, which handles the other built-in java-development-kit modules. And below that is the application loader, which loads the classes on your own classpath, the code you actually wrote. Frameworks and application servers can add further custom loaders beneath those.
+
+The single most important property here is that class loading is lazy. A class is not loaded when the program starts; it is loaded the first time it is actually referenced. This laziness is exactly what makes Spring's classpath scanning possible. Spring walks every class file it can find, asks the loader to load each one, and then uses reflection to inspect the result, which we will see in a couple of sections.
+
+You will almost never write a custom class loader yourself. But understanding the chain explains a genuinely confusing class of bugs. If two different loaders load what looks like the same class, the virtual machine treats them as two entirely distinct types. So a cast between them fails with a class-cast exception, even though the class names are identical, which can be baffling the first time it happens.

@@ -1,0 +1,15 @@
+# Class loading
+
+## `.class` on disk → live `Class<?>`
+
+- A **class loader** reads the bytecode and makes it a `Class<?>` object
+- Three loaders in **delegation**:
+- **Bootstrap** (`java.lang.*`) → **Platform** (JDK modules) → **Application** (your classpath)
+
+## Lazy loading
+
+- A class loads the **first time it's referenced** — this is what makes Spring's classpath scanning possible
+
+## The gotcha
+
+- Two loaders load the *same* class → the JVM sees **two types** → `ClassCastException`

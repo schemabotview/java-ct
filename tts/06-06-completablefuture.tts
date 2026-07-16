@@ -1,0 +1,7 @@
+Completable future, for composable async.
+
+A plain future lets you wait for a result. A completable future lets you chain what happens next with that result, without ever blocking a thread to wait. If you have used promises in JavaScript, or future in Scala, this is exactly the same shape.
+
+You usually start one with supply-async, which runs a supplier on the common fork-join pool and hands you back a completable future. From there you attach continuations. Then-apply transforms the result once it arrives, and it is the direct analogue of map on a stream. There is also then-accept for a continuation that just consumes the value and returns nothing. The key point is that none of this blocks: each stage runs automatically when the previous one completes. If you find yourself calling join, the blocking wait, that is usually a hint that you should have chained instead.
+
+There are three combinators worth memorising. Then-apply transforms the result, like map. Then-compose chains another asynchronous step that itself returns a future, and it flattens the nested futures, exactly like flat-map on a stream. And then-combine waits for two independent futures and merges their results with a function. On top of that, there is proper error handling: exceptionally lets you recover from a failure by supplying a fallback, and handle lets you deal with both the success and the failure outcome in one place. Together these let you build a whole graph of asynchronous work declaratively, instead of blocking threads at every step.

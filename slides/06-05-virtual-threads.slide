@@ -1,0 +1,23 @@
+# Virtual threads — Java 21's big shift
+
+## Lightweight threads the JVM manages
+
+- Platform thread = OS thread: **~1 MB**, ~10k max
+- Virtual thread = **kilobytes**; JVM multiplexes many onto a few **carriers**
+- Blocking on I/O **parks** it — the carrier moves on
+
+```java
+try (var exec = Executors.newVirtualThreadPerTaskExecutor()) {
+    IntStream.range(0, 10_000)
+        .mapToObj(i -> exec.submit(() -> { Thread.sleep(100); return i; }));
+}   // 10k concurrent tasks, no pool tuning
+```
+
+## The payoff
+
+- Millions of concurrent I/O waits — plain blocking one-thread-per-request code **scales**
+
+## When to use which
+
+- **I/O-bound** (HTTP, DB) → virtual · **CPU-bound** → platform pool
+- Don't `synchronized` on the hot path — it **pins** the carrier; use `ReentrantLock`

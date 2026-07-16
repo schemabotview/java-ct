@@ -1,0 +1,7 @@
+Structured concurrency.
+
+Completable future is powerful, but it is also easy to misuse. You can orphan tasks that keep running after you have stopped caring, you can leak threads, and error handling can quietly get lost between the stages. Structured concurrency, which is a preview feature in Java twenty-one and finalising soon, fixes this by treating a group of concurrent tasks as a single block. The tasks share one lifetime, errors propagate up out of the block, and the block simply cannot exit until every child task is either finished or cancelled. The shape deliberately echoes try-with-resources.
+
+Inside the block, you open a scope, and then you fork each concurrent task, which hands you a handle. You call join once to wait for all of the forked tasks together, and then throw-if-failed, which propagates an exception if any of them failed. Only after that do you read the individual results. If you fetch a user and their orders concurrently, and one of those calls fails, the whole scope fails cleanly, and the other task is cancelled for you.
+
+The structured model gives you three guarantees that the unstructured, hand-rolled approach never did. Tasks can never outlive the block that started them. Errors can never be silently swallowed. And cancellation propagates automatically through the whole group. Treat this as the future direction of concurrent Java: once it is out of preview, you should prefer it over hand-building graphs of completable futures.

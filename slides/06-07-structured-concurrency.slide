@@ -1,0 +1,21 @@
+# Structured concurrency
+
+## A group of tasks as one block
+
+- Preview in Java 21 — concurrent tasks that **share a lifetime**
+- Errors propagate up; the block can't exit until every child is done or cancelled
+
+```java
+try (var scope = new StructuredTaskScope.ShutdownOnFailure()) {
+    var user  = scope.fork(() -> fetchUser(id));
+    var order = scope.fork(() -> fetchOrders(id));
+    scope.join();            // wait for both
+    scope.throwIfFailed();   // propagate any failure
+    return new Profile(user.get(), order.get());
+}
+```
+
+## Three guarantees
+
+- Tasks **never outlive** their block · errors **never swallowed** · cancellation **propagates**
+- The future direction — prefer it over hand-rolled `CompletableFuture` graphs
