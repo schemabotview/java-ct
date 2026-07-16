@@ -796,7 +796,121 @@
         }
       ]
     },
-    { "id": "08-spring-core", "title": "Spring Core", "sections": [] },
+    {
+      "id": "08-spring-core",
+      "title": "Spring Core",
+      "sections": [
+        {
+          "heading": "The problem: manual wiring",
+          "notebook": "notebooks/08-01-manual-wiring.ipynb",
+          "slide": "slides/08-01-manual-wiring.slide",
+          "audio": "audio/08-01-manual-wiring.wav",
+          "scene": "spring",
+          "spine": true,
+          "role": "hook"
+        },
+        {
+          "heading": "Inversion of Control and Dependency Injection",
+          "notebook": "notebooks/08-02-ioc-and-di.ipynb",
+          "slide": "slides/08-02-ioc-and-di.slide",
+          "audio": "audio/08-02-ioc-and-di.wav",
+          "scene": "spring",
+          "spine": true,
+          "focus": ["sp-core"],
+          "highlight": ["sp-core-di", "sp-core-context"]
+        },
+        {
+          "heading": "The `ApplicationContext`",
+          "notebook": "notebooks/08-03-application-context.ipynb",
+          "slide": "slides/08-03-application-context.slide",
+          "audio": "audio/08-03-application-context.wav",
+          "scene": "spring",
+          "spine": true,
+          "focus": ["sp-core"],
+          "highlight": ["sp-core-context", "sp-core-stereotypes"]
+        },
+        {
+          "heading": "Component scanning — `@Component` and its specialisations",
+          "notebook": "notebooks/08-04-component-scanning.ipynb",
+          "slide": "slides/08-04-component-scanning.slide",
+          "audio": "audio/08-04-component-scanning.wav",
+          "scene": "spring",
+          "spine": true,
+          "focus": ["sp-core-stereotypes"],
+          "highlight": ["sp-st-component", "sp-st-service", "sp-st-repository", "sp-st-controller"]
+        },
+        {
+          "heading": "`@Configuration` and `@Bean` — explicit registration",
+          "notebook": "notebooks/08-05-configuration-and-bean.ipynb",
+          "slide": "slides/08-05-configuration-and-bean.slide",
+          "audio": "audio/08-05-configuration-and-bean.wav",
+          "scene": "spring",
+          "spine": true,
+          "focus": ["sp-core-stereotypes"],
+          "highlight": ["sp-st-configuration", "sp-st-bean"]
+        },
+        {
+          "heading": "Three injection styles — and which to use",
+          "notebook": "notebooks/08-06-injection-styles.ipynb",
+          "slide": "slides/08-06-injection-styles.slide",
+          "audio": "audio/08-06-injection-styles.wav",
+          "scene": "spring",
+          "spine": true,
+          "focus": ["sp-core-di"],
+          "highlight": ["sp-di-constructor", "sp-di-autowired", "sp-di-setter"]
+        },
+        {
+          "heading": "Bean scopes & lifecycle",
+          "notebook": "notebooks/08-07-scopes-and-lifecycle.ipynb",
+          "slide": "slides/08-07-scopes-and-lifecycle.slide",
+          "audio": "audio/08-07-scopes-and-lifecycle.wav",
+          "scene": "spring",
+          "spine": true,
+          "focus": ["sp-core-scopes", "sp-core-lifecycle"],
+          "highlight": ["sp-scope-singleton", "sp-scope-prototype", "sp-life-post", "sp-life-pre"]
+        },
+        {
+          "heading": "Profiles & externalised configuration",
+          "notebook": "notebooks/08-08-profiles-and-config.ipynb",
+          "slide": "slides/08-08-profiles-and-config.slide",
+          "audio": "audio/08-08-profiles-and-config.wav",
+          "scene": "spring",
+          "spine": true,
+          "focus": ["sp-core-config"],
+          "highlight": ["sp-cfg-profile", "sp-cfg-value", "sp-cfg-props", "sp-cfg-env"]
+        },
+        {
+          "heading": "Aspect-Oriented Programming",
+          "notebook": "notebooks/08-09-aop.ipynb",
+          "slide": "slides/08-09-aop.slide",
+          "audio": "audio/08-09-aop.wav",
+          "scene": "spring",
+          "spine": true,
+          "focus": ["sp-core-aop"],
+          "highlight": ["sp-aop-aspect", "sp-aop-advice", "sp-aop-pointcut"]
+        },
+        {
+          "heading": "`ApplicationContext` events",
+          "notebook": "notebooks/08-10-events.ipynb",
+          "slide": "slides/08-10-events.slide",
+          "audio": "audio/08-10-events.wav",
+          "scene": "spring",
+          "spine": false,
+          "focus": ["sp-core-lifecycle"],
+          "highlight": ["sp-evt-event", "sp-evt-listener"]
+        },
+        {
+          "heading": "Putting it together",
+          "notebook": "notebooks/08-11-putting-it-together.ipynb",
+          "slide": "slides/08-11-putting-it-together.slide",
+          "audio": "audio/08-11-putting-it-together.wav",
+          "scene": "spring",
+          "spine": true,
+          "focus": ["sp-core"],
+          "highlight": ["sp-core-stereotypes", "sp-core-di", "sp-core-context"]
+        }
+      ]
+    },
     { "id": "09-spring-web", "title": "Spring Web", "sections": [] },
     { "id": "10-spring-data", "title": "Spring Data", "sections": [] },
     { "id": "11-spring-boot-in-production", "title": "Spring Boot in Production", "sections": [] },

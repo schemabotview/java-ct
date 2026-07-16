@@ -1,0 +1,7 @@
+Component scanning, with at-component and its specialisations.
+
+The simplest way to register a bean is to put the at-component annotation on the class. At startup, Spring runs a component scanner that walks your classpath, and it picks up every class annotated with at-component, or with any annotation that is itself meta-annotated with at-component, and it registers an instance of each as a bean. This is exactly the scan-and-read-annotations pattern from module seven, applied at scale.
+
+Now, there are four annotations that all are at-component underneath, but which signal different roles to the reader. At-component is the generic, catch-all Spring-managed bean. At-service marks a business-logic or domain service. At-repository marks a data-access object, and it adds a small behaviour: it translates low-level database exceptions into Spring's consistent hierarchy. And at-controller, or at-rest-controller, marks the web layer that handles H-T-T-P requests. The behavioural differences are small; the difference in intent is what matters, because the annotation tells any reader which layer a class belongs to.
+
+Two important details. First, when a class has a single constructor, Spring uses constructor injection automatically; you do not need to write at-autowired at all. Second, each bean gets a name by default, which is the class name with a lower-cased first letter, like payment-service. But you will almost never refer to that name directly, because you wire beans by their type, not by their name.

@@ -1,0 +1,7 @@
+Application context events.
+
+Beans can also broadcast events to one another, through the container itself. The point of this is decoupling. A producer of an event does not need to know who, if anyone, is listening for it. It just announces that something happened, and any interested beans react. This lets you add new reactions later without ever touching the producer.
+
+There are three pieces. First, the event, which can be any object, though a record is ideal, so a payment-processed event might carry the payment id, the amount, and a timestamp. Second, the publisher: a bean injects the application-event-publisher and, after doing its work, calls publish-event with a new event object. Third, the listeners: any number of beans can have a method annotated at-event-listener that takes the event type as its parameter, and Spring discovers all of them via reflection, the same mechanism yet again. So an audit listener and a metrics listener can both react to the same payment-processed event, completely independently.
+
+One behaviour to know: events are synchronous by default. Publish-event blocks until every listener has finished running. If you want asynchronous delivery, you add at-async to the listener method, and at-enable-async to a configuration class. Finally, Spring ships several built-in events of its own, like context-refreshed-event and context-closed-event, which you can listen for to run your own startup and shutdown hooks.

@@ -1,0 +1,7 @@
+The application context.
+
+Every Spring application has, at its heart, an application context. This is the container: the object that holds every single Spring-managed object, which we call a bean, that looks those beans up by type or by name, that manages their lifecycle from creation to destruction, and that broadcasts events to them.
+
+The simplest way to picture it is as a registry, a map from bean names to bean instances. The name payment-controller points to your one payment controller instance, payment-service points to the payment service instance, payment-repository points to the repository instance, and so on, for every bean in your application.
+
+The crucial shift is that you do not construct these beans yourself. Instead, you tell Spring two things: which classes are beans, and what each one depends on. Spring then resolves the whole dependency graph, figures out the correct order, instantiates the beans in dependency order so that each one's dependencies exist before it does, and injects exactly what each bean needs. The context is built once, at application startup, and it lives for the entire life of the application.

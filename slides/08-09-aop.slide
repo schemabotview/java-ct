@@ -1,0 +1,24 @@
+# Aspect-Oriented Programming
+
+## Cross-cutting concerns, written once
+
+- Logging, transactions, security, metrics, retries — write once, apply to many methods
+
+## The vocabulary
+
+- **aspect** (class) · **advice** (`@Before`/`@After`/`@Around`) · **pointcut** (which methods) · **join point** (one call)
+
+```java
+@Aspect @Component
+public class TimingAspect {
+    @Around("execution(* com.example.service..*(..))")
+    Object time(ProceedingJoinPoint pjp) throws Throwable {
+        try { return pjp.proceed(); } finally { record(pjp); }
+    }
+}
+```
+
+## How & the gotcha
+
+- Spring wraps matching beans in a **proxy** — same mechanism as `@Transactional`
+- Only intercepts calls **from outside**; `this.other()` self-calls bypass it

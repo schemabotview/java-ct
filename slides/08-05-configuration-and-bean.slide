@@ -1,0 +1,23 @@
+# `@Configuration` and `@Bean` — explicit registration
+
+## For classes you can't annotate
+
+- `@Component` scanning needs your own source
+- Third-party / SDK types → a `@Configuration` class with **`@Bean` methods**
+
+```java
+@Configuration
+public class HttpConfig {
+    @Bean
+    public HttpClient httpClient(Environment env) {
+        return HttpClient.newBuilder()...build();
+    }
+    @Bean RuleEngine ruleEngine() { return new RuleEngine(path); }
+}
+```
+
+## How it wires
+
+- A `@Configuration` **is** a `@Component` — scanning picks it up
+- Each `@Bean` method **returns** the bean; its **parameters** are injected dependencies
+- The method body is your factory code — for third-party types + real construction logic

@@ -1,0 +1,23 @@
+# `ApplicationContext` events
+
+## Decouple producer from consumers
+
+- A bean publishes an event; the publisher doesn't know who listens
+
+```java
+record PaymentProcessed(long id, long amount, Instant at) {}
+
+events.publishEvent(new PaymentProcessed(...));   // publisher
+
+@EventListener
+void onPayment(PaymentProcessed e) { ... }        // any number of listeners
+```
+
+## Delivery
+
+- **Synchronous by default** — `publishEvent` blocks until every listener returns
+- `@Async` (+ `@EnableAsync`) for asynchronous delivery
+
+## Built-in events
+
+- `ContextRefreshedEvent` · `ContextClosedEvent` — startup / shutdown hooks

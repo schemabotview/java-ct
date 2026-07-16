@@ -1,0 +1,9 @@
+Three injection styles, and which to use.
+
+Spring gives you three different places to inject a dependency, and I want to be blunt: two of them are mistakes. Let me show all three, and then tell you why one wins.
+
+The first is constructor injection, and it is the one you should use. The dependency is a constructor parameter, and you store it in a final field. The second is setter injection: the field is not final, and you put at-autowired on a setter method that Spring calls after construction. The third is field injection, where you put at-autowired directly on the field itself. Field injection is the most compact, which is why it is still so common, but it is actively bad.
+
+Constructor injection wins on every single dimension. Because the dependency arrives in the constructor, the field can be final, so your object is immutable once built. Because there is no Spring magic involved, you can construct the class in a plain unit test just by calling new and passing in fakes, with no framework at all. The compiler physically refuses to let you forget a dependency, because you cannot call the constructor without it. And a constructor that grows to eight parameters screams that the class has too many dependencies, which is a genuinely useful design signal that field injection hides from you.
+
+So the rule is simple. Use constructor injection everywhere. Reach for setter injection only when a dependency is genuinely optional. And never reach for field injection. One convenience: when a class has just a single constructor, which is the norm in this style, Spring autowires it implicitly, so you do not even write at-autowired. You only need at-autowired when there are multiple constructors and you want Spring to pick a specific one.

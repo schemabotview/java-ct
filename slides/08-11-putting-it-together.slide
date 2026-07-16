@@ -1,0 +1,23 @@
+# Putting it together
+
+## One realistic app, every piece
+
+```java
+@SpringBootApplication   // @Configuration + @ComponentScan + @EnableAutoConfiguration
+public class App {
+    public static void main(String[] a) { SpringApplication.run(App.class, a); }
+}
+
+@Service
+public class PaymentService {
+    public PaymentService(PaymentRepository repo,       // constructor-injected
+                          ApplicationEventPublisher events,
+                          PaymentProps props) { ... }
+}
+```
+
+## The payoff
+
+- Every annotation is read at startup via module 07's **reflection**
+- No XML, no factories, no manual wiring — you declared *what*; Spring built the graph
+- That's all of Spring Core — every later module builds on it

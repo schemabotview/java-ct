@@ -1,0 +1,7 @@
+Putting it together.
+
+Let me pull the whole module into one small but realistic Spring application. At the top is the application class, annotated at-spring-boot-application, which is itself a shorthand for at-configuration, at-component-scan, and at-enable-auto-configuration all at once. Its main method just calls spring-application-dot-run, which builds the context and starts everything.
+
+Then come the pieces you now recognise. A configuration-properties record binds the payment settings, like max retries and a timeout, from external config. A repository, marked at-repository, is the data layer. And a service, marked at-service, is the domain layer. Look at that service's constructor: it takes the repository, the application-event-publisher, and the properties record, all constructor-injected, all final. Inside its process method, it uses the repository to load a payment, does its work respecting the injected properties, and publishes a payment-processed event for any listeners.
+
+Here is the payoff, and it ties the whole first eight modules together. Every single annotation in that file is something Spring reads at startup, using the exact same reflection mechanics from module seven. There is no X-M-L, no factory configuration, and no manual wiring anywhere. You simply declared what the components are and what each one needs, and Spring constructed the entire object graph for you. That is the whole of Spring Core, and every later module, web, data, boot, and cloud, is built directly on top of it.

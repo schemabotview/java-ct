@@ -1,0 +1,25 @@
+# Bean scopes & lifecycle
+
+## Scope = how many, how long
+
+- **`singleton`** (default) — one per context, eager at startup
+- **`prototype`** — a fresh instance every request for it
+- Web: **`request`** / **`session`**
+
+```java
+@Component @Scope("prototype")
+public class TempBuffer { }
+```
+
+- Trap: a singleton injecting a prototype stays **one** instance — use `ObjectProvider<T>`
+
+## Lifecycle hooks
+
+```java
+@PostConstruct void init()     { /* after injection — deps ready */ }
+@PreDestroy    void shutdown() { /* on context close */ }
+```
+
+## The order
+
+- construct → inject → `@PostConstruct` → usable → shutdown → `@PreDestroy`

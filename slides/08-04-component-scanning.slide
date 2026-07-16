@@ -1,0 +1,26 @@
+# Component scanning — `@Component`
+
+## The scanner registers annotated classes
+
+- Put `@Component` on a class → the classpath scanner picks it up as a bean
+
+## The four stereotypes (all *are* `@Component`)
+
+| Annotation | Role |
+|---|---|
+| `@Component` | generic bean |
+| `@Service` | business logic |
+| `@Repository` | data access (+ exception translation) |
+| `@Controller` | web layer |
+
+```java
+@Service
+public class PaymentService {
+    public PaymentService(PaymentRepository repo) { ... }  // auto-wired
+}
+```
+
+## Two details
+
+- Single constructor → wired automatically (no `@Autowired`)
+- Bean name = class name, lower-first (`paymentService`) — but wire by **type**

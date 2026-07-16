@@ -1,0 +1,20 @@
+# Inversion of Control and Dependency Injection
+
+## Two names, one idea
+
+- **IoC** — your code no longer controls *when/how* dependencies are created; the framework does
+- **DI** — the technique: the framework **supplies** dependencies (usually via the constructor)
+
+```java
+class A { B b = new B(config); }   // A owns creating B
+class A { A(B b) { this.b = b; } } // A just declares "I need a B"
+```
+
+## The real benefit: swappability
+
+- Fake `B` for tests · a different `B` for staging · the real `B` in prod — **without touching `A`**
+- `A` declares the need; the container satisfies it
+
+## The vocabulary you'll hear
+
+- **bean** = a Spring-managed object · **wire** = inject a dependency · **container** = does it

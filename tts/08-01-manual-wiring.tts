@@ -1,0 +1,7 @@
+The problem: manual wiring.
+
+Let me start with the problem that Spring exists to solve. Imagine even a small service. A payment controller needs a payment service. That service, in turn, needs a payment repository and a fraud check. The fraud check itself needs an H-T-T-P client and a rule engine. Without any help, you have to hand-build this entire object graph yourself: construct the H-T-T-P client, construct the rule engine, pass both into the fraud check, construct the repository, pass the repository and fraud check into the service, and finally pass the service into the controller.
+
+Now multiply that by every component in a real application. That wiring quickly becomes the largest, ugliest, and most fragile file in the whole project. Every time you add a single constructor parameter, every place that builds that object has to change. And because each component knows exactly how to build its own dependencies, down to the concrete classes and concrete configuration, swapping one out for a test double, or for a different environment, means rewriting all of those constructor calls by hand.
+
+Spring takes over that wiring entirely. You describe each component just once, you declare what each one needs, and Spring builds the whole graph for you. This is the module where your Java foundation really pays off, because every single feature you meet here is built on the annotation-plus-reflection mechanics we studied in module seven.

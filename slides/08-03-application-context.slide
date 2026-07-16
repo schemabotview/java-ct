@@ -1,0 +1,18 @@
+# The `ApplicationContext`
+
+## The container that holds your beans
+
+- Every Spring app has one — a registry of **beans** (Spring-managed objects)
+- Looks them up by **type or name**, manages **lifecycle**, broadcasts **events**
+
+```text
+paymentController -> PaymentController
+paymentService    -> PaymentService
+paymentRepository -> PaymentRepository
+```
+
+## You don't construct beans
+
+- Tell Spring *which classes are beans* + *what each needs*
+- It resolves the graph, instantiates in **dependency order**, injects each one
+- Created once at startup; lives for the whole app

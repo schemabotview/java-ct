@@ -1,0 +1,7 @@
+At-configuration and at-bean, for explicit registration.
+
+Component scanning is wonderful for your own classes, but it has one obvious limitation: you cannot put at-component on a class you do not own. Think of a client class that comes from a third-party library or S-D-K. You did not write it, so you cannot annotate it. For those cases, and for any bean that needs real construction logic, you write an at-configuration class containing at-bean methods.
+
+Inside an at-configuration class, each method annotated at-bean returns an object, and Spring registers whatever it returns as a bean. So an H-T-T-P config class might have one at-bean method that builds and returns a configured H-T-T-P client, and another that returns a rule engine. Notice something powerful in the first one: the method takes the environment as a parameter. That is dependency injection into the factory method itself.
+
+Here is how it all wires together. An at-configuration class is itself an at-component, so the scanner picks it up automatically. Each at-bean method returns the bean instance, and, crucially, that method's parameters become dependencies that Spring resolves and passes in for you. This is the explicit form of dependency injection: the method body is your own factory code. So reach for at-bean whenever you need a third-party type, or whenever constructing a bean takes more than just calling a constructor.

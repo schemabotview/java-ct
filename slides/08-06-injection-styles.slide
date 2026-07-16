@@ -1,0 +1,22 @@
+# Three injection styles — and which to use
+
+## Two of the three are mistakes
+
+```java
+public GoodService(PaymentRepository repo) { ... }      // 1. constructor — PREFERRED
+
+@Autowired public void setRepo(PaymentRepository r) {}  // 2. setter — avoid
+
+@Autowired private PaymentRepository repo;              // 3. field — bad
+```
+
+## Why constructor wins
+
+- Field can be `final` (**immutable**)
+- **Testable** without Spring — just call `new`
+- Compiler **won't let you forget** a dependency
+- A bloated constructor **signals** too many dependencies
+
+## The rule
+
+- Constructor everywhere · setter only for genuinely **optional** deps · never field

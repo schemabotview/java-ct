@@ -1,0 +1,7 @@
+Inversion of control, and dependency injection.
+
+This pattern goes by two names, and people use them almost interchangeably, so let me separate them cleanly. Inversion of control, or I-o-C, is the broad principle: your code no longer controls when and how its dependencies get created. That control is inverted, handed over to the framework. Dependency injection, or D-I, is the specific technique that achieves it: the framework supplies a component's dependencies from the outside, and usually it does that through the component's constructor.
+
+Concretely, picture a class A that needs a B. Without dependency injection, class A itself writes new B, so A owns the decision of exactly which B to create and how to configure it. With dependency injection, class A simply takes a B in its constructor and stores it. A no longer decides which B; it just declares that it needs one, and Spring decides which B to inject.
+
+The benefit here is not shorter code. It is swappability. Because A never names a concrete B, you can wire in a fake B for your tests, a different B for staging, and the real B in production, all without touching A at all. A declares the need, and the container satisfies it. Keep three words straight as we go: a bean is a Spring-managed object, to wire is to inject a dependency, and the container is the thing doing the wiring.

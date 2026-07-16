@@ -1,0 +1,25 @@
+# Profiles & externalised configuration
+
+## `@Profile` — different beans per environment
+
+```java
+@Bean @Profile("prod")   DataSource prodDb()     { ... }
+@Bean @Profile("!prod")  DataSource embeddedDb() { ... }
+```
+
+- Activate with `spring.profiles.active` (properties · env var · `-D` flag)
+
+## Config, three ways
+
+- `@Value("${http.timeout:30}")` — a single property (+ default)
+- `Environment.getProperty(...)` — programmatic lookup
+- **`@ConfigurationProperties`** — bind a whole prefix to a typed record
+
+```java
+@ConfigurationProperties(prefix = "http")
+record HttpProps(String endpoint, int timeout, int retries) {}
+```
+
+## The default
+
+- `@ConfigurationProperties` — grouped, typed, validated at startup. `@Value` for one-offs

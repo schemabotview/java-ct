@@ -1,0 +1,22 @@
+# The problem: manual wiring
+
+## Hand-building the object graph
+
+```java
+var http    = new HttpClient(cfg.timeout(), cfg.retries());
+var fraud   = new FraudCheck(http, new RuleEngine(path));
+var repo    = new PaymentRepository(dataSource);
+var service = new PaymentService(repo, fraud);
+var ctrl    = new PaymentController(service);
+```
+
+## Why it hurts
+
+- Add a constructor param → **every caller** changes
+- Each component hard-codes its dependencies → no swapping for tests/envs
+- The wiring becomes the biggest, most fragile file in the project
+
+## Spring's move
+
+- Describe each component once, declare what it **needs** — Spring builds the graph
+- Every feature here rests on module 07's **annotation + reflection** mechanics
