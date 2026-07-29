@@ -1,0 +1,13 @@
+What is Java, and why in twenty twenty-six?
+
+Java is a statically typed, object-oriented language that runs on the java virtual machine, the JVM. You write your source once, compile it down to a compact intermediate form called bytecode, and that same bytecode runs unchanged on any machine that has a JVM. That promise — write once, run anywhere — is what made Java the default language of the enterprise, and thirty years on, it is still one of the most widely deployed languages on earth.
+
+Now, Java has a reputation in some corners for being verbose and old-fashioned. That reputation is out of date. Ever since Java eight brought in lambdas and streams, the language has been on a six-month release cadence, and modern Java looks and feels very different from the Java of the two-thousands.
+
+Think about var, for local type inference, which cuts the ceremony while keeping the same static safety. Think about records, which give you a one-line immutable data class instead of fifty lines of boilerplate. Sealed types and pattern matching let you model a closed family of shapes and branch on them cleanly. Text blocks give you multi-line strings without all the escaping. And virtual threads, in Java twenty-one, give you millions of cheap threads, so ordinary blocking code scales again. We target Java twenty-one, the current long term support release — the version teams actually run in production.
+
+So why learn it now? Because it runs the world's backends. Banks, airlines, retailers, and a huge share of large-scale systems are built on the JVM, and those jobs are not going away. Because the JVM itself is a superpower — decades of engineering went into its just-in-time compiler and its garbage collector, so well-written Java runs fast, close to native, without you managing memory by hand. And because the ecosystem is enormous, with mature libraries, build tools, and test frameworks for essentially every problem.
+
+One more thing about this course: it is the core language and the runtime it lives on. The type system, objects, modern data modeling, collections, generics, functional style and streams, exceptions and input-output, concurrency, and finally the JVM, build tools, and testing. It is deliberately not a Spring course. We're building the foundation those frameworks stand on, so that when you do meet them, nothing underneath is a mystery.
+
+Picture the two maps we'll keep returning to. The runtime — your source flowing down through the compiler and the class loader into the JVM's memory and execution engine. And the anatomy of a program — how any piece of Java models data, initializes it, transforms it, and returns a result. Every module zooms into one region of those two pictures.

@@ -1,0 +1,25 @@
+# What is Java, and why in 2026?
+
+## Write once, run anywhere
+
+- **Statically typed, object-oriented**, running on the **JVM**
+- Source → **bytecode** → runs unchanged on any machine with a JVM
+- 30 years on, still one of the most deployed languages on earth
+
+## Not the Java you remember
+
+Since Java 8, a **six-month release cadence** — the modern language is lean:
+
+- **`var`** · **records** · **sealed types** · **pattern matching**
+- **text blocks** · **virtual threads** (Java 21)
+- We target **Java 21**, the current **LTS**
+
+## Why now
+
+- Runs the world's **backends** — the jobs are real
+- The **JVM**: JIT + garbage collector → fast, no manual memory
+- Enormous **ecosystem**; skills transfer to Kotlin, C#, Scala
+
+## This course
+
+**Core language + runtime** — *not* Spring. The foundation frameworks stand on.
