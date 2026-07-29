@@ -1,0 +1,13 @@
+Object basics — equals, hash code, and to string.
+
+Every class in Java secretly extends one root class, called Object. That means every object you ever create already has a handful of methods built in. And three of them — equals, hash code, and to string — matter so much that getting them right, or letting the tools generate them, is part of writing any real class.
+
+The trouble is, the defaults you inherit are rarely what you want, because they're identity-based. The default equals compares references, so two objects are only equal if they're literally the same object. The default hash code returns a number tied to that identity. And the default to string returns something useless, like the class name followed by an at-sign and a memory address. For a value — a point, a money amount, a name — that's just wrong. Two points at one, two should be considered equal, even if they're separate objects. So you override these methods to be based on the fields instead.
+
+Take equals first. A good equals answers the question "do these represent the same value?", by comparing the fields that define identity. So two points, both created at one and two, are not the same object, so double equals gives false. But once you've overridden equals, p-one dot equals p-two gives true, because they hold the same value. This is the real payoff of that double-equals versus dot-equals rule from module one. Double equals is identity; dot equals is value. Override equals, and value comparison finally works.
+
+Now here's the rule people trip over. If you override equals, you must override hash code as well. Hash-based collections, like hash map and hash set, first bucket an object by its hash code, and only then confirm with equals. The contract is this: equal objects must return equal hash codes. Break it, and a hash set will happily store two supposedly equal points as separate entries, or fail to find a key you literally just put in. The rule of thumb that keeps you safe: use the same fields in both equals and hash code, and you'll never violate the contract.
+
+To string, meanwhile, is what prints when you log or concatenate an object. A good one shows the meaningful fields — something like Point, x equals one, y equals two — which turns debugging from guesswork into simply reading.
+
+And here's the practical punchline: you almost never write these three by hand, because they're mechanical and easy to get subtly wrong. Your editor generates all three from the fields you pick. And the modern answer is that a record generates them for you, automatically, from its components. That's a major reason records exist, and it's exactly where module three picks up. So for a plain data class, know the contract; but for most data, let a record honour it for you.

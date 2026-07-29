@@ -1,0 +1,29 @@
+# Polymorphism and dynamic dispatch
+
+## Declared type vs real type
+
+```java
+BankAccount acc = new SavingsAccount(...);
+acc.deposit(100);   // runs SavingsAccount's version
+```
+
+- **Declared type** — what you're allowed to call (compiler checks)
+- **Real type** — what actually runs (JVM chooses) = *dynamic dispatch*
+
+## Code against the abstraction
+
+```java
+for (BankAccount a : accounts)
+    a.applyMonthly();   // each subtype, its own way
+```
+
+Add a new account type + override → this loop handles it **unchanged**. No `if type… else if type…` ladder.
+
+## Going the other way: `instanceof`
+
+```java
+if (acc instanceof SavingsAccount s)
+    s.addInterest();   // pattern match — binds & narrows
+```
+
+Piles of `instanceof` = a smell → prefer an **overridden method**.

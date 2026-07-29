@@ -1,0 +1,29 @@
+# Object basics — equals, hashCode, toString
+
+## Every class extends `Object`
+
+You inherit three methods worth overriding. The defaults are **identity-based** — rarely what a *value* wants.
+
+## `equals` — logical equality
+
+```java
+Point p1 = new Point(1, 2), p2 = new Point(1, 2);
+p1 == p2;        // false — different objects
+p1.equals(p2);   // true  — same value (once overridden)
+```
+
+`==` is identity; **`.equals()` is value**.
+
+## `hashCode` — the binding contract
+
+- Override `equals` → **you must override `hashCode`** too
+- **Equal objects must have equal hash codes** — or `HashMap`/`HashSet` break
+- Rule of thumb: use the **same fields** in both
+
+## `toString` — a readable label
+
+```java
+"Point[x=" + x + ", y=" + y + "]"   // Point[x=1, y=2]
+```
+
+**Don't hand-write them:** the IDE generates all three — or a **`record`** does it for you.

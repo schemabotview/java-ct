@@ -1,0 +1,31 @@
+# Encapsulation and visibility
+
+## Four access levels
+
+- **`public`** — everywhere; the published surface
+- **`protected`** — same package + subclasses
+- *package-private* (no modifier) — same package only
+- **`private`** — this class only
+
+**The habit:** fields `private`, behaviour `public`.
+
+## Hide the field, guard the change
+
+```java
+public class BankAccount {
+    private long balance;                   // hidden
+    public void deposit(long amount) {
+        if (amount <= 0) throw new IllegalArgumentException();
+        balance += amount;                  // only valid changes
+    }
+    public long balance() { return balance; }
+}
+```
+
+`balance` can never go negative from outside — the object **owns** its state.
+
+## Accessors with intent
+
+- Getter reads, setter writes — expose only what's needed
+- Prefer **`deposit(amount)`** over a blind `setBalance(...)`
+- Payoff: change the internals freely; callers only see the public API

@@ -1,0 +1,31 @@
+# Constructors, `this`, and overloading
+
+## Start life in a valid state
+
+Class name, **no return type**; runs once at `new`:
+
+```java
+public BankAccount(String owner, long opening) {
+    this.owner = owner;
+    this.balance = opening;
+}
+var a = new BankAccount("Ada", 100);
+```
+
+Require what's needed → **no half-built object**. With `private final` fields, valid & immutable from birth.
+
+## The default constructor
+
+- No constructor written → Java gives a free no-arg one
+- Write **any** constructor → the free one disappears
+
+## Delegate & overload
+
+```java
+public BankAccount(String owner) {
+    this(owner, 0);   // this(...) — first statement
+}
+```
+
+- **Overload** — same name, different parameters; compiler picks
+- Offer only the constructors that are **genuinely valid** ways to build it

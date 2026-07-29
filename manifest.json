@@ -78,7 +78,83 @@
         }
       ]
     },
-    { "id": "02-object-oriented-java", "title": "Object-Oriented Java", "sections": [] },
+    {
+      "id": "02-object-oriented-java",
+      "title": "Object-Oriented Java",
+      "sections": [
+        {
+          "heading": "Classes — the unit of code",
+          "md": "md/02-01-classes-the-unit-of-code.md",
+          "slide": "slides/02-01-classes-the-unit-of-code.slide",
+          "scene": "java-anatomy",
+          "spine": true,
+          "role": "hook"
+        },
+        {
+          "heading": "Encapsulation and visibility",
+          "md": "md/02-02-encapsulation-and-visibility.md",
+          "slide": "slides/02-02-encapsulation-and-visibility.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Constructors, this, and overloading",
+          "md": "md/02-03-constructors-this-and-overloading.md",
+          "slide": "slides/02-03-constructors-this-and-overloading.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Object basics — equals, hashCode, toString",
+          "md": "md/02-04-object-basics-equals-hashcode-tostring.md",
+          "slide": "slides/02-04-object-basics-equals-hashcode-tostring.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Inheritance and the class hierarchy",
+          "md": "md/02-05-inheritance-and-the-class-hierarchy.md",
+          "slide": "slides/02-05-inheritance-and-the-class-hierarchy.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Polymorphism and dynamic dispatch",
+          "md": "md/02-06-polymorphism-and-dynamic-dispatch.md",
+          "slide": "slides/02-06-polymorphism-and-dynamic-dispatch.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Abstract classes",
+          "md": "md/02-07-abstract-classes.md",
+          "slide": "slides/02-07-abstract-classes.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Interfaces — with default and static methods",
+          "md": "md/02-08-interfaces-default-and-static-methods.md",
+          "slide": "slides/02-08-interfaces-default-and-static-methods.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Nested, inner and anonymous classes",
+          "md": "md/02-09-nested-inner-and-anonymous-classes.md",
+          "slide": "slides/02-09-nested-inner-and-anonymous-classes.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Composition over inheritance",
+          "md": "md/02-10-composition-over-inheritance.md",
+          "slide": "slides/02-10-composition-over-inheritance.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        }
+      ]
+    },
     { "id": "03-modern-types", "title": "Modern Types & Data Modeling", "sections": [] },
     { "id": "04-collections", "title": "Collections", "sections": [] },
     { "id": "05-generics", "title": "Generics", "sections": [] },

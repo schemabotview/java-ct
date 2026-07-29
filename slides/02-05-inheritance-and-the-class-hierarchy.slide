@@ -1,0 +1,31 @@
+# Inheritance and the class hierarchy
+
+## `extends` — an "is-a" relationship
+
+```java
+public class SavingsAccount extends BankAccount {
+    private double rate;
+    public void addInterest() { balance += (long)(balance * rate); }
+}
+```
+
+Gains the parent's fields & methods. Java = **single inheritance** (one superclass).
+
+## `super` — reach the parent
+
+```java
+public SavingsAccount(long opening, double rate) {
+    super(opening);      // parent constructor, first statement
+    this.rate = rate;
+}
+```
+
+- `super(...)` — parent constructor · `super.method()` — parent's version
+
+## Override with `@Override`
+
+- Same signature, new body; `@Override` makes the compiler check it
+- **`final`** class → can't be extended; `final` method → can't be overridden
+- Every chain of `extends` ends at **`Object`**
+
+**Use deliberately** — it's tight coupling; often prefer **composition** (§10).

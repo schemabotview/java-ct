@@ -1,0 +1,34 @@
+# Classes — the unit of code
+
+## A blueprint of state + behaviour
+
+A class bundles what a thing **knows** (fields) with what it **does** (methods):
+
+```java
+public class BankAccount {
+    long balance;                 // state
+    void deposit(long amount) {   // behaviour
+        balance = balance + amount;
+    }
+}
+```
+
+## Class vs object — cutter vs cookies
+
+```java
+BankAccount a = new BankAccount();
+BankAccount b = new BankAccount();
+a.deposit(100);   // a.balance = 100, b.balance = 0
+```
+
+One class, many objects — each with its **own** state.
+
+## `this` — the object itself
+
+```java
+void setBalance(long balance) {
+    this.balance = balance;   // field ← parameter
+}
+```
+
+**Model the domain:** name concepts (`Order`, `Customer`), give each small responsibilities.

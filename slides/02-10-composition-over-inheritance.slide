@@ -1,0 +1,33 @@
+# Composition over inheritance
+
+## Two relationships
+
+- **Inheritance = "is-a"** — `SavingsAccount extends BankAccount`
+- **Composition = "has-a"** — hold a collaborator as a field, delegate
+
+```java
+public class OrderService {
+    private final Repository repo;                 // has-a
+    public void place(Order o) { repo.save(o); }   // delegate
+}
+```
+
+## Why inheritance disappoints for reuse
+
+- **Rigid** — inherit everything, locked to one superclass
+- **Fragile base class** — an upstream change silently breaks you
+- **Leaks the whole surface** — `extends ArrayList` exposes `add`, `remove`…
+
+## Hold, don't extend
+
+```java
+public class Stack<T> {
+    private final List<T> items = new ArrayList<>();   // hidden
+    public void push(T x) { items.add(x); }
+    public T pop() { return items.remove(items.size() - 1); }
+}
+```
+
+Exposes *exactly* push/pop — swap the list later, no caller notices.
+
+**Guideline:** `is-a` → inherit (shallow); everything else → **compose + program to interfaces**.

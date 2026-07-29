@@ -1,0 +1,34 @@
+# Abstract classes
+
+## A class you can't instantiate
+
+```java
+public abstract class Shape {
+    public abstract double area();     // no body — subclasses supply it
+    public String describe() {         // concrete — shared
+        return "A shape with area " + area();
+    }
+}
+new Shape();   // compile error
+```
+
+Exists only to be **extended**. Fill in every abstract method → the subclass becomes concrete.
+
+## Template methods
+
+The base lays out the skeleton; subclasses fill the holes:
+
+```java
+public final void print() {
+    header(); body(); footer();   // body() abstract; header/footer shared
+}
+```
+
+Real reuse of **behaviour**, not just fields.
+
+## vs interface
+
+- **Abstract class** — shared **state + implementation**, an "is-a" hierarchy; extend **one**
+- **Interface** — a **capability** unrelated types implement; mix in **several**
+
+*Partial thing → abstract class · capability → interface.*

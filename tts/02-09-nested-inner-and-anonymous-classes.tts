@@ -1,0 +1,13 @@
+Nested, inner, and anonymous classes.
+
+Not every class deserves its own file. When a class exists only to serve one other class, Java lets you declare it inside that class. These nested types keep tightly-related code together and control who can see it. And one variety, the anonymous class, is a stepping stone straight to the lambdas of module six.
+
+Start with the static nested class. This is simply a class defined inside another one, purely for grouping and scoping. It does not hold a reference to an outer object — the static keyword says "I don't need an enclosing instance." You use it for a helper type that logically belongs to its host. For example, inside a hash map, there's a static nested Node class representing one entry — only the hash map needs it. It's namespaced as HashMap dot Node, and hidden from the wider world. And here's the guidance: most nested classes you write should be static. Reach for the non-static kind only when you actually need the outer object.
+
+Because if you drop the static, you get an inner class. Now each instance is tied to an instance of the enclosing class, and can read its fields directly. That link is occasionally just what you want — an iterator walking its collection's internals, say. But it also means every inner-class object silently keeps its outer object alive, which is a subtle source of memory leaks. So use inner classes sparingly, and deliberately.
+
+You can even declare a class inside a method, right where it's needed. The most useful form is the anonymous class — a class with no name, defined and instantiated in a single expression, almost always to implement an interface on the spot. So to add a click listener to a button, you write new click-listener, then open a brace and override its on-click method inline. There's no separate class declaration; you've created a one-off implementation right there. Anonymous classes can capture variables from the enclosing method, but only ones that are effectively final — meaning never reassigned. That's a rule you'll meet again with lambdas.
+
+Now look at that anonymous class once more. It's a whole new-click-listener wrapper, wrapped around a single method, with one line of real work inside. That ceremony is exactly what lambdas remove. When the interface has just one method, Java eight and later let you write only the body. So instead of the whole anonymous class, you write empty parentheses, an arrow, and the one line that prints "clicked". Same capture rules, a fraction of the syntax.
+
+So the practical guidance is this. Use a static nested class to group a helper. Use an inner class rarely, and on purpose. And know that the anonymous class is the old shape of the lambda — which module six turns into your everyday tool.

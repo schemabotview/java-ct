@@ -1,0 +1,35 @@
+# Nested, inner & anonymous classes
+
+## `static` nested — grouping & scoping
+
+```java
+public class HashMap<K, V> {
+    static class Node<K, V> { ... }   // HashMap.Node — hidden helper
+}
+```
+
+No link to an outer object. **Most nested classes should be `static`.**
+
+## Inner (non-static) — bound to an instance
+
+Reads the outer object's fields directly — but keeps it **alive** (leak risk). Use sparingly, on purpose.
+
+## Anonymous — defined where used
+
+```java
+button.addListener(new ClickListener() {
+    @Override public void onClick() { System.out.println("clicked"); }
+});
+```
+
+One-off implementation, inline. Captures only **effectively final** variables.
+
+## → lambdas
+
+Single-method interface? Drop the ceremony:
+
+```java
+button.addListener(() -> System.out.println("clicked"));
+```
+
+The anonymous class is the **old shape of the lambda** (module 06).

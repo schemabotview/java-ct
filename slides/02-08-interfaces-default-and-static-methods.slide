@@ -1,0 +1,29 @@
+# Interfaces — default & static methods
+
+## A pure contract to `implement`
+
+```java
+public interface Shape { double area(); double perimeter(); }
+
+public class Circle implements Shape {
+    public double area()      { return Math.PI * r * r; }
+    public double perimeter() { return 2 * Math.PI * r; }
+}
+```
+
+Says "you can **do** this" (capability), not "you **are** this". No shared base forced on implementers.
+
+## Implement many
+
+```java
+class Circle implements Shape, Comparable<Circle>, Serializable { }
+```
+
+One superclass, but **many interfaces** — mix in orthogonal capabilities.
+
+## `default` & `static`
+
+- **`default`** — a real body implementers inherit → add methods without breaking them (how `List` gained `stream()`)
+- **`static`** — helpers on the type: `Shape.unitCircle()`
+
+**Habit:** program to interfaces — accept a `List`, not an `ArrayList`.
