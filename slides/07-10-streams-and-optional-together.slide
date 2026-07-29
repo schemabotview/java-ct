@@ -1,0 +1,35 @@
+# Streams and `Optional` together
+
+Not neighbours by accident — the **same idea at two scales.** A stream is a pipeline over *many*; an `Optional` over *zero or one*.
+
+## They speak the same language
+
+```java
+stream.map(f).filter(p)      // over many
+optional.map(f).filter(p)    // over zero-or-one
+```
+
+## The natural handoff: search that might find nothing
+
+```java
+String top = employees.stream()
+    .filter(e -> e.dept() == ENGINEERING)
+    .max(comparingInt(Employee::salary))   // Optional<Employee>
+    .map(Employee::name)                   // Optional<String>
+    .orElse("no engineers");               // leave the box
+```
+
+Search → extract → default, as one sentence — empty handled by construction.
+
+## The other direction: flatten Optionals back to a stream
+
+```java
+List<Email> emails = users.stream()
+    .map(User::email)            // Stream<Optional<Email>> — awkward
+    .flatMap(Optional::stream)   // empty → 0, present → 1
+    .toList();                   // only the present ones
+```
+
+## The module in one line
+
+Lambda → value · stream → pipeline · lazy → fuse & short-circuit · collect / reduce / parallel · **`Optional` = the zero-or-one case, absence as a *type*.** Describe the transform; get a value — empty honest at every step.

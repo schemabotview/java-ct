@@ -532,6 +532,69 @@
           "scene": "java-anatomy",
           "spine": true,
           "role": "hook"
+        },
+        {
+          "heading": "Creating streams",
+          "md": "md/07-02-creating-streams.md",
+          "slide": "slides/07-02-creating-streams.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Intermediate operations",
+          "md": "md/07-03-intermediate-operations.md",
+          "slide": "slides/07-03-intermediate-operations.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "map, filter and flatMap",
+          "md": "md/07-04-map-filter-and-flatmap.md",
+          "slide": "slides/07-04-map-filter-and-flatmap.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Terminal operations",
+          "md": "md/07-05-terminal-operations.md",
+          "slide": "slides/07-05-terminal-operations.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Reduction and reduce",
+          "md": "md/07-06-reduction-and-reduce.md",
+          "slide": "slides/07-06-reduction-and-reduce.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Collectors — grouping and joining",
+          "md": "md/07-07-collectors-grouping-and-joining.md",
+          "slide": "slides/07-07-collectors-grouping-and-joining.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Parallel streams",
+          "md": "md/07-08-parallel-streams.md",
+          "slide": "slides/07-08-parallel-streams.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Optional<T> — no more nulls",
+          "md": "md/07-09-optional-no-more-nulls.md",
+          "slide": "slides/07-09-optional-no-more-nulls.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Streams and Optional together",
+          "md": "md/07-10-streams-and-optional-together.md",
+          "slide": "slides/07-10-streams-and-optional-together.slide",
+          "scene": "java-anatomy",
+          "spine": true
         }
       ]
     },
