@@ -1,0 +1,32 @@
+# Intermediate operations
+
+The stages between source and terminal. Two defining traits:
+
+## 1 · Returns a new stream
+
+Stream in, stream out — which is *why* you can chain with dots.
+
+## 2 · Lazy
+
+Writing one does **no work** — it records intent. Nothing runs until a terminal pulls.
+
+```java
+Stream<String> s = names.stream()
+    .filter(n -> n.length() > 3)   // records
+    .map(String::toUpperCase);     // records
+// s is a recipe, not a result
+```
+
+## The toolkit (beyond `map` / `filter`)
+
+- **`distinct()`** — drop duplicates
+- **`sorted()`** / `sorted(cmp)` — must see all elements first
+- **`limit(n)`** — take first n, then stop (tames infinite streams)
+- **`skip(n)`** — discard first n · `limit` + `skip` = paging
+- **`peek(action)`** — inspect in passing, **debug only**
+
+## One element at a time
+
+The pipeline runs **element by element**, not stage by stage — each element travels `filter` → `map` → terminal before the next is pulled.
+
+Two free gifts: **short-circuit** (`limit`, `findFirst` stop early) and **fusion** (no intermediate lists).

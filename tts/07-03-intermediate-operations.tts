@@ -1,0 +1,17 @@
+Intermediate operations.
+
+The middle of every pipeline is a chain of intermediate operations — the stages that transform the stream on its way to the terminal. They share two defining traits, and understanding those traits explains everything the operations do.
+
+Here's the first rule: an intermediate operation returns a new stream. Every one of them takes a stream and gives back a stream — which is exactly why you can chain them with dots. Filter returns a stream, so you can call map on it, which returns a stream, so you can call distinct on it. The chain is just stream, to stream, to stream.
+
+And here's the second rule: it is lazy. Writing an intermediate op does no work. It records what should happen, and returns immediately. Nothing flows until a terminal operation is attached and starts pulling. A pipeline of ten intermediate operations with no terminal executes exactly zero of them. So if you write names dot stream, then filter to keep the long names, then map to uppercase, and stop there — nothing has happened yet. What you're holding is a recipe, not a result.
+
+Now the toolkit. Map and filter get their own section next, so let's cover the rest. Distinct drops duplicates, using equals — so one, two, two, three becomes one, two, three. Sorted sorts in natural order, or you give it a comparator for a custom rule; note that sorted has to see all the elements before it can emit any. Limit takes at most the first n and stops — that's the guard rail that tames an infinite stream. Skip discards the first n and keeps the rest, so limit and skip together give you paging. And peek lets you look at each element as it passes without changing it — but that's for debugging only, never for real side effects.
+
+Picture them together: take the numbers one through a hundred, filter to the evens, skip the first five evens, limit to the next three, and print. You get twelve, fourteen, sixteen.
+
+Now, the single most important thing to internalize. A stream does not run stage by stage over the whole collection. It runs element by element through the whole pipeline. The terminal asks for one element; that element is pulled through filter, then map, then delivered — and only then is the next element pulled.
+
+You can actually watch this. Put a peek on each stage, printing what filter sees and what map sees, over the values a, b, and c, where the filter drops b. The output interleaves: filter sees a, map sees a, got A — and then filter sees b, with no "got" for it, because b was filtered out. That interleaving proves each element travels the full pipeline before the next one even starts.
+
+And this interleaving is a gift, not a curiosity, because two optimizations come for free. The first is short-circuiting: limit, and terminals like find-first or any-match, can stop the whole pipeline the moment they have enough — the elements after that are never even generated. The second is fusion: there are no intermediate collections. Filter doesn't build a filtered list for map to consume; it hands each surviving element straight on. On an infinite stream, this is the difference between a program that finishes and one that never does.

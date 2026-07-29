@@ -1,0 +1,38 @@
+# Terminal operations
+
+The op that **runs** the recipe — produces a result that is *not* a stream. Exactly one ends every pipeline.
+
+## Eager, and one-shot
+
+Calling it executes the whole pipeline, then **consumes** the stream:
+
+```java
+long n = s.count();     // runs it
+s.forEach(...);         // IllegalStateException — s is spent
+```
+
+## Reduce to one value
+
+```java
+stream.count();          // long
+intStream.sum();         // 5050 (primitive streams)
+stream.min(cmp);         // Optional<T> — might be empty
+stream.max(cmp);
+```
+
+## Search — short-circuits
+
+```java
+stream.anyMatch(p);      // true the instant one passes
+stream.allMatch(p);
+stream.findFirst();      // Optional<T>, then stop
+```
+
+## Collect / side-effect
+
+```java
+List<String> list = stream.toList();      // Java 16+
+stream.forEach(System.out::println);      // void — real side effects only
+```
+
+**Why `Optional`, not `null`?** An empty stream has no first / min / max — the type makes you handle it. → §09.

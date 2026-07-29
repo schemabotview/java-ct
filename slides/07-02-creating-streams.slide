@@ -1,0 +1,39 @@
+# Creating streams
+
+Every pipeline begins with a **source**. Three families:
+
+## From data you have
+
+```java
+names.stream()                     // any Collection
+Arrays.stream(intArray)            // an array
+Stream.of("a", "b", "c")           // loose values
+Stream.empty()                     // neutral, not null
+```
+
+## From a generating rule
+
+```java
+Stream.iterate(1, n -> n * 2)      // 1, 2, 4, 8, ...
+Stream.generate(Math::random)      // endless
+```
+
+Both are **infinite** — you *must* bound them:
+
+```java
+Stream.iterate(1, n -> n * 2).limit(10)...   // guard rail
+```
+
+## From primitives — `IntStream` · `LongStream` · `DoubleStream`
+
+`Stream<Integer>` boxes every element. Primitive streams carry the `int` directly and add numeric terminals:
+
+```java
+IntStream.range(0, 5)        // 0,1,2,3,4  (end-exclusive)
+IntStream.rangeClosed(1, 5)  // 1,2,3,4,5  (inclusive)
+IntStream.range(1, 101).sum();   // 5050, no boxing
+```
+
+Cross over: `mapToInt(...)` drops in · `boxed()` lifts back.
+
+**Whatever the source, the pipeline after it is identical.**

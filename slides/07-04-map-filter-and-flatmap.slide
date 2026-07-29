@@ -1,0 +1,33 @@
+# `map`, `filter` and `flatMap`
+
+The three operations that do most of the work.
+
+## `filter` — which elements continue
+
+Takes a **`Predicate`** (element → `boolean`). Keeps the type, count only shrinks.
+
+```java
+nums.filter(n -> n % 2 == 0)   // 2, 4, 6 — still Integers, fewer
+```
+
+## `map` — what each becomes
+
+Takes a **`Function`** (element → new value). Count unchanged, **type can change**.
+
+```java
+names.map(String::length)   // "Ada","Grace" → 3, 5  (Stream<Integer>)
+```
+
+*`filter` changes how many; `map` changes what each is.*
+
+## `flatMap` — one element → many, then flatten
+
+`map` a list-producing function and you get a nested **`Stream<List<Item>>`**. `flatMap` maps each element to a **stream**, then concatenates — the nesting disappears:
+
+```java
+orders.stream()
+    .flatMap(o -> o.items().stream())   // Order → Stream<Item>
+    ...                                 // flat Stream<Item>
+```
+
+**Rule of thumb:** one value → `map`; many (list, array, `Optional`) → `flatMap`.

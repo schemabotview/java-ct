@@ -1,0 +1,15 @@
+Creating streams.
+
+Every pipeline begins with a source — the operation that produces the first stream. Before you can filter or map, you need a stream to filter, and where it comes from shapes what it can do. There are three families of source: from data you already have, from a rule that generates values, and from primitives.
+
+Start with the workhorse — a collection you already have. Every collection has a stream method, and this is where most pipelines start. So names dot stream, for a list of names. You can also go from an array, with arrays dot stream. Or from a few loose values, with stream dot of, which takes varargs — even a single value works. And an empty source is stream dot empty, which is useful as a neutral return value instead of null.
+
+The second family is a generating rule. Sometimes the elements don't exist yet — you have a rule for producing them. Two factories build a stream from a function. Stream dot iterate takes a seed and a function, so starting at one and doubling gives you one, two, four, eight, sixteen, and on. Stream dot generate takes a supplier — for instance, math dot random — for an endless supply of random numbers.
+
+Now, here's the catch: both of those are infinite. They never stop on their own. That's fine, because a stream is lazy — nothing is produced until a terminal pulls. But it means you must put a bounding operation in the pipeline, or the terminal will run forever. So after iterate, you add dot limit of ten — that's your guard rail, taking only the first ten before you print them. There's also a three-argument version of iterate that carries its own stop condition — a functional cousin of the classic for loop.
+
+The third family is primitives, and this is where the specialized streams come in. Stream of integer works, but every element is a boxed integer — a heap object wrapping an int. Over millions of numbers, that boxing is real overhead. So Java gives you three primitive streams — int-stream, long-stream, and double-stream — that carry the primitive directly, and add numeric terminals like sum, average, and max that you don't get on an object stream.
+
+So int-stream dot range, from zero to five, gives you zero, one, two, three, four — the end is exclusive. Int-stream dot range-closed, from one to five, includes the five. And int-stream dot range, from one to a hundred and one, dot sum, gives you five thousand fifty — with no boxing, and a real sum method. You move between the worlds when you need to: map-to-int drops from objects into an int-stream, and boxed lifts back to a stream of integer.
+
+Finally, a few sources you'll meet later. Streams reach well beyond collections. Hello dot chars streams a string's characters. Files dot lines streams a file line by line, without loading it all into memory — that's module eight. Random dot ints streams random numbers. And the pattern is always the same: whatever the source, the pipeline that follows is identical. That uniformity is the point. Learn the operations once, and they apply to a list, an array, a range, or a file alike.

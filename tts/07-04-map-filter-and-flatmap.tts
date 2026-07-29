@@ -1,0 +1,15 @@
+Map, filter, and flat-map.
+
+Three intermediate operations do the bulk of the work in almost every pipeline. Filter decides which elements continue, map decides what each one becomes, and flat-map handles the awkward case where each element expands into many. Learn these three shapes, and most of stream programming is just assembling them.
+
+Start with filter. It takes a predicate — a function from an element to a boolean, from module six. Each element that tests true continues; each false is discarded. The type never changes, and the count only ever goes down. So over the numbers one through six, filter where n modulo two equals zero keeps two, four, and six — still integers, just fewer of them. Think of filter as a gate: the same kind of things flow, but some don't make it through.
+
+Now map. It takes a function — from an element to some new value. It applies that function to every element, producing a stream of the results. The count is unchanged, one output per input, but the type can change entirely. So a stream of names, mapped with string-dot-length, gives you three and five — that's a stream of integers now, not a stream of strings. Map the same names with to-uppercase, and you get the same type back, but with transformed values. So here's the contrast: filter changes how many; map changes what each one is. Almost every pipeline is a few of each — filter to the rows you want, then map them to the shape you need.
+
+Here's the problem that flat-map solves. Sometimes the function you'd hand to map produces not one value, but a whole collection per element. Say you map a list of orders to their line-items. Each order gives you a list of items — so map leaves you with a stream of lists of items, when what you actually wanted was a flat stream of items. You're now stuck one level too deep. Every downstream operation would have to reach inside the inner list.
+
+Flat-map fixes this. It takes a function that turns each element into a stream, and then concatenates all those little streams into one flat stream. It's map plus a flattening step, and the nesting just disappears. So instead of mapping each order to its list of items, you flat-map each order to its items as a stream — and you get a flat stream of items, one level deep. A classic example: splitting lines into words. Flat-map each line to a stream of its words, and you get one continuous stream of words across all the lines.
+
+So the rule of thumb writes itself. If the transform gives you one value, reach for map. If it gives you many — a list, an array, an optional, a nested stream — reach for flat-map to keep the pipeline flat.
+
+Let me put the three shapes side by side. Filter takes a predicate, element to boolean; it keeps the type and may reduce the count. Map takes a function, element to one value; it keeps the count and may change the type. And flat-map takes a function, element to a stream of values; it changes both, flattening one level of nesting away.
