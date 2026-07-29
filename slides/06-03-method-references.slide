@@ -1,0 +1,26 @@
+# Method references
+
+## Lambda that just calls one method → `::`
+
+```java
+list.forEach(x -> System.out.println(x));   // lambda
+list.forEach(System.out::println);          // reference — identical
+
+names.stream().map(String::toUpperCase);    // = s -> s.toUpperCase()
+```
+
+## The four kinds
+
+- **Static** — `Integer::parseInt` = `s -> Integer.parseInt(s)`
+- **Bound instance** — `System.out::println` (a specific object)
+- **Unbound instance** — `String::toUpperCase` = `s -> s.toUpperCase()` (receiver = 1st arg)
+- **Constructor** — `ArrayList::new`, `Point::new` = `(x,y) -> new Point(x,y)`
+
+**Gotcha:** `String::toUpperCase` isn't static — the object it runs on is the first argument.
+
+## Prefer which?
+
+- **Reference** — body is *purely* a named call: `.map(String::trim)`
+- **Lambda** — anything more: `.map(s -> s.trim().toLowerCase())`
+
+Choose whichever reads like **what you mean**.

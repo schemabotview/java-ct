@@ -1,0 +1,32 @@
+# Higher-order methods
+
+*Take a function, return a function, or both.*
+
+## Take a function — inject behaviour
+
+```java
+static <T> List<T> filter(List<T> in, Predicate<T> keep) {
+    var out = new ArrayList<T>();
+    for (T x : in) if (keep.test(x)) out.add(x);
+    return out;
+}
+```
+
+The method owns the loop; the caller owns the criterion → the **Strategy pattern**, as a lambda. Also: `retry(3, () -> httpGet(url))`.
+
+## Return a function — configure
+
+```java
+static Function<Integer,Integer> adder(int by) { return n -> n + by; }
+var add10 = adder(10);   // captures `by` — currying / partial application
+```
+
+## Both — decorate
+
+```java
+static <T,R> Function<T,R> logged(Function<T,R> f) {
+    return t -> { R r = f.apply(t); log(t, r); return r; };
+}
+```
+
+Memoize, time, cache — wrap **without touching** the original. → the `Stream` API (module 07).

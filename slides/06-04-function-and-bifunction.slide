@@ -1,0 +1,31 @@
+# `Function` and `BiFunction`
+
+## `java.util.function` — ready-made shapes
+
+Don't declare your own — target the standard interfaces.
+
+## `Function<T, R>` — transform: `apply`
+
+```java
+Function<String, Integer> length = s -> s.length();
+length.apply("hello");   // 5   —  T in, R out
+```
+
+The shape behind `stream.map(...)`.
+
+## `BiFunction<T, U, R>` — two inputs
+
+```java
+BiFunction<Integer, Integer, Integer> add = (a, b) -> a + b;
+```
+
+No `TriFunction` — need three? pass a record.
+
+## Same-type aliases
+
+- **`UnaryOperator<T>`** = `Function<T,T>` — `list.replaceAll(...)`
+- **`BinaryOperator<T>`** = `BiFunction<T,T,T>` — `stream.reduce(...)`
+
+## Primitive variants (no boxing)
+
+`IntFunction` (takes int) · `ToIntFunction` (returns int) · `IntUnaryOperator` (int→int)

@@ -1,0 +1,31 @@
+# Capturing variables — effectively final
+
+## The rule
+
+A lambda (a **closure**) may capture a local **only if it's `final` or effectively final** — never reassigned:
+
+```java
+int factor = 3;                                       // effectively final
+Function<Integer,Integer> scale = n -> n * factor;    // ✅
+
+int count = 0;
+Runnable r = () -> System.out.println(count);
+count = 1;                                            // ❌ no longer effectively final
+```
+
+## Why
+
+A lambda can **outlive** its method → captures the **value**, not the stack slot. Effective-finality means the captured value can't drift.
+
+## Workaround (a smell)
+
+```java
+int[] sum = {0};
+list.forEach(n -> sum[0] += n);   // legal, but fighting the design
+```
+
+Prefer computing a result: `list.stream().mapToInt(n -> n).sum();`
+
+## `this` = the enclosing object
+
+Unlike an anonymous class. **Fields are exempt** from the rule — only *locals* must be effectively final.

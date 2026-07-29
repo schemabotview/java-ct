@@ -386,7 +386,83 @@
         }
       ]
     },
-    { "id": "06-functional-java", "title": "Functional Java & Lambdas", "sections": [] },
+    {
+      "id": "06-functional-java",
+      "title": "Functional Java & Lambdas",
+      "sections": [
+        {
+          "heading": "Functions as values",
+          "md": "md/06-01-functions-as-values.md",
+          "slide": "slides/06-01-functions-as-values.slide",
+          "scene": "java-anatomy",
+          "spine": true,
+          "role": "hook"
+        },
+        {
+          "heading": "Lambdas — the syntax",
+          "md": "md/06-02-lambdas-the-syntax.md",
+          "slide": "slides/06-02-lambdas-the-syntax.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Method references",
+          "md": "md/06-03-method-references.md",
+          "slide": "slides/06-03-method-references.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Function and BiFunction",
+          "md": "md/06-04-function-and-bifunction.md",
+          "slide": "slides/06-04-function-and-bifunction.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Predicate, Consumer, Supplier",
+          "md": "md/06-05-predicate-consumer-supplier.md",
+          "slide": "slides/06-05-predicate-consumer-supplier.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Writing your own functional interface",
+          "md": "md/06-06-writing-your-own-functional-interface.md",
+          "slide": "slides/06-06-writing-your-own-functional-interface.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Capturing variables — effectively final",
+          "md": "md/06-07-capturing-variables-effectively-final.md",
+          "slide": "slides/06-07-capturing-variables-effectively-final.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Composing functions",
+          "md": "md/06-08-composing-functions.md",
+          "slide": "slides/06-08-composing-functions.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Higher-order methods",
+          "md": "md/06-09-higher-order-methods.md",
+          "slide": "slides/06-09-higher-order-methods.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Functional style — when, and when not",
+          "md": "md/06-10-functional-style-when-and-when-not.md",
+          "slide": "slides/06-10-functional-style-when-and-when-not.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        }
+      ]
+    },
     { "id": "07-streams-optional", "title": "Streams & Optional", "sections": [] },
     { "id": "08-errors-files-io", "title": "Exceptions, Files & I/O", "sections": [] },
     { "id": "09-concurrency", "title": "Concurrency & Virtual Threads", "sections": [] },

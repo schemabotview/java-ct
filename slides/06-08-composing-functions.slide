@@ -1,0 +1,32 @@
+# Composing functions
+
+## `Function` — mind the order
+
+```java
+times2.andThen(plus1).apply(10);   // 21 — times2 FIRST, then plus1
+times2.compose(plus1).apply(10);   // 22 — plus1 first, then times2
+```
+
+- **`f.andThen(g)`** — `f`, then `g` (execution order — prefer this)
+- **`f.compose(g)`** — `g` first, then `f` (`f(g(x))`)
+
+## `Predicate` — boolean logic
+
+```java
+Predicate<String> valid = nonBlank.and(shortish);
+list.removeIf(nonBlank.negate());   // and · or · negate
+```
+
+Each returns a **new** predicate; originals untouched.
+
+## `Consumer.andThen` · `Comparator`
+
+```java
+orders.forEach(log.andThen(save));                 // both, same input
+comparing(Person::lastName).thenComparing(Person::firstName);
+```
+
+## Why
+
+Readability · reuse · testability → the model behind **streams**:
+`filter(p).map(f).forEach(c)`

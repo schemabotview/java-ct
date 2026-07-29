@@ -1,0 +1,32 @@
+# Writing your own functional interface
+
+## The recipe — one abstract method + `@FunctionalInterface`
+
+```java
+@FunctionalInterface
+public interface DiscountRule {
+    BigDecimal apply(Order order);      // the single abstract method
+}
+
+DiscountRule loyalty = order -> order.total().multiply(new BigDecimal("0.9"));
+```
+
+The annotation makes the compiler **enforce** the SAM rule.
+
+## `default` / `static` are fine
+
+Only *abstract* methods count — add composition helpers (`Function.andThen` works this way):
+
+```java
+default DiscountRule andCap(BigDecimal max) {
+    return order -> apply(order).min(max);
+}
+```
+
+## When to write one
+
+- **Domain clarity** — `DiscountRule` beats a bare `Function<Order, BigDecimal>`
+- **A shape built-ins lack** — 3 inputs, odd arity
+- **Checked exceptions** — `T get() throws IOException`
+
+**Otherwise: use the standard interface.** Don't re-say `Function`/`Predicate`.

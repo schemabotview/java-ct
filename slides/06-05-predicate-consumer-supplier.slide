@@ -1,0 +1,27 @@
+# `Predicate`, `Consumer`, `Supplier`
+
+## The three "something's missing" shapes
+
+```java
+Predicate<String> isBlank = s -> s.isBlank();   // test → boolean
+Consumer<String>  print   = s -> System.out.println(s);  // side effect → void
+Supplier<Double>  random  = () -> Math.random();  // no input → produce
+```
+
+- **`Predicate.test`** — `filter`, `removeIf`
+- **`Consumer.accept`** — `forEach` (act, don't compute)
+- **`Supplier.get`** — lazy/deferred value: `orElseGet(...)`
+
+## Variants
+
+- **`Bi…`** = two inputs — `map.forEach(BiConsumer<K,V>)`
+- **`Int…`/`Long…`/`Double…`** = primitive, no boxing
+
+## Pick by shape
+
+| Interface | In → Out | Use |
+|---|---|---|
+| `Supplier` | — → `T` | lazy value |
+| `Consumer` | `T` → — | side effect |
+| `Predicate` | `T` → `boolean` | a test |
+| `Function` | `T` → `R` | transform |

@@ -1,0 +1,33 @@
+# Functions as values
+
+## Behaviour becomes a value
+
+The anonymous class from module 02…
+
+```java
+button.addListener(new ClickListener() {
+    @Override public void onClick() { System.out.println("clicked"); }
+});
+```
+
+…is just a lambda — a **function literal**:
+
+```java
+button.addListener(() -> System.out.println("clicked"));
+```
+
+## What makes it work
+
+A lambda's type is a **functional interface** — exactly **one abstract method** (a SAM). The lambda supplies that method's body.
+
+```java
+Comparator<String> byLength = (a, b) -> a.length() - b.length();
+Runnable greet              = () -> System.out.println("hi");
+```
+
+## Why it matters
+
+- **Parameterise behaviour** — `list.sort(byLength)` passes the *rule*
+- **Callbacks** as one-liners; **small pieces compose** → streams (module 07)
+
+**The one idea:** a function is a value — do with behaviour what you do with data.

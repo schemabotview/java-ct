@@ -1,0 +1,34 @@
+# Lambdas — the syntax
+
+## `(parameters) -> body`
+
+```java
+()      -> 42            // no params
+x       -> x * 2         // one — parens optional
+(x, y)  -> x + y         // several — parens required
+```
+
+Types are inferred (rarely written).
+
+## Two body forms
+
+```java
+x -> x * 2               // expression — its value is the result
+x -> { return x * 2; }   // block — explicit return
+```
+
+Prefer the expression form when it fits.
+
+## Target typing
+
+A lambda has **no type of its own** — it takes it from the functional interface in context:
+
+```java
+Runnable r           = () -> System.out.println("hi");   // → run()
+Comparator<String> c = (a, b) -> a.length() - b.length(); // → compare()
+```
+
+Same shape, different target. → can't assign a lambda to bare `var`.
+
+## Everyday
+`forEach(x -> …)` · `removeIf(s -> s.isBlank())` · `sort((a,b) -> …)`
