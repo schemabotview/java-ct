@@ -1,0 +1,30 @@
+# `try-with-resources` — safe cleanup
+
+The correct, modern way to use anything that must be closed. It writes the `finally` for you.
+
+## Declare the resource in parentheses
+
+```java
+try (BufferedReader r = Files.newBufferedReader(path)) {
+    return r.readLine();
+}   // r.close() — guaranteed, on every path
+```
+
+Several close in **reverse order** of opening:
+
+```java
+try (var in = Files.newInputStream(src);
+     var out = Files.newOutputStream(dst)) {
+    in.transferTo(out);
+}   // out first, then in
+```
+
+## What qualifies: `AutoCloseable`
+
+Any type with a `close()` method — streams, `Connection`, `Scanner`, your own. Implement it and try-with-resources works for free.
+
+## The subtle win: suppressed exceptions
+
+If the body throws **and** `close()` throws, a manual `finally` loses the real error. Here the **original propagates**; the `close()` failure is attached as `Suppressed:` — nothing lost.
+
+**Rule: if it's `AutoCloseable`, open it in a try-with-resources.**

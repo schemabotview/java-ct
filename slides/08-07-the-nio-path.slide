@@ -1,0 +1,37 @@
+# The NIO `Path`
+
+Modern file I/O = **`java.nio.file`** (Java 7+). Old `java.io.File` is retired. Two types: **`Path`** (a location) · **`Files`** (operations).
+
+## A `Path` is *just an address*
+
+Building one touches no disk; the file need not exist.
+
+```java
+Path p = Path.of("/home/ada/notes.txt");   // Java 11+
+Path r = Path.of("docs", "report.pdf");     // joined with OS separator
+```
+
+## Combine: `resolve` / `relativize` (inverses)
+
+```java
+Path base = Path.of("/home/ada");
+base.resolve("notes.txt");     // /home/ada/notes.txt  (join child)
+base.relativize(file);         // notes.txt            (route between)
+```
+
+Prefer these to gluing strings with `"/"`.
+
+## Inspect / normalize (still no disk)
+
+```java
+p.getFileName();   // notes.txt
+p.getParent();     // /home/ada
+p.normalize();     // a/./b/../c → a/c   (defuses ../ traversal)
+```
+
+## Why over old `File`
+
+- **Honest errors** — `Files` ops throw `IOException`; old `File` returned `false`
+- Symlinks, attributes, atomic moves — features `File` lacked
+
+**`Path` = address you build offline; `Files` = where it meets the disk.**

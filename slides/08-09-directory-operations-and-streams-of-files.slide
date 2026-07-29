@@ -1,0 +1,36 @@
+# Directory operations & streams of files
+
+`Files` exposes directories as **streams of `Path`** — the whole module-07 toolkit applies.
+
+## `Files.list` — one level deep
+
+```java
+try (Stream<Path> entries = Files.list(dir)) {
+    entries.filter(Files::isRegularFile)
+           .map(Path::getFileName)
+           .sorted().forEach(System.out::println);
+}
+```
+
+## `Files.walk` — the whole tree, recursively
+
+```java
+try (Stream<Path> tree = Files.walk(start)) {
+    long n = tree.filter(p -> p.toString().endsWith(".java")).count();
+}
+```
+
+`Files.walk(start, 2)` bounds the depth. Replaces the hand-written recursive walk.
+
+## `Files.find` — walk + built-in filter
+
+```java
+Files.find(start, Integer.MAX_VALUE,
+    (p, attrs) -> attrs.isRegularFile() && attrs.size() > 1_000_000)
+```
+
+Attributes are pre-fetched — no extra `stat` per file.
+
+## The rule you cannot forget
+
+Every `Files` stream (`list`/`walk`/`find`) holds an **open OS handle** → **always** a try-with-resources. (In-memory `list.stream()` doesn't — only file-backed sources do.)

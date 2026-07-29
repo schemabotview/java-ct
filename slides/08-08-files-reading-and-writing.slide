@@ -1,0 +1,39 @@
+# `Files` — reading and writing
+
+`Path` names it; **`Files`** (static methods) acts on it — where your program meets the disk.
+
+## Whole-file shortcuts — the 90% case
+
+One call opens, transfers, and closes internally:
+
+```java
+String text        = Files.readString(path);      // UTF-8
+List<String> lines = Files.readAllLines(path);
+Files.writeString(path, "hello\n");                // create + truncate
+```
+
+Append or refuse-if-exists via `OpenOption`:
+
+```java
+Files.writeString(path, line, StandardOpenOption.APPEND);
+```
+
+## Large file → stream it, don't slurp it
+
+```java
+try (Stream<String> lines = Files.lines(path)) {   // lazy, one line at a time
+    long errs = lines.filter(l -> l.contains("ERROR")).count();
+}   // holds a file handle — MUST be closed
+```
+
+A module-07 pipeline whose source is a file. **Slurp small, stream large.**
+
+## The files themselves
+
+```java
+Files.exists(p);   Files.createDirectories(p);   // makes parents
+Files.copy(src, dst, REPLACE_EXISTING);   Files.move(src, dst);
+Files.delete(p);   // throws if absent (honest errors)
+```
+
+Every op throws checked `IOException` — wrap or declare it.

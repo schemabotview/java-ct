@@ -1,0 +1,27 @@
+# Serialization — a brief note
+
+**Serialization** = object → bytes (to store/send); **deserialization** = bytes → object. The need is permanent; Java's native *mechanism* is a historical mistake.
+
+## The built-in mechanism — avoid it
+
+```java
+class Account implements Serializable { ... }   // marker interface
+// oos.writeObject(account);  /  (Account) ois.readObject();
+```
+
+Looks effortless — that's the trap:
+
+- **Security catastrophe** — `readObject` builds *arbitrary* types → a long line of RCE exploits. **Never deserialize untrusted data.**
+- **Fragile** — format tied to private fields; `serialVersionUID` governs compatibility
+- **Not portable** — Java-only
+
+## Use instead: an explicit format + library
+
+```java
+String json = mapper.writeValueAsString(account);   // Jackson
+Account a   = mapper.readValue(json, Account.class);
+```
+
+**JSON** (Jackson/Gson) for APIs · Protobuf/Avro for compact cross-language binary. A representation you control, decoupled from private fields, no arbitrary-construction hole.
+
+**Takeaway:** recognize `Serializable` in old code; for anything new, prefer JSON — and never deserialize untrusted input natively.

@@ -1,0 +1,38 @@
+# Exception chaining — the `cause`
+
+Translate a low-level exception to your layer's vocabulary — *without losing the evidence.*
+
+## The bug: a translation that loses the trail
+
+```java
+catch (SQLException e) {
+    throw new UserLookupException("lookup failed");  // e discarded!
+}
+```
+
+The real reason and its stack trace are **gone**.
+
+## The fix: pass the cause
+
+```java
+catch (SQLException e) {
+    throw new UserLookupException("lookup failed for " + id, e);
+}
+// constructor: super(msg, cause);
+```
+
+## You get "Caused by:" — both stories
+
+```
+UserLookupException: lookup failed for 42
+    at UserService.find(...:31)
+Caused by: java.sql.SQLException: connection timed out
+```
+
+Read top-down: lookup failed **because** the query failed **because** the connection timed out.
+
+## Discipline
+
+- **Always pass the cause** when you catch-and-rethrow
+- **Translate at boundaries**, don't re-wrap at every frame
+- **Never swallow:** `catch (e) { }` makes a failure invisible
