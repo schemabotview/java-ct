@@ -1,0 +1,17 @@
+Streams — pipelines over data.
+
+Module six made behaviour a value — a predicate you can pass, a function you can hand to a method. On its own, that's just a nicer way to write a callback. This module is where it pays off. The stream takes those small functions and threads them through a pipeline over a whole collection, so an entire loop's worth of work reads as one declarative sentence.
+
+Think about the shift from how to what. Here's the loop you've written a hundred times: take a list of orders, keep the big ones, pull out their totals, and add them up. In the old style, you set up an accumulator at zero, you loop over every order, you test each total with an if, and when it passes you add it on. The mechanics — the accumulator, the index, the if — that's the how. The intent is buried inside them.
+
+A stream lets you say only the what. You start with orders dot stream, then filter, keeping the orders whose total is over a hundred, then map to double, pulling out each total, then sum. Three verbs, in the order you'd say them aloud. Each one — filter, map, sum — is one of module six's functions, dropped into a stage. And the loop's scaffolding is just gone.
+
+Now, here's the key insight: a stream is not a collection. A collection holds elements in memory. A stream describes a computation over a sequence of elements, and carries none of them itself. Three properties fall out of that. First, no storage — a stream doesn't own its data, it draws elements from a source on demand. Second, single-use — you traverse a stream once, and after a terminal operation runs, that stream is spent; you call stream again for a fresh one. And third, lazy — the intermediate stages, filter and map, do nothing when you write them. They only run when a terminal operation at the end pulls elements through.
+
+So picture the anatomy of every pipeline. It has exactly three parts. First, a source — stream, or stream-dot-of, or int-stream-dot-range — which starts the flow. Then, zero or more intermediate operations. Each one returns a new stream, so they chain, and they're lazy: they build up the recipe, they don't cook. And finally, exactly one terminal operation — sum, collect, for-each, count — which triggers execution and yields a value. No terminal, no work. An intermediate chain with nothing on the end simply never runs.
+
+That laziness isn't a technicality. It's what lets a stream fuse the stages together. Rather than build a full filtered list, and then a full mapped list, the pipeline pulls one element all the way through before it touches the next — so there are no throwaway intermediate collections.
+
+Why is this worth a whole module? Three reasons. Readability — the pipeline reads as intent, filter, map, sum, not as bookkeeping. Composability — every stage is one of module six's small functions, so you assemble behaviour instead of writing control flow. And a path to parallelism — because you described what and not how, the same pipeline can run across every core with a single change, and that's section eight.
+
+The rest of the module walks the pipeline end to end: how to create streams, the intermediate operations, the terminal operations, reduction, the powerful collectors, and parallel streams. And finally, optional — the companion type that lets a pipeline return "maybe a result" without ever handing you a null.

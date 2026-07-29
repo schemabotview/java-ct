@@ -524,7 +524,16 @@
     {
       "id": "07-streams-optional",
       "title": "Streams & Optional",
-      "sections": []
+      "sections": [
+        {
+          "heading": "Streams — pipelines over data",
+          "md": "md/07-01-streams-pipelines-over-data.md",
+          "slide": "slides/07-01-streams-pipelines-over-data.slide",
+          "scene": "java-anatomy",
+          "spine": true,
+          "role": "hook"
+        }
+      ]
     },
     {
       "id": "08-errors-files-io",

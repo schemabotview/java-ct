@@ -1,0 +1,34 @@
+# Streams — pipelines over data
+
+## From *how* to *what*
+
+The loop you've written a hundred times:
+
+```java
+double sum = 0;
+for (Order o : orders)
+    if (o.total() > 100) sum += o.total();
+```
+
+…becomes three verbs in the order you'd say them:
+
+```java
+double sum = orders.stream()
+    .filter(o -> o.total() > 100)   // keep the big ones
+    .mapToDouble(Order::total)      // pull the total
+    .sum();                         // add them up
+```
+
+## A stream is *not* a collection
+
+- **No storage** — it draws from a source on demand
+- **Single-use** — traverse once, then it's spent
+- **Lazy** — intermediates build a recipe; nothing runs until a terminal pulls elements through
+
+## Every pipeline has three parts
+
+1. **Source** — `stream()`, `Stream.of(...)`, `IntStream.range(...)`
+2. **Intermediate** ops — lazy, return a new stream, chain freely
+3. **Terminal** op — `sum`, `collect`, `count` — triggers the work, yields a result
+
+**No terminal, no work.** Laziness lets the pipeline pull one element all the way through — no throwaway intermediate lists.
