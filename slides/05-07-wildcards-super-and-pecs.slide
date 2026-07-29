@@ -1,0 +1,31 @@
+# Wildcards — `? super T` & PECS
+
+## `? super T` — a lower bound
+
+`List<? super Integer>` = Integer or a supertype. The trade-off **flips**:
+
+```java
+void addNumbers(List<? super Integer> dest) {
+    dest.add(1);              // ✅ an Integer always fits
+    Object o = dest.get(0);   // read only as Object
+    Integer i = dest.get(0);  // ❌ could be List<Number>
+}
+```
+
+Model: a **consumer** — data flows **in**.
+
+## PECS — Producer `extends`, Consumer `super`
+
+- Parameter **produces** `T`s you read → `? extends T`
+- Parameter **consumes** `T`s you supply → `? super T`
+- **Both** → exact `List<T>`, no wildcard
+
+```java
+static <T> void copy(List<? super T> dest, List<? extends T> src) {
+    for (T x : src) dest.add(x);   // src produces, dest consumes
+}
+```
+
+## Seen everywhere
+
+`Collections.max(… ? extends T)` · `forEach(Consumer<? super T>)` · `Comparator<? super T>` · `map(Function<? super T, ? extends R>)`

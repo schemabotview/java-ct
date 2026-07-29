@@ -1,0 +1,25 @@
+# Generic APIs in practice
+
+## When to genericise
+
+- **Yes** — same logic regardless of type: `Box<T>`, `Cache<K,V>`, algorithms
+- **No** — type matters, or `<T>` appears **once** with no relationship → just noise
+- Useful tell: the parameter appears **≥ twice**, tying inputs to output
+
+## Shape it: bounds + PECS
+
+- **Bound** when you call methods on `T` — `<T extends Comparable<T>>`
+- **PECS** each parameter — read → `? extends`, write → `? super`
+
+```java
+static <T extends Comparable<? super T>> T max(Collection<? extends T> c)
+```
+
+## You already use these
+
+`Optional<T>` · `Comparator<T>` · `Function<T,R>`, `Predicate<T>` · `Stream<T>`, `Map<K,V>`
+
+## Principles
+
+- Program to generic **interfaces**; **liberal in** (wildcards), **specific out** (concrete return)
+- Let **inference** work; push errors to **compile time**

@@ -1,0 +1,34 @@
+# Using generic types
+
+## Supply type arguments
+
+```java
+List<String>     names;   // E = String
+Map<Long, User>  users;    // K = Long, V = User
+```
+
+Every method specialises — `add` demands a `String`, `get` returns a `User`. No casts.
+
+## The diamond — don't repeat yourself
+
+```java
+Map<String, List<Integer>> m = new HashMap<>();   // <> infers from the left
+var names = new ArrayList<String>();               // var → type on the RIGHT
+```
+
+## Nesting composes
+
+```java
+Map<String, List<Order>> ordersByCustomer;   // read inside-out
+```
+
+Deeply nested? → introduce a **record** for readability.
+
+## Avoid raw types
+
+```java
+List raw = new ArrayList();   // "unchecked" — type-checking OFF
+raw.add(42);                  // no error → safety lost
+```
+
+Mean "list of anything"? → `List<?>` (wildcard, §06), **not** raw.

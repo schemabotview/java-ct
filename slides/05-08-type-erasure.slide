@@ -1,0 +1,30 @@
+# Type erasure — what the JVM sees
+
+## Generics vanish at run time
+
+```java
+List<String> list = new ArrayList<>();      // what you write
+String s = list.get(0);
+
+List list = new ArrayList();                 // what runs — erased
+String s = (String) list.get(0);             // cast inserted for you
+```
+
+`<T>` → its bound (or `Object`); type info verifies, then is thrown away.
+
+## The one consequence
+
+```java
+new ArrayList<String>().getClass() == new ArrayList<Integer>().getClass();  // true
+```
+
+**All instantiations share one class** — the run time doesn't know the argument.
+
+## So you can't, at run time
+
+- No **`T.class`** / `List<String>.class` (raw `List.class` ok)
+- No **`instanceof List<String>`** (only `List<?>`)
+- No **`new T()`** / **`new T[]`** — pass a `Supplier<T>` / `Class<T>`
+- No overloads differing only by argument (`f(List<String>)` vs `f(List<Integer>)`)
+
+## Why: **backward compatibility** with pre-Java-5 raw code.

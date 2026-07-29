@@ -1,0 +1,38 @@
+# Writing a generic class
+
+## Declare the parameter after the name
+
+```java
+public class Box<T> {
+    private T value;
+    public T get()           { return value; }
+    public void set(T value) { this.value = value; }
+}
+
+Box<String> b = new Box<>("hi");
+b.set(42);   // COMPILE ERROR — T is String
+```
+
+Written once, works for any type, each use checked.
+
+## Multiple parameters
+
+```java
+public record Pair<A, B>(A first, B second) {}   // records are generic too
+```
+
+Cleanest way to return two values.
+
+## Three "you can't" rules
+
+- **No `new T()`** — pass a `Supplier<T>` / factory
+- **No `static` field of type `T`** — `T` belongs to an instance
+- **No `new T[]`** — back it with `Object[]` (§09)
+
+## First taste of bounds
+
+```java
+class SortedBox<T extends Comparable<T>> { }   // now T has compareTo
+```
+
+`extends` = a **constraint** (§05), not inheritance.

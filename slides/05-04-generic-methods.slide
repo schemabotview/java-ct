@@ -1,0 +1,32 @@
+# Generic methods
+
+## `<T>` before the return type
+
+```java
+public static <T> T firstOrNull(List<T> list) {
+    return list.isEmpty() ? null : list.get(0);
+}
+```
+
+The leading `<T>` makes the *method* generic — even in a non-generic class.
+
+## Inference — you rarely write `T`
+
+```java
+String s = firstOrNull(List.of("a", "b"));   // T inferred = String
+List<String> e = Collections.<String>emptyList();   // rare: type witness
+```
+
+## Class-generic vs method-generic
+
+- **Class** — parameter describes the whole object's state: `Box<T>`, `Cache<K,V>`
+- **Method** — type local to one call: `Collections.sort`, `List.of`, `Optional.map`
+- *Two calls would use different types?* → generic **method**
+
+## Relate types across a signature
+
+```java
+static <K, V> Map<V, K> invert(Map<K, V> in) { ... }
+```
+
+Output's key = input's value — the compiler guarantees it.

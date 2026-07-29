@@ -1,0 +1,34 @@
+# Wildcards — `? extends T`
+
+## Generics are invariant
+
+**`List<Integer>` is NOT a `List<Number>`** — even though `Integer` is a `Number`.
+
+```java
+List<Number> nums = ints;   // if this compiled…
+nums.add(3.14);             // …a Double into a List<Integer>!
+```
+
+Invariance forbids it to prevent exactly that.
+
+## `? extends` — an upper bound
+
+```java
+double sum(List<? extends Number> list) {   // accepts List<Integer>, List<Double>…
+    double t = 0;
+    for (Number n : list) t += n.doubleValue();
+    return t;
+}
+```
+
+## Read yes, write no
+
+```java
+Number n = list.get(0);   // ✅ certainly a Number
+list.add(1);              // ❌ Integer? Double? can't be sure
+```
+
+## Mental model: a **producer**
+
+`? extends T` = data flows **out** — you read/iterate/copy-from it, never add (except `null`).
+Used by `Collections.max`, `stream.map` inputs.

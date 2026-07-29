@@ -1,0 +1,28 @@
+# Why generics
+
+## Before: raw types + casts
+
+```java
+List names = new ArrayList();       // holds Object
+names.add(42);                      // nothing stops it
+String s = (String) names.get(1);   // ClassCastException at RUNTIME
+```
+
+Every read a cast; every cast a leap of faith.
+
+## After: type as a parameter
+
+```java
+List<String> names = new ArrayList<>();
+names.add(42);            // COMPILE ERROR — caught at the mistake
+String s = names.get(0);  // no cast — compiler knows it's a String
+```
+
+- **Type safety** — `ClassCastException` → compile error
+- **No casts** · **self-documenting** — `Map<Long, User>` states its contract
+
+## The core idea
+
+`List<E>` = "a list of some `E`"; `List<String>` fills `E` = `String`. Written once, specialised per use.
+
+**Conventions:** `E` element · `K`,`V` key/value · `T` type · `R` result

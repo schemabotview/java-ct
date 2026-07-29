@@ -1,0 +1,15 @@
+Why generics.
+
+You've used generics in every collection so far — a list of string, a map from long to user — and never once cast an element on the way out. That's the whole point of generics: they let a class or method work with any type, while keeping the compiler's full type-checking. This module explains the machinery you've been relying on, so you can design with it, not just consume it.
+
+Let's start with life before generics. Until Java five, a collection held Object, so it could hold anything — and you paid for that on the way out, with a cast that might fail at run time. Picture a raw list. You add "Ada", then you add forty-two, and nothing stops you. Then you read index one, and cast it to string. That compiles — but it throws a class-cast exception at run time. The bug, putting an integer into a list of names, isn't caught until the program crashes on the cast, possibly far from where the wrong value went in. Every read was a cast, and every cast was a leap of faith.
+
+Generics changed that by parameterising the type, so the compiler enforces it at compile time. Now you write a list of string. You add "Ada". You try to add forty-two, and it's a compile error, caught immediately, right at the mistake. And you read index zero with no cast at all, because the compiler already knows it's a string.
+
+Three wins fall out of that one change. First, type safety — a whole class of class-cast exceptions becomes a compile error, surfaced at the line that's actually wrong. Second, no casts — reads return the right type directly, so the code is cleaner, and the compiler, not you, tracks the types. And third, it's self-documenting — a map from long to user states its contract right in the signature. You know what goes in and what comes out, without reading the body.
+
+The core idea is treating a type as a parameter. A generic type takes a type parameter — a placeholder, conventionally a single capital letter, that's filled in when you use the type. List of E is "a list of some element type E". Write list of string, and every E becomes string, so add demands a string and get returns one. The class is written once, generically, and specialised per use by the compiler. The very same source serves a list of string, a list of user, and a list of int arrays, each one fully type-checked.
+
+A few naming conventions you'll see everywhere: E for element; K and V for key and value; T for type; N for number; R for result; and S and U for further types.
+
+So here's where this module goes. We'll move from using generic types — reading their signatures, and the diamond — to writing them: generic classes, generic methods, bounded type parameters like T extends comparable, and the part that trips everyone up, wildcards, with the P-E-C-S rule for flexible APIs. Then we lift the hood on type erasure — what the JVM actually keeps at run time — which explains a whole family of gotchas with arrays and casts, before we close on designing real generic APIs. The thread throughout: generics push type errors from run time to compile time, and understanding erasure is what makes their sharp edges make sense.

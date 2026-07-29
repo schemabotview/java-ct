@@ -1,0 +1,27 @@
+# Gotchas — arrays and casts
+
+## The root clash
+
+- **Arrays** — covariant + **reified** (type kept at run time)
+- **Generics** — invariant + **erased** (type gone)
+
+```java
+Object[] arr = new String[3];   // covariant — legal
+arr[0] = 42;                     // ArrayStoreException at RUNTIME
+```
+
+## No generic array creation
+
+`new T[]` / `new List<String>[]` → compile error. Workarounds:
+
+```java
+T[] data = (T[]) new Object[n];   // unchecked; never expose it (what ArrayList does)
+List<T> data = new ArrayList<>(); // ← usually the right answer
+```
+
+**Prefer `List<T>` over `T[]`.**
+
+## "unchecked" & `@SafeVarargs`
+
+- Warning = "erased cast, you're vouching" → suppress on **narrowest scope**, with a why
+- Generic varargs make a hidden `T[]` (heap pollution) → mark read-only ones `@SafeVarargs`

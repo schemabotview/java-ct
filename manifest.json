@@ -309,7 +309,83 @@
         }
       ]
     },
-    { "id": "05-generics", "title": "Generics", "sections": [] },
+    {
+      "id": "05-generics",
+      "title": "Generics",
+      "sections": [
+        {
+          "heading": "Why generics",
+          "md": "md/05-01-why-generics.md",
+          "slide": "slides/05-01-why-generics.slide",
+          "scene": "java-anatomy",
+          "spine": true,
+          "role": "hook"
+        },
+        {
+          "heading": "Using generic types",
+          "md": "md/05-02-using-generic-types.md",
+          "slide": "slides/05-02-using-generic-types.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Writing a generic class",
+          "md": "md/05-03-writing-a-generic-class.md",
+          "slide": "slides/05-03-writing-a-generic-class.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Generic methods",
+          "md": "md/05-04-generic-methods.md",
+          "slide": "slides/05-04-generic-methods.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Bounded type parameters",
+          "md": "md/05-05-bounded-type-parameters.md",
+          "slide": "slides/05-05-bounded-type-parameters.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Wildcards — ? extends T",
+          "md": "md/05-06-wildcards-extends.md",
+          "slide": "slides/05-06-wildcards-extends.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Wildcards — ? super T and PECS",
+          "md": "md/05-07-wildcards-super-and-pecs.md",
+          "slide": "slides/05-07-wildcards-super-and-pecs.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Type erasure — what the JVM actually sees",
+          "md": "md/05-08-type-erasure.md",
+          "slide": "slides/05-08-type-erasure.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Generics gotchas — arrays and casts",
+          "md": "md/05-09-generics-gotchas-arrays-and-casts.md",
+          "slide": "slides/05-09-generics-gotchas-arrays-and-casts.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Generic APIs in practice",
+          "md": "md/05-10-generic-apis-in-practice.md",
+          "slide": "slides/05-10-generic-apis-in-practice.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        }
+      ]
+    },
     { "id": "06-functional-java", "title": "Functional Java & Lambdas", "sections": [] },
     { "id": "07-streams-optional", "title": "Streams & Optional", "sections": [] },
     { "id": "08-errors-files-io", "title": "Exceptions, Files & I/O", "sections": [] },
