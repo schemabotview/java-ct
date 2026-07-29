@@ -23,9 +23,3 @@ public class BankAccount {
 ```
 
 `balance` can never go negative from outside — the object **owns** its state.
-
-## Accessors with intent
-
-- Getter reads, setter writes — expose only what's needed
-- Prefer **`deposit(amount)`** over a blind `setBalance(...)`
-- Payoff: change the internals freely; callers only see the public API
