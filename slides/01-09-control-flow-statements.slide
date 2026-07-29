@@ -28,5 +28,3 @@ String kind = switch (day) {
 ## Steer: `break` / `continue`
 
 `break` exits the loop · `continue` skips to the next iteration.
-
-**Habit:** for-each to walk, arrow `switch` to map, plain `for` only for the index.

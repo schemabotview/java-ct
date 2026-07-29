@@ -29,5 +29,3 @@ String json = """
     { "id": 1, "city": "Mumbai" }
     """;
 ```
-
-The modern default whenever a string runs past one line.

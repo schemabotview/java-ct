@@ -23,8 +23,3 @@ Say the long type **once**, not twice.
 
 - **Locals only** — not fields, parameters, or return types
 - **Needs an initializer**, never `null` (nothing to infer from)
-
-## Use it when the type is obvious
-
-- ✅ `var reader = new BufferedReader(...)` — clear from the line
-- ❌ `var result = service.process(x)` — hides what you're holding
