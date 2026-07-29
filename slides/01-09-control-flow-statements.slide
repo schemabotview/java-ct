@@ -1,0 +1,32 @@
+# Control flow statements
+
+## Choose: `if` / `else`
+
+A `boolean` picks a branch. **Always brace the blocks.**
+
+```java
+if (score >= 50) grade = "pass"; else grade = "fail";
+```
+
+## Choose among many: modern `switch`
+
+Arrow form — **no fall-through**, and it's an **expression**:
+
+```java
+String kind = switch (day) {
+    case SATURDAY, SUNDAY -> "weekend";
+    default               -> "weekday";
+};
+```
+
+## Repeat: the four loops
+
+- **`for`** — you need a count or an index
+- **for-each** — just each element: `for (String n : names)`
+- **`while`** — zero or more times · **`do…while`** — at least once
+
+## Steer: `break` / `continue`
+
+`break` exits the loop · `continue` skips to the next iteration.
+
+**Habit:** for-each to walk, arrow `switch` to map, plain `for` only for the index.

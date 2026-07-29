@@ -1,0 +1,26 @@
+# Installing Java & three ways to run it
+
+## Install a JDK (Java 21 LTS)
+
+- "Java" = several vendor builds of one project, **OpenJDK**
+- **Temurin** (default) · Corretto · Zulu · Oracle — near-identical
+- Install via a package manager, then confirm:
+
+```
+java -version   # should say 21
+```
+
+## Three ways to run it
+
+- **Compile then run** — `javac Hello.java` → `java Hello`
+- **Single file (Java 11+)** — `java Hello.java` (compiles + runs)
+- **`jshell`** — the REPL: type an expression, see the result
+
+```
+jshell> "hello".toUpperCase()
+$1 ==> "HELLO"
+```
+
+## Which to reach for
+
+**Exploring?** `jshell` · **one file?** `java Hello.java` · **a real project?** a build tool (next)

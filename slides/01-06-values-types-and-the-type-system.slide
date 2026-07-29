@@ -1,0 +1,23 @@
+# Values, types & the type system
+
+## Statically typed
+
+Every variable has a type fixed at **compile time**; the compiler checks it before the program runs. Wrong type → won't compile.
+
+## Two families
+
+- **Primitives** — hold the raw value: `int`, `long`, `double`, `boolean` (+ `byte`, `short`, `float`, `char`)
+- **Reference types** — hold a *handle* to an object on the heap: `String`, arrays, your classes
+
+```java
+int count = 42;        // count IS 42
+String name = "Ada";   // name POINTS AT a String
+```
+
+A reference can be `null`; a primitive never can.
+
+## Wrappers & autoboxing
+
+- Each primitive has an object twin: `int` ↔ `Integer`
+- Needed where an object is required — `List<Integer>`, never `List<int>`
+- Java boxes/unboxes automatically — prefer primitives for plain arithmetic

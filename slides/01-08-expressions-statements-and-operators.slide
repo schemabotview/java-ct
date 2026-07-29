@@ -1,0 +1,30 @@
+# Expressions, statements & operators
+
+## Two building blocks
+
+- **Expression** — produces a *value*: `2 + 2`, `name.length()`
+- **Statement** — performs an *action*: assignment, `if`, a loop
+
+```java
+int total = price * qty;   // expression inside, statement whole
+```
+
+## The operators — and two traps
+
+- **Arithmetic** `+ - * / %` — **`7 / 2` is `3`** (int division truncates); `%` is remainder → `n % 2 == 0`
+- **Comparison** `== != < > <= >=` → a `boolean`; for **objects `==` compares references** — use `.equals()`
+- **Logical** `&& || !` — `&&`/`||` **short-circuit**: `s != null && s.isEmpty()`
+
+## `+` does double duty
+
+```java
+"age: " + 30   →  "age: 30"    // String + anything = text
+```
+
+## Precedence & the ternary
+
+`* /` before `+ -`; when unsure, **parenthesize**.
+
+```java
+String label = score >= 50 ? "pass" : "fail";
+```

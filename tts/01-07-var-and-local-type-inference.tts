@@ -1,0 +1,13 @@
+Var, and local type inference.
+
+Java ten added var, a way to declare a local variable without writing out its type. The compiler infers the type from the value on the right. And the single most important thing to understand up front is this: var is not dynamic typing. The variable still has one fixed, static type forever. You just didn't have to spell it out.
+
+So here's what it does. When you write var count equals ten, the compiler infers int. Var name equals "Ada" infers string. Var users equals a new array list of string infers exactly that — an array list of string. The compiler reads the initializer, works out the type, and locks it in. From that point on, count is an int. Trying to assign a string to it won't compile, exactly as if you had written int count. You removed the redundant type name, and nothing else.
+
+Where does this really shine? When the type name is long and already obvious from the right-hand side. Picture declaring a map from string to a list of orders. The old way makes you write that whole type twice — once on the left, once after new. With var, you say it once. It cleans up loops and stream results in the same way, wherever the exact type is long or awkward to name.
+
+There are only a few rules. First, var is for locals only. It works for local variables inside methods, for loop variables, and in try-with-resources. It cannot be a field, a method parameter, or a return type — those still need explicit types. Second, an initializer is required, and it can't be null, because there'd be nothing to infer a type from. And third, var isn't actually a keyword, it's a reserved type name, so old code that happened to use var as a variable name still works.
+
+So when should you use it? Use var when the type is obvious from the right-hand side and spelling it out just adds noise. Var reader equals a new buffered reader is clear. Var total equals order dot get total is clear enough. But skip it when the type would otherwise be your only clue to what you're holding. If you write var result equals service dot process, a reader has no idea what process returns. There, writing the explicit type documents it.
+
+The guiding question is always readability for the next person. If a reader can see the type at a glance from the same line, var removes clutter. If it hides something they'd need to know, write the type out. Var is a tool for clarity, not brevity for its own sake.

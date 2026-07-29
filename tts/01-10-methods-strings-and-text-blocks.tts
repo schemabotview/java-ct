@@ -1,0 +1,15 @@
+Methods, strings, and text blocks.
+
+Two everyday tools round out the essentials. Methods, the way you name and reuse a piece of behaviour. And strings, the type you'll handle text with in almost every program you write.
+
+Start with methods. A method has a return type, a name, a parameter list, and a body. It takes some inputs, does work, and hands back a result — or void, if it returns nothing. So a method called add, that takes two whole numbers a and b and returns a plus b, is called simply by name: add of two and three gives you five. Methods are how you avoid repetition and give a name to your intent. A well-named method turns a whole block of logic into a single readable line at the point where you call it.
+
+Java also allows overloading. Several methods can share one name, as long as their parameter lists differ, and the compiler picks the right one from the arguments you pass. So you can have an area method that takes one radius, for a circle, and another area method that takes a width and a height, for a rectangle. Same idea, two shapes of input — no need to invent separate names like area-circle and area-rectangle.
+
+Now strings. A string is a sequence of characters, written in double quotes. And the one fact that governs everything about them is this: strings are immutable. Every so-called modifying method actually returns a brand-new string and leaves the original completely untouched. So if you call to-upper-case on a string but don't capture the result, the original is unchanged — you have to keep the returned value. The everyday methods are worth knowing: length, char-at, substring, index-of, to-upper-case and to-lower-case, strip, replace, split, contains, and is-blank. And to compare text, always use dot equals. Double equals asks whether two references point at the same object, not whether the characters actually match.
+
+For building strings, a few pieces joined with plus is perfectly fine — "Hi, " plus a name. For a template with placeholders, use string dot format, or the formatted method. But if you're building a string inside a loop, use a string builder. Because strings are immutable, doing plus-equals in a loop quietly allocates a new string on every single pass, while a string builder's append method just mutates one buffer instead.
+
+Finally, text blocks. For anything that spans multiple lines — jason, S-Q-L, H-T-M-L, a help message — a text block, written with triple quotes, drops all the escape-character soup and keeps the text readable exactly as-is. No backslash-n for newlines, no escaped quotes. What you see is what you get. It's the modern default whenever a string runs past a single line.
+
+And that's the full essentials toolkit — methods to name behaviour, and strings to carry text. Module two turns to the objects those methods actually live on.

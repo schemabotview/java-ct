@@ -12,6 +12,69 @@
           "scene": "java-jvm",
           "spine": true,
           "role": "hook"
+        },
+        {
+          "heading": "Modern Java, not 1998 Java",
+          "md": "md/01-02-modern-java-not-1998-java.md",
+          "slide": "slides/01-02-modern-java-not-1998-java.slide",
+          "scene": "java-jvm",
+          "spine": true
+        },
+        {
+          "heading": "The JVM context — from source to running code",
+          "md": "md/01-03-the-jvm-context-from-source-to-running-code.md",
+          "slide": "slides/01-03-the-jvm-context-from-source-to-running-code.slide",
+          "scene": "java-jvm",
+          "spine": true
+        },
+        {
+          "heading": "Installing Java & three ways to run it",
+          "md": "md/01-04-installing-java-and-three-ways-to-run-it.md",
+          "slide": "slides/01-04-installing-java-and-three-ways-to-run-it.slide",
+          "scene": "java-jvm",
+          "spine": true
+        },
+        {
+          "heading": "Hello, Java — jshell, jbang, Maven",
+          "md": "md/01-05-hello-java-jshell-jbang-maven.md",
+          "slide": "slides/01-05-hello-java-jshell-jbang-maven.slide",
+          "scene": "java-jvm",
+          "spine": true
+        },
+        {
+          "heading": "Values, types and the type system",
+          "md": "md/01-06-values-types-and-the-type-system.md",
+          "slide": "slides/01-06-values-types-and-the-type-system.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "var and local type inference",
+          "md": "md/01-07-var-and-local-type-inference.md",
+          "slide": "slides/01-07-var-and-local-type-inference.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Expressions, statements and operators",
+          "md": "md/01-08-expressions-statements-and-operators.md",
+          "slide": "slides/01-08-expressions-statements-and-operators.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Control flow statements",
+          "md": "md/01-09-control-flow-statements.md",
+          "slide": "slides/01-09-control-flow-statements.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Methods, strings and text blocks",
+          "md": "md/01-10-methods-strings-and-text-blocks.md",
+          "slide": "slides/01-10-methods-strings-and-text-blocks.slide",
+          "scene": "java-anatomy",
+          "spine": true
         }
       ]
     },

@@ -1,0 +1,17 @@
+Installing Java, and three ways to run it.
+
+To write Java, you install a java development kit — the development kit, not just the runtime. The one confusing part is that Java isn't a single download. Several vendors build a kit from the same open-source project, called OpenJDK.
+
+They're near-identical builds, so pick one and move on. Eclipse Temurin, from Adoptium, is the common free, no-strings default. Amazon Corretto, Azul Zulu, the Microsoft build, and the Oracle kit are other vendor builds, often with long support windows. Install version twenty-one, the long term support release. The easiest route is a package manager for your operating system.
+
+Then confirm it worked from a terminal by running java dash version. You should see twenty-one somewhere in the output. That, plus having java and javac available on your path, is all you need to start.
+
+Now, once the kit is installed, there's a ladder of ways to actually run code, from most manual to most convenient.
+
+The first way is compile, then run — the classic two steps. This mirrors the runtime journey exactly. Javac turns your source into bytecode, producing a dot class file, and then the java command runs that class. Notice you name the class without the dot class extension when you run it.
+
+The second way is to launch a single source file directly, which works on Java eleven and later. For a one-file program, you can skip the separate compile step entirely. You just say java, then Hello dot java, and the launcher compiles it in memory and runs it in one shot, leaving no class file behind. That's great for scripts, examples, and learning — no build tool, no ceremony.
+
+The third way is jshell, the repl. Java ships an interactive shell. You type an expression, and it prints the result immediately — no class, no main method, no compile step. Type two plus two, and it answers four. Type "hello" dot to-upper-case, and it hands you back "HELLO" in capitals. Jshell is the fastest way to just try something, and we'll lean on it constantly over the next few modules.
+
+So which do you reach for? If you're exploring an idea or checking what a method returns, use jshell. For a quick single-file program, use java Hello dot java. And for anything with more than one file, or that pulls in a library, you want a real build tool — Maven or Gradle — which is exactly where the next section begins.

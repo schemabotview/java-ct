@@ -1,0 +1,30 @@
+# Hello, Java — jshell, jbang, Maven
+
+## The one method that runs
+
+```java
+public static void main(String[] args) {
+    System.out.println("Hello, Java");
+}
+```
+
+The JVM calls **`main`** to start — memorize the shape.
+
+## Three scales, three tools
+
+- **`jshell`** — *experiment*: type the body, no file, no `main`
+
+```
+jshell> System.out.println("Hello, Java")
+```
+
+- **`jbang`** — *script*: run one `.java` file, `//DEPS` pulls in libraries
+- **Maven** — *project*: standard layout + dependency management
+
+```
+src/main/java/App.java   ·   mvn compile · test · package
+```
+
+## The throughline
+
+Same `main`, three scales — **try** · **script** · **build**. Climb only as far as the task needs.

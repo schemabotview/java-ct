@@ -1,0 +1,33 @@
+# Methods, strings & text blocks
+
+## Methods — named, reusable behaviour
+
+Return type, name, parameters, body:
+
+```java
+int add(int a, int b) { return a + b; }
+```
+
+- **Overloading** — same name, different parameter lists; compiler picks by arguments
+
+## Strings are immutable
+
+Every "modifying" method returns a **new** string:
+
+```java
+String loud = s.toUpperCase();   // s itself is unchanged
+```
+
+- Methods: `length` · `substring` · `split` · `contains` · `strip` …
+- **Compare with `.equals()`**, never `==`
+- Building in a loop? Use **`StringBuilder`**
+
+## Text blocks — multi-line, no escaping
+
+```java
+String json = """
+    { "id": 1, "city": "Mumbai" }
+    """;
+```
+
+The modern default whenever a string runs past one line.

@@ -1,0 +1,30 @@
+# `var` and local type inference
+
+## Inferred, *not* dynamic
+
+The compiler infers the type from the initializer — the variable is still **statically typed**, fixed forever.
+
+```java
+var count = 10;                       // int
+var users = new ArrayList<String>();  // ArrayList<String>
+```
+
+`count = "x"` still won't compile — you only dropped the redundant type name.
+
+## No more stuttering
+
+```java
+var ordersByCustomer = new HashMap<String, List<Order>>();
+```
+
+Say the long type **once**, not twice.
+
+## The rules
+
+- **Locals only** — not fields, parameters, or return types
+- **Needs an initializer**, never `null` (nothing to infer from)
+
+## Use it when the type is obvious
+
+- ✅ `var reader = new BufferedReader(...)` — clear from the line
+- ❌ `var result = service.process(x)` — hides what you're holding

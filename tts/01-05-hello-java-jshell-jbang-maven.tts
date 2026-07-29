@@ -1,0 +1,13 @@
+Hello, Java — with jshell, jbang, and Maven.
+
+Every language has its hello world. In Java there are really three, because there are three scales of program — a throwaway experiment, a real script, and a proper project — and each has the right tool. Seeing all three together shows you the on-ramp, and where you're headed.
+
+First, the one method that always runs. However you package it, a runnable Java program has an entry point with an exact shape: public, static, void, main, taking an array of strings called args. Inside it, we print "Hello, Java". The JVM calls main to start your program. It's public so it can be reached, static so no object is needed first, void because it returns nothing, and it takes a string array for command-line arguments. Memorize that shape now, because you'll type it a thousand times.
+
+Now the three scales. The first is jshell, where there's nothing to package at all. You start jshell and just type the body — print "Hello, Java" — and it prints. No file, no main, no compile step. That's the experiment scale.
+
+The second is jbang, for a real script with dependencies. Sometimes you want a single file that does actual work, including pulling in a library, without setting up a whole project. Jbang runs a dot java file as a script, and you declare your dependencies right in a comment at the top. Then you run jbang, then the file, and it fetches the dependency and runs it. That's the script scale — automation and glue, one file, real libraries.
+
+The third is Maven, for a proper project. For anything you'll actually maintain, you want a build tool. Maven gives your project a standard shape and manages its libraries. The layout is a convention every Java developer recognizes: a project file called pom dot xml, your code under source, main, java, and your tests under source, test, java. The pom declares the project and its dependencies. Maven compile builds it, Maven test runs the tests, and Maven package produces a runnable jar. That's the project scale — the shape real teams ship, and where module ten returns in depth.
+
+So here's the throughline. It's the same main every time, at three different scales. Jshell to try something, jbang to script something, and Maven to build something. Start at the top of that ladder, and climb only as far as the task actually needs.

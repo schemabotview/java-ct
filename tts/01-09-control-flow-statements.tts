@@ -1,0 +1,15 @@
+Control flow statements.
+
+By default, a method runs top to bottom, one statement after another. Control flow is how you break that straight line — choosing between paths, and repeating work. Java's toolkit here is small, and in modern versions, unusually clean.
+
+Start with choosing, using if and else. This is the workhorse. A boolean condition picks a branch. If the score is ninety or above, the grade is an A; else if it's fifty or above, it's a pass; otherwise, it's a fail. One piece of advice: always brace your blocks, even one-liners. It prevents a whole family of dangling-statement bugs.
+
+When you're branching on one value against many constants, a switch reads better than a long ladder of else-ifs. And modern Java made switch far safer with the arrow form. There's no fall-through, and it can be an expression that produces a value. You switch on the day, and one arm says: case Saturday or Sunday, arrow, "weekend"; and the default arm, arrow, "weekday". Each arm handles exactly its own labels — no accidental fall-through, and no forgotten break. Compare that to the old colon-and-break form, where dropping a single break would silently run on into the next case. Prefer the arrow form.
+
+Now, repeating — and there are four loops. The first is the plain for loop, for when you know the count or need an index. It has three parts: initialize, condition, and update. You set i to zero, keep going while i is less than five, and increment i each time.
+
+The second is the enhanced for loop, often called for-each. Use it when you just want each element and don't care about an index. It's cleaner, and it's the default for iterating a collection or an array — for each name in names, do something. The third is the while loop, which repeats as long as a condition holds, and may run zero times. And the fourth is do-while, which is the same, except the body runs at least once before the condition is ever checked.
+
+You can also steer a loop from inside. Break exits the loop entirely. Continue skips the rest of just this iteration and jumps to the next. So in a loop over numbers, you might continue on a negative to skip it, break on the first value over a hundred to stop, and otherwise process the number.
+
+Here's the habit to build. Reach for for-each to walk a collection, an arrow switch to map one value to many outcomes, and a plain for loop only when you genuinely need the index. Keep your conditions simple and your blocks braced — because readable control flow is most of what readable code actually is.

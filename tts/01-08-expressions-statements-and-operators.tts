@@ -1,0 +1,15 @@
+Expressions, statements, and operators.
+
+Two words describe almost everything you write inside a method. An expression produces a value — two plus two, price times quantity, name dot length. A statement performs an action, and doesn't itself produce a value — an assignment, an if, a loop, a method call sitting on its own line. You build programs by computing values with expressions, and then doing something with them in statements. So when you write int total equals price times quantity, the price-times-quantity part is an expression, and the whole line is a statement.
+
+Now, the operators you compute with. Start with arithmetic — plus, minus, times, divide, and modulo. Two traps are worth burning in right now. First, integer division truncates. Seven divided by two is three, not three point five, because both sides are whole numbers, so the result is a whole number and the fraction is simply thrown away. Make one side a double, like seven point zero divided by two, and you get three point five. Second, modulo gives you the remainder. Seven modulo two is one. The classic use is n modulo two equals zero, to test whether a number is even.
+
+Next, comparison operators — double equals, not-equals, less than, greater than, and so on. Each one produces a boolean. For primitives, double equals compares values. But for objects, double equals compares references — it asks whether these are literally the same object, which is almost never what you want. To compare contents, you use dot equals. We'll go deep on that in module two.
+
+Then the logical operators — and, or, and not. The first two short-circuit. In an "and", if the left side is already false, the right side is never even evaluated. That's exactly what makes a null check safe: you test that s is not null, and only then call a method on s, because the null check guards the call.
+
+Assignment is the equals sign, plus the compound forms like plus-equals and times-equals. And plus plus or minus minus step a value up or down by one.
+
+Here's something to watch: plus does double duty. With numbers, it adds. But with a string on either side, plus concatenates, turning the other operand into text. So "age: " plus thirty gives you "age: 30". Just mind the left-to-right order — one plus two plus "!" is "3!", but "!" plus one plus two is "!12".
+
+Finally, precedence. Operators bind in a fixed order — times and divide before plus and minus, arithmetic before comparison, comparison before and and or. When in doubt, add parentheses. They cost nothing and remove all ambiguity for your reader. And there's one operator that is itself an expression you can assign from: the ternary. Condition, question mark, value if true, colon, value if false. It's a compact if-else that yields a value — label equals, score greater than or equal to fifty, pass, otherwise fail. Reach for it when both branches just produce a value, and use a full if statement when either branch actually does something.
