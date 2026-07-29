@@ -24,11 +24,7 @@ public final void print() {
 }
 ```
 
-Real reuse of **behaviour**, not just fields.
-
 ## vs interface
 
 - **Abstract class** — shared **state + implementation**, an "is-a" hierarchy; extend **one**
 - **Interface** — a **capability** unrelated types implement; mix in **several**
-
-*Partial thing → abstract class · capability → interface.*

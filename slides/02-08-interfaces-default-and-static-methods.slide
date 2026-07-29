@@ -25,5 +25,3 @@ One superclass, but **many interfaces** — mix in orthogonal capabilities.
 
 - **`default`** — a real body implementers inherit → add methods without breaking them (how `List` gained `stream()`)
 - **`static`** — helpers on the type: `Shape.unitCircle()`
-
-**Habit:** program to interfaces — accept a `List`, not an `ArrayList`.

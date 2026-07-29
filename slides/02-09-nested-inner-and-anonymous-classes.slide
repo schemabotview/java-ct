@@ -8,8 +8,6 @@ public class HashMap<K, V> {
 }
 ```
 
-No link to an outer object. **Most nested classes should be `static`.**
-
 ## Inner (non-static) — bound to an instance
 
 Reads the outer object's fields directly — but keeps it **alive** (leak risk). Use sparingly, on purpose.
@@ -22,8 +20,6 @@ button.addListener(new ClickListener() {
 });
 ```
 
-One-off implementation, inline. Captures only **effectively final** variables.
-
 ## → lambdas
 
 Single-method interface? Drop the ceremony:
@@ -31,5 +27,3 @@ Single-method interface? Drop the ceremony:
 ```java
 button.addListener(() -> System.out.println("clicked"));
 ```
-
-The anonymous class is the **old shape of the lambda** (module 06).

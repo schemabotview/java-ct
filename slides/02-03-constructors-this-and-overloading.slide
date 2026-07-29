@@ -1,6 +1,4 @@
-# Constructors, `this`, and overloading
-
-## Start life in a valid state
+# Constructors
 
 Class name, **no return type**; runs once at `new`:
 

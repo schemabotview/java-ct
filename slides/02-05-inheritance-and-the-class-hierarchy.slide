@@ -1,4 +1,4 @@
-# Inheritance and the class hierarchy
+# Inheritance
 
 ## `extends` — an "is-a" relationship
 
@@ -27,5 +27,3 @@ public SavingsAccount(long opening, double rate) {
 - Same signature, new body; `@Override` makes the compiler check it
 - **`final`** class → can't be extended; `final` method → can't be overridden
 - Every chain of `extends` ends at **`Object`**
-
-**Use deliberately** — it's tight coupling; often prefer **composition** (§10).
