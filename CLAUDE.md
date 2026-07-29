@@ -1,9 +1,9 @@
 # CLAUDE.md — java-ct
 
-A **content repo**, not an app. It holds the **Java** concept, authored **video-first** for the `graphl-movie` app (sibling repo), which loads it **at runtime**. No render engine and no scenes live here — the app fetches this repo's `manifest.json` + notebooks + slides + audio over the network and renders/records them. Read alongside the workspace map in `../CLAUDE.md`, the app contract in `../graphl-movie/CLAUDE.md`, and the references below.
+A **content repo**, not an app. It holds the **Java** concept (**core language + runtime only — no Spring**), authored **video-first** for the `graphl-movie` app (sibling repo), which loads it **at runtime**. No render engine and no scenes live here — the app fetches this repo's `manifest.json` + notebooks + slides + audio over the network and renders/records them. Read alongside the workspace map in `../CLAUDE.md`, the app contract in `../graphl-movie/CLAUDE.md`, and the references below.
 
 **References (not to copy wholesale):**
-- `../java-content/` — the graphl-ux-era Java curriculum: **12 module notebooks** (`notebooks/NN-*.ipynb`) that the per-section notebooks are **split from**, then refined for video. Its manifest already maps sections to the two scenes (`java-jvm`, `java-anatomy`) — a useful `highlight`/`focus` id reference.
+- `../java-content/` — the graphl-ux-era Java curriculum (`notebooks/NN-*.ipynb`) the per-section notebooks are **split from**, then refined for video. It bundles Spring modules too; **ignore those** — this concept draws only the core-language/runtime material, re-shaped into the **10 Java-only modules** in `README.md`. Its manifest maps sections to the two scenes (`java-jvm`, `java-anatomy`) — a useful `highlight`/`focus` id reference.
 - `../apache-spark-ct/` — the mature `-ct` template for structure/style (this repo mirrors its layout + contract).
 - `../databricks-data-engineer-ct/` — the sibling `-ct` reference.
 
@@ -23,12 +23,12 @@ Same as the app repo: **step by step, one small slice, review gate between each.
 
 ## Scenes (app-side, ported from graphl-ux)
 
-Two scenes cover the language + runtime; wire modules to them via the manifest:
+Two scenes cover the whole concept; wire modules to them via the manifest:
 
-- **`java-jvm`** — the Java-on-the-JVM runtime map (source pipeline → class loader → memory areas → execution engine → CPU). For the runtime/JVM modules.
-- **`java-anatomy`** — the language "grammar of a program" (Model ▸ Initialize ▸ Transform ▸ Return + Memory column). For the core-language modules. *(Ported from the code-free `java-anatomy`, not the later `java-model` code-card variant — the owner does not want code nodes in scenes.)*
+- **`java-jvm`** — the Java-on-the-JVM runtime map (source pipeline → class loader → memory areas → execution engine → CPU). For the runtime/JVM modules (**09, 10**; module **01** opens on it).
+- **`java-anatomy`** — the language "grammar of a program" (Model ▸ Initialize ▸ Transform ▸ Return + Memory column). For the core-language modules (**01–08**). *(Ported from the code-free `java-anatomy`, not the later `java-model` code-card variant — the owner does not want code nodes in scenes.)*
 
-- **`spring`** — one dense whole-platform map for **all** Spring modules (08–12), authored + registered app-side in `graphl-movie/src/scenes/spring.ts`. Five stacked bands, one per module: **`sp-cloud`** (12) ▸ **`sp-web`** (09) ▸ **`sp-core`** = the IoC container (08) ▸ **`sp-data`** (10) ▸ **`sp-boot`** (11). A request flows top-to-bottom (edge → web → core beans → data → DB); Boot underneath auto-wires the container. Each module frames its own band via `highlight`/`focus`. Node-id map for wiring is in `spring.ts`.
+There is **no Spring scene** — Spring is out of scope for this concept.
 
 ## Folder layout
 
@@ -69,4 +69,4 @@ One `.tts` script **per section**, plain spoken prose — what a teacher would s
 
 ## Status
 
-Scaffolded (this slice): folder skeleton + `manifest.json` with the **12-module spine** (empty sections), README, this file, Colab script copied from `apache-spark-ct`. Concept wired into the app (`graphl-movie/src/content/catalog.ts` → `java`) and both scenes ported + registered. **Next:** author module 01 end-to-end (split `../java-content/notebooks/01-java-essentials.ipynb` into per-section notebooks → `.slide` + `.tts` → manifest wiring → Colab audio), then repeat per module.
+Re-scoped to **Java-only** and reset to a clean spine: `manifest.json` holds the **10-module spine** (empty sections), `README.md` carries the full **10 × 10 = 100-section** outline, and all per-section artifacts (`notebooks/`, `slides/`, `tts/`, `audio/`) are cleared — nothing authored yet. The prior 12-module Java+Spring content (and its Colab audio) was superseded on `main`; it remains reachable in git history. Concept is wired into the app (`graphl-movie/src/content/catalog.ts` → `java`) with both scenes ported + registered; **the app's consumer still references the old section slugs — re-wiring it is a separate task.** **Next:** author module 01 end-to-end (per-section notebooks → `.slide` + `.tts` → manifest wiring → Colab audio), then repeat per module.
