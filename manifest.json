@@ -18,6 +18,12 @@
           "md": "md/01-02-modern-java-not-1998-java.md",
           "slide": "slides/01-02-modern-java-not-1998-java.slide",
           "scene": "java-jvm",
+          "highlight": [
+            "j-jit-compiler",
+            "j-gc"
+          ],
+          "focus": "j-exec-engine",
+          "zoom": true,
           "spine": true
         },
         {
@@ -25,6 +31,13 @@
           "md": "md/01-03-the-jvm-context-from-source-to-running-code.md",
           "slide": "slides/01-03-the-jvm-context-from-source-to-running-code.slide",
           "scene": "java-jvm",
+          "highlight": [
+            "j-source-code",
+            "javac",
+            "j-class-file",
+            "j-classloader-subsystem",
+            "j-exec-engine"
+          ],
           "spine": true
         },
         {
@@ -32,6 +45,14 @@
           "md": "md/01-04-installing-java-and-three-ways-to-run-it.md",
           "slide": "slides/01-04-installing-java-and-three-ways-to-run-it.slide",
           "scene": "java-jvm",
+          "highlight": [
+            "j-source-code",
+            "javac",
+            "j-class-file",
+            "j-loading"
+          ],
+          "focus": "j-top",
+          "zoom": true,
           "spine": true
         },
         {
@@ -39,6 +60,12 @@
           "md": "md/01-05-hello-java-jshell-jbang-maven.md",
           "slide": "slides/01-05-hello-java-jshell-jbang-maven.slide",
           "scene": "java-jvm",
+          "highlight": [
+            "j-interpreter",
+            "j-jit-compiler"
+          ],
+          "focus": "j-exec-engine",
+          "zoom": true,
           "spine": true
         },
         {
@@ -46,6 +73,12 @@
           "md": "md/01-06-values-types-and-the-type-system.md",
           "slide": "slides/01-06-values-types-and-the-type-system.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-type",
+            "ja-value"
+          ],
+          "focus": "ja-init-row",
+          "zoom": true,
           "spine": true
         },
         {
@@ -53,6 +86,11 @@
           "md": "md/01-07-var-and-local-type-inference.md",
           "slide": "slides/01-07-var-and-local-type-inference.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-type-var"
+          ],
+          "focus": "ja-type",
+          "zoom": true,
           "spine": true
         },
         {
@@ -60,6 +98,12 @@
           "md": "md/01-08-expressions-statements-and-operators.md",
           "slide": "slides/01-08-expressions-statements-and-operators.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-control",
+            "ja-pattern"
+          ],
+          "focus": "ja-verbs",
+          "zoom": true,
           "spine": true
         },
         {
@@ -67,6 +111,14 @@
           "md": "md/01-09-control-flow-statements.md",
           "slide": "slides/01-09-control-flow-statements.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-ctrl-if",
+            "ja-ctrl-tern",
+            "ja-ctrl-switch",
+            "ja-ctrl-guard"
+          ],
+          "focus": "ja-control",
+          "zoom": true,
           "spine": true
         },
         {
@@ -74,6 +126,12 @@
           "md": "md/01-10-methods-strings-and-text-blocks.md",
           "slide": "slides/01-10-methods-strings-and-text-blocks.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-method-call",
+            "ja-method-def"
+          ],
+          "focus": "ja-methods",
+          "zoom": true,
           "spine": true
         }
       ]
@@ -463,9 +521,25 @@
         }
       ]
     },
-    { "id": "07-streams-optional", "title": "Streams & Optional", "sections": [] },
-    { "id": "08-errors-files-io", "title": "Exceptions, Files & I/O", "sections": [] },
-    { "id": "09-concurrency", "title": "Concurrency & Virtual Threads", "sections": [] },
-    { "id": "10-jvm-build-testing", "title": "JVM, Build & Testing", "sections": [] }
+    {
+      "id": "07-streams-optional",
+      "title": "Streams & Optional",
+      "sections": []
+    },
+    {
+      "id": "08-errors-files-io",
+      "title": "Exceptions, Files & I/O",
+      "sections": []
+    },
+    {
+      "id": "09-concurrency",
+      "title": "Concurrency & Virtual Threads",
+      "sections": []
+    },
+    {
+      "id": "10-jvm-build-testing",
+      "title": "JVM, Build & Testing",
+      "sections": []
+    }
   ]
 }
