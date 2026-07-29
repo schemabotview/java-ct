@@ -1,0 +1,27 @@
+# Enums — a fixed set of constants
+
+## A closed, named set
+
+```java
+public enum Status { ACTIVE, SUSPENDED, CLOSED }
+Status s = Status.ACTIVE;
+```
+
+The only instances that can exist — no fourth, no typo. Beats a `String` (`"activ"` slips through) or an `int` (`3` means nothing).
+
+## Free methods
+
+- **`values()`** — all constants, in order · **`valueOf("ACTIVE")`** — parse by name
+- **`name()`** → `"ACTIVE"` · **`ordinal()`** → position (**don't persist it** — reordering shifts it)
+
+## Exhaustive `switch`
+
+```java
+String label = switch (s) {
+    case ACTIVE    -> "open";
+    case SUSPENDED -> "on hold";
+    case CLOSED    -> "shut down";
+};   // no default — add a constant, compiler flags this
+```
+
+**Collections:** `EnumSet` / `EnumMap` — faster than `HashSet`/`HashMap` for enum keys.

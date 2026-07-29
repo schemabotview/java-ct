@@ -1,0 +1,13 @@
+Enums — a fixed set of constants.
+
+When a value can only ever be one of a known, fixed set — the days of the week, a traffic light, an order status — the wrong way to model it is a string or an int. Both let any value slip in, so you end up validating and guarding everywhere. An enum makes the set closed. The compiler guarantees that a variable holds one of exactly these constants, or null, and nothing else.
+
+Declaring one is simple. You write enum status, and list its constants: active, suspended, closed. Now status is a real type, and those three are its only instances — each one a singleton the JVM creates just once. You cannot invent a fourth. Compare that to a string status, where "activ", missing the e, typos through silently, and where "ACTIVE" in capitals versus "active" in lowercase is a lurking bug.
+
+So why does an enum beat a string or an int? Three reasons. Type safety — a method that takes a status simply cannot be handed a random string; illegal values don't even compile. Readability — status dot closed says what it means, whereas the number three does not. And it's refactor-friendly — rename a constant, and the compiler finds every use; misspell it, and compilation fails immediately.
+
+Because an enum is really a class under the hood, each one comes with useful built-in methods. Values gives you an array of all the constants, in declared order, which is great for looping. Value-of parses a constant from its exact name, and throws if there's no match. Name gives you the constant's identifier as text. And ordinal gives you its zero-based position in the declaration. Ordinal is handy occasionally, but here's a warning: don't persist it. If you reorder the constants later, every stored number silently shifts to mean something else.
+
+Where enums really pay off is in a switch, because the compiler knows the complete set of cases. With an arrow switch expression that covers them all, you need no default at all. You switch on the status, and give an arm for active, for suspended, and for closed. And here's the magic: if someone adds a pending constant next year, the compiler flags this switch as no longer exhaustive, and points you right at it. That compiler-checked completeness is a superpower a string can never give you.
+
+One last note, on collections. For sets and maps keyed by an enum, the standard library has specialised, fast implementations — enum-set and enum-map — backed by tiny bit-vectors and arrays, rather than hashing. So reach for enum-set-of, over a hash set, when your keys are enum constants. So far, these have been plain constants. But the next section shows that an enum can also carry its own data and behaviour — and that's where Java's enums pull decisively ahead of most other languages'.

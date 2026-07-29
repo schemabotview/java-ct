@@ -1,0 +1,35 @@
+# Customising & validating records
+
+## Compact constructor — validate & normalise
+
+Record name, **no parameter list**, runs before the field assignments:
+
+```java
+public record Temperature(double celsius) {
+    public Temperature {
+        if (celsius < -273.15)
+            throw new IllegalArgumentException("below absolute zero");
+    }
+}
+```
+
+Reassign a component to **normalise** — `value = value.strip();` flows into the final field.
+
+## Methods & static factories
+
+```java
+public record Point(int x, int y) {
+    public double distanceTo(Point o) { return Math.hypot(x-o.x, y-o.y); }
+    public static Point origin() { return new Point(0, 0); }
+}
+```
+
+Instance methods, static factories, static constants — all fine.
+
+## Guard mutable components
+
+```java
+public Team { members = List.copyOf(members); }   // defensive copy → truly immutable
+```
+
+**Line to hold:** keep it a *value* — no mutable fields, no identity. Needs a lifecycle? Make it a class.

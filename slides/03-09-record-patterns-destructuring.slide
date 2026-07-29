@@ -1,0 +1,35 @@
+# Record patterns — destructuring
+
+## Match and unpack in one move
+
+```java
+// type pattern — whole record, then read parts
+if (obj instanceof Point p) { int s = p.x() + p.y(); }
+
+// record pattern — bind the parts directly
+if (obj instanceof Point(int x, int y)) { int s = x + y; }
+```
+
+Mirrors the record's declaration; use `var` to infer: `Point(var x, var y)`.
+
+## Nesting — reach through structure
+
+```java
+record Line(Point start, Point end) {}
+
+if (obj instanceof Line(Point(var x1, var y1), Point(var x2, var y2)))
+    len = Math.hypot(x2 - x1, y2 - y1);   // all four, one pattern
+```
+
+## The module's payoff: sealed records + `switch`
+
+```java
+double area = switch (shape) {
+    case Circle(var r)           -> Math.PI * r * r;
+    case Rectangle(var w, var h) -> w * h;
+};   // no default — sealed & exhaustive
+```
+
+Also composes with guards: `case Circle(var r) when r > 10 -> …`
+
+**Read a pattern as a shape you assert** — match → names bound; else → skipped.

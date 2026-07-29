@@ -1,0 +1,32 @@
+# Pattern matching for `instanceof`
+
+## Test, cast, use → one step
+
+```java
+// before
+if (obj instanceof String) {
+    String s = (String) obj;
+    System.out.println(s.length());
+}
+// after — a type pattern binds when the test passes
+if (obj instanceof String s) {
+    System.out.println(s.length());   // s already a String
+}
+```
+
+Type name once; check & cast can't disagree.
+
+## Flow scoping — `s` lives where the match is proven
+
+```java
+if (obj instanceof String s && s.length() > 3) { ... }   // ✅ safe after &&
+
+if (!(obj instanceof String s)) return;
+s.length();                                              // ✅ reaching here proves it
+```
+
+## Reach for it wisely
+
+- Great for **boundaries** — parsing, interop, `equals`
+- A ladder of `instanceof`? Prefer **polymorphism** or a **sealed `switch`**
+- Same type pattern powers `switch` & record patterns (next)

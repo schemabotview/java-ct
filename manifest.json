@@ -155,7 +155,83 @@
         }
       ]
     },
-    { "id": "03-modern-types", "title": "Modern Types & Data Modeling", "sections": [] },
+    {
+      "id": "03-modern-types",
+      "title": "Modern Types & Data Modeling",
+      "sections": [
+        {
+          "heading": "Modeling data with the right type",
+          "md": "md/03-01-modeling-data-with-the-right-type.md",
+          "slide": "slides/03-01-modeling-data-with-the-right-type.slide",
+          "scene": "java-anatomy",
+          "spine": true,
+          "role": "hook"
+        },
+        {
+          "heading": "Enums — a fixed set of constants",
+          "md": "md/03-02-enums-a-fixed-set-of-constants.md",
+          "slide": "slides/03-02-enums-a-fixed-set-of-constants.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Enums with state and behaviour",
+          "md": "md/03-03-enums-with-state-and-behaviour.md",
+          "slide": "slides/03-03-enums-with-state-and-behaviour.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Records — one-line immutable data classes",
+          "md": "md/03-04-records-one-line-immutable-data-classes.md",
+          "slide": "slides/03-04-records-one-line-immutable-data-classes.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Customising and validating records",
+          "md": "md/03-05-customising-and-validating-records.md",
+          "slide": "slides/03-05-customising-and-validating-records.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Sealed types — a closed family of subtypes",
+          "md": "md/03-06-sealed-types-a-closed-family-of-subtypes.md",
+          "slide": "slides/03-06-sealed-types-a-closed-family-of-subtypes.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Pattern matching for instanceof",
+          "md": "md/03-07-pattern-matching-for-instanceof.md",
+          "slide": "slides/03-07-pattern-matching-for-instanceof.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Pattern matching for switch — with guards",
+          "md": "md/03-08-pattern-matching-for-switch-with-guards.md",
+          "slide": "slides/03-08-pattern-matching-for-switch-with-guards.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Record patterns — destructuring",
+          "md": "md/03-09-record-patterns-destructuring.md",
+          "slide": "slides/03-09-record-patterns-destructuring.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Built-in annotations",
+          "md": "md/03-10-built-in-annotations.md",
+          "slide": "slides/03-10-built-in-annotations.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        }
+      ]
+    },
     { "id": "04-collections", "title": "Collections", "sections": [] },
     { "id": "05-generics", "title": "Generics", "sections": [] },
     { "id": "06-functional-java", "title": "Functional Java & Lambdas", "sections": [] },

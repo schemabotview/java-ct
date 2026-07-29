@@ -1,0 +1,32 @@
+# Sealed types — a closed family
+
+## `sealed` + `permits`
+
+```java
+public sealed interface Shape permits Circle, Square, Triangle {}
+
+public record Circle(double radius) implements Shape {}
+public record Square(double side)   implements Shape {}
+```
+
+Exactly these implementations — a fourth won't compile. Compiler **knows** the list is complete.
+
+## Each subtype declares its openness
+
+- **`final`** — no further extension (records already are)
+- **`sealed`** — continues the closed hierarchy with its own `permits`
+- **`non-sealed`** — deliberately re-opens
+
+## Payoff: exhaustiveness
+
+```java
+double area = switch (shape) {
+    case Circle c   -> Math.PI * c.radius() * c.radius();
+    case Square s   -> s.side() * s.side();
+    case Triangle t -> 0.5 * t.base() * t.h();
+};   // no default needed
+```
+
+Add a `Pentagon` → every such `switch` **stops compiling** until handled.
+
+**Sealed + records = algebraic data types** — `Success(id)` | `Failure(reason)`.

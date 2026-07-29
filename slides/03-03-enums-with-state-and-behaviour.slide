@@ -1,0 +1,32 @@
+# Enums with state and behaviour
+
+## Constants that carry data
+
+Java enums are **full objects** — fields, a constructor, methods:
+
+```java
+public enum Planet {
+    MERCURY(3.30e23, 2.44e6), EARTH(5.97e24, 6.37e6);
+    private final double mass, radius;
+    Planet(double mass, double radius) { ... }   // implicitly private
+    public double gravity() { return 6.67e-11 * mass / (radius*radius); }
+}
+Planet.EARTH.gravity();
+```
+
+## Behaviour per constant
+
+```java
+public enum Operation {
+    PLUS  { public int apply(int a, int b) { return a + b; } },
+    TIMES { public int apply(int a, int b) { return a * b; } };
+    public abstract int apply(int a, int b);
+}
+```
+
+Each constant = its own tiny subclass. Add one → compiler **forces** an `apply`.
+
+## Also
+
+- Enums **implement interfaces** (can't extend a class)
+- Use for a fixed set of **strategies/categories that carry data or logic**

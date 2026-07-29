@@ -1,0 +1,13 @@
+Customising and validating records.
+
+A one-line record is perfect, until you need it to enforce something — a temperature above absolute zero, a non-blank name, a normalised value. The mistake here is to conclude "records are too rigid, I'll go back to a class." You don't have to. A record is a normal class, so you can add validation, methods, and factories, while keeping every generated benefit.
+
+The key tool is the compact constructor. To validate or normalise the components, you write the record name, with no parameter list at all — just a body. It runs before the generated field assignments, and the components are in scope as if they were parameters. So a temperature record can have a compact constructor that checks: if celsius is below minus two hundred seventy-three point one five, throw an illegal-argument exception. Now, new temperature of minus three hundred throws, and the record is impossible to construct in an invalid state. That's the same "valid by construction" guarantee from module two, in just three lines.
+
+You can also normalise inside that compact constructor, by reassigning a component. The assignment flows into the final field. So a name record can strip the whitespace from its value, and then check that the result isn't blank. The field ends up storing the trimmed value.
+
+Beyond validation, a record can hold any methods you like — derived values, helpers, behaviour. A point record might add a distance-to method that computes the distance to another point. It can have a static factory, like origin, that returns a point at zero, zero. And it can hold static constants. Instance methods, static factories, and static constants are all fair game. Only mutable instance state is off-limits.
+
+You can also override a generated member when you need to. The classic case is defending a mutable component, because records don't copy for you. Say a team record holds a name and a list of members. In the compact constructor, you reassign members to list-copy-of members, making a defensive copy on the way in, so the record is truly immutable. That list-copy-of idiom is the standard move: guard mutable components at the boundary, so the record's immutability isn't a lie.
+
+So here's the line to hold. Add validation, derivation, and factories freely — but keep a record a value. No mutable fields, no identity, no side effects hidden in its methods. If a type needs a lifecycle, or mutation, or a superclass, then it isn't a record — make it a class. Used this way, you keep the one-line ergonomics and real invariants at the same time. And that's exactly what makes records the natural members of the sealed families we turn to next.

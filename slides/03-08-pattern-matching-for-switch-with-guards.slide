@@ -1,0 +1,36 @@
+# Pattern matching for `switch` — guards
+
+## `case` on a type pattern
+
+```java
+return switch (obj) {
+    case Integer i -> "int " + i;
+    case String s  -> "string len " + s.length();
+    default        -> "other";
+};
+```
+
+The `instanceof` ladder → one expression that **returns** a value.
+
+## `when` guards — add a condition
+
+```java
+case String s when s.isBlank() -> "blank";
+case String s                  -> "string: " + s;   // more specific FIRST
+```
+
+Guard runs only after the type matches → `s` is already a `String`.
+
+## `null`, and exhaustiveness
+
+```java
+case null, default -> "nothing / other";
+```
+
+Over a **sealed** type, cover every variant → **no `default`**:
+
+```java
+switch (shape) { case Circle c -> …; case Square s -> …; case Triangle t -> …; }
+```
+
+Add a variant → won't compile. **Don't** add a `default` "just in case" — it silences that check.

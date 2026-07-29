@@ -1,0 +1,29 @@
+# Records — one-line immutable data
+
+## The whole class, in a line
+
+```java
+public record Point(int x, int y) {}
+```
+
+From the components the compiler generates:
+
+- a `private final` field + **accessor** each — `x()`, `y()` (*not* `getX()`)
+- a **canonical constructor**
+- **`equals`** / **`hashCode`** on all components (value equality)
+- **`toString`** → `Point[x=1, y=2]`
+
+## Immutable by design
+
+```java
+var moved = new Point(p.x() + 1, p.y());   // new Point; p untouched
+```
+
+Safe to share across threads, safe as `Map` keys / `Set` members.
+
+## What it is underneath
+
+- A class that `extends Record` — can implement interfaces, add methods, be generic
+- **Cannot** extend another class, or add mutable fields
+
+**Use for:** DTOs, coordinates, money, compound keys, "return two things", domain values.

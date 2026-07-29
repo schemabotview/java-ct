@@ -1,0 +1,22 @@
+# Modeling data with the right type
+
+## One question → one type
+
+*How many valid values, and can they change?*
+
+- **Fixed set of values** → **`enum`** — 7 days, 3 states
+- **Immutable bundle** → **`record`** — a point is *just* x, y
+- **Closed family of variants** → **sealed type** — card | cash | transfer
+- **Identity + changing state** → ordinary **`class`**
+
+## Encoding intent pays off
+
+- **Illegal states unrepresentable** — a bad `Suit` can't exist
+- The **type documents** the design — `record`, `sealed` say it at a glance
+- **Exhaustive `switch`** — add a variant, the compiler flags every gap
+
+## The trap
+
+A `String status` that's really 5 values · an `int type` that's really an enum · a mutable class for plain data — each throws a guarantee away.
+
+**Through-line:** let the type carry the meaning, let the compiler enforce it.

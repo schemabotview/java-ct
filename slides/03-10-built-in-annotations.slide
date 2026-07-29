@@ -1,0 +1,27 @@
+# Built-in annotations
+
+## Metadata on code — `@name`
+
+Doesn't change behaviour on its own; the compiler or a tool reads it.
+
+## The compiler-facing set
+
+- **`@Override`** — verifies you really override; **put it on every override**
+- **`@Deprecated`** — warns callers; `@Deprecated(since="21", forRemoval=true)`
+- **`@SuppressWarnings("unchecked")`** — silence a warning you understand — narrowest scope
+- **`@FunctionalInterface`** — exactly one abstract method (module 06)
+
+## What it is underneath
+
+- Declared with `@interface`; **`@Target`** = where, **`@Retention`** = how long
+- `SOURCE` · `CLASS` · **`RUNTIME`** — readable via **reflection**
+- Runtime annotations power frameworks: `@Test`, `@Entity`, `@Controller` (→ module 10)
+
+## Carrying data
+
+```java
+@Test(timeout = 500)
+@SuppressWarnings({"unchecked", "deprecation"})
+```
+
+**Habit:** `@Override` everywhere — free, catches real bugs.
