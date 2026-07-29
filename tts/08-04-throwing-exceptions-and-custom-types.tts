@@ -1,0 +1,17 @@
+Throwing exceptions, and custom types.
+
+So far, you've caught exceptions the platform throws. The other half is throwing your own — signalling, from inside your code, that a situation is wrong, and sometimes defining a new exception type that names the failure in your domain's own words. A well-thrown exception is a precise, early-failing contract check.
+
+Start with the throw statement. Throw hands an exception object up the stack, ending the current method's normal flow at that point. You throw an instance, so you construct it with new, usually with a message describing what went wrong. So in a set-age method, if the age is negative, you throw a new illegal-argument-exception, with a message: "age must be at least zero, got" — and then the bad value. This is fail-fast. You reject a bad argument at the boundary, with a message naming the offending value, instead of storing it and failing mysteriously later.
+
+And for rejecting bad inputs, reach for the standard unchecked types before inventing your own. Illegal-argument-exception, for a bad parameter. Illegal-state-exception, for calling a method at the wrong time. And null-pointer-exception, which you usually raise through objects-dot-require-non-null. That last one is handy: you write this-dot-name equals objects-dot-require-non-null, of name, and a label — and it throws a null-pointer-exception with a message if name is null.
+
+Now, when should you define a custom exception? Invent a new type when a failure is meaningful in your domain, and callers may want to catch that specific thing — like insufficient-funds-exception, or order-not-found-exception. The name itself documents the failure, and it lets a handler target it precisely, rather than parsing a generic message.
+
+Writing one is simple: you extend an existing exception, and the branch you extend decides checked versus unchecked. So order-not-found-exception extends runtime-exception — it's unchecked, a caller bug — and its constructor passes a message up to super: "no order with id", and the id. Meanwhile, insufficient-funds-exception extends exception — it's checked, a recoverable condition — its constructor passes a message to super, and it also stores a shortfall amount, exposed through a shortfall accessor.
+
+Notice two design points there. First, pass a message to super, so the stack trace is self-explanatory. And second, a custom exception can carry data — that shortfall accessor lets the handler act on the specifics, not just read text. You'll also want a constructor that takes a throwable cause — that's the very next section — so you can wrap an underlying failure.
+
+Which brings us to the single most consequential choice when defining an exception: checked, or unchecked? Extend runtime-exception, unchecked, when the exception marks a bug — a violated precondition, an impossible state. Callers shouldn't be forced to catch a bug; they should fix it. And this is the common default for most application exceptions. Extend exception, checked, when the failure is a recoverable, expected condition that you genuinely want every caller to confront — and when you're willing to pay the throws-declaration tax up the call chain for it. Use that sparingly, because over-using checked exceptions litters your signatures.
+
+Get this choice right, and your exception type communicates, in the type system, exactly how seriously a caller must take it. And that is the whole reason to define one, instead of reusing a generic type.

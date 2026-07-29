@@ -1,0 +1,36 @@
+# Why exceptions
+
+*When something breaks deep in a call, how does the code that can fix it find out?*
+
+## The old way rots
+
+```java
+int result = parse(input);
+if (result == -1) { /* error, or a valid -1? */ }
+```
+
+Error and answer share **one channel**, and **nothing forces the check** — a bad value drifts downstream, failing far from the cause.
+
+## The exception model
+
+A **separate channel** that can't be dropped. A method **throws**; the runtime unwinds the stack to a matching **`catch`** — or the program stops.
+
+```java
+try {
+    int n = Integer.parseInt(input);   // may throw
+    process(n);                        // skipped if it throws
+} catch (NumberFormatException e) { ... }
+```
+
+Unhandled → **stops with a report**, not a corrupt value.
+
+## The stack trace = a map to the cause
+
+Names the failure, the input, and the exact line:
+
+```
+NumberFormatException: For input string: "abc"
+    at Billing.applyDiscount(Billing.java:42)  ← your code
+```
+
+**Read down to the deepest frame in *your* code.**

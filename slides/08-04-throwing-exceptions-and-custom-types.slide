@@ -1,0 +1,36 @@
+# Throwing exceptions & custom types
+
+## `throw` — fail fast at the boundary
+
+```java
+void setAge(int age) {
+    if (age < 0)
+        throw new IllegalArgumentException("age must be >= 0, got " + age);
+    this.age = age;
+}
+```
+
+Reject bad input *where it enters*, with the offending value in the message. Prefer the standard types: `IllegalArgumentException`, `IllegalStateException`, `Objects.requireNonNull(x, "x")`.
+
+## Define a custom type — when the failure is domain-meaningful
+
+Extend an exception; the branch you pick sets checked vs unchecked:
+
+```java
+class OrderNotFoundException extends RuntimeException {   // unchecked: a bug
+    OrderNotFoundException(String id) { super("no order " + id); }
+}
+
+class InsufficientFundsException extends Exception {       // checked: recoverable
+    final BigDecimal shortfall;
+    // ... super(msg); carry data callers can act on
+}
+```
+
+- **Pass a message to `super`** — self-explanatory stack trace
+- **Carry data** (`shortfall()`) so handlers act on specifics
+
+## The defining choice
+
+- `RuntimeException` → a **bug** (default; don't force a catch)
+- `Exception` → a **recoverable** condition callers must confront (use sparingly)

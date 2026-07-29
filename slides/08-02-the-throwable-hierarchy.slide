@@ -1,0 +1,28 @@
+# The `Throwable` hierarchy
+
+Everything you `throw` or `catch` descends from **`Throwable`**. The branches encode *who is responsible*.
+
+```
+Throwable
+├── Error            — JVM broken; do NOT catch
+└── Exception        — application problems
+    ├── RuntimeException — UNCHECKED: bugs/misuse
+    └── (all others)     — CHECKED: recoverable external failures
+```
+
+## Checked vs unchecked — the compiler's line
+
+- **Checked** (`IOException`, `SQLException`) — foreseeable, external. Compiler **forces** you to `catch` it or declare `throws`.
+- **Unchecked** (`NullPointer`, `IllegalArgument`) — a **programming bug**. No declaration; *fix it*, don't catch it.
+
+```java
+void read() throws IOException { ... }   // must declare or catch
+xs.get(99);                              // unchecked — no declaration
+```
+
+## Read the split as intent
+
+- Recoverable & external → **checked** (compiler makes the caller plan)
+- A bug in the code → **unchecked** (fix the source, don't wrap in try/catch)
+
+**Habits:** catch checked · let unchecked surface as a stack trace · never catch `Error`.
