@@ -1,0 +1,32 @@
+# Parallel streams
+
+Because a pipeline says *what*, not *how*, the runtime can run it across every core — with one word.
+
+## The one-word switch
+
+```java
+orders.stream()          // sequential — one thread
+    .filter(o -> o.total() > 100).count();
+
+orders.parallelStream()  // parallel — split, run, combine
+    .filter(o -> o.total() > 100).count();
+```
+
+Splits the source → runs each chunk on a `ForkJoinPool` thread → merges partials.
+
+## Why §06's rules now bite
+
+Elements combine **out of order, in groups, then merge** — correct only if:
+
+- operator is **associative**, identity **neutral**
+- each element is processed **independently**
+
+Mutating a shared list from `forEach` → races → **wrong answers, no exception.** Fix: stay functional (`collect`/`reduce`), never mutate shared state.
+
+## When it pays
+
+- **Thousands+** of elements · **cheap to split** (`ArrayList`, arrays — not `LinkedList`)
+- Substantial per-element work · no `limit`/`findFirst` ordering tax
+- **Never** with blocking I/O or shared mutable state
+
+**Default to sequential.** Parallelize only a *measured* CPU-bound bottleneck — then measure again.

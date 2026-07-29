@@ -1,0 +1,41 @@
+# Collectors — grouping and joining
+
+`reduce` gives one scalar. `collect` assembles a **container** — the usual end of a pipeline.
+
+## The everyday collectors
+
+```java
+import static java.util.stream.Collectors.*;
+
+names.collect(toSet());
+names.collect(joining(", "));        // "Ada, Grace, Alan"
+```
+
+## `toMap` — a lookup table
+
+```java
+people.stream().collect(toMap(Person::name, Person::age));
+```
+
+Same key twice → throws; add a merge fn: `toMap(k, v, (a,b) -> a)`.
+
+## `groupingBy` — the SQL "GROUP BY"
+
+```java
+Map<Dept, List<Employee>> byDept =
+    employees.stream().collect(groupingBy(Employee::dept));
+```
+
+## Downstream — group, *then* summarize
+
+Nest a second collector inside the grouping:
+
+```java
+groupingBy(Employee::dept, counting())                   // count per dept
+groupingBy(Employee::dept, averagingDouble(Employee::salary))
+groupingBy(Employee::dept, mapping(Employee::name, toList()))
+```
+
+`partitioningBy(pred)` → two buckets: `true` / `false`.
+
+**One line replaces a nest of `computeIfAbsent` loops** — streams as a query language.
