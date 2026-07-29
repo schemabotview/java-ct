@@ -14,6 +14,8 @@ public void place(Order o) { repo.save(o); }   // delegate
 - **Fragile base class** — an upstream change silently breaks you
 - **Leaks the whole surface** — `extends ArrayList` exposes `add`, `remove`…
 
+## Hold, don't extend
+
 ```java
 public class Stack<T> {
     private final List<T> items = new ArrayList<>();   // hidden
@@ -21,3 +23,5 @@ public class Stack<T> {
     public T pop() { return items.remove(items.size() - 1); }
 }
 ```
+
+**Guideline:** `is-a` → inherit (shallow); everything else → **compose + program to interfaces**.
