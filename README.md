@@ -1,35 +1,33 @@
 # java-ct
 
-Video-first content for the **Java** concept (core language + Spring), consumed at runtime by the [`graphl-movie`](../graphl-movie) app. Content only — notebooks, narration (`.tts` → `.wav`), authored one-screen slides (`.slide`: a `# Title`, `## ` sub-labels, short prose, fenced code, and `- `/numbered lists with **bold** key terms), and the wiring `manifest.json`. Nothing to build or run here. For the authoring contract and folder layout, see [`CLAUDE.md`](./CLAUDE.md).
+Video-first content for the **Java** concept (**core language + runtime only — no Spring**), consumed at runtime by the [`graphl-movie`](../graphl-movie) app. Content only — notebooks, narration (`.tts` → `.wav`), authored one-screen slides (`.slide`: a `# Title`, `## ` sub-labels, short prose, fenced code, and `- `/numbered lists with **bold** key terms), and the wiring `manifest.json`. Nothing to build or run here. For the authoring contract and folder layout, see [`CLAUDE.md`](./CLAUDE.md).
 
-This file is the **course outline** — the human-facing map of modules and sections. It is the plan we author against; the machine source of truth for structure is `manifest.json` (once authored).
+This file is the **course outline** — the human-facing map of modules and sections. It is the plan we author against; the machine source of truth for structure is `manifest.json`.
 
-**Status:** scaffolded + section spine drafted (**12 modules × ~10 sections = 127 sections**, below). **Modules 01–08 authored end-to-end** — all 87 sections have `.ipynb` + `.slide` + `.tts`, and `manifest.json` wires them (per-section `scene`/`spine`/`focus`/`highlight`, §01 of each the hook). Modules 02–05 ride `java-anatomy`; **06–07 ride `java-jvm`** (07 is the runtime capstone); **module 08 (Spring Core) opens the Spring half on the new `spring` scene**, framing its `sp-core` IoC-container band per section. Slides are authored to the fuller one-screen density (≥2 sub-sections, code + comparison tables). `audio/` is empty by design: the owner generates the `.wav`s from `tts/` via Colab, then the manifest `audio` fields resolve. **Spring modules 09–12 not authored yet** (they'll ride the other `spring` bands — web/data/boot/cloud). Scenes `java-jvm`, `java-anatomy`, and `spring` (5-band whole-platform map) are all registered app-side in graphl-movie.
+**Status:** re-scoped to **Java-only** and reset to a clean spine (**10 modules × 10 sections = 100 sections**, below). All per-section artifacts (`notebooks/`, `slides/`, `tts/`, `audio/`) are cleared and `manifest.json` is reset to the empty 10-module spine — nothing authored yet. Scenes `java-jvm` and `java-anatomy` are the two app-side scenes these modules wire to; the former `spring` scene is out of scope for this concept.
 
-## Module spine (from `../java-content`)
+## Module spine
 
-The source curriculum is the **12-module Java path** in `../java-content` (the graphl-ux-era repo, source of truth for the notebook split): seven core-language/runtime modules then five Spring modules. The video set keeps all 12 modules — Java + Spring is a lot of ground, so 12 is the agreed exception to the usual ~10-module shape — each normalized to **~10 tight teaching sections** (a section = one narrated slide + scene focus, ≈ one page). The source notebooks run 10–17 `## ` headings each; we consolidate fine-grained beats (merging tightly related items) and drop the reading-only "what we'll cover" / "What's next" scaffolding to land near ~10. **§1 of each module is the hook** — the picture the rest of the module zooms into.
+Ten modules take the learner from first run to the JVM, build tools, and tests — **no Spring**. Each module is normalized to **10 tight teaching sections** (a section = one narrated slide + scene focus, ≈ one page). **§1 of each module is the hook** — the picture the rest of the module zooms into.
 
-Scene assignment: **core-language modules → `java-anatomy`** (the "grammar of a program" map), **runtime/JVM modules (06, 07) → `java-jvm`** (the source→classloader→memory→execution runtime map). Module 01 straddles both (a runtime intro on `java-jvm`, then language basics on `java-anatomy`). Spring modules **08–12 have no scene yet** — they may ride a related scene as a full-strength backdrop until their own scenes are authored.
+Scene assignment: **core-language modules (02–08) → `java-anatomy`** (the "grammar of a program" map), **runtime/JVM modules (09, 10) → `java-jvm`** (the source→classloader→memory→execution runtime map). **Module 01 straddles both** (a runtime intro on `java-jvm`, then language basics on `java-anatomy`).
 
-| # | Module | Scene | Source → video |
-|---|---|---|---|
-| 01 | Java Essentials | `java-jvm` + `java-anatomy` | 17 → 11 |
-| 02 | OOP & Modern Types | `java-anatomy` | 14 → 11 |
-| 03 | Collections & Generics | `java-anatomy` | 14 → 11 |
-| 04 | Functional Java & Streams | `java-anatomy` | 13 → 11 |
-| 05 | Errors, Files & I/O | `java-anatomy` | 12 → 10 |
-| 06 | Concurrency & Virtual Threads | `java-jvm` | 14 → 11 |
-| 07 | JVM, Reflection, Build & Testing | `java-jvm` | 12 → 11 |
-| 08 | Spring Core | *(no scene yet)* | 13 → 11 |
-| 09 | Spring Web | *(no scene yet)* | 10 → 10 |
-| 10 | Spring Data | *(no scene yet)* | 13 → 11 |
-| 11 | Spring Boot in Production | *(no scene yet)* | 12 → 10 |
-| 12 | Spring Cloud | *(no scene yet)* | 10 → 10 |
+| # | Module | Scene |
+|---|---|---|
+| 01 | Java Essentials | `java-jvm` + `java-anatomy` |
+| 02 | Object-Oriented Java | `java-anatomy` |
+| 03 | Modern Types & Data Modeling | `java-anatomy` |
+| 04 | Collections | `java-anatomy` |
+| 05 | Generics | `java-anatomy` |
+| 06 | Functional Java & Lambdas | `java-anatomy` |
+| 07 | Streams & Optional | `java-anatomy` |
+| 08 | Exceptions, Files & I/O | `java-anatomy` |
+| 09 | Concurrency & Virtual Threads | `java-jvm` |
+| 10 | JVM, Build & Testing | `java-jvm` |
 
-## Sections (drafted from `../java-content` — final headings settle per module as authored)
+## Sections
 
-### 01 — Java Essentials (11) · `java-jvm` + `java-anatomy`
+### 01 — Java Essentials (10) · `java-jvm` + `java-anatomy`
 
 1. What is Java, and why in 2026? *(hook)*
 2. Modern Java, not 1998 Java
@@ -40,52 +38,87 @@ Scene assignment: **core-language modules → `java-anatomy`** (the "grammar of 
 7. `var` and local type inference
 8. Expressions, statements and operators
 9. Control flow statements
-10. Methods
-11. Strings, text blocks and comments
+10. Methods, strings and text blocks
 
-### 02 — OOP & Modern Types (11) · `java-anatomy`
+### 02 — Object-Oriented Java (10) · `java-anatomy`
 
 1. Classes — the unit of code *(hook)*
 2. Encapsulation and visibility
 3. Constructors, `this`, and overloading
-4. Inheritance and polymorphism
-5. Abstract classes
-6. Interfaces — with default and static methods
-7. Enums — a fixed set of constants
-8. Records — one-line immutable data classes
-9. Sealed types — a closed family of subtypes
-10. Pattern matching for `switch` — with guards
-11. Built-in annotations
+4. Object basics — `equals`, `hashCode`, `toString`
+5. Inheritance and the class hierarchy
+6. Polymorphism and dynamic dispatch
+7. Abstract classes
+8. Interfaces — with default and static methods
+9. Nested, inner and anonymous classes
+10. Composition over inheritance
 
-### 03 — Collections & Generics (11) · `java-anatomy`
+### 03 — Modern Types & Data Modeling (10) · `java-anatomy`
+
+1. Modeling data with the right type *(hook)*
+2. Enums — a fixed set of constants
+3. Enums with state and behaviour
+4. Records — one-line immutable data classes
+5. Customising and validating records
+6. Sealed types — a closed family of subtypes
+7. Pattern matching for `instanceof`
+8. Pattern matching for `switch` — with guards
+9. Record patterns — destructuring
+10. Built-in annotations
+
+### 04 — Collections (10) · `java-anatomy`
 
 1. The Collection hierarchy *(hook)*
 2. `List` — ordered, indexed, allows duplicates
 3. `Set` — no duplicates
 4. `Map` — key-to-value lookup
 5. `Queue` and `Deque`
-6. Immutable factories & iterating
-7. Generics — what and why
-8. Writing a generic class & generic methods
-9. Bounded type parameters
-10. Wildcards & PECS — `? extends T` / `? super T`
-11. Type erasure — what the JVM actually sees
+6. Iterating collections
+7. Immutable factories & defensive copies
+8. Sorting — `Comparable` and `Comparator`
+9. Equality, hashing and collection contracts
+10. Choosing the right collection
 
-### 04 — Functional Java & Streams (11) · `java-anatomy`
+### 05 — Generics (10) · `java-anatomy`
 
-1. Lambdas — functions as values *(hook)*
-2. Method references
-3. The four core functional interfaces — and writing your own
-4. Capturing variables — *effectively final*
-5. Streams — pipelines over collections
-6. Creating streams
-7. Intermediate operations
-8. Terminal operations
-9. Collectors
-10. Parallel streams
-11. `Optional<T>` — and streams together
+1. Why generics *(hook)*
+2. Using generic types
+3. Writing a generic class
+4. Generic methods
+5. Bounded type parameters
+6. Wildcards — `? extends T`
+7. Wildcards — `? super T` and PECS
+8. Type erasure — what the JVM actually sees
+9. Generics gotchas — arrays and casts
+10. Generic APIs in practice
 
-### 05 — Errors, Files & I/O (10) · `java-anatomy`
+### 06 — Functional Java & Lambdas (10) · `java-anatomy`
+
+1. Functions as values *(hook)*
+2. Lambdas — the syntax
+3. Method references
+4. `Function` and `BiFunction`
+5. `Predicate`, `Consumer`, `Supplier`
+6. Writing your own functional interface
+7. Capturing variables — *effectively final*
+8. Composing functions
+9. Higher-order methods
+10. Functional style — when, and when not
+
+### 07 — Streams & Optional (10) · `java-anatomy`
+
+1. Streams — pipelines over data *(hook)*
+2. Creating streams
+3. Intermediate operations
+4. `map`, `filter` and `flatMap`
+5. Terminal operations
+6. Reduction and `reduce`
+7. Collectors — grouping and joining
+8. Parallel streams
+9. `Optional<T>` — no more nulls
+10. Streams and `Optional` together
+
+### 08 — Exceptions, Files & I/O (10) · `java-anatomy`
 
 1. Why exceptions *(hook)*
 2. The `Throwable` hierarchy — checked vs unchecked
@@ -95,103 +128,34 @@ Scene assignment: **core-language modules → `java-anatomy`** (the "grammar of 
 6. `try-with-resources` — safe cleanup
 7. The NIO `Path` — modern filesystem paths
 8. `Files` — reading and writing
-9. Directory operations
+9. Directory operations & streams of files
 10. Serialization — a brief note
 
-### 06 — Concurrency & Virtual Threads (11) · `java-jvm`
+### 09 — Concurrency & Virtual Threads (10) · `java-jvm`
 
 1. What is a thread? *(hook)*
-2. Raw threads with the `Thread` class
-3. `Runnable` vs `Callable<V>`
-4. `ExecutorService` and `Future<V>`
-5. Virtual threads — Java 21's big shift
-6. `CompletableFuture` — composable async
-7. Structured concurrency
-8. The shared-mutable-state problem
-9. Locks — `synchronized` and `ReentrantLock`
-10. Atomic variables & concurrent collections
-11. `volatile` and the JVM memory model
+2. Raw threads and `Runnable`
+3. `ExecutorService` and `Future<V>`
+4. Virtual threads — Java 21's big shift
+5. `CompletableFuture` — composable async
+6. Structured concurrency
+7. The shared-mutable-state problem
+8. Locks — `synchronized` and `ReentrantLock`
+9. Atomic variables & concurrent collections
+10. `volatile` and the JVM memory model
 
-### 07 — JVM, Reflection, Build & Testing (11) · `java-jvm`
+### 10 — JVM, Build & Testing (10) · `java-jvm`
 
 1. The JVM — what's actually running *(hook)*
 2. Garbage collection in one breath
 3. Class loading
 4. Java modules — the 60-second tour
-5. Annotations — revisited and extended
-6. Reflection — looking at code as data
-7. Reading annotations via reflection — the Spring bridge
-8. Maven — the dominant build tool
-9. Gradle — the script-based alternative
-10. JUnit 5 & parameterised tests
-11. Mockito — testing in isolation
-
-### 08 — Spring Core (11) · *(no scene yet)*
-
-1. The problem: manual wiring *(hook)*
-2. Inversion of Control and Dependency Injection
-3. The `ApplicationContext`
-4. Component scanning — `@Component` and its specialisations
-5. `@Configuration` and `@Bean` — explicit registration
-6. Three injection styles — and which to use
-7. Bean scopes & lifecycle
-8. Profiles & externalised configuration
-9. Aspect-Oriented Programming
-10. `ApplicationContext` events
-11. Putting it together
-
-### 09 — Spring Web (10) · *(no scene yet)*
-
-1. How a Spring MVC request flows *(hook)*
-2. `@RestController` vs `@Controller`
-3. Extracting request data
-4. Returning responses
-5. Validation with `@Valid`
-6. Centralised error handling
-7. Calling other services — `RestClient`
-8. Spring Security — the essentials
-9. Method security
-10. CORS in one paragraph
-
-### 10 — Spring Data (11) · *(no scene yet)*
-
-1. Why Spring Data *(hook)*
-2. JPA & the DataSource
-3. Entities — mapping a class to a table
-4. Relationships
-5. Fetch types and the N+1 problem
-6. The repository hierarchy
-7. Derived query methods
-8. `@Query` — when derivation isn't enough
-9. Paging and sorting
-10. `@Transactional` — what it actually does
-11. Dynamic queries & Flyway migrations
-
-### 11 — Spring Boot in Production (10) · *(no scene yet)*
-
-1. What Spring Boot adds *(hook)*
-2. Auto-configuration — how it works
-3. Externalised configuration & `@ConfigurationProperties`
-4. Actuator — health, metrics, and introspection
-5. Logging — Logback, SLF4J, structured output
-6. Testing — the test slices
-7. Testcontainers — real databases, ephemeral
-8. Messaging — Kafka, JMS & AMQP
-9. Packaging — the fat JAR
-10. Container deployment
-
-### 12 — Spring Cloud (10) · *(no scene yet)*
-
-1. Why Spring Cloud *(hook)*
-2. What's in the umbrella (and what to skip)
-3. Spring Cloud Config — one source of truth for configuration
-4. Service discovery with Eureka
-5. API Gateway — the edge
-6. Circuit breakers with Resilience4j
-7. Distributed tracing — Micrometer Tracing + OpenTelemetry
-8. Spring Cloud Stream — broker-agnostic messaging
-9. The platform overlap — where Spring Cloud meets Kubernetes
-10. Track wrap-up
+5. Reflection — looking at code as data
+6. Annotations — reading them at runtime
+7. Maven — the dominant build tool
+8. Gradle — the script-based alternative
+9. JUnit 5 & parameterised tests
+10. Mockito — testing in isolation
 
 ## Layout
 
