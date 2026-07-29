@@ -1,0 +1,27 @@
+# The Collection hierarchy
+
+## Interface vs implementation
+
+- **Interfaces** name a capability — `List`, `Set`, `Queue`, `Map`
+- **Implementations** decide *how* — `ArrayList`, `HashSet`, `HashMap`, `ArrayDeque`
+
+```java
+List<String> names = new ArrayList<>();   // type by interface, pick impl with new
+Map<String, Integer> ages = new HashMap<>();
+```
+
+## The map
+
+- **`Iterable`** → **`Collection`** → holds elements:
+  - **`List`** — ordered, indexed, **duplicates ok**
+  - **`Set`** — **no duplicates**, membership not position
+  - **`Queue`/`Deque`** — ordered processing (FIFO / both ends)
+- **`Map`** — key → value; **not** a `Collection`
+
+## Everything is generic
+
+```java
+List<String>  ·  Map<Long, User>  ·  Set<Tag>
+```
+
+Element type checked by the compiler — no casts. Diamond `<>` infers it.

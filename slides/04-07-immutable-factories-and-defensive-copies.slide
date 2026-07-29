@@ -1,0 +1,34 @@
+# Immutable factories & defensive copies
+
+## The `of` factories (Java 9+)
+
+```java
+List<String> colors = List.of("red", "green", "blue");
+Set<String>  tags   = Set.of("java", "jvm");
+Map<String, Integer> m = Map.of("a", 1, "b", 2);
+```
+
+- **Truly immutable** — `add`/`put` throws
+- **Null-hostile**; `Set.of`/`Map.of` reject duplicates
+- Snapshot an existing one: `List.copyOf(other)`
+
+## View vs copy — don't confuse them
+
+```java
+var view = Collections.unmodifiableList(live);  // window
+live.add("c");   // ← shows through the view!
+var snap = List.copyOf(live);                   // independent
+live.add("d");   // ← snap unaffected
+```
+
+Want a real guarantee? **Copy**, not a view.
+
+## Defensive copies
+
+```java
+public Team(List<String> members) {
+    this.members = List.copyOf(members);   // copy IN
+}
+```
+
+Copy **in** at the boundary; return immutable/view **out**. Prevents leaks of internal state.

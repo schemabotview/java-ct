@@ -1,0 +1,24 @@
+# Choosing the right collection
+
+## Step 1 — access shape → interface
+
+- Sequence / index / order / duplicates → **`List`**
+- Membership / uniqueness → **`Set`**
+- Look up by key → **`Map`**
+- Process in order (FIFO / stack / priority) → **`Deque` / `PriorityQueue`**
+
+## Step 2 — ordering → implementation
+
+- No order → **`HashSet` / `HashMap`** (fast default)
+- Insertion order → **`LinkedHashSet` / `LinkedHashMap`**
+- Sorted / ranges → **`TreeSet` / `TreeMap`** (O(log n))
+
+## Defaults, in one breath
+
+**List → `ArrayList` · Set → `HashSet` · Map → `HashMap` · Queue/Stack → `ArrayDeque`** · priority → `PriorityQueue` · enum keys → `EnumMap`/`EnumSet`
+
+## Don't forget
+
+- Program to the **interface**; prefer **immutable** + copy at boundaries
+- Value types as **records**; **immutable keys**
+- `removeIf` while iterating · `merge`/`computeIfAbsent` · `Comparator` for ad-hoc order

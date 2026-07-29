@@ -1,0 +1,30 @@
+# Sorting — `Comparable` & `Comparator`
+
+## `Comparable` — the type's natural order
+
+```java
+public record Money(long cents) implements Comparable<Money> {
+    public int compareTo(Money o) { return Long.compare(cents, o.cents); }
+}
+Collections.sort(payments);
+```
+
+**Rule:** compare, don't subtract — `a - b` can overflow. Use `Integer.compare`.
+
+## `Comparator` — orderings on demand
+
+```java
+people.sort(Comparator.comparing(Person::lastName)
+                      .thenComparing(Person::firstName));
+people.sort(Comparator.comparingInt(Person::age).reversed());
+people.sort(comparing(Person::nick, nullsLast(naturalOrder())));
+```
+
+`comparing` · `thenComparing` (tie-break) · `reversed` · `nullsFirst/Last`. Use `comparingInt` for primitives (no boxing).
+
+## Where it happens
+
+- `list.sort(cmp)` — in place, stable, O(n log n)
+- `new TreeSet<>(cmp)` — stays sorted · streams `.sorted(cmp)`
+
+**Choose:** one canonical order → `Comparable`; many orderings → `Comparator`.

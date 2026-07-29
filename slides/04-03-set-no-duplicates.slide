@@ -1,0 +1,32 @@
+# `Set` — no duplicates
+
+## Membership, not position
+
+```java
+Set<String> tags = new HashSet<>();
+tags.add("java");
+tags.add("java");        // ignored — already present
+tags.contains("java");   // true, and fast
+```
+
+`add` returns `true` if the element was **new** → detect first-seen in one step.
+
+## "Same" = `equals` + `hashCode`
+
+A `HashSet<Point>` dedups correctly **only if `Point` overrides `equals`/`hashCode`** (→ use records). Default identity `equals` → nothing looks duplicate.
+
+## Three impls — pick by order
+
+- **`HashSet`** — default, **no order**, O(1)
+- **`LinkedHashSet`** — **insertion order**
+- **`TreeSet`** — **sorted**, O(log n), range queries (`ceiling`, `floor`); uses `compareTo`, not `equals`
+
+## Set algebra
+
+```java
+a.addAll(b);      // union
+a.retainAll(b);   // intersection
+a.removeAll(b);   // difference
+```
+
+De-dup a list: `new HashSet<>(list)`.

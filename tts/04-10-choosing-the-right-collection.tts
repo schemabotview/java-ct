@@ -1,0 +1,15 @@
+Choosing the right collection.
+
+You've met all the pieces; this section is the decision procedure that ties them together. In practice, picking a collection is two quick questions — what shape of access do I need, then what ordering, if any — plus a small set of defaults that are right most of the time.
+
+Step one: what shape of access? Start from how you'll use the data, not how you'll store it. If you need a sequence you index into, or that keeps order or duplicates, that's a list. If you need membership or uniqueness — "is this in the set?" — that's a set. If you look a value up by a key, that's a map. And if you process in order — first-in-first-out, or as a stack, or by priority — that's a deque, or a priority-queue. That single question eliminates most of the framework immediately.
+
+Step two: what ordering do you need? Within set and map, the implementation is chosen entirely by the ordering you want. If you don't care about order, use hash-set or hash-map — the fast, constant-time default. If you want to remember insertion order, use linked-hash-set or linked-hash-map. And if you need it kept sorted, or need range queries, use tree-set or tree-map, at order log-n. For a list, the choice is nearly always array-list; and for a queue or a stack, nearly always array-deque.
+
+So here are the defaults, in one breath. List, array-list. Set, hash-set. Map, hash-map. Queue or stack, array-deque. Priority order, priority-queue. And enum keys or elements, enum-map or enum-set. Most production code is these six. The linked and tree variants are deliberate upgrades, for when order or sorting matters.
+
+It helps to know the rough costs, so you don't pick a structure that's quietly order-n. Array-list: get and set are constant time; add-at-end is amortised constant; but insert or remove in the middle is order-n. Hash-map and hash-set: get, put, add, and contains are constant time on average, given a good hash code. Tree-map and tree-set: those same operations are order log-n, but you get sorting and range queries in return. Array-deque: constant time at both ends. And priority-queue: offer and poll are order log-n, while peek is constant.
+
+And don't forget the cross-cutting habits, because the choice of type is only half of using collections well. Program to the interface — list, not array-list — in your fields, parameters, and returns. Prefer immutable collections — list-of and map-of for fixed data, copy-of for snapshots — and copy at your boundaries. Make sure elements and keys have correct equals and hash code, by making value types records, and keep your keys immutable. And use remove-if to delete while iterating, merge and compute-if-absent for map updates, and a comparator for ad-hoc orderings.
+
+So here's the mental model to walk away with. The access shape picks the interface. The ordering picks the implementation. And the defaults — array-list, hash-map, hash-set, array-deque — are right until a concrete requirement says otherwise. That closes collections. Module five, generics, explains the angle brackets that have been quietly making all of this type-safe.

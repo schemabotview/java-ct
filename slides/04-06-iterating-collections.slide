@@ -1,0 +1,35 @@
+# Iterating collections
+
+## Default: for-each
+
+```java
+for (String name : names) System.out.println(name);
+```
+
+Works on any `Iterable`; compiles to an `Iterator` (`hasNext`/`next`).
+
+## The trap: modify while iterating
+
+```java
+for (String n : names)
+    if (n.isBlank()) names.remove(n);   // ConcurrentModificationException
+```
+
+Fails **fast** on structural change (single-threaded, despite the name). Fixes:
+
+```java
+names.removeIf(n -> n.isBlank());              // cleanest
+for (var it = names.iterator(); it.hasNext();) // or remove via iterator
+    if (it.next().isBlank()) it.remove();
+```
+
+Maps: `entrySet().removeIf(...)` / `values().removeIf(...)`.
+
+## `forEach` & beyond
+
+```java
+names.forEach(System.out::println);
+ages.forEach((name, age) -> ...);
+```
+
+Transform/filter/aggregate? → **streams** (module 07), not a loop.

@@ -1,0 +1,29 @@
+# `List` — ordered, indexed, duplicates
+
+## Core operations
+
+```java
+List<String> names = new ArrayList<>();
+names.add("Ada");            // append → index 0
+names.get(1);                // read by index
+names.set(0, "Alan");        // replace
+names.indexOf("Ada");        // first match
+names.remove("Ada");         // by value (first match)
+names.remove(0);             // by index — different method!
+```
+
+**Trap:** on `List<Integer>`, `remove(2)` removes *index 2*, not the value → `remove(Integer.valueOf(2))`.
+
+## `ArrayList` — the default
+
+- **`get`/`set` O(1)** · append **O(1) amortised**
+- Insert/remove in the **middle O(n)** (elements shift)
+- Pre-size if known: `new ArrayList<>(1000)`
+
+## `LinkedList` — rarely
+
+`get(i)` is O(n), cache-unfriendly → **default to `ArrayList`**; for a queue/stack use `ArrayDeque`.
+
+## Java 21 endpoints (`SequencedCollection`)
+
+`getFirst()` · `getLast()` · `addFirst()` · `reversed()`

@@ -1,0 +1,28 @@
+# Equality, hashing & contracts
+
+## How `HashMap` finds a key
+
+1. **`hashCode`** → pick the bucket (where to look)
+2. **`equals`** → find the exact key in it (which one)
+
+Both load-bearing → **equal objects must have equal hash codes.**
+
+## Failure modes
+
+- **`equals` but not `hashCode`** → `get()` returns `null`, `Set` shows duplicates *(most common bug)*
+- **Neither** (identity) → `new Point(1,1)` never matches another → **use records**
+- **Bad `hashCode`** (`return 0`) → all one bucket → O(1) becomes **O(n)**
+
+## Mutable-key trap
+
+```java
+map.put(key, v);
+key.add("b");     // hashCode changed → entry lost in wrong bucket
+map.get(key);     // null
+```
+
+→ **keys & set-elements must be immutable.**
+
+## Trees are different
+
+`TreeMap`/`TreeSet` use **`compareTo`**, not `equals`/`hashCode` → keep `compareTo` **consistent with `equals`**.

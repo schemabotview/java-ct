@@ -232,7 +232,83 @@
         }
       ]
     },
-    { "id": "04-collections", "title": "Collections", "sections": [] },
+    {
+      "id": "04-collections",
+      "title": "Collections",
+      "sections": [
+        {
+          "heading": "The Collection hierarchy",
+          "md": "md/04-01-the-collection-hierarchy.md",
+          "slide": "slides/04-01-the-collection-hierarchy.slide",
+          "scene": "java-anatomy",
+          "spine": true,
+          "role": "hook"
+        },
+        {
+          "heading": "List — ordered, indexed, allows duplicates",
+          "md": "md/04-02-list-ordered-indexed-allows-duplicates.md",
+          "slide": "slides/04-02-list-ordered-indexed-allows-duplicates.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Set — no duplicates",
+          "md": "md/04-03-set-no-duplicates.md",
+          "slide": "slides/04-03-set-no-duplicates.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Map — key-to-value lookup",
+          "md": "md/04-04-map-key-to-value-lookup.md",
+          "slide": "slides/04-04-map-key-to-value-lookup.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Queue and Deque",
+          "md": "md/04-05-queue-and-deque.md",
+          "slide": "slides/04-05-queue-and-deque.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Iterating collections",
+          "md": "md/04-06-iterating-collections.md",
+          "slide": "slides/04-06-iterating-collections.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Immutable factories & defensive copies",
+          "md": "md/04-07-immutable-factories-and-defensive-copies.md",
+          "slide": "slides/04-07-immutable-factories-and-defensive-copies.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Sorting — Comparable and Comparator",
+          "md": "md/04-08-sorting-comparable-and-comparator.md",
+          "slide": "slides/04-08-sorting-comparable-and-comparator.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Equality, hashing and collection contracts",
+          "md": "md/04-09-equality-hashing-and-collection-contracts.md",
+          "slide": "slides/04-09-equality-hashing-and-collection-contracts.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Choosing the right collection",
+          "md": "md/04-10-choosing-the-right-collection.md",
+          "slide": "slides/04-10-choosing-the-right-collection.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        }
+      ]
+    },
     { "id": "05-generics", "title": "Generics", "sections": [] },
     { "id": "06-functional-java", "title": "Functional Java & Lambdas", "sections": [] },
     { "id": "07-streams-optional", "title": "Streams & Optional", "sections": [] },

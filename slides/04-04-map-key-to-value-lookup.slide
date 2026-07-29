@@ -1,0 +1,38 @@
+# `Map` — key-to-value lookup
+
+## The basics
+
+```java
+Map<String, Integer> ages = new HashMap<>();
+ages.put("Ada", 36);
+ages.put("Ada", 37);              // same key → replaces
+ages.get("Ada");                  // 37
+ages.get("nobody");               // null
+ages.getOrDefault("nobody", 0);   // 0 — safer read
+```
+
+Keys form a `Set` (unique). Missing `get` → `null`.
+
+## Methods that prevent bugs
+
+```java
+counts.merge(word, 1, Integer::sum);                      // tally
+groups.computeIfAbsent(key, k -> new ArrayList<>()).add(x);  // group
+ages.putIfAbsent("Ada", 99);
+```
+
+Replace the `containsKey … else …` dance.
+
+## Iterate a view
+
+```java
+for (var e : ages.entrySet())            // both key & value, one pass
+    ... e.getKey() ... e.getValue();
+```
+
+`keySet()` · `values()` · `forEach((k,v) -> …)`
+
+## Impls & the key contract
+
+`HashMap` (default, no order) · `LinkedHashMap` (insertion) · `TreeMap` (sorted).
+**Keys need correct `equals`/`hashCode`** — use **immutable** keys.

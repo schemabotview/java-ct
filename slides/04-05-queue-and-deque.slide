@@ -1,0 +1,34 @@
+# `Queue` and `Deque`
+
+## `Queue` — FIFO, prefer the signalling forms
+
+```java
+Queue<Task> q = new ArrayDeque<>();
+q.offer(taskA);   // add at back  (add() throws)
+q.peek();         // front, no remove → null if empty
+q.poll();         // remove front → null if empty
+```
+
+`offer`/`poll`/`peek` signal · `add`/`remove`/`element` throw.
+
+## `Deque` — both ends → also a stack
+
+```java
+Deque<Page> history = new ArrayDeque<>();
+history.push(page);      // = addFirst
+Page back = history.pop();   // = removeFirst — LIFO
+```
+
+## `ArrayDeque` — the one to remember
+
+- Standard impl of **both** queue & stack — O(1) both ends
+- **Avoid `Stack`** (legacy, synchronized) and `LinkedList` → use `ArrayDeque`
+- Forbids `null` elements
+
+## `PriorityQueue` — smallest first
+
+```java
+pq.offer(5); pq.offer(1); pq.poll();   // 1 — min, not oldest
+```
+
+Heap, O(log n): schedulers, top-k, Dijkstra.
