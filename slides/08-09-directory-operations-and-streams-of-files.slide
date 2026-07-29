@@ -7,8 +7,7 @@
 ```java
 try (Stream<Path> entries = Files.list(dir)) {
     entries.filter(Files::isRegularFile)
-           .map(Path::getFileName)
-           .sorted().forEach(System.out::println);
+           .map(Path::getFileName).sorted().forEach(...);
 }
 ```
 
@@ -17,10 +16,8 @@ try (Stream<Path> entries = Files.list(dir)) {
 ```java
 try (Stream<Path> tree = Files.walk(start)) {
     long n = tree.filter(p -> p.toString().endsWith(".java")).count();
-}
+}   // Files.walk(start, 2) bounds the depth
 ```
-
-`Files.walk(start, 2)` bounds the depth. Replaces the hand-written recursive walk.
 
 ## `Files.find` — walk + built-in filter
 

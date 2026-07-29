@@ -27,6 +27,4 @@ double area = switch (shape) {
 };   // no default needed
 ```
 
-Add a `Pentagon` → every such `switch` **stops compiling** until handled.
-
 **Sealed + records = algebraic data types** — `Success(id)` | `Failure(reason)`.

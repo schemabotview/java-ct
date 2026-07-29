@@ -10,16 +10,12 @@ return switch (obj) {
 };
 ```
 
-The `instanceof` ladder → one expression that **returns** a value.
-
 ## `when` guards — add a condition
 
 ```java
 case String s when s.isBlank() -> "blank";
 case String s                  -> "string: " + s;   // more specific FIRST
 ```
-
-Guard runs only after the type matches → `s` is already a `String`.
 
 ## `null`, and exhaustiveness
 

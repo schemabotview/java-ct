@@ -21,11 +21,10 @@ catch (SQLException e) {
 // constructor: super(msg, cause);
 ```
 
-## You get "Caused by:" — both stories
+You get **both stories**, linked by `Caused by:`:
 
 ```
 UserLookupException: lookup failed for 42
-    at UserService.find(...:31)
 Caused by: java.sql.SQLException: connection timed out
 ```
 

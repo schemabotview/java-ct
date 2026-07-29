@@ -1,7 +1,5 @@
 # Built-in annotations
 
-## Metadata on code — `@name`
-
 Doesn't change behaviour on its own; the compiler or a tool reads it.
 
 ## The compiler-facing set
@@ -14,14 +12,12 @@ Doesn't change behaviour on its own; the compiler or a tool reads it.
 ## What it is underneath
 
 - Declared with `@interface`; **`@Target`** = where, **`@Retention`** = how long
-- `SOURCE` · `CLASS` · **`RUNTIME`** — readable via **reflection**
-- Runtime annotations power frameworks: `@Test`, `@Entity`, `@Controller` (→ module 10)
+- `SOURCE` · `CLASS` · **`RUNTIME`** — readable via **reflection** → powers `@Test`, `@Entity` (module 10)
 
 ## Carrying data
 
 ```java
-@Test(timeout = 500)
-@SuppressWarnings({"unchecked", "deprecation"})
+@Test(timeout = 500)   // named element; arrays: {"unchecked", "deprecation"}
 ```
 
 **Habit:** `@Override` everywhere — free, catches real bugs.

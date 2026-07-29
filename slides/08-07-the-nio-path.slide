@@ -11,23 +11,16 @@ Path p = Path.of("/home/ada/notes.txt");   // Java 11+
 Path r = Path.of("docs", "report.pdf");     // joined with OS separator
 ```
 
-## Combine: `resolve` / `relativize` (inverses)
+## Combine & inspect (still no disk)
 
 ```java
-Path base = Path.of("/home/ada");
-base.resolve("notes.txt");     // /home/ada/notes.txt  (join child)
-base.relativize(file);         // notes.txt            (route between)
+base.resolve("notes.txt");   // join a child   /home/ada/notes.txt
+base.relativize(file);       // route between  notes.txt
+p.getFileName();  p.getParent();
+p.normalize();               // a/./b/../c → a/c  (defuses ../ traversal)
 ```
 
-Prefer these to gluing strings with `"/"`.
-
-## Inspect / normalize (still no disk)
-
-```java
-p.getFileName();   // notes.txt
-p.getParent();     // /home/ada
-p.normalize();     // a/./b/../c → a/c   (defuses ../ traversal)
-```
+Prefer `resolve` to gluing strings with `"/"`.
 
 ## Why over old `File`
 
