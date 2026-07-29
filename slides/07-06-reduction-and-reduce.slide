@@ -1,36 +1,32 @@
 # Reduction and `reduce`
 
-`sum`, `count`, `max`, `min` all fold a stream down to **one value**. That's **reduction** — and `reduce` is the general tool beneath them all.
+`sum`, `count`, `max`, `min` all fold a stream down to **one value**. That's **reduction** — `reduce` is the general tool beneath them all.
 
 ## The shape
 
-Start with an accumulator, combine each element into it:
+Start with an accumulator, combine each element in — an **identity** + a **`BinaryOperator`**:
 
 ```java
 int total = 0;
-for (int n : nums) total = total + n;   // (acc, element) -> acc
-```
+for (int n : nums) total = total + n;      // the loop
 
-`reduce` is that loop as a value — an **identity** + a **`BinaryOperator`**:
-
-```java
 int total = nums.stream()
-    .reduce(0, (acc, n) -> acc + n);   // or reduce(0, Integer::sum)
+    .reduce(0, (acc, n) -> acc + n);       // or reduce(0, Integer::sum)
 ```
 
-Swap the two and you get a new reduction: `reduce(1, (a,b) -> a*b)` is product.
+Swap the two → a new reduction: `reduce(1, (a,b) -> a*b)` is product.
 
-## Two rules (they matter in parallel — §08)
+## Two rules (they bite in parallel — §08)
 
 - **Identity is neutral** — `0+x==x`, `1*x==x` (never `1` for a sum!)
-- **Operator is associative** — `(a∘b)∘c == a∘(b∘c)`; `+` yes, `-` no
+- **Operator is associative** — `+` yes, `-` no
 
 ## Drop the identity → `Optional`
 
 ```java
-Optional<Integer> total = nums.stream().reduce((a, b) -> a + b);
+Optional<Integer> t = nums.stream().reduce((a, b) -> a + b);
 ```
 
 No start value → an empty stream has no answer → `Optional`.
 
-**Prefer the named terminal** (`sum`, `max`, `collect`). Use raw `reduce` only for a custom fold nothing built-in fits.
+**Prefer the named terminal** (`sum`, `max`, `collect`); use raw `reduce` only for a custom fold.

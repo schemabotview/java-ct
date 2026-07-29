@@ -2,14 +2,13 @@
 
 ```java
 try {
-    var text = Files.readString(path);   // may throw
-    process(text);
-} catch (NoSuchFileException e) {         // most specific first
+    process(Files.readString(path));      // may throw
+} catch (NoSuchFileException e) {          // most specific first
     ...
-} catch (IOException e) {                  // broader — the rest
+} catch (IOException e) {                   // broader — the rest
     ...
 } finally {
-    ...                                    // runs either way
+    ...                                     // runs either way
 }
 ```
 
@@ -17,15 +16,11 @@ A throw stops the `try` **immediately**; the runtime finds the first matching `c
 
 ## Order most specific first
 
-`NoSuchFileException` *is an* `IOException` — a broad catch first makes the specific one unreachable (compile error). Share a handler with multi-catch:
-
-```java
-catch (IOException | SQLException e) { ... }
-```
+`NoSuchFileException` *is an* `IOException` — a broad catch first makes the specific one unreachable (compile error). Share a handler with multi-catch: `catch (IOException | SQLException e)`.
 
 ## `finally` always runs
 
-Thrown or not, caught or not — even before a `return`, `break`, `continue`. For cleanup that must not be skipped (close, unlock). Only `System.exit` / a kill skips it.
+Thrown or not, caught or not — even before a `return`. For cleanup that must not be skipped. Only `System.exit` / a kill skips it.
 
 ## Trap: never `return`/`throw` from `finally`
 

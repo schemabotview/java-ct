@@ -17,8 +17,7 @@ A **separate channel** that can't be dropped. A method **throws**; the runtime u
 
 ```java
 try {
-    int n = Integer.parseInt(input);   // may throw
-    process(n);                        // skipped if it throws
+    process(Integer.parseInt(input));   // skipped if parse throws
 } catch (NumberFormatException e) { ... }
 ```
 
@@ -26,11 +25,9 @@ Unhandled → **stops with a report**, not a corrupt value.
 
 ## The stack trace = a map to the cause
 
-Names the failure, the input, and the exact line:
-
 ```
 NumberFormatException: For input string: "abc"
     at Billing.applyDiscount(Billing.java:42)  ← your code
 ```
 
-**Read down to the deepest frame in *your* code.**
+Names the failure, the input, the line. **Read down to the deepest frame in *your* code.**

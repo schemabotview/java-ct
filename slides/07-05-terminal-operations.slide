@@ -11,28 +11,20 @@ long n = s.count();     // runs it
 s.forEach(...);         // IllegalStateException — s is spent
 ```
 
-## Reduce to one value
+## The families
 
 ```java
-stream.count();          // long
+stream.count();          // reduce to one value
 intStream.sum();         // 5050 (primitive streams)
-stream.min(cmp);         // Optional<T> — might be empty
-stream.max(cmp);
-```
+stream.max(cmp);         // Optional<T> — might be empty
 
-## Search — short-circuits
-
-```java
-stream.anyMatch(p);      // true the instant one passes
-stream.allMatch(p);
+stream.anyMatch(p);      // search — short-circuits
 stream.findFirst();      // Optional<T>, then stop
+
+List<String> l = stream.toList();          // collect (Java 16+)
+stream.forEach(System.out::println);       // side effect — void
 ```
 
-## Collect / side-effect
-
-```java
-List<String> list = stream.toList();      // Java 16+
-stream.forEach(System.out::println);      // void — real side effects only
-```
+`forEach` is for real side effects only; to build a value, use `collect` / reduce.
 
 **Why `Optional`, not `null`?** An empty stream has no first / min / max — the type makes you handle it. → §09.

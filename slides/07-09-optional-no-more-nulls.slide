@@ -19,7 +19,7 @@ Optional.ofNullable(ref)  // null → empty  (the bridge)
 Optional.empty()
 ```
 
-Avoid `if (isPresent()) get()` — that's the null-check in a new coat.
+Avoid `if (isPresent()) get()` — the null-check in a new coat.
 
 ## Stay inside the box, then supply a fallback
 
@@ -27,11 +27,9 @@ Avoid `if (isPresent()) get()` — that's the null-check in a new coat.
 String name = findUser(id)
     .map(User::name)            // transform if present
     .filter(n -> !n.isBlank())
-    .orElse("anonymous");       // leave the box with a default
+    .orElse("anonymous");       // leave with a default
 ```
 
-`orElseGet(supplier)` lazy default · `orElseThrow()` demand it · `ifPresent(...)` act.
+`orElseGet(supplier)` lazy · `orElseThrow()` demand · `ifPresent(...)` act.
 
-## Discipline
-
-Use as a **return type** signalling "maybe no result." **Not** for fields, params, or inside collections. Never `.get()` unchecked; never return `null` as an `Optional`.
+**Discipline:** a **return type** for "maybe no result." Not for fields, params, or in collections. Never `.get()` unchecked; never return `null` as an `Optional`.

@@ -2,7 +2,7 @@
 
 ## From *how* to *what*
 
-The loop you've written a hundred times:
+The loop you've written a hundred times…
 
 ```java
 double sum = 0;
@@ -21,14 +21,14 @@ double sum = orders.stream()
 
 ## A stream is *not* a collection
 
-- **No storage** — it draws from a source on demand
+- **No storage** — draws from a source on demand
 - **Single-use** — traverse once, then it's spent
-- **Lazy** — intermediates build a recipe; nothing runs until a terminal pulls elements through
+- **Lazy** — nothing runs until a terminal pulls elements through
 
 ## Every pipeline has three parts
 
 1. **Source** — `stream()`, `Stream.of(...)`, `IntStream.range(...)`
 2. **Intermediate** ops — lazy, return a new stream, chain freely
-3. **Terminal** op — `sum`, `collect`, `count` — triggers the work, yields a result
+3. **Terminal** op — `sum`, `collect`, `count` — triggers the work
 
-**No terminal, no work.** Laziness lets the pipeline pull one element all the way through — no throwaway intermediate lists.
+**No terminal, no work.** Laziness pulls one element all the way through — no throwaway intermediate lists.

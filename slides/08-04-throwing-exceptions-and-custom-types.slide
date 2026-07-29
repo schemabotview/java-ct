@@ -5,32 +5,29 @@
 ```java
 void setAge(int age) {
     if (age < 0)
-        throw new IllegalArgumentException("age must be >= 0, got " + age);
+        throw new IllegalArgumentException("age >= 0, got " + age);
     this.age = age;
 }
 ```
 
-Reject bad input *where it enters*, with the offending value in the message. Prefer the standard types: `IllegalArgumentException`, `IllegalStateException`, `Objects.requireNonNull(x, "x")`.
+Reject bad input *where it enters*, value in the message. Prefer the standard types: `IllegalArgumentException`, `IllegalStateException`, `Objects.requireNonNull(x, "x")`.
 
 ## Define a custom type — when the failure is domain-meaningful
 
-Extend an exception; the branch you pick sets checked vs unchecked:
+The branch you extend sets checked vs unchecked:
 
 ```java
 class OrderNotFoundException extends RuntimeException {   // unchecked: a bug
     OrderNotFoundException(String id) { super("no order " + id); }
 }
-
-class InsufficientFundsException extends Exception {       // checked: recoverable
-    final BigDecimal shortfall;
-    // ... super(msg); carry data callers can act on
+class InsufficientFundsException extends Exception {      // checked: recoverable
+    final BigDecimal shortfall;   // carry data handlers can act on
 }
 ```
 
 - **Pass a message to `super`** — self-explanatory stack trace
-- **Carry data** (`shortfall()`) so handlers act on specifics
+- Add a `(String, Throwable cause)` constructor — chaining (§05)
 
 ## The defining choice
 
-- `RuntimeException` → a **bug** (default; don't force a catch)
-- `Exception` → a **recoverable** condition callers must confront (use sparingly)
+`RuntimeException` → a **bug** (default) · `Exception` → a **recoverable** condition callers must confront (use sparingly).
