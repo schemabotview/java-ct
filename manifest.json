@@ -601,7 +601,79 @@
     {
       "id": "08-errors-files-io",
       "title": "Exceptions, Files & I/O",
-      "sections": []
+      "sections": [
+        {
+          "heading": "Why exceptions",
+          "md": "md/08-01-why-exceptions.md",
+          "slide": "slides/08-01-why-exceptions.slide",
+          "scene": "java-anatomy",
+          "spine": true,
+          "role": "hook"
+        },
+        {
+          "heading": "The Throwable hierarchy — checked vs unchecked",
+          "md": "md/08-02-the-throwable-hierarchy.md",
+          "slide": "slides/08-02-the-throwable-hierarchy.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "try / catch / finally",
+          "md": "md/08-03-try-catch-finally.md",
+          "slide": "slides/08-03-try-catch-finally.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Throwing exceptions & custom types",
+          "md": "md/08-04-throwing-exceptions-and-custom-types.md",
+          "slide": "slides/08-04-throwing-exceptions-and-custom-types.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Exception chaining — the cause",
+          "md": "md/08-05-exception-chaining-the-cause.md",
+          "slide": "slides/08-05-exception-chaining-the-cause.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "try-with-resources — safe cleanup",
+          "md": "md/08-06-try-with-resources.md",
+          "slide": "slides/08-06-try-with-resources.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "The NIO Path — modern filesystem paths",
+          "md": "md/08-07-the-nio-path.md",
+          "slide": "slides/08-07-the-nio-path.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Files — reading and writing",
+          "md": "md/08-08-files-reading-and-writing.md",
+          "slide": "slides/08-08-files-reading-and-writing.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Directory operations & streams of files",
+          "md": "md/08-09-directory-operations-and-streams-of-files.md",
+          "slide": "slides/08-09-directory-operations-and-streams-of-files.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        },
+        {
+          "heading": "Serialization — a brief note",
+          "md": "md/08-10-serialization-a-brief-note.md",
+          "slide": "slides/08-10-serialization-a-brief-note.slide",
+          "scene": "java-anatomy",
+          "spine": true
+        }
+      ]
     },
     {
       "id": "09-concurrency",
