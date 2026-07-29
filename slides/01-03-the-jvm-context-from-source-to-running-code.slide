@@ -1,0 +1,20 @@
+# The JVM context — source to running code
+
+## Two stages: compile once, run anywhere
+
+- **Compile:** `Hello.java` → `javac` → `Hello.class` (**bytecode**)
+- Bytecode targets an *imaginary* machine — same on every OS
+- **Run:** `java Hello` starts a **JVM** to execute it
+
+## Inside the running JVM
+
+- **Class loader** — loads the bytecode into memory
+- **Verifier** — checks it's safe before running
+- **Execution engine** — interprets, then the **JIT** compiles hot methods to native code
+- **Heap + garbage collector** — objects auto-reclaimed; no `free()`
+
+## Why the extra layer pays off
+
+**Portable** (one build runs anywhere) · **safe** (verified, managed memory) · **fast anyway** (JIT optimizes at run time)
+
+**JVM** runs it · **JRE** = JVM + libraries · **JDK** = JRE + tools → *install the JDK*

@@ -1,0 +1,13 @@
+The java virtual machine context — from source to running code.
+
+When you run a Java program, your source text doesn't go straight to the C-P-U. It takes a two-stage journey — compile once, then run anywhere — and understanding that journey explains almost everything about how Java behaves.
+
+Stage one happens at compile time. You write a source file, say Hello dot java. The compiler, javac, reads it, checks every type, and emits a Hello dot class file. Now here's the key point: that class file is not machine code for your laptop. It's bytecode — a compact, portable instruction set for an imaginary computer, the java virtual machine. And that bytecode is exactly the same whether you compiled on Windows, on a Mac, or on Linux.
+
+Stage two happens at run time, when you launch the program. That starts a java virtual machine, and inside it several things happen in sequence.
+
+First, the class loader finds your class, and every class it depends on, and loads the bytecode into memory. Next, the bytecode verifier checks that the bytecode is safe and well-formed before it runs — this is a big reason the JVM is so hard to crash with a stray pointer. Then the execution engine actually runs it. It starts by interpreting, reading one bytecode instruction at a time. But meanwhile, the just-in-time compiler watches for hot methods, the ones that run over and over, and compiles those down to real native machine code, so your hot paths run at close to native speed. And all along, the JVM manages a region of memory called the heap, where your objects live, with a garbage collector that automatically reclaims the objects you're no longer using. You never call free.
+
+So why is that extra layer worth it? Because the JVM sits between your bytecode and the hardware, and that indirection is the whole point. You get portability — one build of bytecode runs on any operating system or chip that has a JVM. You get safety — verification and managed memory mean whole classes of crashes and security bugs simply can't happen. And you still get speed, because the just-in-time compiler can optimize using information it only learns while the program is actually running.
+
+Finally, three names that get confused. The java virtual machine is the runtime engine that executes bytecode. The java runtime environment is that engine plus the standard libraries — enough to run a Java program. And the java development kit is the runtime environment plus the developer tools, like javac and jshell — enough to build Java programs. The one you install is the java development kit.

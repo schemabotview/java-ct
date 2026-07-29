@@ -1,0 +1,24 @@
+# Modern Java, not 1998 Java
+
+## One line, not twenty
+
+The old way — field, constructor, getters, `equals`/`hashCode`/`toString`. The modern way:
+
+```java
+public record Point(int x, int y) {}
+```
+
+Same immutability & accessors, generated for you.
+
+## It's a pattern, not one feature
+
+- **`var`** — drop the repeated type name
+- **switch expressions** — `->` arms, return a value, no fall-through
+- **text blocks** — multi-line strings, no escaping
+- **streams** — a readable pipeline instead of a loop
+
+## Why it keeps improving
+
+- A release **every six months**; LTS at **8 · 11 · 17 · 21**
+- Features preview, get feedback, then land — old code still runs
+- We write **idiomatic Java 21** from the start

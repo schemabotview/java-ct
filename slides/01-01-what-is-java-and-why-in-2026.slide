@@ -19,7 +19,3 @@ Since Java 8, a **six-month release cadence** — the modern language is lean:
 - Runs the world's **backends** — the jobs are real
 - The **JVM**: JIT + garbage collector → fast, no manual memory
 - Enormous **ecosystem**; skills transfer to Kotlin, C#, Scala
-
-## This course
-
-**Core language + runtime** — *not* Spring. The foundation frameworks stand on.

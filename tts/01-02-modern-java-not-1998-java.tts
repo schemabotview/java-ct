@@ -1,0 +1,13 @@
+Modern Java, not nineteen ninety-eight Java.
+
+The Java people love to complain about — pages of boilerplate, a getter for every single field, class names three lines long — is real, but it is old. The language you'll write in twenty twenty-six is far leaner. Same static safety, a fraction of the ceremony.
+
+The clearest example is a simple data class. For most of Java's history, modelling an immutable point meant writing a field, a constructor, two getters, and then dot equals, hash code, and to string just to be well-behaved. That's twenty-something lines to say "a point is an x and a y."
+
+Modern Java says all of that in a single line, using a record. You just declare a record called Point with an x and a y, and you get the same immutability, the same accessors, and equals, hash code, and to string generated for you. The intent is no longer buried.
+
+And this isn't one lucky feature — it's a pattern running through the whole language. Var lets you drop the repeated type name. Switch expressions actually return a value, using arrow arms with no fall-through. Text blocks kill the escape-character soup in multi-line strings. And streams turn a loop-and-accumulate into a readable pipeline — filter, then sort, then collect.
+
+So why did Java keep improving like this? The answer is the cadence. Since Java nine, a new version ships every six months, with a long term support release every couple of years — eight, eleven, seventeen, twenty-one. Features incubate as previews, gather feedback, and then become permanent. That steady rhythm is how the language modernized without breaking the billions of lines already running in production. Old code still compiles and runs.
+
+So here's the takeaway for this course. We write modern, idiomatic Java twenty-one from the very start. And when you meet verbose Java in some old codebase, you'll recognize it as legacy style — not as the way Java has to look.
