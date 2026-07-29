@@ -22,8 +22,6 @@ button.addListener(new ClickListener() {
 });
 ```
 
-One-off implementation, inline. Captures only **effectively final** variables.
-
 ## → lambdas
 
 Single-method interface? Drop the ceremony:
