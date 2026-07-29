@@ -18,5 +18,3 @@
 ## The trap
 
 A `String status` that's really 5 values · an `int type` that's really an enum · a mutable class for plain data — each throws a guarantee away.
-
-**Through-line:** let the type carry the meaning, let the compiler enforce it.

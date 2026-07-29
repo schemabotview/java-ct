@@ -1,12 +1,10 @@
 # Records — one-line immutable data
 
-## The whole class, in a line
+## In one line the compiler generates
 
 ```java
 public record Point(int x, int y) {}
 ```
-
-From the components the compiler generates:
 
 - a `private final` field + **accessor** each — `x()`, `y()` (*not* `getX()`)
 - a **canonical constructor**
@@ -23,7 +21,6 @@ Safe to share across threads, safe as `Map` keys / `Set` members.
 
 ## What it is underneath
 
-- A class that `extends Record` — can implement interfaces, add methods, be generic
-- **Cannot** extend another class, or add mutable fields
+- `extends Record` — implements interfaces, adds methods, generic; **cannot** extend a class or add mutable fields
 
 **Use for:** DTOs, coordinates, money, compound keys, "return two things", domain values.
