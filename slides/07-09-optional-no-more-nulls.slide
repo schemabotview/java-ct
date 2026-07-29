@@ -1,0 +1,37 @@
+# `Optional<T>` — no more nulls
+
+A **box that visibly may or may not hold a `T`** — the type forces you to handle "absent."
+
+## The problem it replaces
+
+```java
+User u = findUser(id);        // says User; might be null
+System.out.println(u.name()); // NPE — far from the cause
+```
+
+`Optional<User>` puts "maybe" in the **type** — it can't be ignored.
+
+## Create
+
+```java
+Optional.of(value)        // present; throws on null
+Optional.ofNullable(ref)  // null → empty  (the bridge)
+Optional.empty()
+```
+
+Avoid `if (isPresent()) get()` — that's the null-check in a new coat.
+
+## Stay inside the box, then supply a fallback
+
+```java
+String name = findUser(id)
+    .map(User::name)            // transform if present
+    .filter(n -> !n.isBlank())
+    .orElse("anonymous");       // leave the box with a default
+```
+
+`orElseGet(supplier)` lazy default · `orElseThrow()` demand it · `ifPresent(...)` act.
+
+## Discipline
+
+Use as a **return type** signalling "maybe no result." **Not** for fields, params, or inside collections. Never `.get()` unchecked; never return `null` as an `Optional`.
