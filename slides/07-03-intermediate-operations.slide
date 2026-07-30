@@ -1,10 +1,6 @@
 # Intermediate operations
 
-The stages between source and terminal. Two defining traits:
-
-## 1 · Returns a new stream
-
-Stream in, stream out — which is *why* you can chain with dots.
+## 1 · Returns a new stream — stream in, stream out, so you chain with dots
 
 ## 2 · Lazy
 

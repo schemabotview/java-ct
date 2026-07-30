@@ -1,7 +1,5 @@
 # `map`, `filter` and `flatMap`
 
-The three operations that do most of the work.
-
 ## `filter` — which elements continue
 
 Takes a **`Predicate`** (element → `boolean`). Keeps the type, count only shrinks.
@@ -17,8 +15,6 @@ Takes a **`Function`** (element → new value). Count unchanged, **type can chan
 ```java
 names.map(String::length)   // "Ada","Grace" → 3, 5  (Stream<Integer>)
 ```
-
-*`filter` changes how many; `map` changes what each is.*
 
 ## `flatMap` — one element → many, then flatten
 

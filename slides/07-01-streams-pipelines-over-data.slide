@@ -1,16 +1,12 @@
 # Streams — pipelines over data
 
-## From *how* to *what*
-
-The loop you've written a hundred times…
+## From *how* to *what* — the loop becomes three verbs
 
 ```java
 double sum = 0;
 for (Order o : orders)
     if (o.total() > 100) sum += o.total();
 ```
-
-…becomes three verbs in the order you'd say them:
 
 ```java
 double sum = orders.stream()
@@ -31,4 +27,4 @@ double sum = orders.stream()
 2. **Intermediate** ops — lazy, return a new stream, chain freely
 3. **Terminal** op — `sum`, `collect`, `count` — triggers the work
 
-**No terminal, no work.** Laziness pulls one element all the way through — no throwaway intermediate lists.
+**No terminal, no work** — laziness pulls one element all the way through, no throwaway lists.

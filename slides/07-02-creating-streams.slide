@@ -1,7 +1,5 @@
 # Creating streams
 
-Every pipeline begins with a **source**. Three families:
-
 ## From data you have
 
 ```java

@@ -1,15 +1,11 @@
 # `Optional<T>` — no more nulls
 
-A **box that visibly may or may not hold a `T`** — the type forces you to handle "absent."
-
 ## The problem it replaces
 
 ```java
 User u = findUser(id);        // says User; might be null
 System.out.println(u.name()); // NPE — far from the cause
 ```
-
-`Optional<User>` puts "maybe" in the **type** — it can't be ignored.
 
 ## Create
 

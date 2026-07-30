@@ -14,8 +14,6 @@ int total = nums.stream()
     .reduce(0, (acc, n) -> acc + n);       // or reduce(0, Integer::sum)
 ```
 
-Swap the two → a new reduction: `reduce(1, (a,b) -> a*b)` is product.
-
 ## Two rules (they bite in parallel — §08)
 
 - **Identity is neutral** — `0+x==x`, `1*x==x` (never `1` for a sum!)
@@ -26,7 +24,5 @@ Swap the two → a new reduction: `reduce(1, (a,b) -> a*b)` is product.
 ```java
 Optional<Integer> t = nums.stream().reduce((a, b) -> a + b);
 ```
-
-No start value → an empty stream has no answer → `Optional`.
 
 **Prefer the named terminal** (`sum`, `max`, `collect`); use raw `reduce` only for a custom fold.
