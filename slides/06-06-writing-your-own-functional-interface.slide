@@ -11,8 +11,6 @@ public interface DiscountRule {
 DiscountRule loyalty = order -> order.total().multiply(new BigDecimal("0.9"));
 ```
 
-The annotation makes the compiler **enforce** the SAM rule.
-
 ## `default` / `static` are fine — only *abstract* methods count
 
 ```java

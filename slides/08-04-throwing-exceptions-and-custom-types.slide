@@ -14,8 +14,6 @@ Reject bad input *where it enters*, value in the message. Prefer the standard ty
 
 ## Define a custom type — when the failure is domain-meaningful
 
-The branch you extend sets checked vs unchecked:
-
 ```java
 class OrderNotFoundException extends RuntimeException {   // unchecked: a bug
     OrderNotFoundException(String id) { super("no order " + id); }
@@ -26,7 +24,6 @@ class InsufficientFundsException extends Exception {      // checked: recoverabl
 ```
 
 - **Pass a message to `super`** — self-explanatory stack trace
-- Add a `(String, Throwable cause)` constructor — chaining (§05)
 
 ## The defining choice
 

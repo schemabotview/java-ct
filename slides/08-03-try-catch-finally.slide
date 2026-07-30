@@ -12,15 +12,11 @@ try {
 }
 ```
 
-A throw stops the `try` **immediately**; the runtime finds the first matching `catch`.
-
 ## Order most specific first
 
 `NoSuchFileException` *is an* `IOException` — a broad catch first makes the specific one unreachable (compile error). Share a handler with multi-catch: `catch (IOException | SQLException e)`.
 
-## `finally` always runs
-
-Thrown or not, caught or not — even before a `return`. For cleanup that must not be skipped. Only `System.exit` / a kill skips it.
+## `finally` always runs — cleanup that must not be skipped; only `System.exit`/kill skips it
 
 ## Trap: never `return`/`throw` from `finally`
 

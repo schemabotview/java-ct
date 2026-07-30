@@ -1,7 +1,5 @@
 # Why exceptions
 
-*When something breaks deep in a call, how does the code that can fix it find out?*
-
 ## The old way rots
 
 ```java

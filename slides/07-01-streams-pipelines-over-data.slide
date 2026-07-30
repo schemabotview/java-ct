@@ -19,7 +19,6 @@ double sum = orders.stream()
 
 - **No storage** — draws from a source on demand
 - **Single-use** — traverse once, then it's spent
-- **Lazy** — nothing runs until a terminal pulls
 
 ## Every pipeline has three parts
 

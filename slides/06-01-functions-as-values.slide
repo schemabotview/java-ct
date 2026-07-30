@@ -2,8 +2,6 @@
 
 ## Behaviour becomes a value
 
-The anonymous class from module 02…
-
 ```java
 button.addListener(new ClickListener() {
     @Override public void onClick() { System.out.println("clicked"); }

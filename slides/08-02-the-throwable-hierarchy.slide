@@ -1,7 +1,5 @@
 # The `Throwable` hierarchy
 
-Everything you `throw` or `catch` descends from **`Throwable`**. The branches encode *who is responsible*.
-
 ```
 Throwable
 ├── Error            — JVM broken; do NOT catch
