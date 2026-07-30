@@ -204,6 +204,12 @@
           "md": "md/02-06-polymorphism-and-dynamic-dispatch.md",
           "slide": "slides/02-06-polymorphism-and-dynamic-dispatch.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-oop-dog",
+            "ja-method-call"
+          ],
+          "focus": "ja-model",
+          "zoom": true,
           "spine": true
         },
         {
@@ -211,6 +217,12 @@
           "md": "md/02-07-abstract-classes.md",
           "slide": "slides/02-07-abstract-classes.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-oop-animal",
+            "ja-abstract"
+          ],
+          "focus": "ja-model",
+          "zoom": true,
           "spine": true
         },
         {
@@ -218,6 +230,12 @@
           "md": "md/02-08-interfaces-default-and-static-methods.md",
           "slide": "slides/02-08-interfaces-default-and-static-methods.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-oop-walker",
+            "ja-interface"
+          ],
+          "focus": "ja-model",
+          "zoom": true,
           "spine": true
         },
         {
@@ -225,6 +243,11 @@
           "md": "md/02-09-nested-inner-and-anonymous-classes.md",
           "slide": "slides/02-09-nested-inner-and-anonymous-classes.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-class"
+          ],
+          "focus": "ja-type-oop",
+          "zoom": true,
           "spine": true
         },
         {
@@ -232,6 +255,11 @@
           "md": "md/02-10-composition-over-inheritance.md",
           "slide": "slides/02-10-composition-over-inheritance.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-oop-mammal"
+          ],
+          "focus": "ja-model",
+          "zoom": true,
           "spine": true
         }
       ]
