@@ -11,8 +11,7 @@ Reachability, **not** "will I use it" — a held reference you never touch stays
 
 ## Generational hypothesis — most objects die young
 
-- **Young gen** — new objects; **minor GC** is small, frequent, fast
-- Survivors are **promoted** to the **old gen** — collected rarely by a **major GC**
+- **Young gen** — new objects, **minor GC** small/frequent/fast · survivors **promoted** to **old gen** (rare **major GC**)
 
 ## Collectors (pick with a flag)
 
@@ -20,5 +19,4 @@ Reachability, **not** "will I use it" — a held reference you never touch stays
 
 ## What you do
 
-- **Don't** call `System.gc()` — a hint; forces a costly full GC
-- **Do** avoid leaks — growing `static` collections, caches, listeners; one knob: `-Xmx` (max heap)
+- **Don't** call `System.gc()` (a hint; forces a costly full GC) · **Do** avoid leaks — growing statics, caches, listeners · one knob: `-Xmx`

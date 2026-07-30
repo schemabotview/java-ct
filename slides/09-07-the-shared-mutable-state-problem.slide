@@ -12,9 +12,7 @@
 
 Two threads interleave between the steps → both read 41, both write 42 → a **lost update** (two threads, 100k increments each → **not** 200000, different every run).
 
-## Race condition
-
-Correctness that depends on **timing** — who runs when. Non-deterministic, and **latent**: absent from most runs, present in the code.
+## Race condition — correctness that depends on **timing**; non-deterministic and **latent**: absent from most runs, present in the code
 
 ## Two escape routes (the rest of the module)
 

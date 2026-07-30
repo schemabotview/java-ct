@@ -20,6 +20,4 @@ Hello.java --javac--> Hello.class --JVM--> any machine
 - **JRE** — JVM + standard libraries (enough to *run*)
 - **JDK** — JRE + `javac`, debugger, `jar` (enough to *build*)
 
-## One machine, many languages
-
-The JVM runs **bytecode**, not Java specifically — **Kotlin, Scala, Clojure, Groovy** all target it.
+## One machine, many languages — the JVM runs **bytecode**, so **Kotlin, Scala, Clojure, Groovy** target it too

@@ -9,9 +9,7 @@ dependencies {
 }
 ```
 
-## Same ecosystem, different surface
-
-Same **coordinates**, same **repositories** (Maven Central), same transitive resolution, same `src/main/java`. Only *how* you declare + drive the build changes.
+## Same ecosystem, different surface — same **coordinates**, **repositories**, transitive resolution, `src/main/java`; only *how* you declare + drive the build changes
 
 ## Why teams pick it — speed + flexibility
 

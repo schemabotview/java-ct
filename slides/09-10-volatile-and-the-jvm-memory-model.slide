@@ -1,8 +1,6 @@
 # `volatile` & the JVM memory model
 
-## Why a write can be invisible
-
-CPU caches and registers hold values per-core; compiler and CPU **reorder** instructions. Fine within one thread — across threads, writes appear late, out of order, or never.
+## Why a write can be invisible — per-core CPU caches + instruction **reordering**; across threads, writes appear late, out of order, or never
 
 ```java
 boolean stop = false;             // plain field
@@ -22,6 +20,4 @@ volatile boolean stop = false;   // loop now sees the change
 
 **Not atomicity** — `volatile count++` still races. Flag or published reference; counter → `AtomicInteger`; invariant → lock.
 
-## The module in one picture
-
-**Don't share** (confine / immutable) — or **coordinate** (lock · atomic · volatile). And **stay high-level**: executors, concurrent collections, structured concurrency.
+## The module in one picture — **don't share** (confine/immutable) or **coordinate** (lock · atomic · volatile); **stay high-level**: executors, concurrent collections, structured concurrency

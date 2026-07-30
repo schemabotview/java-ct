@@ -14,8 +14,7 @@ class Counter {
 
 ## A lock guarantees two things — same lock on **every** access, reads included
 
-- **Atomicity** — read-modify-write completes without interference
-- **Visibility** — release flushes writes; acquire reads the latest (happens-before)
+- **Atomicity** — read-modify-write uninterrupted · **Visibility** — release flushes writes, acquire reads latest (happens-before)
 
 ## `ReentrantLock` — explicit; adds `tryLock`, timeouts, `lockInterruptibly`, fairness, `Condition`s
 
@@ -25,6 +24,4 @@ try   { balance -= amount; }
 finally { lock.unlock(); }   // always
 ```
 
-## Watch out
-
-**Reentrant** (re-acquire a held lock is fine). But **deadlock**: acquire multiple locks in a **consistent order**, keep critical sections **short**.
+## Watch out — **reentrant** (re-acquiring a held lock is fine), but **deadlock**: acquire locks in a **consistent order**, keep sections **short**
