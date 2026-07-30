@@ -153,6 +153,12 @@
           "md": "md/02-02-encapsulation-and-visibility.md",
           "slide": "slides/02-02-encapsulation-and-visibility.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-bind-private",
+            "ja-bind-final"
+          ],
+          "focus": "ja-kind",
+          "zoom": true,
           "spine": true
         },
         {
@@ -160,6 +166,12 @@
           "md": "md/02-03-constructors-this-and-overloading.md",
           "slide": "slides/02-03-constructors-this-and-overloading.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-value-object",
+            "ja-name"
+          ],
+          "focus": "ja-init-row",
+          "zoom": true,
           "spine": true
         },
         {
@@ -167,6 +179,11 @@
           "md": "md/02-04-object-basics-equals-hashcode-tostring.md",
           "slide": "slides/02-04-object-basics-equals-hashcode-tostring.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-method-def"
+          ],
+          "focus": "ja-methods",
+          "zoom": true,
           "spine": true
         },
         {
@@ -174,6 +191,12 @@
           "md": "md/02-05-inheritance-and-the-class-hierarchy.md",
           "slide": "slides/02-05-inheritance-and-the-class-hierarchy.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-oop-mammal",
+            "ja-oop-dog"
+          ],
+          "focus": "ja-model",
+          "zoom": true,
           "spine": true
         },
         {
