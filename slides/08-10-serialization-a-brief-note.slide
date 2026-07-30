@@ -9,11 +9,8 @@ class Account implements Serializable { ... }   // marker interface
 // oos.writeObject(account);  /  (Account) ois.readObject();
 ```
 
-Looks effortless — that's the trap:
-
 - **Security catastrophe** — `readObject` builds *arbitrary* types → a long line of RCE exploits. **Never deserialize untrusted data.**
 - **Fragile** — format tied to private fields; `serialVersionUID` governs compatibility
-- **Not portable** — Java-only
 
 ## Use instead: an explicit format + library
 

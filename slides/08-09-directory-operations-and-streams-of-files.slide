@@ -26,8 +26,6 @@ Files.find(start, Integer.MAX_VALUE,
     (p, attrs) -> attrs.isRegularFile() && attrs.size() > 1_000_000)
 ```
 
-Attributes are pre-fetched — no extra `stat` per file.
-
 ## The rule you cannot forget
 
 Every `Files` stream (`list`/`walk`/`find`) holds an **open OS handle** → **always** a try-with-resources. (In-memory `list.stream()` doesn't — only file-backed sources do.)

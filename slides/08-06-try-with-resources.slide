@@ -1,7 +1,5 @@
 # `try-with-resources` — safe cleanup
 
-The correct, modern way to use anything that must be closed. It writes the `finally` for you.
-
 ## Declare the resource in parentheses
 
 ```java
@@ -9,8 +7,6 @@ try (BufferedReader r = Files.newBufferedReader(path)) {
     return r.readLine();
 }   // r.close() — guaranteed, on every path
 ```
-
-Several close in **reverse order** of opening:
 
 ```java
 try (var in = Files.newInputStream(src);

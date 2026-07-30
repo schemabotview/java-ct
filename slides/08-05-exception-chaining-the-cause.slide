@@ -1,7 +1,5 @@
 # Exception chaining — the `cause`
 
-Translate a low-level exception to your layer's vocabulary — *without losing the evidence.*
-
 ## The bug: a translation that loses the trail
 
 ```java
@@ -9,8 +7,6 @@ catch (SQLException e) {
     throw new UserLookupException("lookup failed");  // e discarded!
 }
 ```
-
-The real reason and its stack trace are **gone**.
 
 ## The fix: pass the cause
 
