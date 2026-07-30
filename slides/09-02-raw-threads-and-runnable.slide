@@ -1,7 +1,5 @@
 # Raw threads and `Runnable`
 
-The direct mechanism — rarely used now, but everything is built on it. A thread needs *code to run* and *the act of starting it*.
-
 ## The work: `Runnable`
 
 A functional interface — one method `run()`, so just a lambda:
@@ -17,8 +15,6 @@ Thread t = new Thread(task);
 t.start();     // spawns a NEW thread — run() executes there
 // t.run();    // BUG: runs on THIS thread, zero concurrency
 ```
-
-**`start` spawns; `run` doesn't.**
 
 ## No ordering guarantee
 

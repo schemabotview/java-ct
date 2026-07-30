@@ -1,7 +1,5 @@
 # Class loading
 
-Classes load **lazily** — on first use — via **class loaders**, turning a `.class` on disk into a live `Class` in the JVM.
-
 ## Three phases
 
 - **Loading** — find + parse the bytes → a `Class` object
@@ -15,11 +13,13 @@ class Config {
 }
 ```
 
-## The verifier
+## The verifier — bytecode **proven safe** before it runs
 
-Before any bytecode runs, it's **proven safe** — no stack underflow, no bad jumps, no `int`-as-reference. Hostile `.class` rejected at load time.
+No stack underflow, no bad jumps, no `int`-as-reference; hostile `.class` rejected at load time.
 
-## Loader hierarchy — parent-first delegation
+## Loader hierarchy
+
+Parent-first delegation: **Bootstrap** (core JDK) → **Platform** (JDK modules) → **Application** (your classpath). A loader asks its **parent** first, so `java.lang.String` can't be counterfeited.
 
 **Bootstrap** (core JDK) → **Platform** (JDK modules) → **Application** (your classpath). A loader asks its **parent** first, so `java.lang.String` can't be counterfeited.
 

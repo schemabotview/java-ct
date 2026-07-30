@@ -1,7 +1,5 @@
 # `CompletableFuture` — composable async
 
-A `Future` you can **chain** — attach "what to do next" so async steps compose without blocking.
-
 ## Plain `Future.get()` blocks
 
 ```java
@@ -17,8 +15,7 @@ CompletableFuture<Price> result = fetchUser(id)
     .thenApply(o -> price(o));          // transform value   (like map)
 ```
 
-- **`thenApply`** — transform with a plain fn · **`thenCompose`** — chain an async step
-- **`thenAccept` / `thenRun`** — consume / act, no value
+- **`thenApply`** transform · **`thenCompose`** chain async · **`thenAccept`/`thenRun`** consume/act, no value
 
 ## Combine independent futures
 

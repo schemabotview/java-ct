@@ -1,15 +1,11 @@
 # `ExecutorService` and `Future<V>`
 
-Stop *creating threads*; start *submitting tasks* to a pool that owns the threads.
-
 ## A thread pool
 
 ```java
 ExecutorService pool = Executors.newFixedThreadPool(4);  // 4 reusable workers
 pool.submit(() -> System.out.println("task ran"));
 ```
-
-10 000 tasks on 4 threads run 4 at a time — no memory blow-up.
 
 ## A result: `Callable` → `Future`
 

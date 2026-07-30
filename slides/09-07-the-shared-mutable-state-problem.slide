@@ -1,7 +1,5 @@
 # The shared-mutable-state problem
 
-Running threads in parallel is cheap. The bug appears when two threads touch the **same data** — it doesn't crash, and it passes most tests.
-
 ## Stack is private, heap is shared
 
 Locals live on each thread's **stack** — safe. Object **fields**, statics, shared collections live on the **heap** — shared, and dangerous to write from two threads.
@@ -14,12 +12,7 @@ Locals live on each thread's **stack** — safe. Object **fields**, statics, sha
 3. write count    (42)
 ```
 
-Two threads interleave between the steps → both read 41, both write 42 → a **lost update**.
-
-```java
-// two threads, 100k increments each
-System.out.println(c.count);   // NOT 200000 — different every run
-```
+Two threads interleave between the steps → both read 41, both write 42 → a **lost update** (two threads, 100k increments each → **not** 200000, different every run).
 
 ## Race condition
 

@@ -1,7 +1,5 @@
 # Garbage collection in one breath
 
-Allocate with `new`, stop referencing when done — the **garbage collector** reclaims the memory. No manual `free`.
-
 ## Garbage = unreachable
 
 From **GC roots** (stack locals, statics), the collector follows every reference. Reachable = live; the rest is garbage.
@@ -17,8 +15,6 @@ Reachability, **not** "will I use it" — a held reference you never touch stays
 
 - **Young gen** — new objects; **minor GC** is small, frequent, fast
 - Survivors are **promoted** to the **old gen** — collected rarely by a **major GC**
-
-Concentrating on the short-lived young gen makes GC cheap.
 
 ## Collectors (pick with a flag)
 

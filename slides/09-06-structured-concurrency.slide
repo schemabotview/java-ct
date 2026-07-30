@@ -1,7 +1,5 @@
 # Structured concurrency
 
-Subtasks started together **live and die together**, inside a scope — like a code block.
-
 ## The unstructured mess
 
 ```java
@@ -9,8 +7,6 @@ Future<User>   u = pool.submit(() -> fetchUser(id));
 Future<Orders> o = pool.submit(() -> fetchOrders(id));
 User user = u.get();   // if this throws, o keeps running — a leak
 ```
-
-Cancellation and error propagation are all manual.
 
 ## Subtasks scoped like a block
 

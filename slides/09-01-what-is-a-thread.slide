@@ -1,7 +1,5 @@
 # What is a thread?
 
-A **thread** is one sequence of execution. Want two things at once — serve two requests, use eight cores — you need more than one, and you enter **concurrency**.
-
 ## One process, many threads
 
 ```text
@@ -10,8 +8,6 @@ Process (one JVM)
 ├── Thread "main"     — own stack + program counter
 └── Thread "worker-1" — own stack
 ```
-
-Private stacks, **one shared heap** — the source of concurrency's power *and* its every hazard.
 
 ## Concurrency ≠ parallelism
 

@@ -1,7 +1,5 @@
 # The JVM — what's actually running
 
-"Java" is two things: a **language**, and the **Java Virtual Machine** that runs it. The JVM explains Java's portability, speed, and tooling.
-
 ## Source → bytecode → native
 
 ```
@@ -17,8 +15,6 @@ Hello.java --javac--> Hello.class --JVM--> any machine
 - **Executes** — interprets, then the **JIT** compiles hot methods to native
 - **Manages memory** — heap allocation + **garbage collector** (no `free`)
 - Provides **runtime services** — threads, reflection
-
-JIT is why "interpreted" Java is fast.
 
 ## JDK ⊃ JRE ⊃ JVM
 
