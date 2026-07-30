@@ -1,7 +1,5 @@
 # Gradle — the script-based alternative
 
-Where Maven describes a build in XML, Gradle makes the build a **program** — a real scripting language, so anything expressible in code is expressible in the build.
-
 ## Build script — code, not XML
 
 `build.gradle` (Groovy) or `build.gradle.kts` (Kotlin DSL):
@@ -12,8 +10,6 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter:5.10.0")
 }
 ```
-
-Same `group:artifact:version` coordinate — one line, in real code.
 
 ## Same ecosystem, different surface
 

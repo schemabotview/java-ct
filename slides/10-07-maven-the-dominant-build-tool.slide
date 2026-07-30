@@ -1,10 +1,6 @@
 # Maven — the dominant build tool
 
-A build tool automates compile → dependencies → test → package, the same on every machine. Maven has been the Java default for two decades.
-
-## `pom.xml` — declarative
-
-Describe the project in XML; Maven knows how to build it. The core is dependencies:
+## `pom.xml` — declarative; the core is dependencies
 
 ```xml
 <dependency>

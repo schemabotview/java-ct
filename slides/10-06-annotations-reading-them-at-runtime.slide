@@ -1,7 +1,5 @@
 # Annotations — reading them at runtime
 
-Metadata attached to code — a label on a class, method, or field that says something *about* it. `@Override`, `@Deprecated` you already know.
-
 ## Write your own with `@interface`
 
 ```java
@@ -12,8 +10,6 @@ Metadata attached to code — a label on a class, method, or field that says som
 @Role(value = "admin", level = 3)
 class AdminPanel { }
 ```
-
-Inert on its own — something must **read** it.
 
 ## Retention — how long the note survives
 

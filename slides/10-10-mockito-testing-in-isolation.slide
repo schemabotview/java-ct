@@ -1,7 +1,5 @@
 # Mockito — testing in isolation
 
-A test wants **one** class, but classes lean on others (DB, network). Mockito replaces collaborators with **test doubles** you control.
-
 ## Mocks — fakes you program
 
 ```java
@@ -20,8 +18,6 @@ No bank, no network — instant + deterministic. Script failure too: `.thenThrow
 verify(gw).charge(100);               // must have charged 100
 verify(emailer, never()).send(any()); // must NOT email on failure
 ```
-
-Tests **side effects** that have no return value.
 
 ## Mindset
 

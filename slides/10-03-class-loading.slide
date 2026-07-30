@@ -13,15 +13,11 @@ class Config {
 }
 ```
 
-## The verifier — bytecode **proven safe** before it runs
-
-No stack underflow, no bad jumps, no `int`-as-reference; hostile `.class` rejected at load time.
+## The verifier — **proven safe** before running: no stack underflow, bad jumps, or `int`-as-reference
 
 ## Loader hierarchy
 
 Parent-first delegation: **Bootstrap** (core JDK) → **Platform** (JDK modules) → **Application** (your classpath). A loader asks its **parent** first, so `java.lang.String` can't be counterfeited.
-
-**Bootstrap** (core JDK) → **Platform** (JDK modules) → **Application** (your classpath). A loader asks its **parent** first, so `java.lang.String` can't be counterfeited.
 
 ## Identity = name + loader
 

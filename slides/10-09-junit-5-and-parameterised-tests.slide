@@ -1,10 +1,6 @@
 # JUnit 5 & parameterised tests
 
-Automated tests let you change code without breaking it. **JUnit 5** is Java's standard test framework.
-
-## A test is a `@Test` method + an assertion
-
-Shape: **arrange, act, assert**.
+## A test is a `@Test` method + an assertion — **arrange, act, assert**
 
 ```java
 @Test

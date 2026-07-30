@@ -1,7 +1,5 @@
 # Reflection — looking at code as data
 
-Inspect and manipulate classes, methods, and fields **at runtime** — code as data you can query and act on. The engine under most frameworks.
-
 ## The `Class` object
 
 ```java
@@ -25,8 +23,6 @@ field.setAccessible(true);        // even private members
 ## Why — it powers your frameworks
 
 - **DI** (Spring) · **JSON** (Jackson) · **JUnit** finds `@Test` · **ORMs** (Hibernate)
-
-Each operates on *your* classes it never saw at compile time.
 
 ## Costs — use sparingly
 

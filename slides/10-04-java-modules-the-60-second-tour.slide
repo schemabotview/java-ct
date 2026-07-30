@@ -1,7 +1,5 @@
 # Java modules — the 60-second tour
 
-Java 9's **module system** (JPMS) draws a real boundary around a group of packages — beyond what `public` ever gave you.
-
 ## `module-info.java`
 
 ```java
@@ -11,8 +9,6 @@ module com.acme.orders {
     // …every other package stays hidden, even public classes
 }
 ```
-
-A package you don't `export` is **inaccessible outside — even its `public` classes.**
 
 ## What modules buy you
 
