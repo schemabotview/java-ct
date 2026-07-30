@@ -8,8 +8,6 @@ public static <T> T firstOrNull(List<T> list) {
 }
 ```
 
-The leading `<T>` makes the *method* generic — even in a non-generic class.
-
 ## Inference — you rarely write `T`
 
 ```java
@@ -28,5 +26,3 @@ List<String> e = Collections.<String>emptyList();   // rare: type witness
 ```java
 static <K, V> Map<V, K> invert(Map<K, V> in) { ... }
 ```
-
-Output's key = input's value — the compiler guarantees it.

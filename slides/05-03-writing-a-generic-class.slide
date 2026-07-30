@@ -13,15 +13,11 @@ Box<String> b = new Box<>("hi");
 b.set(42);   // COMPILE ERROR — T is String
 ```
 
-Written once, works for any type, each use checked.
-
 ## Multiple parameters
 
 ```java
 public record Pair<A, B>(A first, B second) {}   // records are generic too
 ```
-
-Cleanest way to return two values.
 
 ## Three "you can't" rules
 

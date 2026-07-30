@@ -15,10 +15,6 @@
 static <T extends Comparable<? super T>> T max(Collection<? extends T> c)
 ```
 
-## You already use these
-
-`Optional<T>` · `Comparator<T>` · `Function<T,R>`, `Predicate<T>` · `Stream<T>`, `Map<K,V>`
-
 ## Principles
 
 - Program to generic **interfaces**; **liberal in** (wildcards), **specific out** (concrete return)

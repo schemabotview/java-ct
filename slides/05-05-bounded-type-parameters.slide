@@ -11,8 +11,6 @@ static <T extends Comparable<T>> T max(List<T> list) {
 }
 ```
 
-The bound is both the **promise** (compiler allows `compareTo`) and the **requirement** (caller's type must satisfy it).
-
 ## Always `extends` — even for interfaces
 
 `<T extends Number>` · `<T extends Closeable>` — reads "T is a …", constrains the type argument.
@@ -22,8 +20,6 @@ The bound is both the **promise** (compiler allows `compareTo`) and the **requir
 ```java
 static <T extends Number & Comparable<T>> T clamp(T v, T lo, T hi)
 ```
-
-At most one class, first; rest interfaces.
 
 ## Recursive: `T extends Comparable<T>`
 

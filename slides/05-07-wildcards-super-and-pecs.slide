@@ -25,7 +25,3 @@ static <T> void copy(List<? super T> dest, List<? extends T> src) {
     for (T x : src) dest.add(x);   // src produces, dest consumes
 }
 ```
-
-## Seen everywhere
-
-`Collections.max(… ? extends T)` · `forEach(Consumer<? super T>)` · `Comparator<? super T>` · `map(Function<? super T, ? extends R>)`

@@ -1,4 +1,4 @@
-# Type erasure — what the JVM sees
+# Type erasure
 
 ## Generics vanish at run time
 
@@ -12,8 +12,6 @@ String s = (String) list.get(0);             // cast inserted for you
 
 `<T>` → its bound (or `Object`); type info verifies, then is thrown away.
 
-## The one consequence
-
 ```java
 new ArrayList<String>().getClass() == new ArrayList<Integer>().getClass();  // true
 ```
@@ -26,5 +24,3 @@ new ArrayList<String>().getClass() == new ArrayList<Integer>().getClass();  // t
 - No **`instanceof List<String>`** (only `List<?>`)
 - No **`new T()`** / **`new T[]`** — pass a `Supplier<T>` / `Class<T>`
 - No overloads differing only by argument (`f(List<String>)` vs `f(List<Integer>)`)
-
-## Why: **backward compatibility** with pre-Java-5 raw code.
