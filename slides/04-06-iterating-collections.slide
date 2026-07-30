@@ -31,5 +31,3 @@ Maps: `entrySet().removeIf(...)` / `values().removeIf(...)`.
 names.forEach(System.out::println);
 ages.forEach((name, age) -> ...);
 ```
-
-Transform/filter/aggregate? → **streams** (module 07), not a loop.

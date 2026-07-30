@@ -19,6 +19,4 @@
 
 ## Don't forget
 
-- Program to the **interface**; prefer **immutable** + copy at boundaries
-- Value types as **records**; **immutable keys**
-- `removeIf` while iterating · `merge`/`computeIfAbsent` · `Comparator` for ad-hoc order
+- Program to the **interface**; prefer **immutable** + copy at boundaries; value types as **records**, **immutable keys**

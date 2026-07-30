@@ -22,7 +22,3 @@ map.get(key);     // null
 ```
 
 → **keys & set-elements must be immutable.**
-
-## Trees are different
-
-`TreeMap`/`TreeSet` use **`compareTo`**, not `equals`/`hashCode` → keep `compareTo` **consistent with `equals`**.

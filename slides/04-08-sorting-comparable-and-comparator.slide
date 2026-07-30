@@ -26,5 +26,3 @@ people.sort(comparing(Person::nick, nullsLast(naturalOrder())));
 
 - `list.sort(cmp)` — in place, stable, O(n log n)
 - `new TreeSet<>(cmp)` — stays sorted · streams `.sorted(cmp)`
-
-**Choose:** one canonical order → `Comparable`; many orderings → `Comparator`.

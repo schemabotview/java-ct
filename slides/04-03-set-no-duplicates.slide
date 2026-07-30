@@ -28,5 +28,3 @@ a.addAll(b);      // union
 a.retainAll(b);   // intersection
 a.removeAll(b);   // difference
 ```
-
-De-dup a list: `new HashSet<>(list)`.

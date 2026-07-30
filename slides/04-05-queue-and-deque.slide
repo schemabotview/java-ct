@@ -30,5 +30,3 @@ Page back = history.pop();   // = removeFirst — LIFO
 ```java
 pq.offer(5); pq.offer(1); pq.poll();   // 1 — min, not oldest
 ```
-
-Heap, O(log n): schedulers, top-k, Dijkstra.

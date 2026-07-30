@@ -1,7 +1,5 @@
 # The Collection hierarchy
 
-## Interface vs implementation
-
 - **Interfaces** name a capability — `List`, `Set`, `Queue`, `Map`
 - **Implementations** decide *how* — `ArrayList`, `HashSet`, `HashMap`, `ArrayDeque`
 
