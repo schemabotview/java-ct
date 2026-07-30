@@ -11,8 +11,6 @@ Function<String, Integer> length = s -> s.length();
 length.apply("hello");   // 5   —  T in, R out
 ```
 
-The shape behind `stream.map(...)`.
-
 ## `BiFunction<T, U, R>` — two inputs
 
 ```java

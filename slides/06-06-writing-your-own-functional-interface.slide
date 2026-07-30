@@ -13,9 +13,7 @@ DiscountRule loyalty = order -> order.total().multiply(new BigDecimal("0.9"));
 
 The annotation makes the compiler **enforce** the SAM rule.
 
-## `default` / `static` are fine
-
-Only *abstract* methods count — add composition helpers (`Function.andThen` works this way):
+## `default` / `static` are fine — only *abstract* methods count
 
 ```java
 default DiscountRule andCap(BigDecimal max) {

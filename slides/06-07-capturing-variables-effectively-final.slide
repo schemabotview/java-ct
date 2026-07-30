@@ -15,7 +15,7 @@ count = 1;                                            // ❌ no longer effective
 
 ## Why
 
-A lambda can **outlive** its method → captures the **value**, not the stack slot. Effective-finality means the captured value can't drift.
+A lambda can **outlive** its method → captures the **value**, not the stack slot.
 
 ## Workaround (a smell)
 
@@ -23,8 +23,6 @@ A lambda can **outlive** its method → captures the **value**, not the stack sl
 int[] sum = {0};
 list.forEach(n -> sum[0] += n);   // legal, but fighting the design
 ```
-
-Prefer computing a result: `list.stream().mapToInt(n -> n).sum();`
 
 ## `this` = the enclosing object
 

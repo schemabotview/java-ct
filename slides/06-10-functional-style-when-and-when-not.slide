@@ -4,14 +4,12 @@
 
 - **Transformations / pipelines** — build a new collection from an old one → `filter`/`map`/`sort`
 - **Callbacks & strategies** — pass behaviour inline
-- **Small, pure operations** — inputs in, result out
 
 ## Imperative wins
 
 - **Complex control flow** — many `break`/`continue`, early returns
 - **Side effects & mutation** — updating structures, I/O, ordering
 - **Checked exceptions** — built-ins don't declare them
-- **Debugging** — loops breakpoint & stack-trace cleanly
 
 ## Golden rule: keep lambdas **pure**
 

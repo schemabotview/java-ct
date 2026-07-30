@@ -29,6 +29,3 @@ Comparator<String> c = (a, b) -> a.length() - b.length(); // → compare()
 ```
 
 Same shape, different target. → can't assign a lambda to bare `var`.
-
-## Everyday
-`forEach(x -> …)` · `removeIf(s -> s.isBlank())` · `sort((a,b) -> …)`

@@ -22,5 +22,3 @@ names.stream().map(String::toUpperCase);    // = s -> s.toUpperCase()
 
 - **Reference** — body is *purely* a named call: `.map(String::trim)`
 - **Lambda** — anything more: `.map(s -> s.trim().toLowerCase())`
-
-Choose whichever reads like **what you mean**.
