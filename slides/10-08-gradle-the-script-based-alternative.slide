@@ -18,6 +18,4 @@ dependencies {
 - **Daemon** — stays warm, no JVM startup each time
 - **Programmable tasks** — custom steps are just code
 
-## Trade-off
-
-Can grow into complex scripts; more to learn. **Maven** = convention + predictability · **Gradle** = flexibility + speed (default for **Android**).
+## Trade-off — grows into complex scripts, more to learn. **Maven** = convention + predictability · **Gradle** = flexibility + speed (default for **Android**)

@@ -1,8 +1,6 @@
 # Locks — `synchronized` and `ReentrantLock`
 
-## `synchronized` — the built-in lock
-
-**Mutual exclusion** — at most one thread in the guarded code. Every object carries a hidden **monitor**; the keyword acquires it on entry, releases on exit (even on exception).
+## `synchronized` — **mutual exclusion** via each object's hidden **monitor**, acquired on entry, released on exit (even on exception)
 
 ```java
 class Counter {
@@ -12,9 +10,7 @@ class Counter {
 }
 ```
 
-## A lock guarantees two things — same lock on **every** access, reads included
-
-- **Atomicity** — read-modify-write uninterrupted · **Visibility** — release flushes writes, acquire reads latest (happens-before)
+## A lock guarantees — **atomicity** (read-modify-write uninterrupted) + **visibility** (release flushes, acquire reads latest); same lock on **every** access
 
 ## `ReentrantLock` — explicit; adds `tryLock`, timeouts, `lockInterruptibly`, fairness, `Condition`s
 

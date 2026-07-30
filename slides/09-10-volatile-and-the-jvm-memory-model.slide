@@ -8,9 +8,7 @@ boolean stop = false;             // plain field
 // t2: stop = true;               // t1 might never see it
 ```
 
-## The Java Memory Model — happens-before
-
-If A **happens-before** B, A's effects are visible to B; no edge → **no** guarantee. The key edge here: a **`volatile` write** happens-before a later **`volatile` read** (also unlock→lock, `Thread.start()`/`join()`).
+## Java Memory Model — if A **happens-before** B, A's effects are visible to B; no edge → **no** guarantee. Key edge: a **`volatile` write** before a later **`volatile` read**
 
 ## `volatile` — for one field: every read from main memory, every write flushed, no reordering
 
