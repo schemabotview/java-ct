@@ -1,0 +1,37 @@
+# `ExecutorService` and `Future<V>`
+
+Stop *creating threads*; start *submitting tasks* to a pool that owns the threads.
+
+## A thread pool
+
+```java
+ExecutorService pool = Executors.newFixedThreadPool(4);  // 4 reusable workers
+pool.submit(() -> System.out.println("task ran"));
+```
+
+10 000 tasks on 4 threads run 4 at a time — no memory blow-up.
+
+## A result: `Callable` → `Future`
+
+`Callable<V>` returns a value; `submit` hands back a `Future<V>` — a result not ready yet:
+
+```java
+Future<Integer> f = pool.submit(() -> expensiveSum());  // returns immediately
+int result = f.get();     // BLOCKS until ready (ExecutionException wraps a throw)
+```
+
+```java
+f.isDone();          // finished? (non-blocking)
+f.get(2, SECONDS);   // wait with a timeout
+f.cancel(true);      // stop it (interrupts if running)
+```
+
+## Shut it down (`AutoCloseable`, Java 21)
+
+```java
+try (ExecutorService pool = Executors.newFixedThreadPool(4)) {
+    pool.submit(task);
+}   // close() waits for tasks, then shuts down
+```
+
+**Fixes raw `Thread`:** bounded · result-bearing · managed.

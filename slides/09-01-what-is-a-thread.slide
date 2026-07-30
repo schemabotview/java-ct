@@ -1,0 +1,27 @@
+# What is a thread?
+
+A **thread** is one sequence of execution. Want two things at once — serve two requests, use eight cores — you need more than one, and you enter **concurrency**.
+
+## One process, many threads
+
+```text
+Process (one JVM)
+├── shared heap: objects, static fields  ← all threads see these
+├── Thread "main"     — own stack + program counter
+└── Thread "worker-1" — own stack
+```
+
+Private stacks, **one shared heap** — the source of concurrency's power *and* its every hazard.
+
+## Concurrency ≠ parallelism
+
+- **Concurrency** = *structure* — many tasks in overlapping time (interleaved, even on 1 core)
+- **Parallelism** = *execution* — literally at once (needs multiple cores)
+
+## Why threads — and why they've been hard
+
+- **Responsiveness** — don't freeze while waiting · **Throughput** — use every core
+- **Expensive** — a classic thread = 1 OS thread ≈ 1 MB → only *thousands*
+- **Dangerous** — the shared heap corrupts under uncoordinated access
+
+**Java 21's virtual threads** fix the cost; **locks & the memory model** fix the danger.

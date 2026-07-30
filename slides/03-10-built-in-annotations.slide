@@ -19,5 +19,3 @@ Doesn't change behaviour on its own; the compiler or a tool reads it.
 ```java
 @Test(timeout = 500)   // named element; arrays: {"unchecked", "deprecation"}
 ```
-
-**Habit:** `@Override` everywhere — free, catches real bugs.

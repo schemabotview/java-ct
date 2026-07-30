@@ -1,0 +1,35 @@
+# Raw threads and `Runnable`
+
+The direct mechanism — rarely used now, but everything is built on it. A thread needs *code to run* and *the act of starting it*.
+
+## The work: `Runnable`
+
+A functional interface — one method `run()`, so just a lambda:
+
+```java
+Runnable task = () -> System.out.println("hi from " + Thread.currentThread());
+```
+
+## Start it: `start`, **not** `run`
+
+```java
+Thread t = new Thread(task);
+t.start();     // spawns a NEW thread — run() executes there
+// t.run();    // BUG: runs on THIS thread, zero concurrency
+```
+
+**`start` spawns; `run` doesn't.**
+
+## No ordering guarantee
+
+```java
+new Thread(() -> print("A")).start();
+new Thread(() -> print("B")).start();   // "A B", "B A", interleaved...
+```
+
+`t.join()` — block the current thread until `t` finishes (throws `InterruptedException`).
+
+## Why you'll rarely write this
+
+- **Unbounded & ~1 MB each** — one per request → out of memory
+- **No result, no reuse, no lifecycle** → use `ExecutorService` (§03)

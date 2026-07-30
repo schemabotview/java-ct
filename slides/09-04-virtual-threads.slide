@@ -1,0 +1,31 @@
+# Virtual threads — Java 21's big shift
+
+A thread so cheap you can have **millions** — retiring most of concurrency's complexity.
+
+## The old cost
+
+A **platform thread** wraps an **OS thread** — ~1 MB stack, kernel-scheduled → only *thousands*. That ceiling *is* your max concurrency.
+
+## The idea: many virtual threads on few carriers
+
+A **virtual thread** is managed by the *JVM*, not the OS — just a heap object. It runs on a small pool of platform-thread **carriers**:
+
+> On a **blocking** call (I/O, `sleep`), the JVM **unmounts** the virtual thread and frees the carrier for another. Remounts when ready.
+
+A blocked virtual thread ties up **no OS thread**.
+
+## The payoff: blocking code that scales
+
+```java
+try (var pool = Executors.newVirtualThreadPerTaskExecutor()) {
+    for (Request r : requests)
+        pool.submit(() -> handle(r));   // blocking handle() is fine
+}
+```
+
+## The rule flips: **don't pool** virtual threads
+
+- Platform threads → **pooled** (scarce)
+- Virtual threads → **one per task** (abundant); "blocking is fine"
+
+Shine for **I/O-bound** high concurrency; **not** faster for CPU-bound work.

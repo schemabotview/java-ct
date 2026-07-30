@@ -1,0 +1,33 @@
+# Structured concurrency
+
+Subtasks started together **live and die together**, inside a scope — like a code block.
+
+## The unstructured mess
+
+```java
+Future<User>   u = pool.submit(() -> fetchUser(id));
+Future<Orders> o = pool.submit(() -> fetchOrders(id));
+User user = u.get();   // if this throws, o keeps running — a leak
+```
+
+Cancellation and error propagation are all manual.
+
+## Subtasks scoped like a block
+
+```java
+try (var scope = new StructuredTaskScope.ShutdownOnFailure()) {
+    Subtask<User>   u = scope.fork(() -> fetchUser(id));
+    Subtask<Orders> o = scope.fork(() -> fetchOrders(id));
+    scope.join();               // wait for BOTH
+    scope.throwIfFailed();      // propagate first failure
+    return new Page(u.get(), o.get());
+}   // no subtask is still running
+```
+
+## What the scope guarantees
+
+- **All-or-nothing** — scope won't exit with a subtask still alive; no orphans
+- **Auto-cancel** — one fails → siblings cancelled (`ShutdownOnSuccess` = first win)
+- **Error propagation** — one `try/catch` around the scope
+
+**Structure of the code = structure of the work.** (Preview, built on virtual threads.)
