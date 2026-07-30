@@ -281,6 +281,11 @@
           "md": "md/03-02-enums-a-fixed-set-of-constants.md",
           "slide": "slides/03-02-enums-a-fixed-set-of-constants.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-enum"
+          ],
+          "focus": "ja-type-oop",
+          "zoom": true,
           "spine": true
         },
         {
@@ -288,6 +293,12 @@
           "md": "md/03-03-enums-with-state-and-behaviour.md",
           "slide": "slides/03-03-enums-with-state-and-behaviour.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-enum",
+            "ja-method-def"
+          ],
+          "focus": "ja-type-oop",
+          "zoom": true,
           "spine": true
         },
         {
@@ -295,6 +306,11 @@
           "md": "md/03-04-records-one-line-immutable-data-classes.md",
           "slide": "slides/03-04-records-one-line-immutable-data-classes.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-record"
+          ],
+          "focus": "ja-type-oop",
+          "zoom": true,
           "spine": true
         },
         {
@@ -302,6 +318,11 @@
           "md": "md/03-05-customising-and-validating-records.md",
           "slide": "slides/03-05-customising-and-validating-records.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-record"
+          ],
+          "focus": "ja-type-oop",
+          "zoom": true,
           "spine": true
         },
         {
@@ -309,6 +330,11 @@
           "md": "md/03-06-sealed-types-a-closed-family-of-subtypes.md",
           "slide": "slides/03-06-sealed-types-a-closed-family-of-subtypes.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-sealed"
+          ],
+          "focus": "ja-type-meta",
+          "zoom": true,
           "spine": true
         },
         {
@@ -316,6 +342,11 @@
           "md": "md/03-07-pattern-matching-for-instanceof.md",
           "slide": "slides/03-07-pattern-matching-for-instanceof.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-pat-match"
+          ],
+          "focus": "ja-pattern",
+          "zoom": true,
           "spine": true
         },
         {
@@ -323,6 +354,12 @@
           "md": "md/03-08-pattern-matching-for-switch-with-guards.md",
           "slide": "slides/03-08-pattern-matching-for-switch-with-guards.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-pat-match",
+            "ja-ctrl-guard"
+          ],
+          "focus": "ja-pattern",
+          "zoom": true,
           "spine": true
         },
         {
@@ -330,6 +367,11 @@
           "md": "md/03-09-record-patterns-destructuring.md",
           "slide": "slides/03-09-record-patterns-destructuring.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-pat-record"
+          ],
+          "focus": "ja-pattern",
+          "zoom": true,
           "spine": true
         },
         {
@@ -337,6 +379,11 @@
           "md": "md/03-10-built-in-annotations.md",
           "slide": "slides/03-10-built-in-annotations.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-method-def"
+          ],
+          "focus": "ja-methods",
+          "zoom": true,
           "spine": true
         }
       ]
@@ -358,6 +405,11 @@
           "md": "md/04-02-list-ordered-indexed-allows-duplicates.md",
           "slide": "slides/04-02-list-ordered-indexed-allows-duplicates.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-coll-list"
+          ],
+          "focus": "ja-type-coll",
+          "zoom": true,
           "spine": true
         },
         {
@@ -365,6 +417,11 @@
           "md": "md/04-03-set-no-duplicates.md",
           "slide": "slides/04-03-set-no-duplicates.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-coll-set"
+          ],
+          "focus": "ja-type-coll",
+          "zoom": true,
           "spine": true
         },
         {
@@ -372,6 +429,11 @@
           "md": "md/04-04-map-key-to-value-lookup.md",
           "slide": "slides/04-04-map-key-to-value-lookup.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-coll-map"
+          ],
+          "focus": "ja-type-coll",
+          "zoom": true,
           "spine": true
         },
         {
@@ -379,6 +441,11 @@
           "md": "md/04-05-queue-and-deque.md",
           "slide": "slides/04-05-queue-and-deque.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-coll-deque"
+          ],
+          "focus": "ja-type-coll",
+          "zoom": true,
           "spine": true
         },
         {
@@ -386,6 +453,11 @@
           "md": "md/04-06-iterating-collections.md",
           "slide": "slides/04-06-iterating-collections.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-loop-foreach"
+          ],
+          "focus": "ja-loops",
+          "zoom": true,
           "spine": true
         },
         {
@@ -393,6 +465,11 @@
           "md": "md/04-07-immutable-factories-and-defensive-copies.md",
           "slide": "slides/04-07-immutable-factories-and-defensive-copies.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-immutable"
+          ],
+          "focus": "ja-memory",
+          "zoom": true,
           "spine": true
         },
         {
@@ -400,6 +477,12 @@
           "md": "md/04-08-sorting-comparable-and-comparator.md",
           "slide": "slides/04-08-sorting-comparable-and-comparator.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-fn-iface",
+            "ja-fn-lambda"
+          ],
+          "focus": "ja-functions",
+          "zoom": true,
           "spine": true
         },
         {
@@ -407,6 +490,11 @@
           "md": "md/04-09-equality-hashing-and-collection-contracts.md",
           "slide": "slides/04-09-equality-hashing-and-collection-contracts.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-method-def"
+          ],
+          "focus": "ja-methods",
+          "zoom": true,
           "spine": true
         },
         {
@@ -414,6 +502,14 @@
           "md": "md/04-10-choosing-the-right-collection.md",
           "slide": "slides/04-10-choosing-the-right-collection.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-coll-list",
+            "ja-coll-map",
+            "ja-coll-set",
+            "ja-coll-deque"
+          ],
+          "focus": "ja-type-coll",
+          "zoom": true,
           "spine": true
         }
       ]
@@ -435,6 +531,11 @@
           "md": "md/05-02-using-generic-types.md",
           "slide": "slides/05-02-using-generic-types.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-generic"
+          ],
+          "focus": "ja-type-meta",
+          "zoom": true,
           "spine": true
         },
         {
@@ -442,6 +543,11 @@
           "md": "md/05-03-writing-a-generic-class.md",
           "slide": "slides/05-03-writing-a-generic-class.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-generic"
+          ],
+          "focus": "ja-type-meta",
+          "zoom": true,
           "spine": true
         },
         {
@@ -449,6 +555,11 @@
           "md": "md/05-04-generic-methods.md",
           "slide": "slides/05-04-generic-methods.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-generic"
+          ],
+          "focus": "ja-type-meta",
+          "zoom": true,
           "spine": true
         },
         {
@@ -456,6 +567,11 @@
           "md": "md/05-05-bounded-type-parameters.md",
           "slide": "slides/05-05-bounded-type-parameters.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-generic"
+          ],
+          "focus": "ja-type-meta",
+          "zoom": true,
           "spine": true
         },
         {
@@ -463,6 +579,11 @@
           "md": "md/05-06-wildcards-extends.md",
           "slide": "slides/05-06-wildcards-extends.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-generic"
+          ],
+          "focus": "ja-type-meta",
+          "zoom": true,
           "spine": true
         },
         {
@@ -470,6 +591,11 @@
           "md": "md/05-07-wildcards-super-and-pecs.md",
           "slide": "slides/05-07-wildcards-super-and-pecs.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-generic"
+          ],
+          "focus": "ja-type-meta",
+          "zoom": true,
           "spine": true
         },
         {
@@ -477,6 +603,11 @@
           "md": "md/05-08-type-erasure.md",
           "slide": "slides/05-08-type-erasure.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-generic"
+          ],
+          "focus": "ja-type-meta",
+          "zoom": true,
           "spine": true
         },
         {
@@ -484,6 +615,12 @@
           "md": "md/05-09-generics-gotchas-arrays-and-casts.md",
           "slide": "slides/05-09-generics-gotchas-arrays-and-casts.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-generic",
+            "ja-array"
+          ],
+          "focus": "ja-type-meta",
+          "zoom": true,
           "spine": true
         },
         {
@@ -491,6 +628,12 @@
           "md": "md/05-10-generic-apis-in-practice.md",
           "slide": "slides/05-10-generic-apis-in-practice.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-generic",
+            "ja-optional"
+          ],
+          "focus": "ja-type-meta",
+          "zoom": true,
           "spine": true
         }
       ]
@@ -512,6 +655,11 @@
           "md": "md/06-02-lambdas-the-syntax.md",
           "slide": "slides/06-02-lambdas-the-syntax.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-fn-lambda"
+          ],
+          "focus": "ja-functions",
+          "zoom": true,
           "spine": true
         },
         {
@@ -519,6 +667,11 @@
           "md": "md/06-03-method-references.md",
           "slide": "slides/06-03-method-references.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-fn-methodref"
+          ],
+          "focus": "ja-functions",
+          "zoom": true,
           "spine": true
         },
         {
@@ -526,6 +679,11 @@
           "md": "md/06-04-function-and-bifunction.md",
           "slide": "slides/06-04-function-and-bifunction.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-fn-iface"
+          ],
+          "focus": "ja-functions",
+          "zoom": true,
           "spine": true
         },
         {
@@ -533,6 +691,11 @@
           "md": "md/06-05-predicate-consumer-supplier.md",
           "slide": "slides/06-05-predicate-consumer-supplier.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-fn-iface"
+          ],
+          "focus": "ja-functions",
+          "zoom": true,
           "spine": true
         },
         {
@@ -540,6 +703,11 @@
           "md": "md/06-06-writing-your-own-functional-interface.md",
           "slide": "slides/06-06-writing-your-own-functional-interface.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-fn-iface"
+          ],
+          "focus": "ja-functions",
+          "zoom": true,
           "spine": true
         },
         {
@@ -547,6 +715,12 @@
           "md": "md/06-07-capturing-variables-effectively-final.md",
           "slide": "slides/06-07-capturing-variables-effectively-final.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-fn-lambda",
+            "ja-bind-final"
+          ],
+          "focus": "ja-functions",
+          "zoom": true,
           "spine": true
         },
         {
@@ -554,6 +728,12 @@
           "md": "md/06-08-composing-functions.md",
           "slide": "slides/06-08-composing-functions.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-fn-lambda",
+            "ja-fn-methodref"
+          ],
+          "focus": "ja-functions",
+          "zoom": true,
           "spine": true
         },
         {
@@ -561,6 +741,11 @@
           "md": "md/06-09-higher-order-methods.md",
           "slide": "slides/06-09-higher-order-methods.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-fn-lambda"
+          ],
+          "focus": "ja-functions",
+          "zoom": true,
           "spine": true
         },
         {
@@ -568,6 +753,12 @@
           "md": "md/06-10-functional-style-when-and-when-not.md",
           "slide": "slides/06-10-functional-style-when-and-when-not.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-fn-lambda",
+            "ja-fn-iface"
+          ],
+          "focus": "ja-functions",
+          "zoom": true,
           "spine": true
         }
       ]
@@ -589,6 +780,11 @@
           "md": "md/07-02-creating-streams.md",
           "slide": "slides/07-02-creating-streams.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-op-map"
+          ],
+          "focus": "ja-coll-ops",
+          "zoom": true,
           "spine": true
         },
         {
@@ -596,6 +792,12 @@
           "md": "md/07-03-intermediate-operations.md",
           "slide": "slides/07-03-intermediate-operations.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-op-map",
+            "ja-op-filter"
+          ],
+          "focus": "ja-coll-ops",
+          "zoom": true,
           "spine": true
         },
         {
@@ -603,6 +805,13 @@
           "md": "md/07-04-map-filter-and-flatmap.md",
           "slide": "slides/07-04-map-filter-and-flatmap.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-op-map",
+            "ja-op-filter",
+            "ja-op-flatmap"
+          ],
+          "focus": "ja-coll-ops",
+          "zoom": true,
           "spine": true
         },
         {
@@ -610,6 +819,12 @@
           "md": "md/07-05-terminal-operations.md",
           "slide": "slides/07-05-terminal-operations.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-op-collect",
+            "ja-op-reduce"
+          ],
+          "focus": "ja-coll-ops",
+          "zoom": true,
           "spine": true
         },
         {
@@ -617,6 +832,11 @@
           "md": "md/07-06-reduction-and-reduce.md",
           "slide": "slides/07-06-reduction-and-reduce.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-op-reduce"
+          ],
+          "focus": "ja-coll-ops",
+          "zoom": true,
           "spine": true
         },
         {
@@ -624,6 +844,12 @@
           "md": "md/07-07-collectors-grouping-and-joining.md",
           "slide": "slides/07-07-collectors-grouping-and-joining.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-op-collect",
+            "ja-op-groupby"
+          ],
+          "focus": "ja-coll-ops",
+          "zoom": true,
           "spine": true
         },
         {
@@ -631,6 +857,11 @@
           "md": "md/07-08-parallel-streams.md",
           "slide": "slides/07-08-parallel-streams.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-op-reduce"
+          ],
+          "focus": "ja-coll-ops",
+          "zoom": true,
           "spine": true
         },
         {
@@ -638,6 +869,11 @@
           "md": "md/07-09-optional-no-more-nulls.md",
           "slide": "slides/07-09-optional-no-more-nulls.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-optional"
+          ],
+          "focus": "ja-type-meta",
+          "zoom": true,
           "spine": true
         },
         {
@@ -645,6 +881,13 @@
           "md": "md/07-10-streams-and-optional-together.md",
           "slide": "slides/07-10-streams-and-optional-together.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-op-map",
+            "ja-op-filter",
+            "ja-optional"
+          ],
+          "focus": "ja-coll-ops",
+          "zoom": true,
           "spine": true
         }
       ]
@@ -666,6 +909,11 @@
           "md": "md/08-02-the-throwable-hierarchy.md",
           "slide": "slides/08-02-the-throwable-hierarchy.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-typed-failure"
+          ],
+          "focus": "ja-results",
+          "zoom": true,
           "spine": true
         },
         {
@@ -673,6 +921,11 @@
           "md": "md/08-03-try-catch-finally.md",
           "slide": "slides/08-03-try-catch-finally.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-typed-failure"
+          ],
+          "focus": "ja-results",
+          "zoom": true,
           "spine": true
         },
         {
@@ -680,6 +933,11 @@
           "md": "md/08-04-throwing-exceptions-and-custom-types.md",
           "slide": "slides/08-04-throwing-exceptions-and-custom-types.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-typed-failure"
+          ],
+          "focus": "ja-results",
+          "zoom": true,
           "spine": true
         },
         {
@@ -687,6 +945,11 @@
           "md": "md/08-05-exception-chaining-the-cause.md",
           "slide": "slides/08-05-exception-chaining-the-cause.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-typed-failure"
+          ],
+          "focus": "ja-results",
+          "zoom": true,
           "spine": true
         },
         {
@@ -694,6 +957,12 @@
           "md": "md/08-06-try-with-resources.md",
           "slide": "slides/08-06-try-with-resources.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-typed-failure",
+            "ja-effects"
+          ],
+          "focus": "ja-results",
+          "zoom": true,
           "spine": true
         },
         {
@@ -701,6 +970,11 @@
           "md": "md/08-07-the-nio-path.md",
           "slide": "slides/08-07-the-nio-path.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-effects"
+          ],
+          "focus": "ja-results",
+          "zoom": true,
           "spine": true
         },
         {
@@ -708,6 +982,11 @@
           "md": "md/08-08-files-reading-and-writing.md",
           "slide": "slides/08-08-files-reading-and-writing.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-effects"
+          ],
+          "focus": "ja-results",
+          "zoom": true,
           "spine": true
         },
         {
@@ -715,6 +994,11 @@
           "md": "md/08-09-directory-operations-and-streams-of-files.md",
           "slide": "slides/08-09-directory-operations-and-streams-of-files.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-effects"
+          ],
+          "focus": "ja-results",
+          "zoom": true,
           "spine": true
         },
         {
@@ -722,6 +1006,11 @@
           "md": "md/08-10-serialization-a-brief-note.md",
           "slide": "slides/08-10-serialization-a-brief-note.slide",
           "scene": "java-anatomy",
+          "highlight": [
+            "ja-effects"
+          ],
+          "focus": "ja-results",
+          "zoom": true,
           "spine": true
         }
       ]
@@ -743,6 +1032,12 @@
           "md": "md/09-02-raw-threads-and-runnable.md",
           "slide": "slides/09-02-raw-threads-and-runnable.slide",
           "scene": "java-jvm",
+          "highlight": [
+            "j-thread-1-stack",
+            "j-thread-n-stack"
+          ],
+          "focus": "j-jvm-stack-area",
+          "zoom": true,
           "spine": true
         },
         {
@@ -750,6 +1045,12 @@
           "md": "md/09-03-executorservice-and-future.md",
           "slide": "slides/09-03-executorservice-and-future.slide",
           "scene": "java-jvm",
+          "highlight": [
+            "j-thread-1-stack",
+            "j-thread-n-stack"
+          ],
+          "focus": "j-jvm-stack-area",
+          "zoom": true,
           "spine": true
         },
         {
@@ -757,6 +1058,12 @@
           "md": "md/09-04-virtual-threads.md",
           "slide": "slides/09-04-virtual-threads.slide",
           "scene": "java-jvm",
+          "highlight": [
+            "j-thread-1-stack",
+            "j-thread-n-stack"
+          ],
+          "focus": "j-jvm-stack-area",
+          "zoom": true,
           "spine": true
         },
         {
@@ -764,6 +1071,12 @@
           "md": "md/09-05-completablefuture-composable-async.md",
           "slide": "slides/09-05-completablefuture-composable-async.slide",
           "scene": "java-jvm",
+          "highlight": [
+            "j-thread-1-stack",
+            "j-thread-n-stack"
+          ],
+          "focus": "j-jvm-stack-area",
+          "zoom": true,
           "spine": true
         },
         {
@@ -771,6 +1084,12 @@
           "md": "md/09-06-structured-concurrency.md",
           "slide": "slides/09-06-structured-concurrency.slide",
           "scene": "java-jvm",
+          "highlight": [
+            "j-thread-1-stack",
+            "j-thread-n-stack"
+          ],
+          "focus": "j-jvm-stack-area",
+          "zoom": true,
           "spine": true
         },
         {
@@ -778,6 +1097,11 @@
           "md": "md/09-07-the-shared-mutable-state-problem.md",
           "slide": "slides/09-07-the-shared-mutable-state-problem.slide",
           "scene": "java-jvm",
+          "highlight": [
+            "j-object-data"
+          ],
+          "focus": "j-heap-area",
+          "zoom": true,
           "spine": true
         },
         {
@@ -785,6 +1109,11 @@
           "md": "md/09-08-locks-synchronized-and-reentrantlock.md",
           "slide": "slides/09-08-locks-synchronized-and-reentrantlock.slide",
           "scene": "java-jvm",
+          "highlight": [
+            "j-object-data"
+          ],
+          "focus": "j-heap-area",
+          "zoom": true,
           "spine": true
         },
         {
@@ -792,6 +1121,11 @@
           "md": "md/09-09-atomic-variables-and-concurrent-collections.md",
           "slide": "slides/09-09-atomic-variables-and-concurrent-collections.slide",
           "scene": "java-jvm",
+          "highlight": [
+            "j-object-data"
+          ],
+          "focus": "j-heap-area",
+          "zoom": true,
           "spine": true
         },
         {
@@ -799,6 +1133,12 @@
           "md": "md/09-10-volatile-and-the-jvm-memory-model.md",
           "slide": "slides/09-10-volatile-and-the-jvm-memory-model.slide",
           "scene": "java-jvm",
+          "highlight": [
+            "j-object-data",
+            "j-pc-registers"
+          ],
+          "focus": "j-memory-area",
+          "zoom": true,
           "spine": true
         }
       ]
@@ -820,6 +1160,11 @@
           "md": "md/10-02-garbage-collection-in-one-breath.md",
           "slide": "slides/10-02-garbage-collection-in-one-breath.slide",
           "scene": "java-jvm",
+          "highlight": [
+            "j-gc"
+          ],
+          "focus": "j-exec-engine",
+          "zoom": true,
           "spine": true
         },
         {
@@ -827,6 +1172,13 @@
           "md": "md/10-03-class-loading.md",
           "slide": "slides/10-03-class-loading.slide",
           "scene": "java-jvm",
+          "highlight": [
+            "j-loading",
+            "j-linking",
+            "j-initialization"
+          ],
+          "focus": "j-classloader-subsystem",
+          "zoom": true,
           "spine": true
         },
         {
@@ -834,6 +1186,11 @@
           "md": "md/10-04-java-modules-the-60-second-tour.md",
           "slide": "slides/10-04-java-modules-the-60-second-tour.slide",
           "scene": "java-jvm",
+          "highlight": [
+            "j-application-cl"
+          ],
+          "focus": "j-classloader-subsystem",
+          "zoom": true,
           "spine": true
         },
         {
@@ -841,6 +1198,11 @@
           "md": "md/10-05-reflection-looking-at-code-as-data.md",
           "slide": "slides/10-05-reflection-looking-at-code-as-data.slide",
           "scene": "java-jvm",
+          "highlight": [
+            "j-class-data"
+          ],
+          "focus": "j-method-area",
+          "zoom": true,
           "spine": true
         },
         {
@@ -848,6 +1210,11 @@
           "md": "md/10-06-annotations-reading-them-at-runtime.md",
           "slide": "slides/10-06-annotations-reading-them-at-runtime.slide",
           "scene": "java-jvm",
+          "highlight": [
+            "j-class-data"
+          ],
+          "focus": "j-method-area",
+          "zoom": true,
           "spine": true
         },
         {
@@ -855,6 +1222,13 @@
           "md": "md/10-07-maven-the-dominant-build-tool.md",
           "slide": "slides/10-07-maven-the-dominant-build-tool.slide",
           "scene": "java-jvm",
+          "highlight": [
+            "j-source-code",
+            "javac",
+            "j-class-file"
+          ],
+          "focus": "j-pipeline",
+          "zoom": true,
           "spine": true
         },
         {
@@ -862,6 +1236,13 @@
           "md": "md/10-08-gradle-the-script-based-alternative.md",
           "slide": "slides/10-08-gradle-the-script-based-alternative.slide",
           "scene": "java-jvm",
+          "highlight": [
+            "j-source-code",
+            "javac",
+            "j-class-file"
+          ],
+          "focus": "j-pipeline",
+          "zoom": true,
           "spine": true
         },
         {
@@ -869,6 +1250,11 @@
           "md": "md/10-09-junit-5-and-parameterised-tests.md",
           "slide": "slides/10-09-junit-5-and-parameterised-tests.slide",
           "scene": "java-jvm",
+          "highlight": [
+            "j-interpreter"
+          ],
+          "focus": "j-exec-engine",
+          "zoom": true,
           "spine": true
         },
         {
@@ -876,6 +1262,11 @@
           "md": "md/10-10-mockito-testing-in-isolation.md",
           "slide": "slides/10-10-mockito-testing-in-isolation.slide",
           "scene": "java-jvm",
+          "highlight": [
+            "j-object-data"
+          ],
+          "focus": "j-heap-area",
+          "zoom": true,
           "spine": true
         }
       ]
