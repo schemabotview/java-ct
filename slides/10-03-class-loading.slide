@@ -15,9 +15,7 @@ class Config {
 
 ## The verifier — **proven safe** before running: no stack underflow, bad jumps, or `int`-as-reference
 
-## Loader hierarchy
-
-Parent-first delegation: **Bootstrap** (core JDK) → **Platform** (JDK modules) → **Application** (your classpath). A loader asks its **parent** first, so `java.lang.String` can't be counterfeited.
+## Loader hierarchy — parent-first: **Bootstrap** → **Platform** → **Application**, so `java.lang.String` can't be counterfeited
 
 ## Identity = name + loader
 

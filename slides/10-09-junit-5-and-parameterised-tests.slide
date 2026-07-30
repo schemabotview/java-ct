@@ -11,8 +11,6 @@ void adds_two_numbers() {
 }
 ```
 
-JUnit **finds** these by reflection on `@Test` — the annotations mechanism at work.
-
 ## Assertions + lifecycle
 
 - `assertEquals`, `assertTrue`, `assertThrows` — *check code fails correctly*

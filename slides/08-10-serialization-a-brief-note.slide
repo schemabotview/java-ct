@@ -19,6 +19,4 @@ String json = mapper.writeValueAsString(account);   // Jackson
 Account a   = mapper.readValue(json, Account.class);
 ```
 
-**JSON** (Jackson/Gson) for APIs · Protobuf/Avro for compact cross-language binary. A representation you control, decoupled from private fields, no arbitrary-construction hole.
-
-**Takeaway:** recognize `Serializable` in old code; for anything new, prefer JSON — and never deserialize untrusted input natively.
+**Takeaway:** **JSON** (Jackson/Gson) or Protobuf/Avro — a format you control, no arbitrary-construction hole. Recognize `Serializable` in old code; never deserialize untrusted input natively.

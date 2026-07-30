@@ -23,8 +23,6 @@ class InsufficientFundsException extends Exception {      // checked: recoverabl
 }
 ```
 
-- **Pass a message to `super`** — self-explanatory stack trace
-
 ## The defining choice
 
 `RuntimeException` → a **bug** (default) · `Exception` → a **recoverable** condition callers must confront (use sparingly).

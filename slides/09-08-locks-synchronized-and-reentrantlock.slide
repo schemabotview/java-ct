@@ -12,14 +12,10 @@ class Counter {
 }
 ```
 
-Prefer locking a **private final lock object**, not `this`.
-
-## A lock guarantees two things
+## A lock guarantees two things — same lock on **every** access, reads included
 
 - **Atomicity** — read-modify-write completes without interference
 - **Visibility** — release flushes writes; acquire reads the latest (happens-before)
-
-Both need **every** access — reads included — on the **same** lock.
 
 ## `ReentrantLock` — explicit; adds `tryLock`, timeouts, `lockInterruptibly`, fairness, `Condition`s
 

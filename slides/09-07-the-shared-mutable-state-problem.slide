@@ -1,8 +1,6 @@
 # The shared-mutable-state problem
 
-## Stack is private, heap is shared
-
-Locals live on each thread's **stack** — safe. Object **fields**, statics, shared collections live on the **heap** — shared, and dangerous to write from two threads.
+## Stack is private (safe); the **heap** is shared — object **fields**, statics, collections are dangerous to write from two threads
 
 ## `count++` is three steps, not one
 

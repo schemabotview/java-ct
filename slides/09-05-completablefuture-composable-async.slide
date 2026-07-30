@@ -17,13 +17,11 @@ CompletableFuture<Price> result = fetchUser(id)
 
 - **`thenApply`** transform · **`thenCompose`** chain async · **`thenAccept`/`thenRun`** consume/act, no value
 
-## Combine independent futures
+## Combine independent futures — `thenCombine`, or `allOf`/`anyOf` to fan out
 
 ```java
 w.thenCombine(e, (weather, events) -> buildPage(weather, events));
 ```
-
-`allOf` / `anyOf` fan out to many — "do these at once, then continue."
 
 ## Failure travels the chain
 

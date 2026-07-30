@@ -17,8 +17,6 @@ class AdminPanel { }
 - **`CLASS`** — in the `.class`, not at runtime (default)
 - **`RUNTIME`** — in the `.class` **and readable by reflection while running** ← frameworks need this
 
-`@Target` constrains *where* it may go.
-
 ## Runtime retention + reflection = frameworks
 
 ```java

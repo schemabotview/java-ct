@@ -1,13 +1,11 @@
 # The JVM — what's actually running
 
-## Source → bytecode → native
+## Source → bytecode → native — portable `.class`, **write once, run anywhere**
 
 ```
 Hello.java --javac--> Hello.class --JVM--> any machine
  (source)          (bytecode, portable)  (interpret, then JIT)
 ```
-
-`javac` emits **bytecode** (CPU-independent), not machine code. Each platform's JVM runs the same `.class` — **write once, run anywhere**.
 
 ## The JVM's four jobs
 

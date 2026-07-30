@@ -1,8 +1,6 @@
 # Gradle — the script-based alternative
 
-## Build script — code, not XML
-
-`build.gradle` (Groovy) or `build.gradle.kts` (Kotlin DSL):
+## Build script — code, not XML (`build.gradle` Groovy / `.kts` Kotlin DSL)
 
 ```kotlin
 dependencies {

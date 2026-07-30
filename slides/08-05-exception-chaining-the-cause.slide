@@ -24,8 +24,6 @@ UserLookupException: lookup failed for 42
 Caused by: java.sql.SQLException: connection timed out
 ```
 
-Read top-down: lookup failed **because** the query failed **because** the connection timed out.
-
 ## Discipline
 
 - **Always pass the cause** when you catch-and-rethrow

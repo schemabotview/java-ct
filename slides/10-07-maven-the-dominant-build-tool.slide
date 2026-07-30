@@ -12,9 +12,7 @@
 
 ## Coordinates + repository
 
-Every library = **groupId · artifactId · version** (GAV). Maven fetches it from **Maven Central**, caches in `~/.m2`.
-
-**Transitive dependencies** — ask for one library, get its dependencies too, whole tree resolved.
+Every library = **groupId · artifactId · version** (GAV), fetched from **Maven Central**, cached in `~/.m2`. **Transitive** — ask for one, get its dependencies too, whole tree resolved.
 
 ## Convention over configuration
 

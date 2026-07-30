@@ -1,8 +1,6 @@
 # Garbage collection in one breath
 
-## Garbage = unreachable
-
-From **GC roots** (stack locals, statics), the collector follows every reference. Reachable = live; the rest is garbage.
+## Garbage = unreachable — from **GC roots** (stack locals, statics), follow every reference; reachable = live
 
 ```java
 var user = new User("Ana");   // reachable
@@ -23,5 +21,4 @@ Reachability, **not** "will I use it" — a held reference you never touch stays
 ## What you do
 
 - **Don't** call `System.gc()` — a hint; forces a costly full GC
-- **Do** avoid leaks — unintended refs: growing `static` collections, caches, listeners
-- One knob: `-Xmx` (max heap)
+- **Do** avoid leaks — growing `static` collections, caches, listeners; one knob: `-Xmx` (max heap)

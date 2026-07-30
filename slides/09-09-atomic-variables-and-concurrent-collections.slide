@@ -7,9 +7,7 @@ AtomicInteger count = new AtomicInteger(0);
 count.incrementAndGet();   // atomic read-add-write, no lock
 ```
 
-Backed by **compare-and-swap** in hardware — optimistic, retries instead of blocking. `updateAndGet` runs any function in that loop.
-
-Protects **one** variable only; two atomics together are not atomic.
+Backed by **compare-and-swap** in hardware — optimistic, retries instead of blocking; protects **one** variable only (two atomics together are not atomic).
 
 ## Concurrent collections
 
@@ -25,7 +23,6 @@ if (!map.containsKey(k)) map.put(k, compute(k));
 
 // atomic — one operation:
 map.computeIfAbsent(k, this::compute);
-map.merge(word, 1, Integer::sum);   // concurrent tally
 ```
 
 **Prefer ready-made tools over hand-rolled locks.**

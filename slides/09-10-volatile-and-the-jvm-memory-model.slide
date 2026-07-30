@@ -12,11 +12,7 @@ boolean stop = false;             // plain field
 
 ## The Java Memory Model — happens-before
 
-If A **happens-before** B, A's effects are visible to B. No edge → **no** guarantee. The edges are the tools:
-
-- unlock → later lock on the same monitor
-- **`volatile` write** → later `volatile` read
-- `Thread.start()` → thread; thread end → `join()`
+If A **happens-before** B, A's effects are visible to B; no edge → **no** guarantee. The key edge here: a **`volatile` write** happens-before a later **`volatile` read** (also unlock→lock, `Thread.start()`/`join()`).
 
 ## `volatile` — for one field: every read from main memory, every write flushed, no reordering
 

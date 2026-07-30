@@ -4,9 +4,7 @@
 
 A **platform thread** wraps an **OS thread** — ~1 MB stack, kernel-scheduled → only *thousands*. That ceiling *is* your max concurrency.
 
-## The idea: many virtual threads on few carriers
-
-A **virtual thread** is managed by the *JVM*, not the OS — just a heap object. It runs on a small pool of platform-thread **carriers**:
+## The idea — a **virtual thread** is JVM-managed (a heap object), run on a few platform-thread **carriers**
 
 > On a **blocking** call (I/O, `sleep`), the JVM **unmounts** the virtual thread and frees the carrier for another. Remounts when ready.
 
@@ -21,7 +19,6 @@ try (var pool = Executors.newVirtualThreadPerTaskExecutor()) {
 
 ## The rule flips: **don't pool** virtual threads
 
-- Platform threads → **pooled** (scarce)
-- Virtual threads → **one per task** (abundant); "blocking is fine"
+- Platform threads → **pooled** (scarce) · virtual threads → **one per task** (abundant), "blocking is fine"
 
 Shine for **I/O-bound** high concurrency; **not** faster for CPU-bound work.
