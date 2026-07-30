@@ -1,0 +1,31 @@
+# The JVM — what's actually running
+
+"Java" is two things: a **language**, and the **Java Virtual Machine** that runs it. The JVM explains Java's portability, speed, and tooling.
+
+## Source → bytecode → native
+
+```
+Hello.java --javac--> Hello.class --JVM--> any machine
+ (source)          (bytecode, portable)  (interpret, then JIT)
+```
+
+`javac` emits **bytecode** (CPU-independent), not machine code. Each platform's JVM runs the same `.class` — **write once, run anywhere**.
+
+## The JVM's four jobs
+
+- **Loads** classes on demand + **verifies** bytecode is safe
+- **Executes** — interprets, then the **JIT** compiles hot methods to native
+- **Manages memory** — heap allocation + **garbage collector** (no `free`)
+- Provides **runtime services** — threads, reflection
+
+JIT is why "interpreted" Java is fast.
+
+## JDK ⊃ JRE ⊃ JVM
+
+- **JVM** — runs bytecode
+- **JRE** — JVM + standard libraries (enough to *run*)
+- **JDK** — JRE + `javac`, debugger, `jar` (enough to *build*)
+
+## One machine, many languages
+
+The JVM runs **bytecode**, not Java specifically — **Kotlin, Scala, Clojure, Groovy** all target it.

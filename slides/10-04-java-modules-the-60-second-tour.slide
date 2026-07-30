@@ -1,0 +1,28 @@
+# Java modules — the 60-second tour
+
+Java 9's **module system** (JPMS) draws a real boundary around a group of packages — beyond what `public` ever gave you.
+
+## `module-info.java`
+
+```java
+module com.acme.orders {
+    requires com.acme.payments;   // dependency
+    exports com.acme.orders.api;  // outsiders see THIS package…
+    // …every other package stays hidden, even public classes
+}
+```
+
+A package you don't `export` is **inaccessible outside — even its `public` classes.**
+
+## What modules buy you
+
+- **Strong encapsulation** — internal packages genuinely hidden; `public` stops meaning "global"
+- **Reliable configuration** — `requires` graph checked **at startup**, not at a runtime `NoClassDefFoundError` (no more classpath hell)
+
+## The JDK is modular
+
+`java.base`, `java.sql`, `java.xml`… enabling **`jlink`** — a custom runtime image with only the modules you use (smaller, faster start).
+
+## Scope
+
+Most apps still use the **classpath** and are fine. Modules matter for the **platform** + large systems. Goal for now: **recognize** `module-info.java`.

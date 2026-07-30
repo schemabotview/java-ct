@@ -1,0 +1,38 @@
+# Locks — `synchronized` and `ReentrantLock`
+
+**Mutual exclusion** — at most one thread in the guarded code at a time. The second cure for shared mutable state.
+
+## `synchronized` — the built-in lock
+
+Every object carries a hidden **monitor**; the keyword acquires it on entry, releases on exit (even on exception).
+
+```java
+class Counter {
+    int count = 0;
+    synchronized void increment() { count++; }
+    synchronized int get() { return count; }   // reads lock too
+}
+```
+
+Prefer locking a **private final lock object**, not `this`.
+
+## A lock guarantees two things
+
+- **Atomicity** — read-modify-write completes without interference
+- **Visibility** — release flushes writes; acquire reads the latest (happens-before)
+
+Both need **every** access — reads included — on the **same** lock.
+
+## `ReentrantLock` — explicit, more capable
+
+```java
+lock.lock();
+try   { balance -= amount; }
+finally { lock.unlock(); }   // always
+```
+
+Adds `tryLock`, timeouts, `lockInterruptibly`, fairness, `Condition`s.
+
+## Watch out
+
+**Reentrant** (re-acquire a held lock is fine). But **deadlock**: acquire multiple locks in a **consistent order**, keep critical sections **short**.

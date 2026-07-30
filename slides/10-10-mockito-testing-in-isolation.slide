@@ -1,0 +1,33 @@
+# Mockito — testing in isolation
+
+A test wants **one** class, but classes lean on others (DB, network). Mockito replaces collaborators with **test doubles** you control.
+
+## Mocks — fakes you program
+
+```java
+PaymentGateway gw = mock(PaymentGateway.class);
+when(gw.charge(100)).thenReturn(Result.APPROVED);   // stub
+
+OrderService svc = new OrderService(gw);            // inject the fake
+svc.placeOrder(order);                              // tests ONLY OrderService
+```
+
+No bank, no network — instant + deterministic. Script failure too: `.thenThrow(new TimeoutException())`.
+
+## Verify interactions
+
+```java
+verify(gw).charge(100);               // must have charged 100
+verify(emailer, never()).send(any()); // must NOT email on failure
+```
+
+Tests **side effects** that have no return value.
+
+## Mindset
+
+- **Mock at boundaries** — DB, network, clock — not your own value objects
+- **Don't over-mock** — verifying implementation, not behavior, breaks on every refactor
+
+## The whole concept
+
+`main` + JVM → objects → modern types → collections → generics → functional → streams → errors & I/O → concurrency → **runtime, build, test**. Java you can **ship and trust**.

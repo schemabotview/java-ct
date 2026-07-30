@@ -1,0 +1,35 @@
+# `volatile` & the JVM memory model
+
+The other half of the shared-state problem: not atomicity but **visibility**. A complete write by one thread may never be *seen* by another.
+
+## Why a write can be invisible
+
+CPU caches and registers hold values per-core; compiler and CPU **reorder** instructions. Fine within one thread — across threads, writes appear late, out of order, or never.
+
+```java
+boolean stop = false;             // plain field
+// t1: while (!stop) work();      // may loop FOREVER
+// t2: stop = true;               // t1 might never see it
+```
+
+## The Java Memory Model — happens-before
+
+If A **happens-before** B, A's effects are visible to B. No edge → **no** guarantee. The edges are the tools:
+
+- unlock → later lock on the same monitor
+- **`volatile` write** → later `volatile` read
+- `Thread.start()` → thread; thread end → `join()`
+
+## `volatile` — for one field
+
+Every read from main memory, every write flushed to it; no reordering.
+
+```java
+volatile boolean stop = false;   // loop now sees the change
+```
+
+**Not atomicity** — `volatile count++` still races. Flag or published reference; counter → `AtomicInteger`; invariant → lock.
+
+## The module in one picture
+
+**Don't share** (confine / immutable) — or **coordinate** (lock · atomic · volatile). And **stay high-level**: executors, concurrent collections, structured concurrency.

@@ -1,0 +1,35 @@
+# Maven — the dominant build tool
+
+A build tool automates compile → dependencies → test → package, the same on every machine. Maven has been the Java default for two decades.
+
+## `pom.xml` — declarative
+
+Describe the project in XML; Maven knows how to build it. The core is dependencies:
+
+```xml
+<dependency>
+    <groupId>com.google.guava</groupId>
+    <artifactId>guava</artifactId>
+    <version>33.0.0-jre</version>
+</dependency>
+```
+
+## Coordinates + repository
+
+Every library = **groupId · artifactId · version** (GAV). Maven fetches it from **Maven Central**, caches in `~/.m2`.
+
+**Transitive dependencies** — ask for one library, get its dependencies too, whole tree resolved.
+
+## Convention over configuration
+
+`src/main/java` · `src/test/java` · `target/`. Follow the layout → almost no build logic; any dev knows the project.
+
+## Lifecycle phases
+
+```
+validate → compile → test → package → install → deploy
+```
+
+`mvn package` = compile + test + jar (only if tests pass). Work done by **plugins**.
+
+Trade-off: **verbose XML**, prefers its own way.

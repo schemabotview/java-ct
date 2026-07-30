@@ -1,0 +1,31 @@
+# Garbage collection in one breath
+
+Allocate with `new`, stop referencing when done — the **garbage collector** reclaims the memory. No manual `free`.
+
+## Garbage = unreachable
+
+From **GC roots** (stack locals, statics), the collector follows every reference. Reachable = live; the rest is garbage.
+
+```java
+var user = new User("Ana");   // reachable
+user = null;                  // now unreachable → collectible
+```
+
+Reachability, **not** "will I use it" — a held reference you never touch stays alive. That gap causes most leaks.
+
+## Generational hypothesis — most objects die young
+
+- **Young gen** — new objects; **minor GC** is small, frequent, fast
+- Survivors are **promoted** to the **old gen** — collected rarely by a **major GC**
+
+Concentrating on the short-lived young gen makes GC cheap.
+
+## Collectors (pick with a flag)
+
+**G1** (default) · **Parallel** (throughput) · **ZGC / Shenandoah** (low-pause, concurrent). Tradeoff is the **stop-the-world pause**.
+
+## What you do
+
+- **Don't** call `System.gc()` — a hint; forces a costly full GC
+- **Do** avoid leaks — unintended refs: growing `static` collections, caches, listeners
+- One knob: `-Xmx` (max heap)

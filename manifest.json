@@ -678,12 +678,156 @@
     {
       "id": "09-concurrency",
       "title": "Concurrency & Virtual Threads",
-      "sections": []
+      "sections": [
+        {
+          "heading": "What is a thread?",
+          "md": "md/09-01-what-is-a-thread.md",
+          "slide": "slides/09-01-what-is-a-thread.slide",
+          "scene": "java-jvm",
+          "spine": true,
+          "role": "hook"
+        },
+        {
+          "heading": "Raw threads and Runnable",
+          "md": "md/09-02-raw-threads-and-runnable.md",
+          "slide": "slides/09-02-raw-threads-and-runnable.slide",
+          "scene": "java-jvm",
+          "spine": true
+        },
+        {
+          "heading": "ExecutorService and Future<V>",
+          "md": "md/09-03-executorservice-and-future.md",
+          "slide": "slides/09-03-executorservice-and-future.slide",
+          "scene": "java-jvm",
+          "spine": true
+        },
+        {
+          "heading": "Virtual threads — Java 21's big shift",
+          "md": "md/09-04-virtual-threads.md",
+          "slide": "slides/09-04-virtual-threads.slide",
+          "scene": "java-jvm",
+          "spine": true
+        },
+        {
+          "heading": "CompletableFuture — composable async",
+          "md": "md/09-05-completablefuture-composable-async.md",
+          "slide": "slides/09-05-completablefuture-composable-async.slide",
+          "scene": "java-jvm",
+          "spine": true
+        },
+        {
+          "heading": "Structured concurrency",
+          "md": "md/09-06-structured-concurrency.md",
+          "slide": "slides/09-06-structured-concurrency.slide",
+          "scene": "java-jvm",
+          "spine": true
+        },
+        {
+          "heading": "The shared-mutable-state problem",
+          "md": "md/09-07-the-shared-mutable-state-problem.md",
+          "slide": "slides/09-07-the-shared-mutable-state-problem.slide",
+          "scene": "java-jvm",
+          "spine": true
+        },
+        {
+          "heading": "Locks — synchronized and ReentrantLock",
+          "md": "md/09-08-locks-synchronized-and-reentrantlock.md",
+          "slide": "slides/09-08-locks-synchronized-and-reentrantlock.slide",
+          "scene": "java-jvm",
+          "spine": true
+        },
+        {
+          "heading": "Atomic variables & concurrent collections",
+          "md": "md/09-09-atomic-variables-and-concurrent-collections.md",
+          "slide": "slides/09-09-atomic-variables-and-concurrent-collections.slide",
+          "scene": "java-jvm",
+          "spine": true
+        },
+        {
+          "heading": "volatile and the JVM memory model",
+          "md": "md/09-10-volatile-and-the-jvm-memory-model.md",
+          "slide": "slides/09-10-volatile-and-the-jvm-memory-model.slide",
+          "scene": "java-jvm",
+          "spine": true
+        }
+      ]
     },
     {
       "id": "10-jvm-build-testing",
       "title": "JVM, Build & Testing",
-      "sections": []
+      "sections": [
+        {
+          "heading": "The JVM — what's actually running",
+          "md": "md/10-01-the-jvm-what-is-actually-running.md",
+          "slide": "slides/10-01-the-jvm-what-is-actually-running.slide",
+          "scene": "java-jvm",
+          "spine": true,
+          "role": "hook"
+        },
+        {
+          "heading": "Garbage collection in one breath",
+          "md": "md/10-02-garbage-collection-in-one-breath.md",
+          "slide": "slides/10-02-garbage-collection-in-one-breath.slide",
+          "scene": "java-jvm",
+          "spine": true
+        },
+        {
+          "heading": "Class loading",
+          "md": "md/10-03-class-loading.md",
+          "slide": "slides/10-03-class-loading.slide",
+          "scene": "java-jvm",
+          "spine": true
+        },
+        {
+          "heading": "Java modules — the 60-second tour",
+          "md": "md/10-04-java-modules-the-60-second-tour.md",
+          "slide": "slides/10-04-java-modules-the-60-second-tour.slide",
+          "scene": "java-jvm",
+          "spine": true
+        },
+        {
+          "heading": "Reflection — looking at code as data",
+          "md": "md/10-05-reflection-looking-at-code-as-data.md",
+          "slide": "slides/10-05-reflection-looking-at-code-as-data.slide",
+          "scene": "java-jvm",
+          "spine": true
+        },
+        {
+          "heading": "Annotations — reading them at runtime",
+          "md": "md/10-06-annotations-reading-them-at-runtime.md",
+          "slide": "slides/10-06-annotations-reading-them-at-runtime.slide",
+          "scene": "java-jvm",
+          "spine": true
+        },
+        {
+          "heading": "Maven — the dominant build tool",
+          "md": "md/10-07-maven-the-dominant-build-tool.md",
+          "slide": "slides/10-07-maven-the-dominant-build-tool.slide",
+          "scene": "java-jvm",
+          "spine": true
+        },
+        {
+          "heading": "Gradle — the script-based alternative",
+          "md": "md/10-08-gradle-the-script-based-alternative.md",
+          "slide": "slides/10-08-gradle-the-script-based-alternative.slide",
+          "scene": "java-jvm",
+          "spine": true
+        },
+        {
+          "heading": "JUnit 5 & parameterised tests",
+          "md": "md/10-09-junit-5-and-parameterised-tests.md",
+          "slide": "slides/10-09-junit-5-and-parameterised-tests.slide",
+          "scene": "java-jvm",
+          "spine": true
+        },
+        {
+          "heading": "Mockito — testing in isolation",
+          "md": "md/10-10-mockito-testing-in-isolation.md",
+          "slide": "slides/10-10-mockito-testing-in-isolation.slide",
+          "scene": "java-jvm",
+          "spine": true
+        }
+      ]
     }
   ]
 }

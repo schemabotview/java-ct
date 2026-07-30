@@ -1,0 +1,31 @@
+# Gradle — the script-based alternative
+
+Where Maven describes a build in XML, Gradle makes the build a **program** — a real scripting language, so anything expressible in code is expressible in the build.
+
+## Build script — code, not XML
+
+`build.gradle` (Groovy) or `build.gradle.kts` (Kotlin DSL):
+
+```kotlin
+dependencies {
+    implementation("com.google.guava:guava:33.0.0-jre")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.10.0")
+}
+```
+
+Same `group:artifact:version` coordinate — one line, in real code.
+
+## Same ecosystem, different surface
+
+Same **coordinates**, same **repositories** (Maven Central), same transitive resolution, same `src/main/java`. Only *how* you declare + drive the build changes.
+
+## Why teams pick it — speed + flexibility
+
+- **Incremental builds** — re-run only what changed
+- **Build cache** — reuse outputs across builds/machines
+- **Daemon** — stays warm, no JVM startup each time
+- **Programmable tasks** — custom steps are just code
+
+## Trade-off
+
+Can grow into complex scripts; more to learn. **Maven** = convention + predictability · **Gradle** = flexibility + speed (default for **Android**).

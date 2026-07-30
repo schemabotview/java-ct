@@ -1,0 +1,33 @@
+# Reflection — looking at code as data
+
+Inspect and manipulate classes, methods, and fields **at runtime** — code as data you can query and act on. The engine under most frameworks.
+
+## The `Class` object
+
+```java
+Class<?> c  = user.getClass();                 // from an instance
+Class<?> c2 = User.class;                       // from the type
+Class<?> c3 = Class.forName("com.acme.User");   // from a string!
+
+for (Method m : c.getDeclaredMethods())
+    System.out.println(m.getName());
+```
+
+## Acting, not just reading
+
+```java
+Method greet = c.getMethod("greet", String.class);
+greet.invoke(user, "Ana");        // call by name at runtime
+ctor.newInstance();               // construct reflectively
+field.setAccessible(true);        // even private members
+```
+
+## Why — it powers your frameworks
+
+- **DI** (Spring) · **JSON** (Jackson) · **JUnit** finds `@Test` · **ORMs** (Hibernate)
+
+Each operates on *your* classes it never saw at compile time.
+
+## Costs — use sparingly
+
+**Slower** · **no compile-time safety** (rename → runtime break) · **breaks encapsulation** (modules can forbid). Prefer ordinary calls.

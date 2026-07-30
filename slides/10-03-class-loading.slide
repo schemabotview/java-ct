@@ -1,0 +1,28 @@
+# Class loading
+
+Classes load **lazily** — on first use — via **class loaders**, turning a `.class` on disk into a live `Class` in the JVM.
+
+## Three phases
+
+- **Loading** — find + parse the bytes → a `Class` object
+- **Linking** — **verify** bytecode, **prepare** statics, **resolve** references
+- **Initialization** — run `static` blocks + static assignments
+
+```java
+class Config {
+    static final int MAX = load();          // runs at INITIALIZATION
+    static { System.out.println("init"); }  // ...on first use of Config
+}
+```
+
+## The verifier
+
+Before any bytecode runs, it's **proven safe** — no stack underflow, no bad jumps, no `int`-as-reference. Hostile `.class` rejected at load time.
+
+## Loader hierarchy — parent-first delegation
+
+**Bootstrap** (core JDK) → **Platform** (JDK modules) → **Application** (your classpath). A loader asks its **parent** first, so `java.lang.String` can't be counterfeited.
+
+## Identity = name + loader
+
+Same `.class`, two loaders → **two distinct types**. Powers **app servers** (per-app versions), **plugins**, **hot reload**.

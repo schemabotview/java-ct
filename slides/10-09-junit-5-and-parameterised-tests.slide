@@ -1,0 +1,37 @@
+# JUnit 5 & parameterised tests
+
+Automated tests let you change code without breaking it. **JUnit 5** is Java's standard test framework.
+
+## A test is a `@Test` method + an assertion
+
+Shape: **arrange, act, assert**.
+
+```java
+@Test
+void adds_two_numbers() {
+    Calculator calc = new Calculator();   // arrange
+    int sum = calc.add(2, 3);             // act
+    assertEquals(5, sum);                 // assert
+}
+```
+
+JUnit **finds** these by reflection on `@Test` — the annotations mechanism at work.
+
+## Assertions + lifecycle
+
+- `assertEquals`, `assertTrue`, `assertThrows` — *check code fails correctly*
+- `@BeforeEach` / `@AfterEach` — fresh fixtures per test; `@BeforeAll` — once
+
+## Parameterised — one test, many inputs
+
+```java
+@ParameterizedTest
+@ValueSource(strings = {"racecar", "level", "noon"})
+void detects_palindromes(String w) { assertTrue(isPalindrome(w)); }
+```
+
+Sources: `@ValueSource` · `@CsvSource` (pairs) · `@MethodSource`. Failure pinpoints the exact input.
+
+## A good test
+
+**One behavior** · **named** for what it checks · **fast + deterministic** (flaky = ignored).

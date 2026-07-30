@@ -1,0 +1,33 @@
+# The shared-mutable-state problem
+
+Running threads in parallel is cheap. The bug appears when two threads touch the **same data** — it doesn't crash, and it passes most tests.
+
+## Stack is private, heap is shared
+
+Locals live on each thread's **stack** — safe. Object **fields**, statics, shared collections live on the **heap** — shared, and dangerous to write from two threads.
+
+## `count++` is three steps, not one
+
+```
+1. read  count   (41)
+2. add   1        (42)
+3. write count    (42)
+```
+
+Two threads interleave between the steps → both read 41, both write 42 → a **lost update**.
+
+```java
+// two threads, 100k increments each
+System.out.println(c.count);   // NOT 200000 — different every run
+```
+
+## Race condition
+
+Correctness that depends on **timing** — who runs when. Non-deterministic, and **latent**: absent from most runs, present in the code.
+
+## Two escape routes (the rest of the module)
+
+- **Don't share** — thread confinement, or **immutable** data (nothing to write)
+- **Coordinate** — a **lock** makes read-modify-write indivisible; **atomics** do it in hardware
+
+**Shared, mutable, concurrent — pick at most two.**

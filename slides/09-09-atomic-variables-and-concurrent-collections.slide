@@ -1,0 +1,35 @@
+# Atomic variables & concurrent collections
+
+`java.util.concurrent` gives data structures that are **already thread-safe** — the coordination is inside the object. No locks to write.
+
+## Atomic variables — lock-free single value
+
+```java
+AtomicInteger count = new AtomicInteger(0);
+count.incrementAndGet();   // atomic read-add-write, no lock
+```
+
+Backed by **compare-and-swap** in hardware — optimistic, retries instead of blocking. `updateAndGet` runs any function in that loop.
+
+Protects **one** variable only; two atomics together are not atomic.
+
+## Concurrent collections
+
+- **`ConcurrentHashMap`** — the workhorse; concurrent reads + writes
+- **`CopyOnWriteArrayList`** — read-mostly (listeners)
+- **`BlockingQueue`** — producer/consumer; `take()` blocks for an item
+
+Not plain `HashMap` (corrupts), not old `synchronizedMap` (one coarse lock).
+
+## Compound ops must stay atomic
+
+```java
+// BROKEN — both threads pass the check:
+if (!map.containsKey(k)) map.put(k, compute(k));
+
+// atomic — one operation:
+map.computeIfAbsent(k, this::compute);
+map.merge(word, 1, Integer::sum);   // concurrent tally
+```
+
+**Prefer ready-made tools over hand-rolled locks.**
