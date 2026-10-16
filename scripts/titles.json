@@ -10,5 +10,6 @@
   "boundaries": "Java Text, Time And Files: UTF-8, BigDecimal, Time Zones, Safe Writes",
   "build": "Java Project Structure: Packages, Maven, JARs, Modules And jlink",
   "concurrency": "Java Concurrency: Race Conditions, Locks, CompletableFuture, Virtual Threads",
-  "integration": "Java HTTP Client And JDBC: Timeouts, Retries, Transactions, TLS"
+  "integration": "Java HTTP Client And JDBC: Timeouts, Retries, Transactions, TLS",
+  "jvm": "JVM Explained: Class Loading, JIT Warm-up, GC Logs, Memory Leaks, JFR"
 }

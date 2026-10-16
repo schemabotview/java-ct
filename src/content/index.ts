@@ -9,6 +9,7 @@ import { boundaries } from './boundaries'
 import { build } from './build'
 import { concurrency } from './concurrency'
 import { integration } from './integration'
+import { jvm } from './jvm'
 import type { Course, Section } from './types'
 
 // Course registry, in syllabus order (JAVA-COURSE-PLAN.md). Courses are added here as each is
@@ -25,6 +26,7 @@ export const COURSES: Record<string, Course> = {
   [build.id]: build,
   [concurrency.id]: concurrency,
   [integration.id]: integration,
+  [jvm.id]: jvm,
 }
 
 export type { Course, Section }

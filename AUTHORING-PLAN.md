@@ -118,7 +118,7 @@ Shapes: request/response timeline; transport failure vs HTTP status; "server app
 out" timeline; JDBC result → record mapping; commit/rollback with connection ownership. Local
 evidence only (JDK `jwebserver`/a stub, an embedded database).
 
-### 12 · `jvm` — JVM behaviour, diagnosis and application evolution — 8
+### 12 · `jvm` — JVM behaviour, diagnosis and application evolution — 8 — **authored**
 `class-loading` · `jit-and-optimisation` · `heap-and-gc` · `leaks-and-exhaustion` · `jfr-and-dumps` ·
 `measurement` · `releases-and-updates` · `application-review`
 Shapes: init failure vs missing class; retained-collection `memory`; warm-up `plot` from a measured
