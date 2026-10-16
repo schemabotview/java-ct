@@ -1,0 +1,11 @@
+/* This repo's whole design surface — the three tokens @graphlearning/shell leaves to the repo.
+   Imported AFTER the shell's stylesheet in main.tsx, so these win the cascade.
+
+   --brand is Java orange (the identity colour of the Java mark); the catalog card and the thumbnail
+   gradient use the same anchor, so app and catalog match. --accent-2 is the cool blue of the same
+   mark, the counter tone that keeps `###` subheadings distinct from the orange. */
+:root {
+  --brand: #e76f00; /* Java orange */
+  --brand-hover: #ee9a4d; /* a lighter tint — the eyebrow's hover state */
+  --accent-2: #7cb7e8; /* Java blue, lifted for contrast on the dark canvas — `###` subheadings */
+}
