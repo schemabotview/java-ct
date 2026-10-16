@@ -59,7 +59,7 @@ Shapes: `memory` stack-vs-heap for primitives/references/null; scope boxes; over
 running-total trace table with an off-by-one row; array `memory`; method-call `memory` showing a
 copied reference value, rebinding vs mutation.
 
-### 3 · `objects` — Objects and domain modelling — 8
+### 3 · `objects` — Objects and domain modelling — 8 — **authored**
 `classes-and-identity` · `constructors-and-invariants` · `encapsulation` · `static-and-lifetime` ·
 `composition` · `records-and-immutability` · `enums-and-states` · `equality-and-hashing`
 Shapes: `Order`/`LineItem` grown from loose variables; shared-reference `memory` before and after a

@@ -1,5 +1,6 @@
 {
   "_comment": "Curated publish titles (YouTube title + thumbnail header) per course, keyed by course id. Search-first: what someone would actually type, never 'Course 4'. One entry per course in src/content/index.ts.",
   "first-program": "Your First Java Program: javac, Bytecode And The JVM Explained",
-  "values": "Java Basics: Types, Null, Overflow, == vs equals, Loops And Arrays"
+  "values": "Java Basics: Types, Null, Overflow, == vs equals, Loops And Arrays",
+  "objects": "Java Objects Explained: Classes, Records, Enums, equals And hashCode"
 }
