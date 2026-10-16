@@ -24,7 +24,8 @@ Scaffolded from [`schemabotview/content-repo-template`](https://github.com/schem
 | `failures` | 7 | authored · examples run on JDK 25.0.2 · density checked · no audio yet |
 | `collections` | 8 | authored · examples run on JDK 25.0.2 · density checked · no audio yet |
 | `streams` | 7 | authored · examples run on JDK 25.0.2 · density checked · no audio yet |
-| the other 5 | 39 | planned in `AUTHORING-PLAN.md` |
+| `boundaries` | 8 | authored · examples run on JDK 25.0.2 · density checked · no audio yet |
+| the other 4 | 31 | planned in `AUTHORING-PLAN.md` |
 
 ## Running it
 

@@ -92,7 +92,7 @@ Shapes: typed order repository; `List<Subtype>` invalid-insertion board; list/se
 Shapes: loop → pipeline with equal results; laziness trace (print per stage); shared mutable
 accumulator vs collector; non-associative reduction gone wrong in parallel.
 
-### 8 · `boundaries` — Text, time, files and data boundaries — 8
+### 8 · `boundaries` — Text, time, files and data boundaries — 8 — **authored**
 `unicode-and-encodings` · `parsing-and-locale` · `bigdecimal-and-rounding` · `time-and-clocks` ·
 `paths-and-files` · `streams-and-buffering` · `formats-and-serialization` · `atomic-writes`
 Shapes: `length()` vs code points on one string; cents → `BigDecimal` with a rounding decision;

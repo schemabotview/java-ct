@@ -6,5 +6,6 @@
   "interfaces": "Java Interfaces, Inheritance, Sealed Types And Pattern Matching",
   "failures": "Java Exceptions, try-with-resources, JUnit Tests And Debugging",
   "collections": "Java Generics And Collections: Wildcards, HashMap, TreeSet, Big-O",
-  "streams": "Java Lambdas And Streams: flatMap, Collectors, Optional, Parallel"
+  "streams": "Java Lambdas And Streams: flatMap, Collectors, Optional, Parallel",
+  "boundaries": "Java Text, Time And Files: UTF-8, BigDecimal, Time Zones, Safe Writes"
 }
