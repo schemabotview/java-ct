@@ -40,9 +40,16 @@ a course prefix (`fp-`, `val-`, … — listed in AUTHORING-PLAN.md); section fi
 
 Every Java snippet, terminal transcript and printed value on a frame must come from a **real run on
 JDK 25** (the course's pinned baseline), not from memory — `java --version` in the transcript is the
-reference. Record the build used in the scene file's header comment (`first-program` was run on
-OpenJDK 25.0.2). Money is integer cents until course 8 introduces `BigDecimal`. Label preview
-features as preview wherever they appear.
+reference. Record the build used in the scene file's header comment. Every course was run on
+OpenJDK 25.0.2 (a conda-forge build), Maven 3.9.11, JUnit 6.1.3 and H2 2.3.232; timings and race
+counts come from a 4-core container and are labelled as such. The one exception is the jlink image
+in `bld-compat`, built with the container's JDK 21 because that JDK 25 build ships without jmods —
+the scene says so. Money is integer cents until course 8 introduces `BigDecimal`. Label preview
+features as preview, and HotSpot-specific output as HotSpot, wherever they appear.
+
+Two traps when writing compact source files (`void main()`) for examples: a class nested in one is
+an *inner* class (declare it `static` if it is instantiated from a static context), and the
+implicit class has no usable name, so `ClassName::method` references do not compile — use lambdas.
 
 ## Invariants — do not break
 
@@ -119,6 +126,15 @@ What this repo's pane taught (the scene pane is ~1114×1080 at 1920×1080, so ai
   `fp-toolchain` both widened the board and made the portability point concrete.
 - **Slides land in the band with** a one-sentence lead, two or three `###` groups and 7–9 short
   bullets (≈ 880–990 modelled px).
+- **The slide model over-counts inline-code chips.** A chip-heavy slide modelling 950px can render
+  at ~75 %. The 1000px guard still holds (it protects short review windows), so fix a thin
+  chip-heavy slide by turning chips into prose, not by exceeding the model. `npm run density` is
+  the truth for the floor; `check` is the truth for the ceiling.
+- **`evolution` columns clip their `items`** when the column is short. Leave `items` off a chart
+  whose values differ by orders of magnitude.
+- **A `plot` series label sits on the curve by default** — nudge it with `labelAt` (data units).
+- **Moving nodes into a new container by script must not re-indent template literals** — the
+  extra spaces become part of the code card. Re-indent only lines outside backticks.
 
 ## Guards before handing over
 

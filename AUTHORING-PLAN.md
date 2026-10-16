@@ -43,10 +43,12 @@ contrasting failure or design → outcome → bridge.
 
 ## The twelve courses
 
-Section ids are proposals; the shape column is the scene each section is planned around.
+Section ids below are the ids as authored (routes are `#/<course>-<section>`); the shapes describe each
+course's scenes.
 
 ### 1 · `first-program` — A first program and the Java execution model — 6 — **authored**
-`problem-to-output` · `source-to-jvm` · `compile-and-run` · `tool-roles` · `entry-points` · `failure-stages`
+`problem-to-output` · `source-to-jvm` · `compile-and-run` · `tool-roles` · `entry-points` ·
+`failure-stages`
 Shapes: inputs → algorithm → code → output chain; `javap` bytecode between source and JVM container;
 compact source file + two terminal workflows; `jshell` session + four tool cards; compact vs named
 class + `args` transcript; three failure-stage cards + debugging list.
@@ -61,34 +63,36 @@ copied reference value, rebinding vs mutation.
 
 ### 3 · `objects` — Objects and domain modelling — 8 — **authored**
 `classes-and-identity` · `constructors-and-invariants` · `encapsulation` · `static-and-lifetime` ·
-`composition` · `records-and-immutability` · `enums-and-states` · `equality-and-hashing`
+`composition-and-delegation` · `records-and-immutability` · `enums-and-states` ·
+`equals-hashcode-tostring`
 Shapes: `Order`/`LineItem` grown from loose variables; shared-reference `memory` before and after a
 mutation; rejected-quantity stack trace; record with a mutable list → defensive copy; enum state
 graph; identity vs value equality board.
 
 ### 4 · `interfaces` — Interfaces, variation and reusable design — 8 — **authored**
-`interfaces-and-contracts` · `dispatch-and-overloading` · `abstract-classes` · `composition-vs-inheritance` ·
-`sealed-and-patterns` · `nested-classes` · `annotations-and-reflection` · `api-evolution`
+`interfaces-and-contracts` · `dispatch-and-overloading` · `abstract-classes` ·
+`composition-vs-inheritance` · `sealed-and-patterns` · `nested-classes` ·
+`annotations-and-reflection` · `api-evolution`
 Shapes: two `PricingPolicy` implementations behind one interface; compile-time overload vs runtime
 dispatch side by side; broken-subclass vs delegation; sealed `Result` hierarchy + exhaustive switch;
 annotation → processor/runtime consumer; compatible vs caller-visible change.
 
 ### 5 · `failures` — Failures, resources, testing and debugging — 7 — **authored**
-`exceptions-and-traces` · `checked-unchecked` · `wrapping-causes` · `try-with-resources` ·
+`exceptions-and-traces` · `checked-and-unchecked` · `wrapping-and-causes` · `try-with-resources` ·
 `error-boundaries` · `unit-tests` · `debugging-evidence`
 Shapes: rejected order through three calls with the causal trace; primary + suppressed exception
 timeline; catch-at-boundary vs swallow; JUnit Jupiter test + its failure report (pinned JUnit and
 Surefire versions, run with Maven).
 
 ### 6 · `collections` — Generics and collection contracts — 8 — **authored**
-`generics-basics` · `variance-and-wildcards` · `erasure` · `collection-choices` · `iteration-and-views` ·
-`hashing-and-ordering` · `complexity-tradeoffs` · `immutable-structures`
+`generics-basics` · `variance-and-wildcards` · `erasure-and-raw-types` · `collection-choices` ·
+`iteration-and-views` · `hashing-and-ordering` · `complexity-and-tradeoffs` · `immutable-structures`
 Shapes: typed order repository; `List<Subtype>` invalid-insertion board; list/set/map duplicate
 `table`s; the mutable-key-lost-in-HashMap `memory`; view vs wrapper vs copy.
 
 ### 7 · `streams` — Lambdas and stream transformations — 7 — **authored**
-`functional-interfaces` · `captures` · `stream-pipelines` · `filter-map-flatten` · `reduction-and-collectors` ·
-`optional` · `side-effects-and-parallel`
+`functional-interfaces` · `captures-and-references` · `stream-pipelines` · `filter-map-flatten` ·
+`reduction-and-collectors` · `optional-and-absence` · `side-effects-and-parallel`
 Shapes: loop → pipeline with equal results; laziness trace (print per stage); shared mutable
 accumulator vs collector; non-associative reduction gone wrong in parallel.
 
@@ -100,13 +104,14 @@ local time vs instant across a DST change; temp-file + move vs partial write tim
 
 ### 9 · `build` — Application structure, builds and delivery — 7 — **authored**
 `packages-and-dependencies` · `project-layout` · `classpath-and-jars` · `maven-lifecycle` ·
-`tests-and-ci` · `modules` · `compatibility-and-runtimes`
+`tests-and-ci` · `modules-and-services` · `compatibility-and-runtimes`
 Shapes: package dependency graph; real POM excerpt and `mvn package` transcript; missing class vs
 module-access failure; `--release` `evolution` row.
 
 ### 10 · `concurrency` — Concurrency and coordinated work — 9 — **authored**
-`tasks-and-executors` · `races-and-visibility` · `locks-and-invariants` · `atomics-and-concurrent-collections` ·
-`futures` · `cancellation-and-timeouts` · `virtual-threads` · `bounded-work` · `deadlock-and-liveness`
+`tasks-and-executors` · `races-and-visibility` · `locks-and-invariants` ·
+`atomics-and-concurrent-collections` · `futures-and-composition` · `cancellation-and-timeouts` ·
+`virtual-threads` · `bounded-work` · `deadlock-and-liveness`
 Shapes: lost-update timeline (two threads, interleaved steps); `ConcurrentHashMap` check-then-act race
 vs `merge`; executor lifecycle; virtual vs platform threads on waiting work; real thread-dump excerpt
 of a deadlock.
@@ -119,7 +124,7 @@ out" timeline; JDBC result → record mapping; commit/rollback with connection o
 evidence only (JDK `jwebserver`/a stub, an embedded database).
 
 ### 12 · `jvm` — JVM behaviour, diagnosis and application evolution — 8 — **authored**
-`class-loading` · `jit-and-optimisation` · `heap-and-gc` · `leaks-and-exhaustion` · `jfr-and-dumps` ·
+`class-loading` · `jit-compilation` · `heap-and-gc` · `leaks-and-exhaustion` · `jfr-and-dumps` ·
 `measurement` · `releases-and-updates` · `application-review`
 Shapes: init failure vs missing class; retained-collection `memory`; warm-up `plot` from a measured
 run; JFR/thread-dump excerpts; the final lifecycle diagram of the whole order application.
@@ -144,4 +149,5 @@ run; JFR/thread-dump excerpts; the final lifecycle diagram of the whole order ap
 | scene area | ≥ 0.55 | `npm run density` |
 | eyebrow | no node under it | `npm run density` |
 
-`first-program` result: all 6 routes inside every target (slide 81–87 %, bind 89 %, area 63–76 %).
+Final sweep: **all 91 routes** inside every target (`npm run density`, 1920×1080). Audio is the one
+step left for every course.
