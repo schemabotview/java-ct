@@ -80,7 +80,7 @@ Shapes: rejected order through three calls with the causal trace; primary + supp
 timeline; catch-at-boundary vs swallow; JUnit Jupiter test + its failure report (pinned JUnit and
 Surefire versions, run with Maven).
 
-### 6 · `collections` — Generics and collection contracts — 8
+### 6 · `collections` — Generics and collection contracts — 8 — **authored**
 `generics-basics` · `variance-and-wildcards` · `erasure` · `collection-choices` · `iteration-and-views` ·
 `hashing-and-ordering` · `complexity-tradeoffs` · `immutable-structures`
 Shapes: typed order repository; `List<Subtype>` invalid-insertion board; list/set/map duplicate

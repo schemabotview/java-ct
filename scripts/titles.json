@@ -4,5 +4,6 @@
   "values": "Java Basics: Types, Null, Overflow, == vs equals, Loops And Arrays",
   "objects": "Java Objects Explained: Classes, Records, Enums, equals And hashCode",
   "interfaces": "Java Interfaces, Inheritance, Sealed Types And Pattern Matching",
-  "failures": "Java Exceptions, try-with-resources, JUnit Tests And Debugging"
+  "failures": "Java Exceptions, try-with-resources, JUnit Tests And Debugging",
+  "collections": "Java Generics And Collections: Wildcards, HashMap, TreeSet, Big-O"
 }

@@ -3,6 +3,7 @@ import { values } from './values'
 import { objects } from './objects'
 import { interfaces } from './interfaces'
 import { failures } from './failures'
+import { collections } from './collections'
 import type { Course, Section } from './types'
 
 // Course registry, in syllabus order (JAVA-COURSE-PLAN.md). Courses are added here as each is
@@ -13,6 +14,7 @@ export const COURSES: Record<string, Course> = {
   [objects.id]: objects,
   [interfaces.id]: interfaces,
   [failures.id]: failures,
+  [collections.id]: collections,
 }
 
 export type { Course, Section }
