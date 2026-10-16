@@ -98,7 +98,7 @@ accumulator vs collector; non-associative reduction gone wrong in parallel.
 Shapes: `length()` vs code points on one string; cents → `BigDecimal` with a rounding decision;
 local time vs instant across a DST change; temp-file + move vs partial write timeline.
 
-### 9 · `build` — Application structure, builds and delivery — 7
+### 9 · `build` — Application structure, builds and delivery — 7 — **authored**
 `packages-and-dependencies` · `project-layout` · `classpath-and-jars` · `maven-lifecycle` ·
 `tests-and-ci` · `modules` · `compatibility-and-runtimes`
 Shapes: package dependency graph; real POM excerpt and `mvn package` transcript; missing class vs
