@@ -27,7 +27,8 @@ Scaffolded from [`schemabotview/content-repo-template`](https://github.com/schem
 | `boundaries` | 8 | authored · examples run on JDK 25.0.2 · density checked · no audio yet |
 | `build` | 7 | authored · examples run on JDK 25.0.2 · density checked · no audio yet |
 | `concurrency` | 9 | authored · examples run on JDK 25.0.2 · density checked · no audio yet |
-| the other 2 | 15 | planned in `AUTHORING-PLAN.md` |
+| `integration` | 7 | authored · examples run on JDK 25.0.2 · density checked · no audio yet |
+| the other 1 | 8 | planned in `AUTHORING-PLAN.md` |
 
 ## Running it
 

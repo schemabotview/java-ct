@@ -8,6 +8,7 @@ import { streams } from './streams'
 import { boundaries } from './boundaries'
 import { build } from './build'
 import { concurrency } from './concurrency'
+import { integration } from './integration'
 import type { Course, Section } from './types'
 
 // Course registry, in syllabus order (JAVA-COURSE-PLAN.md). Courses are added here as each is
@@ -23,6 +24,7 @@ export const COURSES: Record<string, Course> = {
   [boundaries.id]: boundaries,
   [build.id]: build,
   [concurrency.id]: concurrency,
+  [integration.id]: integration,
 }
 
 export type { Course, Section }

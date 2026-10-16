@@ -111,7 +111,7 @@ Shapes: lost-update timeline (two threads, interleaved steps); `ConcurrentHashMa
 vs `merge`; executor lifecycle; virtual vs platform threads on waiting work; real thread-dump excerpt
 of a deadlock.
 
-### 11 · `integration` — Network and database integration — 7
+### 11 · `integration` — Network and database integration — 7 — **authored**
 `network-foundations` · `http-client` · `deadlines-and-retries` · `jdbc-basics` · `transactions` ·
 `security-boundaries` · `integration-testing`
 Shapes: request/response timeline; transport failure vs HTTP status; "server applied it, client timed
