@@ -86,7 +86,7 @@ Surefire versions, run with Maven).
 Shapes: typed order repository; `List<Subtype>` invalid-insertion board; list/set/map duplicate
 `table`s; the mutable-key-lost-in-HashMap `memory`; view vs wrapper vs copy.
 
-### 7 · `streams` — Lambdas and stream transformations — 7
+### 7 · `streams` — Lambdas and stream transformations — 7 — **authored**
 `functional-interfaces` · `captures` · `stream-pipelines` · `filter-map-flatten` · `reduction-and-collectors` ·
 `optional` · `side-effects-and-parallel`
 Shapes: loop → pipeline with equal results; laziness trace (print per stage); shared mutable
