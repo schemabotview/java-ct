@@ -66,7 +66,7 @@ Shapes: `Order`/`LineItem` grown from loose variables; shared-reference `memory`
 mutation; rejected-quantity stack trace; record with a mutable list → defensive copy; enum state
 graph; identity vs value equality board.
 
-### 4 · `interfaces` — Interfaces, variation and reusable design — 8
+### 4 · `interfaces` — Interfaces, variation and reusable design — 8 — **authored**
 `interfaces-and-contracts` · `dispatch-and-overloading` · `abstract-classes` · `composition-vs-inheritance` ·
 `sealed-and-patterns` · `nested-classes` · `annotations-and-reflection` · `api-evolution`
 Shapes: two `PricingPolicy` implementations behind one interface; compile-time overload vs runtime
