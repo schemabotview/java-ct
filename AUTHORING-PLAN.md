@@ -73,7 +73,7 @@ Shapes: two `PricingPolicy` implementations behind one interface; compile-time o
 dispatch side by side; broken-subclass vs delegation; sealed `Result` hierarchy + exhaustive switch;
 annotation → processor/runtime consumer; compatible vs caller-visible change.
 
-### 5 · `failures` — Failures, resources, testing and debugging — 7
+### 5 · `failures` — Failures, resources, testing and debugging — 7 — **authored**
 `exceptions-and-traces` · `checked-unchecked` · `wrapping-causes` · `try-with-resources` ·
 `error-boundaries` · `unit-tests` · `debugging-evidence`
 Shapes: rejected order through three calls with the causal trace; primary + suppressed exception

@@ -3,5 +3,6 @@
   "first-program": "Your First Java Program: javac, Bytecode And The JVM Explained",
   "values": "Java Basics: Types, Null, Overflow, == vs equals, Loops And Arrays",
   "objects": "Java Objects Explained: Classes, Records, Enums, equals And hashCode",
-  "interfaces": "Java Interfaces, Inheritance, Sealed Types And Pattern Matching"
+  "interfaces": "Java Interfaces, Inheritance, Sealed Types And Pattern Matching",
+  "failures": "Java Exceptions, try-with-resources, JUnit Tests And Debugging"
 }
