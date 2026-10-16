@@ -104,7 +104,7 @@ local time vs instant across a DST change; temp-file + move vs partial write tim
 Shapes: package dependency graph; real POM excerpt and `mvn package` transcript; missing class vs
 module-access failure; `--release` `evolution` row.
 
-### 10 · `concurrency` — Concurrency and coordinated work — 9
+### 10 · `concurrency` — Concurrency and coordinated work — 9 — **authored**
 `tasks-and-executors` · `races-and-visibility` · `locks-and-invariants` · `atomics-and-concurrent-collections` ·
 `futures` · `cancellation-and-timeouts` · `virtual-threads` · `bounded-work` · `deadlock-and-liveness`
 Shapes: lost-update timeline (two threads, interleaved steps); `ConcurrentHashMap` check-then-act race
