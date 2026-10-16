@@ -10,7 +10,8 @@ order the work is done. `CLAUDE.md` holds the rules every frame must meet.
   exactly 6, 8, 8, 8, 7, 8, 7, 8, 7, 9, 7, 8 = 91.
 - **Course id** = a short noun for the chapter (table below). **Section id** = kebab-case of the
   section's core idea, unique within its course. Route = `#/<course>-<section>`.
-- **Scene ids** carry a course prefix (`fp-`, `val-`, `obj-` …) because ids are global.
+- **Scene ids** carry a course prefix because ids are global: `fp-` `val-` `obj-` `ifc-` `fail-`
+  `col-` `str-` `bnd-` `bld-` `cc-` `int-` `jvm-`.
 - **The order example runs through every course.** Each scene reuses the same names (`Order`,
   `LineItem`, `unitCents`, `quantity`, `shippingCents`, 1250 × 3 + 499 = 4249) so a learner never
   re-reads a new domain. Secondary examples appear only where the syllabus says the main example's
@@ -50,7 +51,7 @@ Shapes: inputs → algorithm → code → output chain; `javap` bytecode between
 compact source file + two terminal workflows; `jshell` session + four tool cards; compact vs named
 class + `args` transcript; three failure-stage cards + debugging list.
 
-### 2 · `values` — Values, expressions and control flow — 8
+### 2 · `values` — Values, expressions and control flow — 8 — **authored**
 `types-and-null` · `variables-and-scope` · `operators-and-overflow` · `strings-and-equality` ·
 `branching-and-switch` · `loops` · `arrays` · `methods-and-recursion`
 Shapes: `memory` stack-vs-heap for primitives/references/null; scope boxes; overflow transcript

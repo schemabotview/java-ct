@@ -18,7 +18,8 @@ Scaffolded from [`schemabotview/content-repo-template`](https://github.com/schem
 | course | sections | state |
 | --- | --- | --- |
 | `first-program` | 6 | authored · examples run on JDK 25.0.2 · density checked · no audio yet |
-| the other 11 | 85 | planned in `AUTHORING-PLAN.md` |
+| `values` | 8 | authored · examples run on JDK 25.0.2 · density checked · no audio yet |
+| the other 10 | 77 | planned in `AUTHORING-PLAN.md` |
 
 ## Running it
 

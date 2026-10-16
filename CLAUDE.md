@@ -33,8 +33,8 @@ Routes are `#/<courseId>-<sectionId>`; `#/` is the catalog. Course ids, in sylla
 | 11 | `integration` | Network and database integration |
 | 12 | `jvm` | JVM behaviour, diagnosis and application evolution |
 
-Only `first-program` is authored so far. Scene ids are globally unique and carry a course prefix
-(`fp-` for `first-program`); section files are `src/content/<course>/NN-<section-id>.ts`.
+Which courses are authored is in README.md's status table. Scene ids are globally unique and carry
+a course prefix (`fp-`, `val-`, … — listed in AUTHORING-PLAN.md); section files are `src/content/<course>/NN-<section-id>.ts`.
 
 ## Java correctness
 

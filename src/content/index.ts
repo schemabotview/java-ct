@@ -1,10 +1,12 @@
 import { firstProgram } from './first-program'
+import { values } from './values'
 import type { Course, Section } from './types'
 
 // Course registry, in syllabus order (JAVA-COURSE-PLAN.md). Courses are added here as each is
 // authored.
 export const COURSES: Record<string, Course> = {
   [firstProgram.id]: firstProgram,
+  [values.id]: values,
 }
 
 export type { Course, Section }
