@@ -1,0 +1,551 @@
+{
+  "count": 91,
+  "entries": [
+    {
+      "course": "first-program",
+      "section": "problem-to-output",
+      "file": "first-program/problem-to-output.wav",
+      "narration": "Every program in this course starts the same way, with a problem small enough to solve by hand. Here, an order: three items at twelve fifty each, plus four ninety-nine shipping. Before writing any Java, separate four things that beginners tend to blur together. The problem is what you know. The algorithm is the sequence of steps, in plain words: multiply, add, report. The program is those same steps written precisely enough for a machine to follow. And the output is the observable behaviour, the one line you can check. Notice that we hold money as whole cents. Twelve fifty becomes twelve hundred and fifty, and integer arithmetic on cents is exact, so we know in advance the answer must be four thousand two hundred and forty-nine. That expected value matters. A program that prints something is not the same as a program that prints the right thing, and the only way to tell is to have worked out the answer first."
+    },
+    {
+      "course": "first-program",
+      "section": "source-to-jvm",
+      "file": "first-program/source-to-jvm.wav",
+      "narration": "When you run a Java program, two different translations happen, and it helps to keep them apart. First, the compiler, javac, reads your source file and writes a class file. That class file holds bytecode, which is a set of instructions for a virtual machine, not for the processor in your laptop. You can look at it yourself with javap. On the left you can see the real bytecode for our total: load the price, load the quantity, multiply, load the shipping, add, store. Second, the java launcher starts the Java Virtual Machine, which loads and verifies the class, begins by interpreting the bytecode, and compiles the parts that run often into native machine code as it goes. The JDK is the kit that bundles these tools with a runtime. The portability promise lives at exactly this boundary. Your class file is the same everywhere, but each operating system and processor needs its own build of the JVM underneath."
+    },
+    {
+      "course": "first-program",
+      "section": "compile-and-run",
+      "file": "first-program/compile-and-run.wav",
+      "narration": "Here is the whole first program. Since Java twenty-five, a file can contain nothing but a main method, and the compiler supplies the class around it. We will see the longer, conventional form shortly. There are two ways to run it, and they are not the same workflow. In the first, you compile and then run. javac reads Order dot java and writes Order dot class beside it. Then java Order runs that class. Notice that you name the class, not the file, so there is no dot java on the end. In the second, you hand the source file straight to the java launcher. It compiles in memory and runs immediately, leaving no class file behind. That is convenient for one small file, but real applications keep the two steps apart, because compiling once and running many times is the normal shape of a build. Either way, read the output and compare it with the answer you worked out by hand. Four thousand two hundred and forty-nine. It matches."
+    },
+    {
+      "course": "first-program",
+      "section": "tool-roles",
+      "file": "first-program/tool-roles.wav",
+      "narration": "You will meet four places to write and run Java, and it is worth being clear that they are tools around the same JDK, not different kinds of Java. JShell is the quickest. You type one expression and it shows you the value, with no file and no class needed. On the left, we compute the total, then divide by one hundred and get forty-two, not forty-two point four nine, because dividing one integer by another throws the remainder away. The remainder operator gets the forty-nine cents back. That is a small surprise worth finding in JShell rather than in a finished program. The terminal runs javac and java exactly as an automated build would. An editor is where source files live so you can keep and share them. And an IDE bundles editing, building, testing and debugging into one window. Use whichever fits the question, but keep one habit: for every button you press in an IDE, know the terminal command it stands for."
+    },
+    {
+      "course": "first-program",
+      "section": "entry-points",
+      "file": "first-program/entry-points.wav",
+      "narration": "Every Java program starts somewhere, and that somewhere is a method called main. The compact file we wrote earlier hides most of the structure. The conventional version on the left spells it out. There is an explicit public class whose name matches the file. The main method is static, which means the launcher can call it without first creating an object. And it receives an array of strings called args, holding whatever words you typed after the file or class name. Those words always arrive as text. If you type three, main receives the string three, and Integer dot parseInt converts it into the number. Now look at the second run in the terminal. With no argument, the array is empty, and asking for element zero fails with an index out of bounds exception, pointing at line three. That is not a compile error. The program compiled perfectly well. It failed while running, which is exactly the distinction the next section is about."
+    },
+    {
+      "course": "first-program",
+      "section": "failure-stages",
+      "file": "first-program/failure-stages.wav",
+      "narration": "When something goes wrong, the first question is not what is the fix, it is which stage failed. There are three. At compile time, javac refuses to produce a class file. Here it expected a semicolon at the end of line two, and it points a caret at exactly where. Nothing has run, so nothing can have happened. At run time, the program compiled and started, and then the JVM threw an exception. The stack trace names the exception, the bad input, and the line it came from. The third stage is the dangerous one, because nothing complains. The program runs and prints a result, and the result is wrong. Once a plus sign follows a string, Java joins values as text from left to right, so three thousand seven hundred and fifty and four ninety-nine are glued together instead of added. The only defence is the habit from the very first section, a known expected value. Start every debugging session the same way: read the first error, make the smallest input that reproduces it, and change one thing at a time."
+    },
+    {
+      "course": "values",
+      "section": "types-and-null",
+      "file": "values/types-and-null.wav",
+      "narration": "Every variable in Java has a type the compiler knows, and that type falls into one of two families. A primitive, such as int, holds the value itself. Our quantity variable contains the number three, and nothing else. A reference, such as a String, holds something different: a way to reach an object that lives elsewhere. The sku variable does not contain the characters A dash one hundred. It refers to a String object that does. And a reference can also hold null, which means it refers to no object at all. Printing null is harmless; you just see the word. But asking a null reference to do something, like report its length, has nothing to act on, so the JVM throws a NullPointerException. Modern Java tells you exactly which variable was null, by name when the class was compiled with debug information. So before you reach for null, decide whether having no value is actually allowed at that point in the program."
+    },
+    {
+      "course": "values",
+      "section": "variables-and-scope",
+      "file": "values/variables-and-scope.wav",
+      "narration": "A variable is more than a name. It has a type, a current value, and a scope, the region of code where the name means anything at all. On the left, the variable called line is declared inside the loop's braces, so it exists only there. When we try to print it after the loop, the compiler cannot find it, and says so. The variable unitCents is marked final, which means it can be assigned once and never again, so the later assignment is rejected too. Notice that javac found both problems in a single pass, and reported them in order, each with its line number. Two more rules are quieter. A local variable must be given a value before it is read, which is why totalCents starts at zero. And var asks the compiler to infer the type from the right-hand side. That saves typing, but the type is still fixed; quantity is an int forever. Keep each variable in the smallest scope that needs it, and many mistakes become impossible to write."
+    },
+    {
+      "course": "values",
+      "section": "operators-and-overflow",
+      "file": "values/operators-and-overflow.wav",
+      "narration": "Java decides how to do arithmetic from the types involved, not from the numbers you had in mind. Divide one int by another and the result is an int, so the remainder is simply thrown away: forty-two. The percent operator recovers it: forty-nine. Make either side a double and the other is widened to match, giving forty-two point four nine. Doubles have their own surprise: point one plus point two is not exactly point three, because binary fractions cannot represent it. That is one reason we keep money in whole cents. Now the dangerous row. An int can only hold values up to about two point one billion. Multiply twelve fifty by two million and the true answer, two and a half billion, does not fit, so the value wraps around and prints a negative number. There is no exception and no warning. Using a long fixes the range. Math dot multiplyExact takes the other approach: it throws an ArithmeticException, so an impossible total fails loudly instead of being stored quietly."
+    },
+    {
+      "course": "values",
+      "section": "strings-and-equality",
+      "file": "values/strings-and-equality.wav",
+      "narration": "Here is one of the most common bugs in early Java code. The double-equals operator, applied to two references, asks whether they point at the same object. It does not look at the contents. Variables a and b were both written as the same literal, and the JVM shares one copy of each literal, so they really are the same object, and double-equals says true. Variable c holds the same characters, but they were assembled while the program ran, so it is a separate object. Double-equals now says false, while the equals method, which compares characters, says true. Code that compares strings with double-equals often passes every test that uses literals, then fails the moment real input arrives from a file or a user. So for content, always use equals. Strings are also immutable; every operation hands back a new string rather than changing the old one. And for multi-line text, a text block, opened with three quotes, keeps the layout readable and strips the common indentation for you."
+    },
+    {
+      "course": "values",
+      "section": "branching-and-switch",
+      "file": "values/branching-and-switch.wav",
+      "narration": "Branching is how a program chooses between paths. An if statement tests one boolean condition. Here, orders of fifty pounds or more ship free. Three items come to forty-two forty-nine with shipping; four items reach exactly five thousand cents, so the shipping drops to zero. Look carefully at that boundary. Greater-than-or-equal and greater-than give different answers at exactly five thousand, and boundaries are where requirements and code most often disagree. When one value selects among many outcomes, a switch expression is clearer. Each case uses an arrow, several labels can share a case, and default catches everything else. Because it is an expression, it yields a value, and the compiler insists that every path produces one. You will also meet the older switch statement, with colons. Its trap is fall-through. Without a break, execution runs straight on into the next case, so a code of one prints one, two and other. The arrow form never falls through, which is why it is the better default."
+    },
+    {
+      "course": "values",
+      "section": "loops",
+      "file": "values/loops.wav",
+      "narration": "A loop repeats its body as long as a condition stays true, and almost every loop bug lives in one of three places: where it starts, what it tests, and how it steps. The table on the left is a trace, one row per pass through the body. On the first pass, i is zero, the quantity is three, and the running total becomes thirty-seven fifty. On the second pass, the quantity is zero, so continue skips straight to the next iteration and the total does not change. On the third pass we add twenty-four hundred. Then i becomes three, the test i less than three is false, and the loop ends. Break, by contrast, would leave the loop entirely; here it guards against a negative price. Now change less-than into less-than-or-equal. The loop runs one extra time, asks for index three of a three-element array, and the JVM throws an index out of bounds exception. Always ask two more questions: what happens with empty input, and will the condition eventually become false?"
+    },
+    {
+      "course": "values",
+      "section": "arrays",
+      "file": "values/arrays.wav",
+      "narration": "An array holds a fixed number of values of one type, numbered from zero. The important detail is that an array is an object, and a variable of array type holds a reference to it. So when we write alias equals quantities, nothing is copied except that reference. There is still one array, now reachable through two names. Change element zero through alias, and quantities sees ninety-nine as well, because it is the same object. If you want an independent copy, ask for one: clone creates a new array with the same elements, and changing the copy leaves the original alone. New arrays start filled with defaults, zeros for numbers and null for references. Printing an array directly is rarely useful; you get a type code and a hash, so use Arrays dot toString to see the elements. A two-dimensional array is really an array of arrays, one per row. Here, three order lines each hold a price and a quantity, and walking them gives a total of ninety-four forty-nine."
+    },
+    {
+      "course": "values",
+      "section": "methods-and-recursion",
+      "file": "values/methods-and-recursion.wav",
+      "narration": "When you call a method, Java creates a fresh frame for it and copies each argument into a parameter. That is the whole rule, and it explains three results that often surprise people. addOne receives a copy of the number three and increments its copy; the caller's q is still three. rebind receives a copy of the array reference and then points its copy at a brand-new array; the caller's variable never moves. mutate also receives a copy of the reference, but instead of moving it, it follows it to the shared array and changes element zero. That change is visible to main, because both frames refer to the same object. So Java does not pass variables by reference; it passes values, and some of those values are references. Methods can share a name when their parameter types differ, which is called overloading. And a method can call itself on a smaller version of the problem. Recursion is only safe with a base case, here the end of the array, that eventually stops the calls."
+    },
+    {
+      "course": "objects",
+      "section": "classes-and-identity",
+      "file": "objects/classes-and-identity.wav",
+      "narration": "Until now our order lived in loose variables: a price here, a quantity there. A class gathers them into one kind of thing. LineItem declares three fields and a method that uses them, so the arithmetic lives next to the data it needs, and callers simply ask the line for its total. Each time you write new, Java creates a separate object, an instance, with its own copy of those fields. That is why first and second, built with exactly the same values, are still two objects, and double-equals says false. Now look at same. It was assigned from first, which copies only the reference, so there is one object with two names. Change the quantity through same, and first reports five thousand while second still reports thirty-seven fifty. Hold on to that picture of variables pointing at objects; most bugs in this chapter come from forgetting it. And notice what printing an object shows by default: a class name and a hash, not the data you care about."
+    },
+    {
+      "course": "objects",
+      "section": "constructors-and-invariants",
+      "file": "objects/constructors-and-invariants.wav",
+      "narration": "An invariant is a rule that must be true of every object of a class, for as long as it exists. For a LineItem we choose three: the quantity is at least one, the price is never negative, and there is always a sku. The constructor is the only way to create a LineItem, so it is the natural place to check. If the quantity is zero, we throw an IllegalArgumentException and include the bad value in the message, because a future reader of a log will need it. Requiring a non-null sku with Objects dot requireNonNull fails immediately and names the argument. Look at the stack trace at the bottom. The frame marked init is the constructor itself, and the line below it is the caller that passed zero. Most importantly, when the constructor throws, no object comes into existence at all. Nothing invalid escapes. That pays off everywhere else: every method can trust the fields without checking them again, and marking the fields final keeps a valid object valid."
+    },
+    {
+      "course": "objects",
+      "section": "encapsulation",
+      "file": "objects/encapsulation.wav",
+      "narration": "Encapsulation means a class keeps its fields private and lets the outside world change them only through its own methods. Here is why it matters. In the first version, the list of line amounts and the running total are both public. The add method keeps them in step, but nothing forces callers to use it. One caller appends a thousand straight onto the list, and now the lines add up to fifty-two forty-nine while the total still claims forty-two forty-nine. Worse, that mismatch will surface somewhere else entirely, long after the line that caused it. In the second version both fields are private. The only way in is add, which checks the amount and updates both together. If other code tries to write the total directly, the compiler refuses: total cents has private access. A useful side effect is freedom: because nobody outside depends on how the data is stored, the class can change its representation later without breaking anyone. Java offers four levels, from private, through package and protected, to public."
+    },
+    {
+      "course": "objects",
+      "section": "static-and-lifetime",
+      "file": "objects/static-and-lifetime.wav",
+      "narration": "Fields and methods come in two kinds. Instance members belong to each object, so every LineItem has its own id. Static members belong to the class itself, so there is exactly one created counter, shared by every LineItem, and each constructor increments it. The first item gets id one, the second id two, and the counter reads two. Static state is convenient, but it behaves like a global variable, visible and changeable from everywhere, so keep it rare. Now, how long does an object live? As long as running code can still reach it through some chain of references. When we set a to null, nothing refers to the first item any more. It becomes unreachable, and therefore eligible for garbage collection. Eligible is the important word. The collector reclaims memory when it decides to, not at that line. And it only manages memory. It will not close a file, a socket or a database connection for you, which is why chapter five handles those explicitly."
+    },
+    {
+      "course": "objects",
+      "section": "composition-and-delegation",
+      "file": "objects/composition-and-delegation.wav",
+      "narration": "Real models are built from smaller models. An Order is not a pile of numbers; it has line items, and each line item already knows how to compute its own total. That relationship, an object holding others as parts, is composition. The order owns a private list of lines and a shipping charge, and because it controls that list, it can enforce rules about the whole, while each line keeps enforcing its own. The total method shows delegation. Instead of reaching into each line and multiplying the price by the quantity itself, the order asks each line for its total and adds them up, starting from the shipping. The multiplication lives in exactly one place. If line pricing later gains a discount, only LineItem changes. The table on the left is the evidence: four ninety-nine for shipping, thirty-seven fifty for the first line, seventeen ninety-eight for the second, and a printed total of sixty forty-seven. Work the sum by hand before you trust the run."
+    },
+    {
+      "course": "objects",
+      "section": "records-and-immutability",
+      "file": "objects/records-and-immutability.wav",
+      "narration": "A record is Java's concise way to declare a class that is mostly data. From one line, the compiler generates final fields, a constructor, accessor methods, and sensible equals, hash code and to-string methods. It is tempting to read final as unchangeable, but final only means the field cannot be pointed somewhere else. Our first Order record stores the very list the caller passed in. When the caller adds B two hundred afterwards, the order sees it, because they share one mutable list. The fix is a defensive copy. In the compact constructor, SafeOrder replaces the incoming list with List dot copyOf, an unmodifiable copy. The caller's later add has no effect, and trying to add through the accessor throws an unsupported operation exception. There is still a limit. Copying a list freezes the list itself, not the objects inside it. A list holding a mutable string builder still lets that builder change. Deep immutability needs immutable elements all the way down."
+    },
+    {
+      "course": "objects",
+      "section": "enums-and-states",
+      "file": "objects/enums-and-states.wav",
+      "narration": "An order moves through a handful of states, and the code should make that explicit. An enum is a class with a fixed set of named instances: new, paid, shipped and cancelled, and no others can ever exist. Compare that with storing the status as a string. A string can hold anything, including a typo, and the mistake is only discovered later, if at all. With an enum, asking for a constant called Paid with the wrong capitalisation fails immediately. Enums can also carry behaviour. Here, canMoveTo encodes the diagram at the top: a new order can be paid or cancelled, a paid order can be shipped or cancelled, and shipped and cancelled are final. The switch inside handles every constant, so it needs no default branch, and that is a feature. If someone later adds a returned state, the compiler reports every switch expression that no longer covers all the cases, instead of letting the new state fall silently into a default."
+    },
+    {
+      "course": "objects",
+      "section": "equals-hashcode-tostring",
+      "file": "objects/equals-hashcode-tostring.wav",
+      "narration": "Two line items for the same product and quantity: are they the same? Java's default answer is no. Unless a class overrides equals, it compares identity, so a plain class with identical content gives false, and a hash set happily stores both copies. A record generates value-based equals and hash code from its fields, so the two records are equal, and the set keeps one. These methods come as a pair, with a contract. Objects that are equal must report the same hash code, or hash-based collections will fail to find them. The reverse does not hold. The strings capital A lower-case a, and double B, both hash to two thousand one hundred and twelve, yet they are different. A matching hash is only a hint. And the fields that equals depends on must not change while the object sits in a hash set, or the set loses track of it. Finally, remember that toString is output. A generated one prints every field, including a card number, so override it to mask anything sensitive."
+    },
+    {
+      "course": "interfaces",
+      "section": "interfaces-and-contracts",
+      "file": "interfaces/interfaces-and-contracts.wav",
+      "narration": "So far, the order computed its total in one fixed way. Real shops need several pricing rules, and the code that adds up a basket should not care which one is in force. An interface expresses exactly that. PricingPolicy declares one obligation, price a line, and says nothing about how. It can also supply a default method, shared behaviour that implementations get for free and may override. Now the total method accepts any PricingPolicy and simply asks it to price each line. Two classes implement the interface. Standard pricing multiplies the unit price by the quantity and gives fifty-seven forty. Bulk discount takes ten percent off any line of ten or more, and gives fifty-five forty-one; integer division rounds the discounted line down, which is itself a decision worth writing down. The caller never changed. That is the payoff of programming against an interface. But remember that a signature is only part of a contract. A good one also states what the inputs mean, what the result means, and what happens when the input is wrong."
+    },
+    {
+      "course": "interfaces",
+      "section": "dispatch-and-overloading",
+      "file": "interfaces/dispatch-and-overloading.wav",
+      "narration": "Two features with similar names make different decisions at different times. The first is overriding. Express extends Shipping and replaces its name method. When we call s dot name, the variable s is declared as Shipping, but the object inside it is an Express. The JVM looks at the object's actual class when the call happens, and runs the Express version. That is dynamic dispatch, and it is what made the pricing policies interchangeable. The second is overloading: two methods called label, one taking Object and one taking Shipping. Here the choice is made by the compiler, before the program runs, and the compiler only knows the declared types. Passing s, declared as Shipping, selects the Shipping overload. Passing o, which is the very same object but declared as Object, selects the Object overload. Same object, different method. That surprise is why overloads that differ only by a supertype and a subtype are best avoided, and why every override should carry the at-Override annotation."
+    },
+    {
+      "course": "interfaces",
+      "section": "abstract-classes",
+      "file": "interfaces/abstract-classes.wav",
+      "narration": "An interface states what must be done. An abstract class goes further and does part of the work. Discount owns the algorithm for applying any discount: compute the amount off, check it is sensible, subtract it. That method is final, so no subclass can skip the check. The one step that varies, how much to take off, is declared abstract, and each subclass supplies only that. Ten percent of thirty-seven fifty leaves thirty-three seventy-five; a fixed five pounds leaves thirty-two fifty. Now try a fixed discount larger than the price. The guard in the base class catches it, once, for every kind of discount that will ever exist, and throws with the bad value in the message. Because Discount is incomplete, you cannot create one directly, and the compiler says so. When should you choose which? Reach for an interface when you are describing a capability that many unrelated classes might offer. Reach for an abstract class when one family of classes genuinely shares code and state."
+    },
+    {
+      "course": "interfaces",
+      "section": "composition-vs-inheritance",
+      "file": "interfaces/composition-vs-inheritance.wav",
+      "narration": "Inheritance is powerful, and it is easy to reach for too early. Here we want a set that counts how many elements were added. The first attempt extends HashSet and overrides both add and addAll to increment a counter. It compiles, it runs, and when we add three SKUs it reports six. Nothing threw an exception; the number is simply wrong. The reason is an implementation detail of the parent: HashSet's addAll works by calling add for each element, so every element is counted twice. The subclass depended on how HashSet is written, not just on what it promises, and that kind of hidden coupling can break whenever the parent changes. The second version uses composition. It holds a private set and forwards calls to it, so its own counting is never re-entered. It reports three. A related rule is substitutability: anywhere code expects the parent, the subclass must keep every promise the parent made. When you are not sure that has-a should really be is-a, choose has-a."
+    },
+    {
+      "course": "interfaces",
+      "section": "sealed-and-patterns",
+      "file": "interfaces/sealed-and-patterns.wav",
+      "narration": "Some results have a fixed set of shapes. A payment attempt is approved, declined or pending, and nothing else. A sealed interface says exactly that: it names its permitted implementations, and no other class may implement it. Each outcome is a small record carrying just its own data, an authorisation code, a reason, a retry delay. Now a switch can match on the type itself. Case approved a checks the type and, if it matches, binds the variable a, already cast, ready to use. A when clause adds a guard, so a declined payment for insufficient funds gets its own message, and because cases are tried in order, the specific one comes before the general one. There is no default, and that is deliberate. Delete the pending case, and the compiler reports that the switch does not cover all possible inputs. The same patterns work with instanceof, including taking a record apart into its components. One caution: a null selector throws a NullPointerException unless the switch explicitly handles case null."
+    },
+    {
+      "course": "interfaces",
+      "section": "nested-classes",
+      "file": "interfaces/nested-classes.wav",
+      "narration": "Not every class needs its own file. Java lets you declare classes inside other classes, inside methods, and even inside a single expression. A static nested class, like Order dot Line, is grouped under Order for organisation, but it is otherwise independent and needs no Order to exist. An inner class, declared without static, is different: every instance carries a hidden reference to the Order that created it. That is why the code writes order dot new Numbered, and why each Numbered can read and advance that order's line counter. A local class or record lives inside a method and is visible only there. And an anonymous class is declared and instantiated in one go, here a comparator used once. Look at what the compiler wrote out. Each form became a real class file with its own binary name, numbered when it has no name of its own. As a default, choose static nested. An inner class's hidden reference keeps its outer object reachable, which can quietly hold memory you expected to be freed."
+    },
+    {
+      "course": "interfaces",
+      "section": "annotations-and-reflection",
+      "file": "interfaces/annotations-and-reflection.wav",
+      "narration": "An annotation is a label on a piece of code, and on its own it does nothing at all. Something has to read it. Sometimes that is the compiler: at-Override asks javac to confirm the method really overrides one, so the typo cent, without the s, becomes a compile error instead of a silent new method. Sometimes it is an annotation processor that generates code during the build. And sometimes it is the running program, through reflection. Here, retention matters. Audited is marked for runtime retention, so reflection can see it. Draft has the default retention, which keeps it in the class file but hides it from the running program, so the same query says false. Reflection can also look up fields by name and, for our own class, even read a private one. But it is not a universal skeleton key. Java's module system decides what is open to reflection, and java dot base does not open java dot lang, so String's internal array stays out of reach."
+    },
+    {
+      "course": "interfaces",
+      "section": "api-evolution",
+      "file": "interfaces/api-evolution.wav",
+      "narration": "An interface that only you use can change freely. Once other code implements it or calls it, every change has consequences, and you should know which kind you are making. Here is PricingPolicy in three versions, with one existing implementation called Flat. Version two adds a method with a default body. Flat still compiles without any edits and simply inherits the default. Even more telling, the Flat class file compiled against version one keeps running when the new interface is swapped in underneath it. That change is compatible. Version three adds a method without a body. Now every implementation is obliged to provide it, and Flat no longer compiles. In your own repository that is an afternoon of fixes; in someone else's, it is their build breaking because of your release. So treat a published API as a promise. Document what results and failures mean, not just the method signatures. Mark things deprecated before removing them, and make the version number say which kind of change you made."
+    },
+    {
+      "course": "failures",
+      "section": "exceptions-and-traces",
+      "file": "failures/exceptions-and-traces.wav",
+      "narration": "When something goes wrong, Java creates an exception object and throws it. The current method stops immediately. If it has no handler for that exception, its caller stops too, and so on, up the chain of calls, until something catches it or there is nothing left and the thread ends. Our order line with a quantity of zero shows the whole journey. The LineItem constructor throws, parseLine does not catch it, checkout does not catch it, main does not catch it, and the program prints a stack trace. Learn to read one from the top. The first line names the exception type and the message. The next line is where it was thrown, the constructor at line three. Each line below is the method that called the one above it, with its own line number. Frames from your own code are usually the place to start. Finally, notice the contrast at the bottom. A stack overflow is an Error, not an Exception. Errors mean the JVM itself is in trouble, and programs should rarely try to carry on after one."
+    },
+    {
+      "course": "failures",
+      "section": "checked-and-unchecked",
+      "file": "failures/checked-and-unchecked.wav",
+      "narration": "Java divides exceptions into two families, and the compiler treats them differently. Checked exceptions describe conditions outside the program's control, like a file that is not there or a network connection that drops. They are part of a method's signature. Files dot readString declares that it may throw an IOException, and so every caller has a decision to make: catch it and do something sensible, or declare it with throws and pass the decision upward. Our load method does neither, and javac refuses to compile it, naming the exception and both options. Unchecked exceptions are RuntimeException and its subclasses: an illegal argument, a null reference, an index out of bounds. These usually signal a bug in the calling code, so the compiler does not force every caller to mention them. Errors, like a stack overflow, are unchecked as well. The practical rule follows from the purpose. If a caller can reasonably recover, a checked exception makes that duty visible. If the only fix is to correct the code, unchecked is the honest choice."
+    },
+    {
+      "course": "failures",
+      "section": "wrapping-and-causes",
+      "file": "failures/wrapping-and-causes.wav",
+      "narration": "Exceptions are often thrown at a low level, in terms the higher levels do not care about. The order importer's callers think in orders, not in file systems. So the importer catches the IOException and throws its own OrderImportException, with a message about importing orders, and, crucially, with the original exception passed in as the cause. Look at the output. The top of the trace speaks the caller's language: cannot import orders dot csv. Then comes caused by, with the real reason, no such file, and its own frames. Nothing was lost. The bottom example is what to avoid. It catches every exception and returns zero. The missing file is now indistinguishable from a file that genuinely contains no orders. There is no trace, no message, and the result looks perfectly valid while being wrong. So catch an exception only where you can actually do something about it: retry, report it properly, or choose a deliberate fallback. Everywhere else, let it travel, or wrap it with its cause."
+    },
+    {
+      "course": "failures",
+      "section": "try-with-resources",
+      "file": "failures/try-with-resources.wav",
+      "narration": "Memory is reclaimed for you, but files, network sockets and database connections are not. They must be closed, whether the work in between succeeded or failed. Try-with-resources makes that automatic. You declare the resource in parentheses after try, the resource must implement AutoCloseable, and when the block ends, for any reason, its close method runs. Here the export is deliberately unlucky. Writing the row fails because the disk is full. Then closing fails too, because the buffer cannot be flushed. Follow the timeline. Open, write throws, close still runs, and close throws. Which failure should you see? The output answers it. The primary exception is the one from the actual work, disk full, and the close failure is not thrown away: it is attached underneath as suppressed, with its own trace. Older code did this by hand in a finally block, and a finally block that throws silently replaces the original exception, which hides the real cause of the problem. Prefer try-with-resources whenever you hold something that must be closed."
+    },
+    {
+      "course": "failures",
+      "section": "error-boundaries",
+      "file": "failures/error-boundaries.wav",
+      "narration": "Some failures are not surprises at all. When people type or upload order lines, some of them will be wrong, and the program should expect that. So validation belongs at the boundary, where input enters, and each failure should become information the caller can act on. Here, parse returns a sealed result: either a parsed line item or a rejection carrying the line number and the reason. The import loop handles both cases. It keeps the good line, reports each bad one with a clear message, and carries on to the next, ending with one imported and three rejected. Notice the order of the catch blocks. NumberFormatException is a subclass of IllegalArgumentException, so it must be caught first. Put the general one first and the specific message is never reached. This leads to a simple structure. Deep inside, invariants are allowed to throw, because a violation there is a bug. At each entry point, a request, a file, a command, one error boundary catches, reports clearly and decides what can continue."
+    },
+    {
+      "course": "failures",
+      "section": "unit-tests",
+      "file": "failures/unit-tests.wav",
+      "narration": "A unit test is a small program that runs a piece of your code with chosen input and compares the result against an expectation written down in advance. These tests use JUnit Jupiter, run by Maven's surefire plugin. The first checks our worked example, forty-two forty-nine. The second checks a boundary, an empty order, which should cost only the shipping. The third checks a failure case: a zero quantity must throw. Notice the pricing policy. Instead of the real one, the test supplies a tiny fake, so the test controls the order's dependency and checks only the order's own arithmetic. All three pass. Then someone adds a check for a second line and the build goes red. The report is precise: which test, which line, expected fifty-nine forty-eight, but was sixty forty-seven. Work it by hand and you find the code is right; the test's expectation was miscalculated. A failing test tells you two things disagree, not which one is wrong. And passing tests only prove the cases they cover."
+    },
+    {
+      "course": "failures",
+      "section": "debugging-evidence",
+      "file": "failures/debugging-evidence.wav",
+      "narration": "When a program surprises you, resist the urge to change code straight away. Gather evidence first, and know what each kind of evidence can and cannot tell you. An assertion states an assumption inside the code: here, that a discount percentage lies between zero and one hundred. But assertions are disabled by default. Run the program normally and a hundred-and-fifty percent discount sails through, printing fifty-six twenty-five. Run it with the e-a flag and the same input fails immediately with the assumption's own message. That is why assertions are for catching your own mistakes during development, never for checking input from users or files, which must be validated every time. Logging records what actually ran, with real values, which is often the only evidence available from a production system. A debugger lets you pause at a breakpoint, inspect variables and step through line by line. All three share one limitation. Evidence from a run describes that run, with that input, not every possible one."
+    },
+    {
+      "course": "collections",
+      "section": "generics-basics",
+      "file": "collections/generics-basics.wav",
+      "narration": "Before generics, a collection could hold anything, and every read needed a cast that might fail at run time. A type parameter fixes that. Repository of T is written once, and T stands for whatever element type a particular repository holds. Declare a repository of LineItem, and the compiler treats T as LineItem in every method: save only accepts line items, and find returns one, with no cast required. Generic methods work the same way. firstOr declares its own T, and the compiler infers it from the arguments, here as String. The diamond operator lets the compiler infer the type argument for a constructor from the variable it is assigned to. There is one cost to understand. Type arguments must be reference types, so an int becomes a boxed Integer. Comparing boxed values with double-equals compares identity, and because small values are cached, one twenty-seven equals one twenty-seven while one twenty-eight does not. And remove on a list of integers picks the index overload, removing the element at position one."
+    },
+    {
+      "course": "collections",
+      "section": "variance-and-wildcards",
+      "file": "collections/variance-and-wildcards.wav",
+      "narration": "A string is an object, so it seems natural that a list of strings should be usable as a list of objects. Java says no, and the reason is worth working through. Suppose the assignment were allowed. A list of objects accepts any object, so adding the number forty-two would compile. But it is the very same list that someone else holds as a list of strings, and the next time they read from it, they would get an Integer. So generic types are invariant, and javac rejects the assignment. Wildcards recover the flexibility in a safe way. A parameter of type list of question-mark extends Number is a producer: you can read Numbers out of it, so sum accepts a list of integers or a list of longs, but you cannot add to it. A list of question-mark super Integer is a consumer: you can write Integers into it, so addShipping accepts a list of integers or a list of numbers. The rule of thumb is producer extends, consumer super."
+    },
+    {
+      "course": "collections",
+      "section": "erasure-and-raw-types",
+      "file": "collections/erasure-and-raw-types.wav",
+      "narration": "Generic type arguments are a compile-time feature. When the program runs, they have been erased. A list of strings and a list of integers are both plain ArrayList objects, and comparing their classes gives true. The compiler made up the difference by checking every use and inserting casts at the points where elements are read back. Erasure explains some limits too: you cannot create a new T, or test whether something is an instance of list of String. Now look at what a raw type does. Assigning the list of strings to a variable of plain List, with no type argument, tells the compiler to stop checking. Adding the number forty-two succeeds, with no error, and the size says one, so everything looks fine. The list is now polluted. The failure only arrives two lines later, when a read hits the cast the compiler inserted, and a ClassCastException points at a line that never mentioned an Integer. The defence is simple: avoid raw types, and treat unchecked warnings as bugs."
+    },
+    {
+      "course": "collections",
+      "section": "collection-choices",
+      "file": "collections/collection-choices.wav",
+      "narration": "The collections library offers many classes, but the first choice is easy if you ask what question your code needs answered. If it asks what is at a position, use a List, which keeps order and allows duplicates. If it asks whether an item has been seen before, use a Set. If it asks what goes with a key, use a Map. And if it asks what should be handled next, use a Queue or a Deque. Then choose an implementation by the guarantees you need. Feed the same five scans into each and the differences are plain. The ArrayList keeps all five, in order. The HashSet keeps three unique SKUs and promises nothing about their order. A LinkedHashSet keeps them in arrival order, and a TreeSet keeps them sorted. A TreeMap with merge counts each SKU, and the ArrayDeque hands back the oldest order first. Declare variables with the interface type, so that the code says what it relies on, and the implementation can change without touching every caller."
+    },
+    {
+      "course": "collections",
+      "section": "iteration-and-views",
+      "file": "collections/iteration-and-views.wav",
+      "narration": "Two behaviours of collections catch people out. The first is modification during iteration. A for-each loop walks the list with an iterator, and if the loop body removes an element, the iterator detects that the list changed underneath it and throws a ConcurrentModificationException. The name mentions concurrency, but there is only one thread here. The safe way to remove matching elements is removeIf, which does the walk and the removal together. Note that this detection is best effort: it helps you find bugs, but you cannot rely on it to catch every one. The second behaviour is views. subList does not copy anything. It returns a window onto the same underlying storage, so setting element zero through the window changes the original list to ninety-nine. A map's values, keys and entries are views too, which is why removing zeros from stock dot values removes those entries from the map itself. Finally, none of this makes a collection safe to share between threads; that is chapter ten's subject."
+    },
+    {
+      "course": "collections",
+      "section": "hashing-and-ordering",
+      "file": "collections/hashing-and-ordering.wav",
+      "narration": "Hash-based and tree-based collections are fast because they trust their elements. A HashSet trusts hashCode and equals; a TreeSet trusts its comparator. If those methods break their contract, nothing throws an exception. The collection simply starts giving wrong answers. In the first example, a key object is stored in a HashSet, which files it under the hash of its fields, A one hundred in warehouse one. Then the code changes the warehouse. The object is still in the set, so the size is one, but asking whether the set contains it computes a new hash and looks in a different bucket, where nothing is found. Even a fresh key with the original values fails, because equals no longer matches. In the second example, a TreeSet sorts line items by price alone. A TreeSet treats two elements that compare as equal as duplicates, so two different products at the same price collapse into one, and an item silently disappears. A tie-breaker on the sku fixes it. Keys must not change once they are stored."
+    },
+    {
+      "course": "collections",
+      "section": "complexity-and-tradeoffs",
+      "file": "collections/complexity-and-tradeoffs.wav",
+      "narration": "Choosing a collection also means choosing how its cost grows. Complexity describes that growth as the number of elements, n, increases. Rather than timing operations, which depends on the machine, the warm-up and the moment, here we count the work. We look for the last of ten thousand SKUs in three collections and count how many times an equals or compareTo method is called. The ArrayList checks every element in turn: ten thousand calls. Double the list and the work doubles. The TreeSet walks down a balanced tree: twenty-four comparisons, growing with the logarithm of n. The HashSet computes a hash, jumps to one bucket, and makes a single equals call, constant on average, provided the hash codes are well spread. But each structure buys its speed with a guarantee given up or kept: order, sorting, duplicates. For a handful of elements, a list is often simplest and fastest. So state the workload first: how big n is, whether you look up or iterate, and whether order matters. Then measure."
+    },
+    {
+      "course": "collections",
+      "section": "immutable-structures",
+      "file": "collections/immutable-structures.wav",
+      "narration": "There are two quite different ways to hand out a collection that callers cannot change, and mixing them up causes real bugs. The first is an unmodifiable view. Collections dot unmodifiableList wraps the original list, and any attempt to add through the wrapper throws an unsupported operation exception. But the wrapper is a view. The owner still holds the original list and can keep changing it, and when C three hundred is added, the view shows it. That is exactly right when you want to expose live state read-only. The second is an immutable copy. List dot copyOf, like List dot of, takes a snapshot that nobody can change, and later additions to the source never appear in it. These factory methods also refuse null elements. Neither approach does anything for the elements themselves. A list can be completely unmodifiable and still contain mutable objects, like this array, whose quantity changes to four. Real immutability needs immutable elements as well as an immutable container."
+    },
+    {
+      "course": "streams",
+      "section": "functional-interfaces",
+      "file": "streams/functional-interfaces.wav",
+      "narration": "A lambda expression is a short way to write an implementation of an interface that has exactly one abstract method. Such an interface is called a functional interface, and our PricingPolicy from chapter four already is one. The important idea is the target type. A lambda on its own has no type. The very same text, multiply the unit price by the quantity, becomes a PricingPolicy in one line and a ToIntFunction in the next, because the type of the variable it is assigned to decides which interface it implements. The compiler then infers the parameter types from that interface, which is why we never wrote LineItem inside the lambda. The java dot util dot function package supplies the common shapes: a Function turns a T into an R, a Predicate answers yes or no, a Supplier produces a value from nothing, and a Consumer takes a value and returns nothing. Predicates even compose with negate, and, and or. And if an interface has two abstract methods, a lambda cannot implement it, and javac says so."
+    },
+    {
+      "course": "streams",
+      "section": "captures-and-references",
+      "file": "streams/captures-and-references.wav",
+      "narration": "Lambdas can use variables from the method around them, which is called capturing. There is one rule: a captured local variable must be effectively final, meaning it is assigned exactly once and never changed afterwards. In the first example, shipping is assigned, then reassigned, and then used inside a lambda, and javac rejects it. Why the rule? A lambda can be stored and run later, even on another thread, so if the local kept changing, nobody could say which value the lambda should see. Assign it once and the lambda simply captures the value, adding four ninety-nine to each total. Now look at the log. The variable log never changes; it always refers to the same list. So capturing it is allowed. But the list itself is mutable, and each run of the lambda adds to it. An effectively final reference does not make the object behind it immutable. Finally, when a lambda does nothing but call one method, a method reference says the same thing more directly, in four forms."
+    },
+    {
+      "course": "streams",
+      "section": "stream-pipelines",
+      "file": "streams/stream-pipelines.wav",
+      "narration": "A stream pipeline has three parts: a source, like a list of line items; any number of intermediate operations, like filter and map; and exactly one terminal operation, like findFirst or count. The crucial property is laziness. Building the pipeline does no work at all. The proof is in the output: the line saying the pipeline was built appears before any element has been seen, even though peek is supposed to print every element. Work starts only when a terminal operation pulls on the pipeline. Then elements travel one at a time through every stage, not stage by stage over the whole list. A-one hundred passes the filter and becomes thirty-seven fifty, which is not under two thousand. B-two hundred has a quantity of zero and is filtered out. C-three hundred becomes nineteen ninety, which matches, and findFirst stops. D-four hundred is never read. Finally, a stream can only be consumed once. Calling count on the same pipeline fails, so keep the source and build a fresh pipeline whenever you need one."
+    },
+    {
+      "course": "streams",
+      "section": "filter-map-flatten",
+      "file": "streams/filter-map-flatten.wav",
+      "narration": "Most pipelines are assembled from a small set of operations: filter keeps some elements, map turns each element into one new element, and distinct drops repeats. The operation that surprises people is flatMap. Suppose we want every line from every order. Mapping each order to its lines gives a stream of lists, three lists, one per order, which is rarely what you want. flatMap instead maps each order to a stream of its lines and splices those streams together into one, so we get four line items in a single stream. Order nineteen, with no lines, simply contributes nothing. From there, mapping to the sku, removing duplicates and collecting gives the three distinct products. Some terminal operations can finish early. anyMatch asks whether any line has a quantity of three or more, and it stops at the first one it finds. That short-circuiting is what makes it safe to end even a very large or infinite source with findFirst or anyMatch. And as a habit, filter before you map, so discarded elements cost less."
+    },
+    {
+      "course": "streams",
+      "section": "reduction-and-collectors",
+      "file": "streams/reduction-and-collectors.wav",
+      "narration": "A reduction combines all the elements of a stream into a single result. The total of our four lines can be computed with a specialised sum, or with a general reduce that starts from zero and adds each value, and both give eighty-seven eighty-eight. Collectors build richer results. groupingBy sorts the lines into groups by sku and sums each group, so the two A-one hundred lines together come to five thousand. partitioningBy splits the lines into exactly two groups by a condition and counts them. Reduction looks simple, but it quietly relies on two laws, and they matter as soon as a stream runs in parallel. A parallel stream splits the data into chunks, reduces each chunk from the starting value, and then combines the partial results. That only works if the operation is associative, so grouping does not matter, and the starting value is a true identity. Addition qualifies. Subtraction does not, and on this machine the parallel version returns zero instead of minus five hundred thousand five hundred. Nothing warns you."
+    },
+    {
+      "course": "streams",
+      "section": "optional-and-absence",
+      "file": "streams/optional-and-absence.wav",
+      "narration": "Optional is a container that holds either one value or nothing, and its purpose is to make absence visible in a method's return type. findFirst returns an Optional because a search might find nothing. Here no line has a quantity of ten, so bulk is empty, while pricey holds A-one hundred. You work with an Optional through its methods rather than by unwrapping it. map transforms the value if one is present. orElse supplies a fallback, and orElseThrow fails with an exception you choose. One subtle trap: the argument to orElse is evaluated before orElse is even called, so an expensive default is built every time, even when the value was present. orElseGet takes a supplier and only calls it when needed. Use Optional where absence is a normal, expected outcome of a query, which mostly means return values. It is not meant for fields or parameters, and a method returning a collection should return an empty one instead. Calling get on an empty Optional throws no value present, so prefer the safer methods."
+    },
+    {
+      "course": "streams",
+      "section": "side-effects-and-parallel",
+      "file": "streams/side-effects-and-parallel.wav",
+      "narration": "Adding parallel to a stream asks the library to split the work across several threads. That is only safe when the pipeline does not touch shared mutable state. Here, each element is added to one ordinary ArrayList from many threads at once. ArrayList is not built for that. Three runs kept roughly eight thousand three hundred, six thousand three hundred, and seven thousand nine hundred of the ten thousand elements, a different wrong answer each time, and not a single exception. The fix is not to share at all. A collector like toList gives each thread its own container and merges them at the end, so it keeps all ten thousand elements, in the original order. Order is the other casualty of parallelism. A parallel forEach handles elements in whatever order the threads reach them, while forEachOrdered preserves the source order, at some cost. So when does parallel help? With large amounts of data, real computation per element, and a source that splits well. For small inputs or work that mostly waits, it rarely does. Measure before you switch it on."
+    },
+    {
+      "course": "boundaries",
+      "section": "unicode-and-encodings",
+      "file": "boundaries/unicode-and-encodings.wav",
+      "narration": "Text looks simple until it crosses a boundary. Ask how long the string Café followed by a gift emoji is, and Java gives three different honest answers. The length method counts UTF-16 code units, the sixteen-bit chars Java strings are made of, and the emoji needs two of them, so the answer is seven. Counting code points, which are actual Unicode characters, gives six. And encoded as UTF-8 for a file or a network, it takes ten bytes, because the accented e takes two and the emoji takes four. Even charAt can mislead: position five holds only half of the emoji, a surrogate. Now write Café to a file in UTF-8. On disk it is five bytes. Read those bytes back as UTF-8 and you get the original four characters. Read the very same bytes as ISO eight-eight-five-nine-one and you get C a f, A tilde, copyright sign: five characters, garbled, and no error of any kind. The defence is to name the charset explicitly at every boundary, every time."
+    },
+    {
+      "course": "boundaries",
+      "section": "parsing-and-locale",
+      "file": "boundaries/parsing-and-locale.wav",
+      "narration": "Every time text becomes a value, some format decides what is valid, and if you do not choose that format explicitly, the platform chooses for you. Locale is the clearest example. A German number parser reads one point two three four comma five zero as one thousand two hundred and thirty-four point five. A US parser reads the same characters, treats the point as a decimal separator, stops at the comma, and returns one point two three four, with no error. Formatting differs in the same way. So for data exchanged between machines, fix the locale. A regular expression is a compact way to write down the format of a line. This pattern says: an upper-case letter, a dash and three digits, then whole cents, then a quantity. Lines that do not fit are rejected rather than guessed at, and the groups extract each field once a line matches. Java's own parsers are strict too. parseInt refuses a leading space. That strictness is useful: trim deliberately, at the boundary, so you know when input was messy."
+    },
+    {
+      "course": "boundaries",
+      "section": "bigdecimal-and-rounding",
+      "file": "boundaries/bigdecimal-and-rounding.wav",
+      "narration": "Integer cents have served us well, and they remain the right choice while every amount is a whole number of cents. Requirements change that: a tax rate, a percentage discount or a currency conversion produces fractions of a cent, and then BigDecimal is the tool. First, construct it from text. Building a BigDecimal from the double point one faithfully captures the double's binary error, all fifty-odd digits of it. Building it from the string point one gives exactly one tenth. Our familiar order is twelve fifty times three plus four ninety-nine, forty-two forty-nine with a scale of two, and moving the decimal point gives back four thousand two hundred and forty-nine cents. Second, rounding is not a technical detail; it is a business rule. Two point one two five becomes two point one three rounding half up, and two point one two rounding half even or down. Which mode, applied at which step, belongs in the requirements. And two traps: dividing ten by three needs an explicit scale, and equals also compares scale, so use compareTo."
+    },
+    {
+      "course": "boundaries",
+      "section": "time-and-clocks",
+      "file": "boundaries/time-and-clocks.wav",
+      "narration": "Time sounds like one thing, but software has to keep two meanings apart. An instant is a single point on the global timeline. A local date-time is what a wall clock shows somewhere, without saying where. A time zone connects them, using rules that include daylight saving changes. Take London on the twenty-ninth of March twenty twenty-six, when the clocks jump from one to two in the morning. Half past one simply never happened there, so Java moves it to half past two. Start at noon the day before and add one day: you get noon, because adding days keeps the wall-clock time. Add twenty-four hours instead and you get one o'clock, because that day was only twenty-three hours long. Neither is wrong; they answer different questions. Store and compare moments as instants, and schedule and display them in a named zone. Finally, code that asks what time it is now is hard to test. Pass a Clock in, and a fixed clock can test one minute before and after the cutoff instantly."
+    },
+    {
+      "course": "boundaries",
+      "section": "paths-and-files",
+      "file": "boundaries/paths-and-files.wav",
+      "narration": "A Path describes a location in a file system, and the Files class performs operations on it. resolve joins one path onto another, while getFileName and getParent take a path apart. Files dot list returns a stream of the entries in a directory, and that stream holds an open directory handle, which is why it sits inside try-with-resources. Paths become a security boundary the moment part of one comes from a user. Suppose the user supplies a file name to download. Resolving it against the orders directory looks harmless, but a name containing dot-dot segments climbs out of that directory. normalize collapses those segments into the real destination, so the safe pattern is: resolve against the base, normalize, and accept the result only if it still starts with the base. Two thousand twenty-six slash seventeen dot csv stays inside and is allowed. Dot-dot slash dot-dot slash secrets dot txt normalizes outside and is rejected. Checking the raw string is not enough, and where possible, let users choose from a list instead."
+    },
+    {
+      "course": "boundaries",
+      "section": "streams-and-buffering",
+      "file": "boundaries/streams-and-buffering.wav",
+      "narration": "Files can be far larger than the memory available to a program, so the way you read them matters. Between the disk and your code there are layers. The file provides bytes. A decoder, using a charset, turns those bytes into characters. A buffer reads large chunks at a time, so that asking for one line does not mean one tiny read from the disk. And a line reader hands you one String per line. Here is the difference it makes. The file has a million lines and is twelve mebibytes on disk, and the program runs with a deliberately small sixteen mebibyte heap. Streaming the lines, filtering and counting finds a thousand matches and finishes comfortably, because only a few lines exist in memory at any moment. Reading all the lines into a list fails with an OutOfMemoryError, because a million String objects in a list take several times the space of the raw bytes. So bound what you read, process as you go, stop early when you can, and close every stream you open."
+    },
+    {
+      "course": "boundaries",
+      "section": "formats-and-serialization",
+      "file": "boundaries/formats-and-serialization.wav",
+      "narration": "Data formats look easy until real data arrives. Comma-separated values seem to need nothing more than splitting on commas, but a product called Mug comma large, written properly in quotes, splits into four fields instead of three, with the quotes left dangling in the middle. Quotes, escaped quotes and line breaks inside fields all need a parser that actually implements the format, so use a CSV library, and write down the schema: field order, types, units and encoding. JSON is similar, with the added point that the JDK does not include a JSON parser, so you choose a library, pin its version, map the data into records, and validate it like any other input. Java also has its own native serialization. It is convenient, but reading it is dangerous, because an object input stream will construct whatever serializable classes the incoming bytes name. Never read it from an untrusted source without an allow-list filter. Here, a filter admits only LineItem, and anything else is rejected before it is built."
+    },
+    {
+      "course": "boundaries",
+      "section": "atomic-writes",
+      "file": "boundaries/atomic-writes.wav",
+      "narration": "Writing a file feels like a single action, but it is many small ones, and a failure can strike in the middle. Write the new orders straight into orders dot csv, and the moment the file is opened for writing, its old contents are truncated. When the third row fails, the file holds two new rows and nothing else. The old data is gone, and the new data is incomplete: a file that is neither the old version nor the new one. The safer pattern writes everything to a temporary file first, in the same directory as the target. Only when every row has been written successfully does it move the temporary file over the target, asking for an atomic move, so other readers see either the complete old file or the complete new one, never a mixture. If anything fails, the temporary file is deleted and the original is untouched, exactly as the table shows. Two limits remain. An atomic move is not the same as durable storage after a power cut, and it only works within one filesystem."
+    },
+    {
+      "course": "build",
+      "section": "packages-and-dependencies",
+      "file": "build/packages-and-dependencies.wav",
+      "narration": "As the order program grows, one folder of classes stops being enough. A package groups related classes under a name, and it also draws a visibility boundary. We split the application into three. The domain package holds LineItem, Order and a helper called Totals: the business rules. The io package turns CSV text into domain objects. The app package wires everything together and holds main. The most important decision is the direction of the arrows. App depends on io, io depends on the domain, and the domain depends on nothing else in the program. That means the core rules can be tested and reused without any files, networks or configuration, and a change to the CSV format cannot break them. Packages also give you a third level of access between private and public. Totals is declared with no modifier, which makes it package-private: usable throughout the domain package and invisible outside it. When io tries to call it directly, javac refuses. Tests that live in the same package can still reach it."
+    },
+    {
+      "course": "build",
+      "section": "project-layout",
+      "file": "build/project-layout.wav",
+      "narration": "Maven's standard directory layout is a convention, and conventions save configuration. Application source lives under src main java, files the application needs at run time live under src main resources, and tests live under src test java. Because every Maven project agrees on this, the build file barely needs to mention paths at all, and any developer or tool opening the project knows where to look. Compare the source tree with what ended up in the jar. The compiled main classes are there, and the two resource files sit right beside them. The tests are not: they were compiled and run during the build, but they are never shipped. Resources deserve a closer look. The application loads shop dot properties with getResourceAsStream and a leading slash. That is a classpath lookup, not a file-system path, so it works the same whether the classes are in a directory or inside a jar on another machine. And because the code reads a system property first, a launch with dash D sets shipping to zero without rebuilding anything."
+    },
+    {
+      "course": "build",
+      "section": "classpath-and-jars",
+      "file": "build/classpath-and-jars.wav",
+      "narration": "Compiling a program and running it are separate events, and the classpath is where they can disagree. At run time, the JVM loads each class the first time it is used, searching the directories and jars on the classpath in order. Five launches show the common outcomes. Running the Maven-built jar with java dash jar fails, because its manifest names no main class. Naming the class explicitly with dash c-p works. Building a jar with the main-class option writes that manifest entry, after which dash jar works too. A mistyped class name gives the familiar could not find or load main class. The last row is the subtle one. The code compiled perfectly, but CsvOrders dot class is missing from the classpath at run time. Nothing fails at startup. The program runs until App first reaches the line that needs CsvOrders, and then throws NoClassDefFoundError, caused by ClassNotFoundException. Remember too that a plain jar contains only your own classes. It does not bundle its dependencies, and it certainly does not bundle a JVM."
+    },
+    {
+      "course": "build",
+      "section": "maven-lifecycle",
+      "file": "build/maven-lifecycle.wav",
+      "narration": "Maven reads the project object model, the POM, which declares what the project is, which Java release it targets, and which libraries and plugins it needs. You then ask for a lifecycle phase, such as package, and Maven runs every earlier phase first. The real build log shows the sequence: process resources, compile the main code, compile the tests, run the tests, and only then build the jar. Each step is a plugin goal, and the log names each plugin's exact version. That ordering matters. If a test fails, the build stops before any jar is created, so a broken build never produces something that looks shippable. Dependencies are resolved before any of this. We declared one JUnit dependency, versioned through a bill of materials that keeps the whole JUnit family consistent, and the dependency tree shows the transitive libraries it brought along. All of them are test-scoped, so none reach the jar. Pinning every plugin and dependency version makes the build repeatable, which is valuable, but it is not a guarantee of byte-identical output."
+    },
+    {
+      "course": "build",
+      "section": "tests-and-ci",
+      "file": "build/tests-and-ci.wav",
+      "narration": "A build that passes on your laptop proves that it passes on your laptop. A build that passes on a clean machine, from a fresh checkout, with a pinned JDK, proves the project does not secretly depend on something only you have. Continuous integration runs that clean build automatically on every push and pull request. Look at what a build leaves behind. Surefire writes a report per test class, in plain text and XML. The jar is the artifact. The log records every plugin version and every phase. Keep them, because when a build fails at two in the morning, they are the evidence that explains why. The workflow on the left is a minimal illustration of a CI job, modelled on the deploy workflow in this very repository: check out the code, install Java twenty-five, run Maven verify in batch mode, and upload the test reports whether the build passed or failed. Configuration follows the same thinking. Sensible defaults ship inside the jar, overrides arrive at launch, and secrets come from the environment, never from the jar or the logs."
+    },
+    {
+      "course": "build",
+      "section": "modules-and-services",
+      "file": "build/modules-and-services.wav",
+      "narration": "Packages hide package-private classes, but anything public is visible to everyone. Modules draw a stronger line. A module descriptor states which packages the module exports and which other modules it requires, and everything not exported is hidden, even public classes. The pricing module exports only its API package, with the PricingPolicy interface. Its BulkDiscount class is public, but it sits in an internal package that is not exported. When the app module tries to construct it directly, the compiler reports that the package is not visible. So how does the app get a pricing policy at all? Through a service. The pricing module declares that it provides PricingPolicy with BulkDiscount, the app declares that it uses PricingPolicy, and ServiceLoader finds the implementation at run time without the app ever naming it. It prices ten items at one ninety-nine as seventeen ninety-one. Deep reflection is a separate permission. Reading a private field fails with an inaccessible object exception until the pricing module opens that package, here to the app module alone."
+    },
+    {
+      "course": "build",
+      "section": "compatibility-and-runtimes",
+      "file": "build/compatibility-and-runtimes.wav",
+      "narration": "The JDK that compiles your code and the JVM that eventually runs it are often different versions, and a mismatch fails in ways worth recognising. Here is one source file that calls List dot getFirst, a method added in Java twenty-one. Compiling with release seventeen fails immediately: the method does not exist in that release's API, so javac cannot find the symbol. That is exactly what you want to discover at build time. Compiling with release twenty-one produces a class file with major version sixty-five, and it runs happily on a Java twenty-one runtime. Compiling with release twenty-five produces major version sixty-nine, and the Java twenty-one runtime refuses to load it at all, with an UnsupportedClassVersionError naming both version numbers. The release flag is better than the older target flag because it checks the API as well as the bytecode format. Finally, you can ship the runtime itself. jdeps reports that this program needs only java dot base, and jlink builds a runtime image of just that module: fifty-two megabytes instead of the full JDK's two hundred and eighty-six."
+    },
+    {
+      "course": "concurrency",
+      "section": "tasks-and-executors",
+      "file": "concurrency/tasks-and-executors.wav",
+      "narration": "Concurrency in Java usually starts not with threads but with tasks. A task is a piece of work, such as pricing one order. An executor owns a set of threads, takes tasks from a queue and runs them, reusing the same threads again and again. Our pool has two threads and three pricing tasks. Submitting a task returns a Future, a handle for a result that may not exist yet. Calling get waits for it. Orders seventeen and eighteen price normally. Order nineteen throws, and the exception does not vanish: get rethrows it wrapped in an ExecutionException, so the caller sees exactly what went wrong. Now look at the other rows. Started with execute, the same failure is printed by the worker thread to standard error, where nobody may be reading. Submitted and never asked about, it disappears completely. Finally, ownership: whoever creates an executor is responsible for shutting it down and waiting for it to finish. Try-with-resources does both, and an executor that is never shut down can keep the whole JVM running."
+    },
+    {
+      "course": "concurrency",
+      "section": "races-and-visibility",
+      "file": "concurrency/races-and-visibility.wav",
+      "narration": "When two threads share mutable data without coordination, two quite different things can go wrong. The first is atomicity. Incrementing a counter looks like one operation, but it is three: read the current value, add one, write it back. If two threads both read forty-one before either writes, they both write forty-two, and one increment is lost. Four threads each incrementing a hundred thousand times should reach four hundred thousand. The plain counter ended a few thousand short, by a different amount on every run. An AtomicInteger, or a synchronized method, reached four hundred thousand every time. The second failure is visibility. A worker thread loops until a plain boolean flag becomes true. The main thread sets it after half a second, and two seconds later the worker is still spinning. Without synchronisation, the JVM is allowed to keep using a value it already read. Marking the flag volatile makes the write visible, and the worker stops. The rule behind both is happens-before: only synchronisation actions guarantee that one thread's writes are seen by another."
+    },
+    {
+      "course": "concurrency",
+      "section": "locks-and-invariants",
+      "file": "concurrency/locks-and-invariants.wav",
+      "narration": "Some rules span several fields at once. Our stock has a hundred units, and at every moment, available plus reserved must equal one hundred. Making each field volatile ensures every thread sees the latest value of each field, but reserving a unit is a sequence: check that something is available, then decrement available, then increment reserved. Between the check and the update, another thread can do the same check. With a thousand customers on eight threads, most runs came out right, which is exactly what makes this dangerous. Runs three and four told a hundred and one customers yes. The synchronized version allows only one thread at a time into reserve on that object, so the check and the update happen together, and the answer is a hundred on every run. Every method that touches the invariant must use the same lock, or the protection has a hole. Sometimes a thread must wait until the invariant allows progress, such as an empty shelf being restocked. A Condition releases the lock while waiting, and the waiting code re-checks in a loop after it wakes."
+    },
+    {
+      "course": "concurrency",
+      "section": "atomics-and-concurrent-collections",
+      "file": "concurrency/atomics-and-concurrent-collections.wav",
+      "narration": "It is tempting to think that choosing a thread-safe collection makes the code using it thread-safe. It does not. A ConcurrentHashMap guarantees that each individual operation is safe: no corrupted buckets, no lost entries inside a single put. But counting with get followed by put is a sequence of two operations. Between the get and the put, another thread can update the same key, and its update is then overwritten. Four threads making ten thousand updates each should count forty thousand. The get-then-put version counted between thirty-one and thirty-five thousand, a different shortfall every run, with no error anywhere. merge reads the current value, combines it with the new one and writes the result as one atomic step inside the map, and it counted forty thousand every time. compute and putIfAbsent cover other shapes of the same idea. So the toolbox has three layers: atomic variables for single values, concurrent collections whose own methods do compound updates, and a lock when no single operation is enough."
+    },
+    {
+      "course": "concurrency",
+      "section": "futures-and-composition",
+      "file": "concurrency/futures-and-composition.wav",
+      "narration": "A Future lets you wait for one result. A CompletableFuture lets you describe what should happen when results arrive, which means independent pieces of work can overlap without a thread sitting idle at each step. Looking up the price takes about two hundred milliseconds and checking stock about three hundred. They do not depend on each other, so both start at once with supplyAsync. thenCombine runs a function as soon as both have finished, and the whole quote is ready in about three hundred milliseconds, not five hundred. Failures travel through the same pipeline. Asking for a shipping quote to Mars throws, and every stage that depends on that result is skipped, carrying the failure forward instead. exceptionally catches it at the end and supplies a fallback value of minus one. If you call join on the failed future directly, the original exception arrives wrapped in a CompletionException, so always look at its cause. One more decision deserves attention: unless you pass an executor, these stages run on a shared pool."
+    },
+    {
+      "course": "concurrency",
+      "section": "cancellation-and-timeouts",
+      "file": "concurrency/cancellation-and-timeouts.wav",
+      "narration": "When a result is no longer wanted, two separate things need to stop: the caller's waiting, and the work itself. A timeout handles only the first. Calling get with three hundred milliseconds throws a TimeoutException when the time is up, but the five-second task carries on running in the background. To stop the work, cancel the future with true, which interrupts the thread running it. Interruption in Java is a request, not a command. A task blocked in sleep, wait or most I/O receives an InterruptedException, and our cooperative task responds by cleaning up and ending early. The second task is a busy loop that never checks whether it has been interrupted. Its cancel call also returns true, and the future reports itself cancelled, yet the loop runs for its full second regardless. So tasks have duties: check for interruption during long work, let InterruptedException propagate or restore the interrupt flag, and never swallow it silently. And give every wait on something external a deadline."
+    },
+    {
+      "course": "concurrency",
+      "section": "virtual-threads",
+      "file": "concurrency/virtual-threads.wav",
+      "narration": "Platform threads are mapped one-to-one onto operating system threads, so they are relatively expensive, and pools usually keep a few hundred at most. A virtual thread is managed by the JVM and runs on top of a small number of carrier threads. When it blocks, waiting for a sleep, a network response or a lock, it unmounts and frees its carrier for someone else. Ten thousand tasks that each wait a hundred milliseconds show the difference. A pool of two hundred platform threads has to work through them in fifty rounds of waiting, and takes about five seconds. With a virtual thread per task, all ten thousand wait at the same time, and the whole batch finishes in about a sixth of a second, with ordinary blocking code and no callbacks. Now give the same machine sixty-four tasks of pure computation. Four platform threads take four hundred and fifty-nine milliseconds; virtual threads take slightly longer. Four cores are still four cores. So create one virtual thread per task, do not pool them, and put your limits on the scarce resources they call."
+    },
+    {
+      "course": "concurrency",
+      "section": "bounded-work",
+      "file": "concurrency/bounded-work.wav",
+      "narration": "Virtual threads remove the cost of waiting, which removes a natural brake. If each request starts a call to a payment service, a thousand requests produce a thousand simultaneous calls, and the measured peak here is exactly that. A real payment service, or a database with a connection limit, would slow down, time out or start failing, and the failures would spread back upstream. The fix is to put the limit where the scarcity is. A Semaphore with ten permits makes each caller acquire a permit before the call and release it in a finally block. The peak drops to ten, and the other callers simply wait their turn. A bounded executor takes a different approach. Two threads and a queue of ten can hold twelve tasks. With the abort policy, the remaining eighty-eight submissions are rejected immediately instead of piling up in memory. Rejecting early is backpressure: it tells the caller now, while it can still retry, slow down or shed load. Choose the numbers from the dependency's real capacity."
+    },
+    {
+      "course": "concurrency",
+      "section": "deadlock-and-liveness",
+      "file": "concurrency/deadlock-and-liveness.wav",
+      "narration": "Concurrent code can produce the right answer and still fail, by never producing an answer at all. Liveness is the property that work keeps making progress, and a deadlock is its purest failure. The checkout thread locks the inventory, pauses, and then asks for the payments lock. The refund thread locks payments, pauses, and then asks for inventory. Each now holds exactly what the other needs, and both wait forever. There is no exception and no log message; the program simply stops moving. The evidence comes from a thread dump. Running jstack against the process prints every thread's state and stack. Both threads are blocked on an object monitor, and the JVM goes further: it detects the cycle, prints found one Java-level deadlock, and spells out which thread holds which lock and which lock each is waiting for. Prevention is mostly discipline: acquire locks in one global order everywhere, hold them as briefly as possible, and use tryLock with a timeout where you cannot. Starvation and livelock are cousins, where threads run but never finish."
+    },
+    {
+      "course": "integration",
+      "section": "network-foundations",
+      "file": "integration/network-foundations.wav",
+      "narration": "Before using an HTTP library, it helps to see what it hides. Underneath, the client opens a TCP connection to a host and port, and both sides exchange plain text in a format called a protocol. Here a raw socket writes a request by hand to a small local server. The first line names the method, GET, the path of the resource, slash orders slash seventeen, and the protocol version. Headers follow, one per line: which host is meant, which formats the client accepts, and that the connection should close afterwards. A blank line ends the headers. The response has the same shape. Its first line is the status, two hundred OK. Headers describe the body, here JSON, twenty-seven bytes long, and then the body itself, our familiar order total. An endpoint is just the combination of host, port and path. Keep one more fact in mind for the rest of this course: every one of these hops can be slow, can fail outright, or can simply never answer."
+    },
+    {
+      "course": "integration",
+      "section": "http-client",
+      "file": "integration/http-client.wav",
+      "narration": "The JDK's own HTTP client sends a request and gives you back a response, and it is worth being precise about what can go wrong. Build one client, configured with a connect timeout, and reuse it, because it manages connections for you. Give each request its own timeout as well. Now look at the four requests. The first returns two hundred with the order. The second and third return four hundred and four and five hundred and three. Those are not exceptions: the server answered, and send returns a perfectly normal response object. If your code only reads the body, it will happily parse an error message as if it were an order. So check the status and map each one to a meaning in your domain: not found, or try again later. The fourth request goes to a port where nothing is listening, and there is no response at all, only a ConnectException. Timeouts and dropped connections end the same way, as IOExceptions. In those cases you cannot even be sure whether the request reached the server, which is the next section's problem."
+    },
+    {
+      "course": "integration",
+      "section": "deadlines-and-retries",
+      "file": "integration/deadlines-and-retries.wav",
+      "narration": "Here is the most important idea in this course. When a request times out, the client knows exactly one thing: it stopped waiting. It does not know whether the server failed, is still working, or finished successfully a moment too late. In this run, the server placed the order straight away and then took a full second to reply. The client's timeout was half a second, so it gave up, assumed failure, and retried. The server placed the order again. One customer, two orders, and a second charge. Retrying is only safe when repeating the request cannot change the result, a property called idempotency. GET requests usually have it. Placing an order does not, unless you design it in. The fix here is an idempotency key: the client generates one key for this order and sends it with every attempt, and the server remembers the keys it has applied. The retry now gets already applied, and there is one order. Finally, budget time for the whole operation, retry only a few times with growing gaps, and only when the call is idempotent."
+    },
+    {
+      "course": "integration",
+      "section": "jdbc-basics",
+      "file": "integration/jdbc-basics.wav",
+      "narration": "JDBC is Java's standard interface to relational databases, and a driver translates it into one particular database's protocol. Here the database is H2, running in memory inside the same process. The shape of the code is always similar. Get a connection, prepare a statement with question marks where values will go, bind each value with a typed setter, run the query, and walk the result set, turning each row into a record. Every one of those objects holds resources, so all of them sit in try-with-resources. Now the security point. Suppose a customer name arrives from a web form, and the code builds the SQL by gluing the text into the query string. A malicious input closes the quote and adds or one equals one, and the query returns every order in the table. Bind the same text as a parameter and the database treats it purely as a value, so it matches nothing. Parameters work only for values, though. A column name used for sorting cannot be bound, so check it against an allow-list before it ever reaches the SQL."
+    },
+    {
+      "course": "integration",
+      "section": "transactions",
+      "file": "integration/transactions.wav",
+      "narration": "An order is a header row and several line rows, and they only make sense together. A transaction groups statements so that they all take effect or none of them do. JDBC connections start in auto-commit mode, where every statement is its own transaction and commits the moment it succeeds. Watch what that means. The header for order seventeen is inserted and committed. The first line is inserted and committed. The second line has a quantity of zero, violates the table's check constraint, and fails. The database now holds an order with only one of its two lines, a state no part of the program ever intended. Switch auto-commit off and the picture changes. All three inserts become one unit of work. When the second line fails, the code rolls back, and there is no trace of order seventeen at all. A fully valid order commits with both lines. Notice who does all this: the code that opens the connection decides whether to commit or roll back, exactly once, and then closes it."
+    },
+    {
+      "course": "integration",
+      "section": "security-boundaries",
+      "file": "integration/security-boundaries.wav",
+      "narration": "Every point where your program talks to something else is a trust boundary, and the safe default is to trust nothing you have not verified. Start with TLS. Its job is not only encryption; it proves that you are talking to the server you meant to reach. Here a local HTTPS server presents a certificate it signed itself. The JDK's default trust store has never heard of it, so the handshake fails with a PKIX path building error. That failure is the protection working. The right response is to decide deliberately whom to trust: put that server's certificate into a trust store you control and configure the client with it, and the same request succeeds. The wrong response, often copied from the internet, is a trust manager that accepts every certificate, which silently removes the protection for every connection. Credentials belong in the environment or a secret store, never in source code or logs. Input from outside is bound or allow-listed. And the database account should have only the permissions its job requires."
+    },
+    {
+      "course": "integration",
+      "section": "integration-testing",
+      "file": "integration/integration-testing.wav",
+      "narration": "Unit tests with fakes check your own logic. Integration tests check something different: that your code and a real protocol agree about what happens at the boundary. They do not need a shared test server or a network to do it. For the database, H2 runs in memory, so each test gets a fresh schema, real JDBC and real SQL, in milliseconds. For HTTP, the JDK's small built-in server becomes a stub: it speaks genuine HTTP, but the test decides exactly what it replies, including the awkward cases. These four tests, run by Maven, show what that buys. A saved order reads back as forty-two forty-nine. Saving the same id twice is rejected by the database's own primary key, not by code we wrote. And when the price service answers five hundred and three, the client turns it into a domain failure with a message a person can act on. Be honest about the limits too. H2 is not your production database, and a stub is not the real service. Keep a smaller suite that runs against the real things before a release."
+    },
+    {
+      "course": "jvm",
+      "section": "class-loading",
+      "file": "jvm/class-loading.wav",
+      "narration": "The JVM does not load your whole program at startup. It loads, links and initialises each class lazily, the first time running code actually needs it. The class loading log makes that visible: Init is loaded to run main, main prints its first line, and only then, when the code first touches the tax table, is the nested TaxTable class loaded. Initialisation is the step that runs static initialisers, and it can fail. Here the tax rates come from configuration, one value is the text x nineteen, and parsing it throws. The first use of the class reports an ExceptionInInitializerError, carrying the real cause, the NumberFormatException. Look at the second attempt. It does not retry the initialiser. It throws NoClassDefFoundError, could not initialize class, because a class whose initialisation failed stays unusable for the life of the JVM. That message is easily confused with chapter nine's missing class. The difference is in the detail: a missing class is caused by ClassNotFoundException; could not initialize means it is there, and you must find the first error, often much earlier in the log."
+    },
+    {
+      "course": "jvm",
+      "section": "jit-compilation",
+      "file": "jvm/jit-compilation.wav",
+      "narration": "The JVM does not run your bytecode the same way from start to finish. HotSpot, the usual implementation, begins by interpreting it, watching which methods run often and what types and branches they actually see. Hot methods are then compiled to native machine code in the background, while the program keeps running. The chart shows that happening. Each point is the time for one batch of two hundred thousand calls to the line-pricing method. The first batch takes about four thousand microseconds. By the tenth batch the same work takes about five hundred, eight times faster, with no change to the code. Run with dash X int, which forbids compilation, and every batch stays around seven thousand. The compilation log explains the drop: the method is compiled first by the quick C1 compiler at tier three, then by the optimising C2 compiler at tier four, after which the earlier version is retired. The percent sign marks on-stack replacement, compiling a loop while it is running. All of these details belong to HotSpot, not to the Java language."
+    },
+    {
+      "course": "jvm",
+      "section": "heap-and-gc",
+      "file": "jvm/heap-and-gc.wav",
+      "narration": "Memory in a running Java program is split two ways. Every thread has its own stack, a pile of frames holding local variables and references, and each frame disappears when its method returns. Objects themselves live on the heap, which all threads share, and the garbage collector reclaims objects that are no longer reachable. This program builds two million orders, each a brand-new list of two line items, and each list becomes garbage one loop iteration later. The heap is capped at sixty-four mebibytes. The GC log tells the story. The collector is G1, the default on this machine. Young collections run every few milliseconds, and each one starts with around thirty-eight megabytes in use and ends with about one: almost everything was already dead. Each pause takes one to two milliseconds. That is the generational idea at work: most objects die young, so collecting the young area is cheap. When you read these logs, watch the after figure over time. If it keeps creeping up, something is holding on to objects, which is the next section."
+    },
+    {
+      "course": "jvm",
+      "section": "leaks-and-exhaustion",
+      "file": "jvm/leaks-and-exhaustion.wav",
+      "narration": "Java's garbage collector reclaims objects that are no longer reachable. So a Java memory leak is not memory the program forgot to free; it is objects that are still reachable, through some chain of references, but are no longer useful. Here, a static map serves as a cache. Static fields are reachable for as long as the class is loaded, which is effectively forever. The cache is keyed by request id, and since every request has a new id, every request adds a ten kilobyte entry and nothing is ever removed. With a sixty-four mebibyte heap, it survives about six thousand requests and then fails with an OutOfMemoryError. Finding the culprit starts with a class histogram from jcmd. Two hundred megabytes are in byte arrays, and there are exactly twenty thousand and one Quote objects, one per request so far. When a count tracks the number of requests, something is keeping every one. The fix is to bound the cache, here a LinkedHashMap that drops its eldest entry beyond a thousand. The same workload then finishes."
+    },
+    {
+      "course": "jvm",
+      "section": "jfr-and-dumps",
+      "file": "jvm/jfr-and-dumps.wav",
+      "narration": "When a program misbehaves in production, you usually cannot add print statements and redeploy. The JDK provides tools that observe a running JVM from the outside, and each answers a different question. JDK Flight Recorder records timed events: garbage collections, allocations, CPU samples, locks and much more. A thread dump, from jstack or jcmd, shows what every thread is doing at one moment, which is how we found the deadlock in chapter ten. Heap evidence, from a class histogram or a full heap dump, shows what is alive, which is how we found the leak. Here we recorded the garbage-producing program with the profile settings. jfr summary counts the events by type: allocation samples, seven garbage collections, a handful of execution samples. jfr print shows one collection in full, a six point four millisecond G1 pause. And the hot-methods view ranks where the CPU samples landed. Evidence has a cost. This tenth-of-a-second program took about half a second with recording on, mostly start-up. Measure the overhead in your own setting before relying on it."
+    },
+    {
+      "course": "jvm",
+      "section": "measurement",
+      "file": "jvm/measurement.wav",
+      "narration": "Measuring performance on the JVM is harder than it looks, because the JIT compiler optimises the program you actually wrote, not the one you meant to test. Here are two loops doing the same arithmetic two hundred million times. In the first, the result of each call is thrown away. In the second, the results are summed and the sum is stored. The first loop takes three milliseconds, then one, then zero. That is not fast arithmetic; that is no arithmetic. The compiler proved that nothing used the results and removed the work entirely. The second loop, whose result is used, takes about half a second, which is the real cost. There are other traps too. Timing the first few iterations measures the interpreter, as the warm-up chart showed. A single run on a single machine is weak evidence. And constant inputs invite constant folding. So follow a method: start from a measured symptom, form one hypothesis, make one change, and re-measure under the same conditions. For microbenchmarks, use a harness such as JMH, which exists to defeat exactly these traps."
+    },
+    {
+      "course": "jvm",
+      "section": "releases-and-updates",
+      "file": "jvm/releases-and-updates.wav",
+      "narration": "An application is never finished, because the ground under it keeps moving. New JDK releases deprecate and eventually remove APIs, libraries publish updates, and security fixes arrive that you must apply quickly. The cheapest time to discover a problem is before the upgrade, and the JDK can help. Compiling this small legacy class, javac warns that sun dot misc dot Unsafe is an internal proprietary API that may be removed. jdeprscan, asked for APIs deprecated for removal, flags Runtime dot runFinalization. And jdeps lists every dependency on JDK internals, naming the module they come from. Treat these tools as detectors rather than guarantees: here jdeprscan reported only one of the deprecated calls in the file. Staying current is a habit. Run on a supported JDK and apply its updates, and move dependencies forward in small, tested steps rather than giant leaps. Then release in stages: pin and record every version, scan for known vulnerabilities, roll out to a small canary first, watch the evidence, and keep a rollback that you have actually tested."
+    },
+    {
+      "course": "jvm",
+      "section": "application-review",
+      "file": "jvm/application-review.wav",
+      "narration": "This course began with a single line of output: three items at twelve fifty plus shipping, forty-two forty-nine. The same order program now has a shape worth reviewing as a whole. Work through it as a lifecycle. Data comes in across boundaries: a CSV import with an explicit charset and validation, a price service called with timeouts and safe retries, and configuration loaded from the classpath and overridden at launch. It lands in a domain core that does no I/O at all: objects that guard their invariants, interfaces for the parts that vary, and collections and streams for the arithmetic. It leaves through more boundaries: database transactions, files replaced atomically, and work spread across bounded, cancellable threads. Around all of it sits evidence: unit and integration tests, a pinned and repeatable build, and runtime diagnostics. For any change you make from here, ask three questions. Which contract does it touch? What happens if it fails half-way? And what evidence will show it works? From here, specialise: frameworks, algorithms, distributed systems, performance or security. Practical expertise grows with experience."
+    }
+  ]
+}
